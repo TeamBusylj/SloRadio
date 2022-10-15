@@ -172,29 +172,13 @@ window.onload = function() {
 
 </script>
 
-<audio id="yourAudio" preload='none'>
-    <source src='http://live.radio1.si/Radio1' type='audio/wav' />
+<audio autoplay>
+
+  <source src="http://live.radio1.si/Radio1" type="audio/mpeg">
+Your browser does not support the audio element.
 </audio>
 <a href="#" id="audioControl">play!</a>
-     <script>
-          var yourAudio = document.getElementById('yourAudio'),
-    ctrl = document.getElementById('audioControl');
-
-ctrl.onclick = function () {
-
-    // Update the Button
-    var pause = ctrl.innerHTML === 'pause!';
-    ctrl.innerHTML = pause ? 'play!' : 'pause!';
-
-    // Update the Audio
-    var method = pause ? 'pause' : 'play';
-    yourAudio[method]();
-
-    // Prevent Default Action
-    return false;
-};
-          </script>
-
+   
   <div class="radio">
 
 

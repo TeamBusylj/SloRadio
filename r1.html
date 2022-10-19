@@ -21,19 +21,29 @@
         max-height: 100vh;
         margin: auto;
       }
-.hide {
-    opacity:0;
-   
-}
+
 	    .back{
 	    background-image: url("back.svg");
 	    position:fixed;
 		    top:0px;
 		    left:0px;
-		    width:30px;
-		    height:30px;
+		    width:140px;
+		    height:140px;
 		    z-index:300;
+background-color:#57b3ff;
+border-width:10px;
+border-top-width:0;
+border-left-width:0;
+border-bottom-right-radius:80px;
+background-repeat:no-repeat;
+background-size: 130px 130px;
+transition: all 0.3s;
 	    }
+
+.back:active {
+border-color:black;
+background-size: 120px 120px;
+}
       a {
         position: relative;
         padding: 20px;
@@ -65,7 +75,7 @@
         height: 40%;
         width: 75%;
         margin: 0 auto;
-        padding: 0px;
+        padding-bottom: -5px;
         display: block;
         margin-bottom: 10px;
         position: relative;
@@ -78,6 +88,7 @@
         border-bottom-left-radius: 50px;
         z-index: 0;
         max-height: 60%;
+margin-bottom:0px;
       }
 
       .radii span {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head><div class="top"></div>
+<head> <div class="top"></div>
 	
   <meta name="viewport" 
       content="width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=0">
@@ -12,9 +12,11 @@
 <div class="bodys">
 	<button class="back" onclick="history.back()"></button>
  
-  <title>SloRadio - Radio 1</title>
+  <title>SloRadio - Rock Radio</title>
   <body>
-    <img class="radioan" src="r1 copy.svg" id="radioan">
+<div class="radioano">
+    <img class="radioan" src="rock copy.svg" id="radioan">
+</div>
     <style>
       radio {
         max-width: 100%;
@@ -50,22 +52,25 @@ background-size: 120px 120px;
         color: transparent;
         margin: 30px;
       }
+.radioano{
+width:100%;
+background-color:#57b3ff;
+}
+     img.radioan {
+      margin: 10px auto;
+      position: fixed;
+      left: 0%;
+      right: 40%;
+      box-shadow: 10px 10px 10px #57b3ff;
+      top: -1px;
+      width: 100%;
+      height: 700px;
+      z-index: 5;
+      background-color: #57b3ff;
+      transition: 0.4s;
 
-      img.radioan {
-        margin: 0 auto;
-        position: fixed;
-        left: 0%;
-        right: 40%;
-        box-shadow: 10px 10px 10px #57b3ff;
-        top: 0%;
-        width: 100%;
-        height: 600px;
-        z-index: 5;
-        background-color: #57b3ff;
-        padding-top: 50px;
-        transition: 0.4s;
-        padding-bottom: 50px;
-      }
+    } .top{width:100%; height:10px; position:fixed; top:0; background-color:#57b3ff; z-index:2;}
+
 
       .radii {
         border-style: solid;
@@ -80,7 +85,7 @@ background-size: 120px 120px;
         margin-bottom: 10px;
         position: relative;
         transition: transform .1s;
-      }.top{width:100%; height:10px; position:fixed; top:0; background-color:#57b3ff; z-index:2;}
+      }
 
       img:not(.radioan) {
         margin-left: -50px;
@@ -151,7 +156,7 @@ margin-bottom:0px;
       }
     </script>
     <audio autoplay>
-      <source src="http://live.radio1.si/Radio1" type="audio/mpeg">
+      <source src="https://stream.nextmedia.si/proxy/rockr1_1?mp=/rock" type="audio/mpeg">
     </audio>
     <div class="radio" id="radio">
       <div class="radii" data-link="r1.html">

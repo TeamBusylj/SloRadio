@@ -130,7 +130,7 @@
     <audio autoplay>
       <source src="http://live.radio1.si/Radio1" type="audio/mpeg">
     </audio>
-    <div class="radio">
+    <div class="radio" id="radio">
       <div class="radii" data-link="r1.html">
         <a class="radiosi" href="r1.html">
           <img alt="" src="r1.svg" width=290" height="290">
@@ -230,6 +230,154 @@ var myScrollFunc = function () {
 };
 
 window.addEventListener("scroll", myScrollFunc);
+                                </script>
+                                <script>
+                                
+
+		
+			var fieldQs = 'r';
+			var url = window.location.href;
+			if(url.indexOf('?' + fieldQs + '=') == -1)
+			{
+
+				var selectedRadio = getCookie("RadioStream");
+				if (selectedRadio != "") {
+					top.location.href = "/live/?r=" + selectedRadio;
+				}
+				else top.location.href = "/live?r=Radio1";
+			}
+            else
+            {
+				jsSelectStream('ddlRegion',jsGetParameterByName("r"));
+				//StartStream();
+				setCookie("RadioStream", document.getElementById('ddlRegion').value, 180);
+			}
+			
+
+            Date.prototype.addDays = function (days) {
+                var date = new Date(this.valueOf());
+                date.setDate(date.getDate() + days);
+                return date;
+            }
+            function jsChangeStation(id) {
+			
+				setCookie("RadioStream", document.getElementById('ddlRegion').value, 180);
+			
+				var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?r=' + document.getElementById('ddlRegion').value;
+				window.history.pushState({path:newurl},'',newurl);
+				
+                PressPause();
+                StartStream();
+            }
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                var expires = "expires=" + d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+            function getCookie(cname) {
+                var name = cname + "=";
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+			
+			function jsGetParameterByName(name, url) {
+				if (!url) url = window.location.href;
+				name = name.replace(/[\[\]]/g, '\\$&');
+				var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+					results = regex.exec(url);
+				if (!results) return null;
+				if (!results[2]) return '';
+				return decodeURIComponent(results[2].replace(/\+/g, ' '));
+			}
+			
+            function jsSelectStream(id, valueToSelect) {
+                let element = document.getElementById(id);
+                element.value = valueToSelect;
+            }
+
+            var paused = false;
+
+			function StartStreamHideEpp()
+			{
+				document.getElementById('divPrespot').style.display = "none";
+				document.getElementById('divPlayer').style.display = "inline";
+				StartStream();
+				return false;
+			}
+			
+            function StartStream() {
+                document.getElementById("divLbl").innerHTML = "Počakajte, da se predvajanje začne ..."
+                var RadioPlayer = document.getElementById('RadioPlayer');
+                RadioPlayer.currentTime = 0;
+                //RadioPlayer.pause();
+                RadioPlayer.src = "https://live.radio1.si/" + document.getElementById('ddlRegion').value;
+                RadioPlayer.play();
+
+                setTimeout(CheckStream, 10000);
+            }
+
+            function PressPause() {
+                document.getElementById("divLbl").innerHTML = "";
+                paused = true;
+            }
+
+            function PressPlay() {
+                if (paused == true) {
+                    document.getElementById("divLbl").innerHTML = "Počakajte, da se predvajanje začne ..."
+                    var RadioPlayer = document.getElementById('RadioPlayer');
+                    RadioPlayer.load();
+                }
+                paused = false;
+            }
+
+            function CheckStream() {
+                var RadioPlayer = document.getElementById('RadioPlayer');
+                if (RadioPlayer.currentTime <= 0 && paused == false) {
+                    StartStream();
+                    document.getElementById("divLbl").innerHTML = "Počakajte, da se predvajanje začne ..."
+                }
+                else if (paused == true) {
+                    document.getElementById("divLbl").innerHTML = "";
+                }
+                else {
+                    document.getElementById("divLbl").innerHTML = "Poslušate #mojRadio1<br /><br />Povezava za zunanje predvajalnike: <br /><a href=\"http://live.radio1.si/" + document.getElementById('ddlRegion').value + "\" target=\"_blank\">http://live.radio1.si/" + document.getElementById('ddlRegion').value + "</a><br /><br />";
+                }
+                setTimeout(CheckStream, 10000);
+            }
+
+
+
+            function showHideDiv(div) {
+                if (document.getElementById('DivLastSongs').style.display == "none")
+                    document.getElementById('DivLastSongs').style.display = "inline";
+                else document.getElementById('DivLastSongs').style.display = "none";
+            }
+
+
+            function GetLastSongs() {
+                $.get("https://data.radio.si/api/lastsongsxml/radio1", function (data, status) {
+                    document.getElementById('DivLastSongs').innerHTML = data;
+                });
+
+                setTimeout(GetLastSongs, 20000);
+            };
+
+            GetLastSongs();
+
+
+
+    
                                 </script>
   </body>
 </div>

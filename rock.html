@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<head> <div class="top"></div>
+<head><meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> <div class="top"></div>
 	
-  <meta name="viewport" 
-      content="width=device-width, initial-scale=0.4, maximum-scale=0.4, user-scalable=0">
+
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -165,15 +164,15 @@ margin-bottom:0px;
         top: 750px;
         opacity: 1;
       }
-    </style>
+    .zvok{display:none;} </style>
     <script>
       window.onload = function() {
         document.body.className += " loaded";
       }
     </script>
-    <audio autoplay>
+    <video class="zvok"autoplay>
       <source src="https://stream.nextmedia.si/proxy/rockr1_1?mp=/rock" type="audio/mpeg">
-    </audio>
+    </video>
     <div class="radio" id="radio">
       <div class="radii" data-link="r1.html">
         <a class="radiosi" href="r1.html">
@@ -181,7 +180,7 @@ margin-bottom:0px;
           <span>Radio 1</span>
         </a>
       </div>
-	 <div class="radio" id="radio">
+
       <div class="radii" data-link="antena.html">
         <a class="radiosi" href="antena.html">
           <img alt="" src="antena.svg" width=290" height="290">
@@ -270,9 +269,7 @@ margin-bottom:0px;
       }
  
 			
-		   </script>				      
-						      </div>
-<script>
+
 
 </script>
 

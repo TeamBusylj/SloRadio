@@ -9,14 +9,30 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
 </head>
-<div class="bodys">
-	<button class="back" onclick="history.back()"></button>
+<div id="bodys" class="bodys">
+		<button onclick="setTimeout(myoFunction, 300); myFunction();" class="back"></button>
+
+<script>
+
+function myFunction() {
+   var element = document.getElementById("bodys");
+   element.classList.add("hhd");
+}
+
+</script>
+<script>
+
+function myoFunction() {
+window.location.href = "https://teambusylj.github.io/SloRadio/";
+}
+</script>
  
   <title>SloRadio - Hitradio Antena</title>
   <body>
     <img class="radioan" src="antena copy.svg" id="radioan">
 <p>Hitradio Antena</p>
     <style>
+#bodys.hhd{opacity:-5;    top:800px;    transition: all .3s;}
       radio {
         max-width: 100%;
         max-height: 100vh;
@@ -32,7 +48,7 @@
 		    height:140px;
 		    z-index:300;
 background-color:#57b3ff;
-border-width:10px;
+border-width:0px;
 border-top-width:0;
 border-left-width:0;
 border-bottom-right-radius:80px;
@@ -136,9 +152,7 @@ margin-bottom:0px;
         position: relative;
         top: 600px;
         opacity: 0;
-        -moz-transition: all .5s;
-        -webkit-transition: all .5s;
-        -o-transition: all .5s;
+       
         transition: all .5s;
       }
 

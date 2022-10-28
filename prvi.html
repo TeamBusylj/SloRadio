@@ -9,9 +9,13 @@ function delay (URL) {
 function mysFunction() {
   var element = document.getElementById("bodys");
   element.classList.add("showw");
+}</script> <script>
+function mypFunction() {
+  var element = document.getElementById("safari");
+  element.classList.add("nott");
 }
 </script>
-<button onclick="mysFunction()" class="safari">Show document</button>
+<button id="safari" onclick="mysFunction(); mypFunction()" class="safari"></button>
 
 	
 
@@ -49,11 +53,12 @@ window.location.href = "https://teambusylj.github.io/SloRadio/";
 .safari{
 position:fixed;
 top:20px;
-left:0;
-z-index:1;
-width:100px;
-height:100px; border-radius:30px;
+right:0;
+z-index:11;
+width:200px;
+height:200px; border-radius:30px; background-color:transparent; border-width:0px;
 }
+.nott{display:none;}
 #bodys.hhd{opacity:-5;    top:800px;    transition: all .3s;}
       radio {
         max-width: 100%;

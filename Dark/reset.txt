@@ -1,0 +1,48 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   Licenca: brez (javna domena)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, narekovaj, pred,
+a, okrajšava, akronim, naslov, veliko, navedba, koda,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, sredina,
+dl, dt, dd, ol, ul, li,
+nabor polj, obrazec, oznaka, legenda,
+tabela, napis, tbody, tfoot, thead, tr, th, td,
+članek, na stran, platno, podrobnosti, vdelati,
+slika, fignapis, noga, glava, hgroup,
+meni, krmarjenje, izhod, ruby, razdelek, povzetek,
+čas, oznaka, zvok, video {
+	rob: 0;
+	oblazinjenje: 0;
+	meja: 0;
+	velikost pisave: 100 %;
+	pisava: podeduj;
+	navpična poravnava: osnovna črta;
+}
+/* Ponastavitev vloge zaslona HTML5 za starejše brskalnike */
+članek, stran, podrobnosti, figcaption, slika,
+noga, glava, hgroup, meni, krmarjenje, razdelek {
+	zaslon: blok;
+}
+telo {
+	višina vrstice: 1;
+}
+ol, ul {
+	slog seznama: brez;
+}
+blockquote, q {
+	narekovaji: noben;
+}
+blockquote:prej, blockquote:potem,
+q:prej, q:po {
+	vsebina: '';
+	vsebina: brez;
+}
+tabela {
+	border-collapse: kolaps;
+	razmik med robovi: 0;
+}

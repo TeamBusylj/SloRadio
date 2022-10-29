@@ -3,9 +3,10 @@
   <script>let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 if(matched)
-	window.location.replace("https://teambusylj.github.io/SloRadio/index.html");
+	console.log('Currently in dark mode');
 else
-	console.log('Currently not in dark mode');</script>
+window.location.replace("https://teambusylj.github.io/SloRadio/index.html");
+	</script>
 
 <script>
 function delay (URL) {

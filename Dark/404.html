@@ -23,6 +23,18 @@
 </div>
 
  <style>
+      .screensaver{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 301;
+        top: 0%;
+        left: 0%;
+        background-color: #000000;
+        background-image: url(sloradiobel.svg); opacity:0; z-index:-5;
+        background-repeat: no-repeat; transition: all 1s;
+        background-position: center;
+      }
 .safari{
 position:fixed;
 top:20px;
@@ -96,7 +108,7 @@ html{font-family: 'M PLUS Rounded 1c', sans-serif;-webkit-tap-highlight-color: t
 
 
 
-.zvok{display:none;} .showw{opacity:1;}</style>
+.zvok{display:none;} .showw{opacity:1;}.screen{opacity:1;  transition: all 1s; z-index:301;}</style>
 
   <p>Nimate povezave z internetom.<br>
 Za nadaljevanje vzpostavite povezavo z internetom.</p>
@@ -116,6 +128,37 @@ function mypFunction() {
   var element = document.getElementById("safari");
   element.classList.add("nott");
 }
-</script></body>
+</script> <script>
+
+function myFunction() {
+   var element = document.getElementById("bodys");
+   element.classList.add("hhd");
+}
+
+</script>
+<script>
+
+function myoFunction() {
+window.location.href = "https://teambusylj.github.io/SloRadio/";
+}
+</script></body> <script>
+let intervalID;
+repeatEverySecond()
+function repeatEverySecond() {
+  intervalID = setInterval(screensaver, 100000);
+}
+
+function screensaver(){
+
+  var element = document.getElementById("screensaver");
+   element.classList.add("screen");
+
+}
+function myShow(){
+  var element = document.getElementById("screensaver");
+   element.classList.remove("screen");
+
+}
+</script> <div id="screensaver" class="screensaver" onclick="myShow()"/>
 </div>
 </html>

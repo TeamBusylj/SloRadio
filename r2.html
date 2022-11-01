@@ -23,7 +23,7 @@
     <img class="radioan" src="r2 copy.svg" id="radioan">
 <p>Radio 2</p>
      <style>
-        .screensaver{
+         .screensaver{
         position: fixed;
         width: 100%;
         height: 100%;
@@ -31,10 +31,25 @@
         top: 0%;
         left: 0%;
         background-color: #000000;
-        background-image: url(sloradiobel.svg); opacity:0; z-index:-5;
-        background-repeat: no-repeat; transition: all 1s;
-        background-position: center;
+        background-image: url(sloradiobel.svg);
+        opacity:0;
+        z-index:-5;
+        background-repeat: no-repeat;
+        transition: all 1s;
+
+        animation: mymove 40s infinite;
       }
+      @keyframes mymove {
+
+  0%  {   background-position: center;}
+  16%  {background-position: left top;}
+  32% {background-position: right top;}
+  48%   {background-position: center;}
+  64%  {   background-position:right bottom;}
+  80%  {   background-position: left bottom;}
+  96%  {   background-position:center;}
+  100%  {   background-position:center;}
+}
 .safari{
 position:fixed;
 top:20px;

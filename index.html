@@ -83,8 +83,10 @@ height:200px; border-radius:30px; background-color:transparent; border-width:0px
     }
 
 
- img.radioan {border-radius:30px;
-      margin: 10px auto;
+ img.radioan {margin-top:30px;
+
+
+      margin-top: 30px;
       position: fixed;
       left: 0%;
       right: 40%;
@@ -94,14 +96,13 @@ height:200px; border-radius:30px; background-color:transparent; border-width:0px
       height: 700px;
       z-index: 5;
       background-color: rgba(87, 179, 255, 0.97);
-backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(10px);
       transition: 0.4s;
-
-    } .top{width:100%; height:30px; position:fixed; top:0; background-color:#57b3ff; z-index:2;}
+    } .top{width:100%; height:40px; position:fixed; top:0; background-color:#57b3ff; z-index:2;}
 
     @media screen and (max-height: 830px) {
-  img.radioan {position: absolute; top:-750px;}}  .radii{
+  img.radioan {margin-top:30px;position: absolute; top:-750px;}}  .radii{ margin:auto;
 
       border-style: solid;
       border-width: 10px;
@@ -109,7 +110,7 @@ backdrop-filter: blur(8px);
       border-radius: 60px;
       height: 40%;
       width: 75%;
-      margin: 0 auto;
+      
       padding: 0px;
       display: block;
       margin-bottom: 10px;
@@ -177,6 +178,7 @@ backdrop-filter: blur(8px);
    
 
     .bodys {
+
       position: relative;
       top: 600px;
       opacity: 0;
@@ -324,7 +326,7 @@ window.location.href = "https://teambusylj.github.io/SloRadio/";
 let intervalID;
 repeatEverySecond()
 function repeatEverySecond() {
-  intervalID = setInterval(screensaver, 1000);
+  intervalID = setInterval(screensaver, 100000);
 
 }
 
@@ -339,25 +341,9 @@ function myShow(){
    element.classList.remove("screen");
 
 }
- // Make the body go full screen.
+
 
 </script> 
-<script>
-function goFullscreen() {
-            // Must be called as a result of user interaction to work
-            mf = document.getElementById("screensaver");
-            mf.webkitRequestFullscreen();
-            mf.style.display="";
-        }
-        function fullscreenChanged() {
-            if (document.webkitFullscreenElement == null) {
-                mf = document.getElementById("screensaver");
-                mf.style.display="none";
-            }
-        }
-        document.onwebkitfullscreenchange = fullscreenChanged;
-        document.documentElement.onclick = goFullscreen;
-        document.onkeydown = goFullscreen;
-</script>
+
 <div id="screensaver" class="screensaver" onclick="myShow()"/>
 </html>

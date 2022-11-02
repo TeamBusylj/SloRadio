@@ -4,14 +4,12 @@
  
 <button id="safari" onclick="mysFunction(); mypFunction()" class="safari"></button>
 
-	
-
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">  
-  <title>SloRadio - Radio Veseljak</title>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+    <title>SloRadio - Murski Val</title>
 </head><div class="top"></div>
 <div id="bodys" class="bodys">
 		<button onclick="setTimeout(myoFunction, 200); myFunction();" class="back"></button>
@@ -21,8 +19,8 @@
 
   <body>
 <div class="radioano">
-    <img class="radioan" src="veseljak copy.svg" id="radioan">
-<p>Radio Veseljak</p>
+    <img class="radioan" src="mura copy.svg" id="radioan">
+<p>Murski Val</p>
 </div>
      <style>
          .screensaver{
@@ -59,9 +57,9 @@ right:0;
 z-index:11;
 width:200px;
 height:200px; border-radius:30px; background-color:transparent; border-width:0px;
-}
-.nott{display:none;}
-#bodys.hhd{opacity:-5;    top:800px;    transition: all .2s;}
+}.nott{display:none;}
+
+#bodys.hhd{opacity:0;    top:800px;    transition: all .2s;}
       radio {
         max-width: 100%;
         max-height: 100vh;
@@ -93,7 +91,7 @@ transform: rotate(220deg);
       }
 .radioano{
 width:100%;
-background-color:#57b3ff;
+background-color:#112230;
 }
 
  img.radioan {margin-top:60px;border-radius:30px;
@@ -101,24 +99,22 @@ background-color:#57b3ff;
       position: fixed;
       left: 0%;
       right: 40%;
-      box-shadow: 10px 10px 9px #57b3ff;
+      box-shadow: 10px 10px 9px #112230;
       top: -1px;
       width: 100%;
-      height: 700px;
+      height: 600px;
       z-index: 5;
-      background-color: rgba(87, 179, 255, 0.97);
-backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(10px);
+ background-color:rgba(17, 34, 48, 0.97);
       transition: 0.4s;
 
-    } .top{width:100%; height:70px; position:fixed; top:0; background-color:#57b3ff; z-index:2;}
+    } .top{width:100%; height:70px; position:fixed; top:0; background-color:#112230; z-index:2;}
 
 
       @media screen and (max-height: 830px) {
-  img.radioan {margin-top:60px;position: absolute; top:-750px;}}  .radii{ margin:auto;
+  img.radioan {margin-top:60px;position: absolute; top:-750px;}}  .radii { margin:auto;filter: brightness(60%);
         border-style: solid;
         border-width: 10px;
-        border-color: black;
+        border-color: white;
         border-radius: 60px;
         height: 40%;
         width: 75%;
@@ -142,7 +138,7 @@ margin-bottom:0px;
        .radii span {
     -webkit-text-size-adjust:none;
 
-        color: black;
+        color: white;
         font-size: 80px;
        
         position: absolute;
@@ -155,7 +151,7 @@ margin-bottom:0px;
       }
 
       body {
-        background: #57b3ff;
+        background: #112230;
       }
 
       a {
@@ -163,10 +159,10 @@ margin-bottom:0px;
       }
 
       p {
-        color: black;
+        color: white;
         text-align: center;
         font-size: 100px;
-        margin-top:0;
+        margin-top:0; text-shadow: white;
       }
 
       body {
@@ -191,15 +187,17 @@ margin-bottom:0px;
       body.loaded .bodys {
         top: 750px;
         opacity: 1;
+
       }
-    .zvok{display:none;} .zvok{display:none;} .showw{opacity:1;}.screen{opacity:1;  transition: all 1s; z-index:301;}</style>
+    .zvok{display:none;} .showw{opacity:1;}.showw{opacity:1;}.screen{opacity:1;  transition: all 1s; z-index:301;}</style>
     <script>
       window.onload = function() {
         document.body.className += " loaded";
       }
     </script>
+
         <video playsinline class="zvok" autoplay>
-      <source src="https://live.radio.si/Veseljak" type="audio/mpeg">
+      <source src="http://webradio.murskival.si:8000/mv.mp3" type="audio/mpeg">
     </video>
     <div class="radio" id="radio">
       <div class="radii" data-link="r1.html')">
@@ -294,7 +292,6 @@ margin-bottom:0px;
       </a>
     </div>
   </div>
-  </div>
     <script>
       // When the user scrolls down 50px from the top of the document, resize the header's font size
       window.onscroll = function() {
@@ -305,13 +302,13 @@ margin-bottom:0px;
         if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
           document.getElementById("radioan").style.height = "300px";
         } else {
-          document.getElementById("radioan").style.height = "700px";
+          document.getElementById("radioan").style.height = "600px";
         }
       }
  
 			
 
-
+document.cookie = "lastlink=r1.html";
 </script>
 
                              

@@ -24,7 +24,18 @@ function getCookie(cname) {
   }
   return "";
 }
-window.location.replace(decodedCookie);
+function checkCookie() {
+  let user = getCookie("username");
+  if (user != "") {
+    window.location.replace(user);
+  } else {
+     user = prompt("Please enter your name:","");
+     if (user != "" && user != null) {
+       setCookie("username", user, 30);
+     }
+  }
+}
+
 </script>
  
 <button id="safari" onclick="mysFunction(); mypFunction()" class="safari"></button>

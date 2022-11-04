@@ -27,11 +27,9 @@ function myFunction() {
 <title>SloRadio</title>
   </head><div class="top"></div>
 
-<body onload="checkCookie();">
+<body>
   <script>
-    window.onload = function() {
-      checkCookie();
-  }
+  
   function getCookie(cname) {
     let name = cname + "=";
     let ca = document.cookie.split(';');
@@ -49,7 +47,7 @@ function myFunction() {
   
   function checkCookie() {
     let user = getCookie("cname");
-    if (user != "https://teambusylj.github.io/SloRadio/index.html" || user != "" ) {
+    if (user = "C:\Users\Tim Bizilj\Documents\GitHub\SloRadio\index.html" || user = "https://teambusylj.github.io/SloRadio/index.html" || user = "" ) {
       window.location.replace(user);
     }
   }

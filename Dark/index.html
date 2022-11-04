@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8750867310629408"
+<head onload="checkCookie()"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8750867310629408"
      crossorigin="anonymous"></script>
   <script>let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -9,10 +9,9 @@ else
 window.location.replace("https://teambusylj.github.io/SloRadio/index.html");
 	</script>
 <script>
-function getCookie(sconName) {
-  let name = sconName + "=";
-  let decodedCookie = decodeURIComponent(document.cookie);
-  let ca = decodedCookie.split(';');
+function getCookie(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(';');
   for(let i = 0; i < ca.length; i++) {
     let c = ca[i];
     while (c.charAt(0) == ' ') {
@@ -24,18 +23,18 @@ function getCookie(sconName) {
   }
   return "";
 }
+
 function checkCookie() {
-  let user = getCookie("username");
+  let user = getCookie("cname");
   if (user != "") {
     window.location.replace(user);
   } else {
-     user = prompt("Please enter your name:","");
-     if (user != "" && user != null) {
-       setCookie("username", user, 30);
-     }
+    user = prompt("Please enter your name:", "");
+    if (user != "" && user != null) {
+      setCookie("username", user, 365);
+    }
   }
 }
-
 </script>
  
 <button id="safari" onclick="mysFunction(); mypFunction()" class="safari"></button>

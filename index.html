@@ -51,13 +51,9 @@ function myFunction() {
     let user = getCookie("cname");
     if (user != "https://teambusylj.github.io/SloRadio/Dark/index.html") {
       window.location.replace(user);
-    } else {
-      user = prompt("Please enter your name:", "");
-      if (user != "" && user != null) {
-        setCookie("username", user, 365);
-      }
     }
   }
+  
   checkCookie()
   </script>
    <script>

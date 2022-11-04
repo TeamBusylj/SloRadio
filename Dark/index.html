@@ -29,41 +29,8 @@ function myFunction() {
 <title>SloRadio</title>
   </head><div class="top"></div>
 
-<body onload="checkCookie();">
-  <script>
-    window.onload = function() {
-      checkCookie();
-  }
-  function getCookie(cname) {
-    let name = cname + "=";
-    let ca = document.cookie.split(';');
-    for(let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
+<body>
   
-  function checkCookie() {
-    let user = getCookie("cname");
-    if (user != "https://teambusylj.github.io/SloRadio/Dark/index.html") {
-      window.location.replace(user);
-    } else {
-     
-      }
-    }
-  
-  checkCookie()
-  </script>
-    <script>
-      let lnk = window.location.href;
-      document.cookie ='cname='+lnk+';';
-           </script>
     <div id="bodys" class="bodys">
   <img class="radioan" src="sloradio.svg" id="radioan">
   

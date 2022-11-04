@@ -194,15 +194,47 @@ margin-bottom:0px;
         top: 750px;
         opacity: 1;
       }
-    .zvok{display:none;} .showw{opacity:1;}.screen{opacity:1;transition: all 1s;z-index:301;}</style>
+    .zvok{display:none;} .showw{opacity:1;}.screen{opacity:1;transition: all 1s;z-index:301;}
+    #centersi{scale: 5;margin: 0 auto;
+      display: block;
+background-color: #ee2c49;
+        position: relative;
+        color: white;
+        border-radius: 30px;
+        border-width: 0;
+    }
+    </style>
     <script>
       window.onload = function() {
         document.body.className += " loaded";
       }
+    
     </script>
-        <video playsinline class="zvok" autoplay>
-      <source src="https://stream.nextmedia.si/proxy/center2?mp=/center" type="audio/mpeg">
+<select name="centerstream" id="centersi">
+ <option  id="stream1" value="https://stream.nextmedia.si/proxy/center2?mp=/center">Center</option>
+ <option  id="stream2" value="https://stream.nextmedia.si/proxy/center_latin?mp=/center">Latin</option>
+ <option  id="stream3" value="https://stream.nextmedia.si/proxy/centerpop3?mp=/stream">Fresh Pop</option>
+ <option  id="stream4"  value="https://stream.nextmedia.si/proxy/centermix3?mp=/stream">Megamix</option>
+ <option  id="stream5" value="https://stream.nextmedia.si/proxy/centerhit3?mp=/stream">Top 100</option>
+ <option  id="stream6" value="https://stream.nextmedia.si/proxy/center80s3?mp=/stream">80's</option>
+ <option  id="stream7" value="https://stream.nextmedia.si/proxy/centeryu3?mp=/stream	">You</option>
+ <option  id="stream8" value="https://stream.nextmedia.si/proxy/centerlove3?mp=/stream">Love</option>
+</select>
+<div id="stream8" style="width: 100px; height: 100px;"></div>
+
+        <video id="zvok" playsinline class="zvok" autoplay controls preload="none" width="640" height="360" poster="" data-setup="{}">
+      <source id="cent" src="https://stream.nextmedia.si/proxy/center2?mp=/center" type="audio/mpeg">
     </video>
+    <script>
+document.cookie = document.getElementById("centersi").value;
+      document.getElementById('centersi').addEventListener('change', function() {
+     
+        document.getElementById('cent').src = document.getElementById("centersi").value;
+        document.querySelector('#zvok').load(document.URL +  ' #zvok');
+      });
+    </script>
+   
+ 
     <div class="radio" id="radio">
       <div class="radii" data-link="r1.html')">
         <a onclick="myFunction()" class="radiosi" href="javascript:delay('r1.html')">

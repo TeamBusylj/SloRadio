@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<head><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8750867310629408"
+   <script>
+let lnk = window.location.href;
+document.cookie ='cname='+lnk+';';
+     </script><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8750867310629408"
      crossorigin="anonymous"></script>
   <script>let matched = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -28,7 +31,39 @@ function myFunction() {
 <title>SloRadio</title>
   </head><div class="top"></div>
 
-<body>
+<body onload="checkCookie();">
+  <script>
+    window.onload = function() {
+      checkCookie();
+  }
+  function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  
+  function checkCookie() {
+    let user = getCookie("cname");
+    if (user != "https://teambusylj.github.io/SloRadio/Dark/index.html") {
+      window.location.replace(user);
+    } else {
+      user = prompt("Please enter your name:", "");
+      if (user != "" && user != null) {
+        setCookie("username", user, 365);
+      }
+    }
+  }
+  checkCookie()
+  </script>
     <div id="bodys" class="bodys">
   <img class="radioan" src="sloradio.svg" id="radioan">
   

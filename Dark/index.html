@@ -9,6 +9,9 @@ else
 window.location.replace("https://teambusylj.github.io/SloRadio/index.html");
 	</script>
 <script>
+  window.onload = function() {
+    checkCookie()
+}
 function getCookie(cname) {
   let name = cname + "=";
   let ca = document.cookie.split(';');

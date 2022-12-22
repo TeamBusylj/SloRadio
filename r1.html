@@ -14,7 +14,7 @@
     <title>SloRadio - Radio 1</title>
 </head><div class="top"></div>
 <div id="bodys" class="bodys">
-		<button onclick="setTimeout(myoFunction, 200); myFunction();" class="back"></button>
+		<button onclick="setTimeout(myoFunction, 100); myFunction();" class="back"></button>
 
  
 
@@ -178,22 +178,26 @@ margin-bottom:0px;
 
       .bodys {
         position: relative;
-        top: 600px;
-        opacity: 0;
-       
-        transition: all .2s;
-      }
-
-      body.loaded .bodys {
         top: 750px;
-        opacity: 1;
+       animation-name: load;
+      
+       animation-duration: 300ms;
+        transition: all .3s;
       }
-    .zvok{display:none;} .showw{opacity:1;}.screen{opacity:1;  transition: all 1s; z-index:301;}</style>
-    <script>
-      window.onload = function() {
-        document.body.className += " loaded";
-      }
-    </script>
+@keyframes load {
+  0% {
+        opacity: 0;}
+     
+  100% { 
+        opacity: 1;}
+}
+    .zvok{display:none;} .showw{opacity:1;}.screen{opacity:1;  transition: all 1s; z-index:301;}
+    
+    .flex-row {
+    flex-direction: row;
+    display: flex;
+}</style>
+  
         <video playsinline class="zvok" autoplay>
       <source src="https://live.radio1.si/Radio1" type="audio/mpeg">
     </video>
@@ -321,7 +325,7 @@ margin-bottom:0px;
    </div>
  <script>
 function delay (URL) {
-    setTimeout( function() { window.location = URL }, 200 );
+    setTimeout( function() { window.location = URL }, 100 );
 }
 	</script>
 	<script>
@@ -346,7 +350,9 @@ function myFunction() {
 function myoFunction() {
 window.location.href = "https://teambusylj.github.io/SloRadio/";
 }
-</script></body> <script>
+</script>
+
+</body> <script>
 let intervalID;
 repeatEverySecond()
 function repeatEverySecond() {
@@ -365,4 +371,6 @@ function myShow(){
 
 }
 </script> <div id="screensaver" class="screensaver" onclick="myShow()"/>
+
+<script type="text/javascript" src="https://radio.si/js/all.js?id=f742f88c3ab88dd5d56725453bb0cca5"></script>
 </html>

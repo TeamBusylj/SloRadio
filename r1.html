@@ -178,26 +178,27 @@ margin-bottom:0px;
 
       .bodys {
         position: relative;
-        top: 750px;
-       animation-name: load;
-      
-       animation-duration: 300ms;
-        transition: all .3s;
+        top: 600px;
+        opacity: 0;
+       
+        transition: all .2s;
       }
-@keyframes load {
-  0% {
-        opacity: 0;}
-     
-  100% { 
-        opacity: 1;}
-}
+
+      body.loaded .bodys {
+        top: 750px;
+        opacity: 1;
+      }
     .zvok{display:none;} .showw{opacity:1;}.screen{opacity:1;  transition: all 1s; z-index:301;}
     
     .flex-row {
     flex-direction: row;
     display: flex;
 }</style>
-  
+    <script>
+      window.onload = function() {
+        document.body.className += " loaded";
+      }
+    </script>
         <video playsinline class="zvok" autoplay>
       <source src="https://live.radio1.si/Radio1" type="audio/mpeg">
     </video>
@@ -325,7 +326,7 @@ margin-bottom:0px;
    </div>
  <script>
 function delay (URL) {
-    setTimeout( function() { window.location = URL }, 100 );
+    setTimeout( function() { window.location = URL }, 110 );
 }
 	</script>
 	<script>

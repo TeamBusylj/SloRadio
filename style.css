@@ -75,7 +75,7 @@ img.radioan {  overflow:hidden;
 
     top: 50%;
     transform: translateY(-50%);
-height: 600px;
+width: 40%;
 z-index: 5;
 margin-left: 10px;
 position: fixed;

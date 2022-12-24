@@ -4,7 +4,6 @@
  
 <button id="safari" onclick="mysFunction(); mypFunction()" class="safari"></button>
 
-	
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" href="favicon.png">
@@ -18,11 +17,11 @@
  
  
 
-  <body id="body">
+  <body id="body" onload="darko()">
   
 <div class="radioano">
     <img class="radioan" style="height:600px;" src="202 copy.svg" id="radioan">
-<p>Val 202</p>
+<p id="p">Val 202</p>
 </div>
      <!-- <style>
          .screensaver{
@@ -325,12 +324,15 @@ margin-bottom:0px;
   </div></div>
     <script>
       // When the user scrolls down 50px from the top of the document, resize the header's font size
-      
+   
       window.onscroll = function() {
+        if(screen.availHeight > screen.availWidth){
         scrollFunction()
-      };
+      }
+      
+    }
 
-     
+    
         function scrollFunction() {
         if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
           document.getElementById("radioan").style.height = "300px";
@@ -338,7 +340,7 @@ margin-bottom:0px;
           document.getElementById("radioan").style.height = "600px";
         }
       }
-
+    
  
 			
 

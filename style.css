@@ -75,7 +75,7 @@ img.radioan {  overflow:hidden;
 
     top: 50%;
     transform: translateY(-50%);
-width:40%;
+height: 600px;
 z-index: 5;
 margin-left: 10px;
 position: fixed;
@@ -111,7 +111,7 @@ transition: all 0.4s;
         border-radius: 60px;
         height: 25%;
         width: 50%;
-        margin-right: 10px;
+        margin-right: 20px;
         padding-bottom: -5px;
         display: block;
         margin-bottom: 10px;
@@ -224,3 +224,11 @@ top: 750px;
 opacity: 1;
 }
 .zvok{display:none;} .showw{opacity:1;}.screen{opacity:1;  transition: all 1s; z-index:301;}
+#centersi{scale: 5;margin: 0 auto;
+    display: block;
+background-color: #ee2c49;
+      position: relative;
+      color: black;
+      border-radius: 30px;
+      border-width: 0;
+  }

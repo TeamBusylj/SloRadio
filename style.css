@@ -10,7 +10,7 @@ background-image: url(sloradiobel.svg);
 opacity:0;
 z-index:-5;
 background-repeat: no-repeat;
-transition: all 1s;
+transition: all 5s;
 
 animation: mymove 40s infinite;
 }
@@ -41,19 +41,19 @@ max-height: 100vh;
 margin: auto;
 }
 
-.back{ margin-top:100px; margin-left:20px;
+.back{ margin-top:10px; margin-left:10px;
 background-image: url("back.svg");
 position:fixed;
    top:0;
    left:0;
-   width:140px;
-   height:140px;
+   width:150px;
+   height:150px;
    z-index:300;
 background-color:transparent;
 border-width:0;
 background-repeat:no-repeat;
 background-size: 130px 130px;
-transition: all 0.3s;
+transition: all 0.5s;
 }
 .back:active {
 transform: rotate(220deg);
@@ -99,9 +99,9 @@ z-index: 5;
 background-color: rgba(87, 179, 255, 0.97);
 backdrop-filter: blur(8px);
 -webkit-backdrop-filter: blur(10px);
-transition: 0.4s;
+transition: all 0.4s;
 
-}} .top{width:100%; height:70px; position:fixed; top:0; background-color:#57b3ff; z-index:2;}
+}} .top{width:100%; height:70px; position:fixed; top:0; background-color:#57b3ff; z-index:2; display: none;}
 
 @media (orientation: landscape) {
     .radii{ right: -50%;
@@ -116,7 +116,7 @@ transition: 0.4s;
         display: block;
         margin-bottom: 10px;
         position: relative;
-        transition: transform .1s;
+        transition: all .5s;
         }
         
     }
@@ -135,7 +135,7 @@ transition: 0.4s;
             display: block;
             margin-bottom: 10px;
             position: relative;
-            transition: transform .1s;
+            transition: all .5s;
             }
             
     }
@@ -167,14 +167,17 @@ transform: scale(.95);
 body {
 background: #57b3ff;
 }
-bodyd {
+.bodyd {
     background:  #112230 !important;
     }
 a {
 -webkit-tap-highlight-color: transparent;
 }
+p{   transition: all .8;}
 @media (orientation: portrait) {
     p {
+    
+            transition: all .4;
         color: black;
         text-align: center;
         font-size: 100px;
@@ -184,6 +187,8 @@ a {
 }
 @media (orientation: landscape) {
     p {
+       
+            transition: all .4;
         color: black;
         text-align: center;
         font-size: 90px;

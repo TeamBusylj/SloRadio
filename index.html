@@ -12,7 +12,7 @@
 </head>
 <div class="top"></div>
 <div id="bodys" class="bodys">
-  <body id="body" onload="darko()">
+  <body id="body" onload="darko(); lastRadio()">
     <div class="radioano">
       <img class="radioan" style="height:600px;  will-change: contents;" src="sloradio.svg" id="radioan">
       <p id="p"> </p>
@@ -134,6 +134,12 @@
     </div>
 </div>
 <script>
+function lastRadio() {
+  let xk = document.cookie ;
+  var audio = document.getElementById("zvok")
+    document.getElementById("audioId").setAttribute('src', xk);
+}
+
   function myFunction(y, x, z) {
     var audio = document.getElementById("zvok")
     document.getElementById("audioId").setAttribute('src', y);
@@ -164,7 +170,10 @@
       element.onload = element.classList.remove("animated");
       
     }, 1000);
+
+    document.cookie = y;
   }
+
 </script>
 <script>
   // When the user scrolls down 50px from the top of the document, resize the header's font size

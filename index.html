@@ -13,8 +13,9 @@
 <div class="top"></div>
 <div id="bodys" class="bodys">
   <body id="body" onload="darko(); lastRadio()">
-    <div class="radioano">
-      <img class="radioan" style="height:600px;  will-change: contents;" src="sloradio.svg" id="radioan">
+    <div onclick="mutefVid();" class="radioano" >
+      <img class="radioan"   style="height:600px;  will-change: contents;" src="sloradio.svg" id="radioan">
+  
       <p id="p"> </p>
       
       <script>
@@ -167,13 +168,19 @@ function lastRadio() {
     }
     document.getElementById("p").innerHTML = z;
     audio.play();
+    var element = document.getElementById("radioan");
     setTimeout(function() {
-      var element = document.getElementById("radioan");
-      element.onload = element.classList.remove("animated");
+      element.classList.remove("animated");
+      element.classList.add("animated2");
       
-    }, 1000);
+    }, 500);
 
+ 
+ 
+  
+ element.classList.remove("animated2");
     document.cookie = y;
+
   }
 
 </script>
@@ -195,7 +202,27 @@ function lastRadio() {
   window.onbeforeunload = function () {
   window.scrollTo(0, 0);
 }
+
+
 </script>
+<script>
+function mutefVid() {
+
+  var vid = document.getElementById("zvok");
+  if (vid.muted == false){
+    var element = document.getElementById("radioan");
+    element.classList.remove("animated2");
+    element.classList.add("muted");
+vid.muted = true;
+  }
+else{
+  var element = document.getElementById("radioan");
+  element.classList.remove("animated2");
+    element.classList.remove("muted");
+
+vid.muted = false;
+  }
+}</script>
 </div>
 </body>
 <script>

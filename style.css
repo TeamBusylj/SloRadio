@@ -116,10 +116,16 @@ z-index: 100;
 position: relative;
 top: 0px;
 }
-  .animated{  animation: radiom .4s;}
+  .animated{  animation: radiom .2s forwards;}
   @keyframes radiom {
     0% {opacity: 1; scale: 1;}
-    50% {opacity: 0; scale: .8;}
+100% {opacity: 0; scale: .8;}
+  
+  }
+  .animated2{  animation: radwiom .2s forwards;}
+  @keyframes radwiom {
+  
+    0% {opacity: 0; scale: .8;}
     100% {opacity: 1; scale: 1;}
   }
   @media (orientation: portrait) {
@@ -180,6 +186,7 @@ top: 0px;
     z-index: 2;
     display: none;
   }
+  .radii{background-color: rgba(0, 0, 0, .1);}
   .darko {
     box-shadow: 10px 10px 9px #112230 !important;
     background-color: #112230 !important;
@@ -200,7 +207,7 @@ top: 0px;
       display: block;
       margin-bottom: 15px;
       position: relative;
-      transition: all 0.5s;
+      transition: all 0.2s;
       top: -600px;
     }
   }
@@ -219,10 +226,13 @@ top: 0px;
       display: block;
       margin-bottom: 15px;
       position: relative;
-      transition: all 0.5s;
+      transition: all 0.2s;
     }
   }
-  
+  .muted{
+   opacity: .4;
+  }
+  .hide{display: none;}
   img:not(.radioan) {
     margin-left: -51px;
     border-top-left-radius: 50px;

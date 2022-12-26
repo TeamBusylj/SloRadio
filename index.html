@@ -1,10 +1,6 @@
 <!DOCTYPE html>
-<script src="scriptdark.js"></script>
+<script src="myscripts.js"></script>
 <link rel="stylesheet" href="style.css">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8750867310629408" crossorigin="anonymous"></script>
-<button id="safari" onclick="mysFunction(); mypFunction()" class="safari"></button>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
@@ -12,25 +8,24 @@
 </head>
 <div class="top"></div>
 <div id="bodys" class="bodys">
-  <body id="body" onload="darko(); lastRadio()">
+  <body id="body" onload="darko(); lastRadio(); setTimeout(loaded, 500);">
     <div onclick="mutefVid();" class="radioano" >
-      <img class="radioan"   style="height:600px;  will-change: contents;" src="sloradio.svg" id="radioan">
-  
+      <img  class="radioan"   style="height:600px;  will-change: contents;" src="sloradio.svg" id="radioan">
+  <script>      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.getElementById("radioan").setAttribute('src', 'sloradiobel.svg');
+     }
+     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+         document.getElementById("radioan").setAttribute('src', 'sloradio.svg');
+     }
+     </script>
       <p id="p"> </p>
       
-      <script>
       
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-       document.getElementById("radioan").setAttribute('src', 'sloradiobel.svg');
-        }
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            document.getElementById("radioan").setAttribute('src', 'sloradio.svg');
-        }
-      
-      </script>
     </div>
    
-    <video playsinline class="zvok" autoplay id="zvok">
+    <video oncanplay="loaded()" 
+    oncanplaythrough="loaded()"
+    onloadeddata="loaded()" playsinline class="zvok" autoplay id="zvok">
       <source id="audioId" src="" type="audio/mpeg">
     </video>
    
@@ -134,124 +129,15 @@
       
     </div>
 </div>
-<script>
-function lastRadio() {
-  let xk = document.cookie ;
-  var audio = document.getElementById("zvok")
-    document.getElementById("audioId").setAttribute('src', xk);
-    audio.load();
-    audio.play();
-}
-
-  function myFunction(y, x, z) {
-    var audio = document.getElementById("zvok")
-    document.getElementById("audioId").setAttribute('src', y);
-    var element = document.getElementById("radioan");
-    element.classList.add("animated");
-    audio.load();
-    if (x != "sloradio.svg") {
-      setTimeout(function() {
-        document.getElementById("radioan").setAttribute('src', x);
-      }, 200);
-    }
-    if (x == "sloradio.svg") {
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTimeout(function() {
-          document.getElementById("radioan").setAttribute('src', 'sloradiobel.svg');
-        }, 200);
-      }
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-        setTimeout(function() {
-          document.getElementById("radioan").setAttribute('src', 'sloradio.svg');
-        }, 200);
-      }
-    }
-    document.getElementById("p").innerHTML = z;
-    audio.play();
-    var element = document.getElementById("radioan");
-    setTimeout(function() {
-      element.classList.remove("animated");
-      element.classList.add("animated2");
-      
-    }, 500);
-
- 
- 
-  
- element.classList.remove("animated2");
-    document.cookie = y;
-
-  }
-
-</script>
-<script>
-  // When the user scrolls down 50px from the top of the document, resize the header's font size
-  window.onscroll = function() {
-    if (screen.availHeight > screen.availWidth) {
-      scrollFunction()
-    }
-  }
-
-  function scrollFunction() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      document.getElementById("radioan").style.height = "300px";
-    } else {
-      document.getElementById("radioan").style.height = "600px";
-    }
-  }
-  window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
 
 
-</script>
-<script>
-function mutefVid() {
 
-  var vid = document.getElementById("zvok");
-  if (vid.muted == false){
-    var element = document.getElementById("radioan");
-    element.classList.remove("animated2");
-    element.classList.add("muted");
-vid.muted = true;
-  }
-else{
-  var element = document.getElementById("radioan");
-  element.classList.remove("animated2");
-    element.classList.remove("muted");
-
-vid.muted = false;
-  }
-}</script>
 </div>
 </body>
-<script>
-  let inactivityTime = function() {
-    let time;
-    window.onload = resetTimer;
-    document.onmousemove = resetTimer;
-    document.onkeypress = resetTimer;
-
-    function logout() {
-      screensaver()
-    }
-
-    function resetTimer() {
-      clearTimeout(time);
-      time = setTimeout(logout, 60000)
-    }
-  };
-  inactivityTime();
-
-  function screensaver() {
-    var element = document.getElementById("screensaver");
-    element.classList.add("screen");
-  }
-
-  function myShow() {
-    var element = document.getElementById("screensaver");
-    element.classList.remove("screen");
-  }
-</script>
-<div id="screensaver" class="screensaver" onclick="myShow()">
+<div class="loader" style="width: 100%;" id="loader"> <img class="ggg" src="loader.svg"></div>
+<div id="screensaver" class="screensaver" onclick="myShow()"></div>
+<div class="bottom"> 
+  <button class="butt">Slovenia</button>
+  <button onclick="window.location.href='indexworld.html';" class="butt rig">World</button>
+</div>
   </html>

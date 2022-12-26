@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<script src="myscripts.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+<title>SloRadio</title>
+</head>
+<div class="top"></div>
+<div id="bodys" class="bodys">
+  <body id="body" onload="darko(); lastRadio()">
+    <div onclick="mutefVid();" class="radioano" >
+      <img  class="radioan"   style="height:600px;  will-change: contents; border-radius: 30px !important;" src="sloradio.svg" id="radioan">
+  <script>      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.getElementById("radioan").setAttribute('src', 'sloradiobel.svg');
+     }
+     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+         document.getElementById("radioan").setAttribute('src', 'sloradio.svg');
+     }
+     </script>
+      <p id="p"> </p>
+      
+      
+    </div>
+   
+    <video playsinline class="zvok" autoplay id="zvok">
+      <source id="audioId" src="" type="audio/mpeg">
+    </video>
+   
+      <div class="radio" id="radio">
+        <div class="radii">
+          <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one', 'bbc.svg', 'BBC Radio 1')" class="radiosi">
+            <img alt="" src="bbc.svg" width="290" height="290">
+            <span>BBC Radio&nbsp1</span>
+          </a>
+        </div>
+        <div class="radii" id="radii">
+          <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_two', 'bbc2.svg', 'BBC Radio 1')" class="radiosi">
+            <img alt="" src="bbc2.svg" width="290" height="290">
+            <span>BBC Radio&nbsp2</span>
+          </a>
+        </div>
+       
+    </div>
+
+
+
+
+</div>
+</body>
+
+<div id="screensaver" class="screensaver" onclick="myShow()"></div>
+<div class="bottom"> 
+  <button onclick="window.location.href='index.html';" class="butt">Slovenia</button>
+  <button onclick="window.location.href='indexworld.html';" class="butt rig">World</button>
+</div>
+  </html>

@@ -1,3 +1,8 @@
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
 .screensaver {
     position: fixed;
     width: 100%;
@@ -174,6 +179,9 @@ animation-iteration-count: infinite;
     body {
         background-color: #57b3ff;
     }
+    .radii {
+        background-color: #57b3ff;
+    }
     .radii{     border-color: black;}
     span{color:black;}
     p{color:black;}
@@ -196,6 +204,9 @@ animation-iteration-count: infinite;
     box-shadow: 10px 10px 9px #071636;
     }
     body {
+        background-color: #071636;
+    }
+ .radii {
         background-color: #071636;
     }
     p{color:white;}

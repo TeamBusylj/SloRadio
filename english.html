@@ -8,9 +8,10 @@
 </head>
 <div class="top"></div>
 <div id="bodys" class="bodys">
-  <body id="body" onload="darko(); lastRadio()">
+  <body id="body" onload="darko(); lastRadio(); setTimeout(loaded, 500);">
     <div onclick="mutefVid();" class="radioano" >
-      <img  class="radioan"   style="height:600px;  will-change: contents; border-radius: 30px !important;" src="sloradio.svg" id="radioan">
+      <div class="toper"></div>
+      <img  class="radioan"   style="height:600px; right: 0%; width: auto !important;margin-right: auto !important; margin-left: auto !important; will-change: contents;" src="sloradio.svg" id="radioan">
   <script>      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     document.getElementById("radioan").setAttribute('src', 'sloradiobel.svg');
      }
@@ -23,24 +24,69 @@
       
     </div>
    
-    <video playsinline class="zvok" autoplay id="zvok">
+    <audio oncanplay="loaded()" 
+    oncanplaythrough="loaded()"
+    onloadeddata="loaded()" playsinline class="zvok" autoplay id="zvok">
       <source id="audioId" src="" type="audio/mpeg">
-    </video>
+    </audio>
    
-      <div class="radio" id="radio">
-        <div class="radii">
-          <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one', 'bbc.svg', 'BBC Radio 1')" class="radiosi">
-            <img alt="" src="bbc.svg" width="290" height="290">
-            <span>BBC Radio&nbsp1</span>
-          </a>
-        </div>
-        <div class="radii" id="radii">
-          <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_two', 'bbc2.svg', 'BBC Radio 1')" class="radiosi">
-            <img alt="" src="bbc2.svg" width="290" height="290">
-            <span>BBC Radio&nbsp2</span>
-          </a>
-        </div>
-       
+    <div class="radio" id="radio">
+      <div class="radii">
+        <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one', 'bbc.png', 'BBC Radio 1')" class="radiosi">
+          <img alt="" src="bbc.png" width="290" height="290">
+          <span>BBC Radio&nbsp1</span>
+        </a>
+      </div>
+      <div class="radii" id="radii">
+        <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_two', 'bbc2.png', 'BBC Radio 2')" class="radiosi">
+          <img alt="" src="bbc2.png" width="290" height="290">
+          <span>BBC Radio&nbsp2</span>
+        </a>
+      </div>
+      <div class="radii" id="radii">
+        <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_three', 'bbc 3.png', 'BBC Radio 3')" class="radiosi">
+          <img alt="" src="bbc 3.png" width="290" height="290">
+          <span>BBC Radio&nbsp3</span>
+        </a>
+      </div>
+      <div class="radii" id="radii">
+        <a href="javascript:myFunction('http://stream.live.vc.bbcmedia.co.uk/bbc_radio_fourfm?s=1672161242&e=1672175642&h=d819dac597ce9a239141ed297dcd4db6', 'bbc4.png', 'BBC Radio 4')" class="radiosi">
+          <img alt="" src="bbc4.png" width="290" height="290">
+          <span>BBC Radio&nbsp4</span>
+        </a>
+      </div>
+      <div class="radii" id="radii">
+        <a href="javascript:myFunction('http://stream.live.vc.bbcmedia.co.uk/bbc_radio_five_live_online_nonuk?s=1672161427&e=1672175827&h=79685560560324864c227cd29deea32b', 'bbc5.png', 'BBC Radio 5')" class="radiosi">
+          <img alt="" src="bbc5.png" width="290" height="290">
+          <span>BBC Radio&nbsp5</span>
+        </a>
+      </div>
+      <div class="radii" id="radii">
+        <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_world_service', 'bbcworld.png', 'BBC World Service')" class="radiosi">
+          <img alt="" src="bbcworld.png" width="290" height="290">
+          <span>BBC World <br> Service</span>
+        </a>
+      </div>
+      <div class="radii" id="radii">
+        <a href="javascript:myFunction('https://radio.talksport.com/stream', 'talk.png', 'talkSPORT')" class="radiosi">
+          <img alt="" src="talk.png" width="290" height="290">
+          <span>talkSPORT <br> </span>
+        </a>
+      </div>
+      <div class="radii" id="radii">
+        <a href="javascript:myFunction('https://radio.talksport.com/stream2', 'talk2.png', 'talkSPORT 2')" class="radiosi">
+          <img alt="" src="talk2.png" width="290" height="290">
+          <span>talkSPORT <br>2 </span>
+        </a>
+      </div>
+      <div class="radii" id="radii">
+        <a href="javascript:myFunction('https://media-ssl.musicradio.com/Capital', 'caplon.png', 'Capital London')" class="radiosi">
+          <img alt="" src="caplon.png" width="290" height="290">
+          <span>Capital <br>London </span>
+        </a>
+      </div>
+  </div>
+     
     </div>
 
 
@@ -48,10 +94,11 @@
 
 </div>
 </body>
-
+<div class="header1"></div>
+<div  class="loader" style="width: 100%;" id="loader"> <img onload="loaded()" class="ggg" src="loader.svg"></div>
 <div id="screensaver" class="screensaver" onclick="myShow()"></div>
 <div class="bottom"> 
-  <button onclick="window.location.href='index.html';" class="butt">Slovenia</button>
+  <button class="butt">Slovenia</button>
   <button onclick="window.location.href='indexworld.html';" class="butt rig">World</button>
 </div>
   </html>

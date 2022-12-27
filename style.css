@@ -20,7 +20,7 @@
     animation: mymove 40s infinite;
   }
 
-  .radio{margin-right: 30px;}
+  .radio{margin-right: 30px; padding-bottom: 130px;}
   @keyframes mymove {
     0% {
       background-position: center;
@@ -104,6 +104,7 @@
   
   @media (orientation: landscape) {
     img.radioan {
+      overflow-y: hidden;
       overflow: hidden;
         will-change: contents;
       top: 50%;
@@ -153,7 +154,7 @@ animation-iteration-count: infinite;
   }
   @media (orientation: portrait) {
     img.radioan {
-      overflow: hidden;
+      overflow-y: hidden;
     
       will-change: contents;
       position: fixed;
@@ -169,6 +170,23 @@ animation-iteration-count: infinite;
       -webkit-backdrop-filter: blur(10px);
       transition: all 0.2s;
     }
+   .toper {
+      overflow: hidden;
+    
+      will-change: contents;
+      position: fixed;
+      left: 0%;
+      right: 40%;
+     padding-top: 30px;
+      top: -2px;
+      width: 100%;
+      height: 300px;
+      z-index: 10;
+  
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.2s;
+    }
     
   }
   @media (prefers-color-scheme: light) {
@@ -176,6 +194,10 @@ animation-iteration-count: infinite;
     background-color: #57b3ff;
     box-shadow: 10px 10px 9px #57b3ff;
     }
+    .toper{
+      background-color: #57b3ff;
+      box-shadow: 10px 10px 9px #57b3ff;
+      }
     body {
         background-color: #57b3ff;
     }
@@ -187,7 +209,7 @@ animation-iteration-count: infinite;
     p{color:black;}
     html{text-shadow: 2px 2px 30px #000000;}
     .bottom{
-        display: none;
+        
         width: 100%;
         height:130px;
         background-color: #57b3ff;
@@ -195,14 +217,20 @@ animation-iteration-count: infinite;
         bottom: -1px;
         color: #000000;
           }
+          .radioano{ background-color: #57b3ff }
           .loader{background-color:#57b3ff;}
           .header1{width: 100%; height: 30px; position: fixed; top:0;background-color:#57b3ff;}
 }
 @media (prefers-color-scheme: dark) {
+  .radioano{ background-color: #071636 }
     img.radioan{
     background-color: #071636;
     box-shadow: 10px 10px 9px #071636;
     }
+  .toper{
+      background-color: #071636;
+      box-shadow: 10px 10px 9px #071636;
+      }
     body {
         background-color: #071636;
     }
@@ -214,7 +242,7 @@ animation-iteration-count: infinite;
     .radii{     border-color: white;}
     html{text-shadow: 2px 2px 30px #14398f;}
     .bottom{
-        display: none;
+     
         width: 100%;
         height:130px;
         background-color: #071636;
@@ -296,7 +324,7 @@ animation-iteration-count: infinite;
     font-size: 60px;
     transition: all .4s;
     border-width: 0;
-    display: none;
+
 }
 .rig{ right:10% !important;   left:25%; }
 .butt:active{scale: .90;}

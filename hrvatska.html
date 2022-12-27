@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<script src="myscripts.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+<title>SloRadio</title>
+</head>
+<div class="top"></div>
+<div id="bodys" class="bodys">
+  <body id="body" onload="darko(); lastRadio(); setTimeout(loaded, 500);">
+    <div onclick="mutefVid();" class="radioano" >
+      <div class="toper"></div>
+      <img  class="radioan"   style="height:600px; right: 0%; width: auto !important;margin-right: auto !important; margin-left: auto !important; will-change: contents;" src="sloradio.svg" id="radioan">
+  <script>      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.getElementById("radioan").setAttribute('src', 'sloradiobel.svg');
+     }
+     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+         document.getElementById("radioan").setAttribute('src', 'sloradio.svg');
+     }
+     </script>
+      <p id="p"> </p>
+      
+      
+    </div>
+   
+    <audio oncanplay="loaded()" 
+    oncanplaythrough="loaded()"
+    onloadeddata="loaded()" playsinline class="zvok" autoplay id="zvok">
+      <source id="audioId" src="" type="audio/mpeg">
+    </audio>
+   
+    <div class="radio" id="radio">
+      <div class="radii">
+        <a href="javascript:myFunction('http://live.narodni.hr:8059/;', 'narodni.png', 'Narodni')" class="radiosi">
+          <img alt="" src="narodni.png" width="290" height="290">
+          <span>Narodni<br>&nbsp</span>
+        </a>
+      </div>
+      <div class="radii">
+        <a href="javascript:myFunction('http://stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" class="radiosi">
+          <img alt="" src="otvoreni.jpg" width="290" height="290">
+          <span>Otvoreni<br>&nbsp</span>
+        </a>
+      </div>
+      <div class="radii">
+        <a href="javascript:myFunction('http://uk1.streamingpulse.com:7117/stream', 'istra.jpg', 'Radio Istra')" class="radiosi">
+          <img alt="" src="istra.jpg" width="290" height="290">
+          <span>Radio<br>Istra</span>
+        </a>
+      </div>
+  </div>
+     
+    </div>
+
+
+
+
+
+</body>
+<div class="header1"></div>
+<div  class="loader" style="width: 100%;" id="loader"> <img onload="loaded()" class="ggg" src="loader.svg"></div>
+<div id="screensaver" class="screensaver" onclick="myShow()"></div>
+<div class="bottom"> 
+  <button onclick="window.location.href='index.html';" class="butt">Slovenia</button>
+  <button onclick="window.location.href='indexworld.html';" class="butt rig">World</button>
+</div>
+  </html>

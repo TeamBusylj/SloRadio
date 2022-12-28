@@ -396,23 +396,35 @@ animation-iteration-count: infinite;
     
     -webkit-tap-highlight-color: transparent;
   }
-  
+img.radioan{ -webkit-animation: bubble .40s forwards; 
+  animation: bubble2 .48s forwards;}
   .bodys {
     position: relative;
     top: 600px;
     opacity: 1;
     transition: all 0.2s;
     -webkit-animation: bubble .40s forwards; 
-        animation: bubble .40s forwards;
+        animation: bubble .48s forwards;
   }
   @keyframes bubble {
    
        0%{ top: 600px;
         opacity: 0;}
+        50%{ top: 600px;
+          opacity: 0;}
         100%{ top: 750px;
             opacity: 1;}
   }
- 
+  @keyframes bubble2 {
+   
+    0%{ 
+     opacity: 0;}
+     50%{ top: 600px;
+       opacity: 0;}
+     100%{
+         opacity: 1;}
+}
+
   .zvok {
     display: none;
   }

@@ -287,6 +287,7 @@ animation-iteration-count: infinite;
       margin-bottom: 15px;
       position: relative;
       transition: all 0.2s;
+      -webkit-transition: all 0.2s;
       top: -600px;
     }
   }
@@ -300,7 +301,7 @@ animation-iteration-count: infinite;
       border-radius: 60px;
       height: 40%;
       width: 75%;
-   
+      -webkit-transition: all 0.2s;
       padding-bottom: -5px;
       display: block;
       margin-bottom: 15px;
@@ -322,7 +323,8 @@ animation-iteration-count: infinite;
     backdrop-filter: blur(2px);
     border-radius: 60px;
     font-size: 60px;
-    transition: all .4s;
+    transition: all .2s;
+    -webkit-transition: all .2s;
     border-width: 0;
 
 }

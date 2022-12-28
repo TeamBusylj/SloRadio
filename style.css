@@ -140,18 +140,18 @@ animation-iteration-count: infinite;
     margin-right: auto;
     margin-top: 50px;
 }
-  .animated{  animation: radiom .2s forwards; }
-  @keyframes radiom {
-    0% {opacity: 1 !important; transform: scale(1)!important;}
-100% {opacity: 0 !important; transform: scale(.8)!important;}
+  .animated{  animation: radigre .2s forwards; }
+  @keyframes radigre {
+    0% {opacity: 1; transform: scale(1);}
+100% {opacity: 0 ; transform: scale(.8);}
   
   }
 
-  .animated2{ animation: radwiom .2s forwards;}
+  .animated2{  animation: radwiom 200ms forwards;}
   @keyframes radwiom {
   
-    0% {opacity: 0 !important;  transform: scale(.8)!important;}
-    100% {opacity: 1 !important; transform: scale(1)!important;}
+    0% {opacity: 0;  transform: scale(.8);}
+    100% {opacity: 1; transform: scale(1);}
   }
   @media (orientation: portrait) {
     img.radioan {
@@ -400,8 +400,7 @@ animation-iteration-count: infinite;
     
     -webkit-tap-highlight-color: transparent;
   }
-img.radioan{ -webkit-animation: bubble .40s forwards; 
-  animation: bubble2 .48s forwards;}
+
   .bodys {
     position: relative;
     top: 600px;
@@ -419,15 +418,6 @@ img.radioan{ -webkit-animation: bubble .40s forwards;
         100%{ top: 750px;
             opacity: 1;}
   }
-  @keyframes bubble2 {
-   
-    0%{ 
-     opacity: 0;}
-     50%{ top: 600px;
-       opacity: 0;}
-     100%{
-         opacity: 1;}
-}
 
   .zvok {
     display: none;

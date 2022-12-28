@@ -155,20 +155,21 @@ animation-iteration-count: infinite;
   }
   @media (orientation: portrait) {
     img.radioan {
-      overflow-y: hidden;
-    
-      will-change: contents;
-      position: fixed;
-      left: 0%;
-      right: 40%;
-     padding-top: 30px;
-      top: -2px;
-      width: 100%;
-      height: 700px;
-      z-index: 10;
-  
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(10px);
+      overflow:hidden;
+   
+             
+             position: fixed;
+             left: 0%;
+             right: 0%;
+             box-shadow: 10px 10px 9px #57b3ff;
+             top: 0%;
+            
+             height: 600px;
+             z-index: 50;
+             background-color: #57b3ff;
+            
+             transition: 0.4s;
+             padding-bottom: 50px;
       transition: all 0.2s;
     }
    .toper {
@@ -181,7 +182,7 @@ animation-iteration-count: infinite;
      padding-top: 30px;
       top: -2px;
       width: 100%;
-      height: 300px;
+      height: 330px;
       z-index: 10;
   
       backdrop-filter: blur(8px);

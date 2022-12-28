@@ -140,17 +140,18 @@ animation-iteration-count: infinite;
     margin-right: auto;
     margin-top: 50px;
 }
-  .animated{  animation: radiom .2s forwards;}
+  .animated{  animation: radiom .2s forwards; }
   @keyframes radiom {
-    0% {opacity: 1; scale: 1;}
-100% {opacity: 0; scale: .8;}
+    0% {opacity: 1 !important; transform: scale(1)!important;}
+100% {opacity: 0 !important; transform: scale(.8)!important;}
   
   }
-  .animated2{  animation: radwiom .2s forwards;}
+
+  .animated2{ animation: radwiom .2s forwards;}
   @keyframes radwiom {
   
-    0% {opacity: 0; scale: .8;}
-    100% {opacity: 1; scale: 1;}
+    0% {opacity: 0 !important;  transform: scale(.8)!important;}
+    100% {opacity: 1 !important; transform: scale(1)!important;}
   }
   @media (orientation: portrait) {
     img.radioan {

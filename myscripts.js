@@ -103,7 +103,8 @@ function loads(){
     var element = document.getElementById("loader");
     element.classList.remove("hide");
     element.classList.add("show");
-    element.classList.add("animated2");
+    var elemento = document.getElementById("radioan");
+    elemento.classList.add("animated2");
 }
 function loaded(){
     var element = document.getElementById("loader");

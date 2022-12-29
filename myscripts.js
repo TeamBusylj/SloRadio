@@ -41,8 +41,11 @@ window.onscroll = function() {
 function scrollFunction() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
         document.getElementById("radioan").style.height = "300px";
+        
+
     } else {
         document.getElementById("radioan").style.height = "600px";
+        
     }
 }
 window.onbeforeunload = function() {
@@ -97,21 +100,25 @@ function loads(){
     var element = document.getElementById("loader");
     element.classList.remove("hide");
     element.classList.add("show");
+    element.classList.remove("animated");
+    element.classList.add("animated2");
     var elemento = document.getElementById("radioan");
-    elemento.classList.add("animated2");
+    elemento.classList.remove("animated2");
+    elemento.classList.add("animated");
 }
 function loaded(){
     var element = document.getElementById("loader");
-    element.classList.add("animated");
+    var elemento = document.getElementById("radioan");
+    
+    elemento.classList.add("animated");
     element.classList.remove("show");
     element.classList.add("hide");
    
-    var elemento = document.getElementById("radioan");
     
         elemento.classList.remove("animated");
         elemento.classList.add("animated2");
         setTimeout(function() {
-          
+            element.classList.remove("animated2");
             elemento.classList.remove("animated2");
         }, 500);
     

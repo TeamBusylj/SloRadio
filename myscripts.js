@@ -22,11 +22,11 @@ function favi(y, x, z) {
 
 function myFunction(y, x, z) {
     loads()
-    var audio = new Audio(y);
-   
+    var audio = document.getElementById("zvok")
+    document.getElementById("audioId").setAttribute('src', y);
     var element = document.getElementById("radioan");
     element.classList.add("animated");
-   
+    audio.load();
     if (x != "sloradio.svg") {
         setTimeout(function() {
             document.getElementById("radioan").setAttribute('src', x);
@@ -45,12 +45,7 @@ function myFunction(y, x, z) {
         }
     }
     document.getElementById("p").innerHTML = z;
-
-audio.load();
     audio.play();
-  loaded();
-  
-
 
 }
 

@@ -8,7 +8,7 @@
 </head>
 <div class="top"></div>
 <div id="bodys" class="bodys">
-  <body id="body" onload=" setTimeout(loaded, 500);">
+  <body id="body" onload="onloade()">
     <div onclick="mutefVid();" class="radioano" >
       <div class="toper"></div>
       <img  class="radioan"   style="margin-right: auto !important; margin-left: auto !important; will-change: contents;" src="sloradio.svg" id="radioan">
@@ -37,19 +37,19 @@
          
           <span>Narodni<br>&nbsp</span>
         </a>
-        <img onclick="favi('live.narodni.hr:8059/stream/1/', 'narodni.png', 'Narodni')" alt="" class="favorite" src="fav.svg" width="110" height="110">
+        <img id="favi" onclick="favi('live.narodni.hr:8059/stream/1/', 'narodni.png', 'Narodni')" alt="" class="favorite" src="fav.svg" width="110" height="110">
       </div>
       <div class="radii">
         <a id="aji" href="javascript:myFunction('https://stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" class="radiosi">
           <img alt="" src="otvoreni.jpg" width="290" height="290">
           <span>Otvoreni<br>&nbsp</span>
-        </a> <img onclick="favi('stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" alt="" class="favorite" src="fav.svg" width="110" height="110">
+        </a> <img id="favi" onclick="favi('stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" alt="" class="favorite" src="fav.svg" width="110" height="110">
       </div>
       <div class="radii">
         <a id="aji" href="javascript:myFunction('https://s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')" class="radiosi">
           <img alt="" src="istra.jpg" width="290" height="290">
           <span>Radio<br>Istra</span>
-        </a> <img onclick="favi('s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')" alt="" class="favorite" src="fav.svg" width="110" height="110">
+        </a> <img id="favi" onclick="favi('s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')" alt="" class="favorite" src="fav.svg" width="110" height="110">
       </div>
   </div>
      
@@ -65,7 +65,7 @@
 <div id="screensaver" class="screensaver" onclick="myShow()"></div>
 <div class="bottom"> 
   <button onclick="window.location.href='index.html';" class="butt">Slovenia</button>
-  <button onclick="window.location.href='favorit.html';" class="butt rig"><img alt="" class="favorite" src="fav.svg" width="110" height="110"></button>
+  <img alt="" style=" left: 43% !important; right: 0 !important;" class="favorite" onclick="window.location.href='favorit.html';"  src="fav.svg" width="110" height="110" id="favorit">
 
   <button onclick="window.location.href='indexworld.html';" class="butt rig">World</button>
 </div>

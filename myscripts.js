@@ -1,10 +1,25 @@
 function getFavi(y, x, z) {
     const items = {localStorage } 
     console.log(items)
+    var favi = document.getElementById("radio")
+   
 }
+
+
 function favi(y, x, z) {
-    localStorage.setItem(z, x + y + z);   
+    localStorage.setItem(z, x + y + z); 
+    console.log(localStorage)
+    var img = document.getElementById('favi').src;
+    if (img.indexOf('fav.svg')!=-1) {
+        document.getElementById('favi').src  = 'favfill.svg';
+    }
+     else {
+       document.getElementById('favi').src = 'fav.svg';
+   }
+
 }
+    
+
 function myFunction(y, x, z) {
     loads()
     var audio = document.getElementById("zvok")
@@ -132,4 +147,10 @@ function loaded(){
     
        
    
+ }
+function onloade() {
+    var audio = document.getElementById("zvok")
+    document.getElementById("audioId").setAttribute('src', "example.com");
+ var elemento = document.getElementById("radioan");
+ elemento.classList.remove("animated2");
  }

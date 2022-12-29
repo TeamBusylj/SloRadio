@@ -1,5 +1,10 @@
-
-
+function getFavi(y, x, z) {
+    const items = {localStorage } 
+    console.log(items)
+}
+function favi(y, x, z) {
+    localStorage.setItem(z, x + y + z);   
+}
 function myFunction(y, x, z) {
     loads()
     var audio = document.getElementById("zvok")

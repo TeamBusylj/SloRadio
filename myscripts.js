@@ -1,10 +1,4 @@
-function lastRadio() {
-    let xk = document.cookie;
-    var audio = document.getElementById("zvok")
-    document.getElementById("audioId").setAttribute('src', xk);
-    audio.load();
-    audio.play();
-}
+
 
 function myFunction(y, x, z) {
     loads()

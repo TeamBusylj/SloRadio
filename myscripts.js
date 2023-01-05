@@ -5,7 +5,11 @@ function getFavi(y, x, z) {
    
 }
 
-
+if ('addEventListener' in document) {
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
+}
 function favi(y, x, z) {
     localStorage.setItem(z, x + y + z); 
     console.log(localStorage)

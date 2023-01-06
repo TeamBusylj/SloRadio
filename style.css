@@ -17,7 +17,10 @@
   z-index:-5;
   background-repeat:no-repeat;
   transition:all .5s;
-  animation:mymove 40s infinite
+  animation:mymove 70s infinite;
+  animation-timing-function: ease;
+background-size: 30%;
+overflow-y: hidden;
   }
   
   .favorite {
@@ -254,6 +257,9 @@
   }
   
   @media (prefers-color-scheme: dark) {
+    img:not(.radioan ):not(.ggg):not(.favorite) {
+      filter: brightness(70%);
+      }
   .radioano {
   background-color:#071636
   }
@@ -273,6 +279,7 @@
   }
   
   .radii {
+   
   background-color:#071636
   }
   
@@ -499,6 +506,7 @@
   }
   
   .screen {
+   filter:  brightness(10%);
   opacity:1;
   transition:all .5s;
   z-index:301

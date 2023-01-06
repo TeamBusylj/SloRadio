@@ -88,7 +88,7 @@ overflow-y: hidden;
     margin-top: 25px;
   width:100%
   }
-  
+  .radioan{    margin-top: 25px;}
   @media (orientation: landscape) {
   img.radioan {
   overflow-y:hidden;

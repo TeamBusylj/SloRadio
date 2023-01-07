@@ -101,7 +101,8 @@ function myShow() {
     var element = document.getElementById("screensaver");
     element.classList.remove("screen");
     let elem = document.querySelector("body");
-
+    AndroidInterface.showmy();
+   
    
 }
 function loads(){

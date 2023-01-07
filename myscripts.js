@@ -18,7 +18,10 @@ function favi(y, x, z) {
    }
 
 }
-    
+    function mayno(){
+        alert("Mogoče ne bo delovalo.");
+    }
+
 
 function myFunction(y, x, z) {
     loads()

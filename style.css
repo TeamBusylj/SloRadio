@@ -218,7 +218,7 @@ overflow-y: hidden;
   background-color:#57b3ff;
   border-color:#000
   }
-  
+
   span {
   color:#000
   }
@@ -416,7 +416,9 @@ overflow-y: hidden;
   .hide {
   display:none
   }
-  
+  img.radioan{
+    margin-right: auto !important; margin-left: auto !important; will-change: contents;
+  }
   img:not(.radioan ):not(.ggg):not(.favorite) {
   margin-left:-51px;
   border-top-left-radius:50px;
@@ -424,9 +426,14 @@ overflow-y: hidden;
   z-index:0;
   max-height:60%;
   margin-bottom:-7px;
-  margin-top:-1px
+  margin-top:-1px;
+
   }
-  
+  img:not(.radioan ):not(.ggg):not(.favorite):not(.batt) {
+   
+    height: 290px;
+    width: 290px;
+    }
   .radii span {
   -webkit-text-size-adjust:none;
   font-size:80px;

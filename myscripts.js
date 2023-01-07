@@ -108,7 +108,7 @@ function myShow() {
    
    
 }
-document.getElementById("radioan").onload = function() {AndroidInterface.loadi};
+
 function loads(){
     
     var element = document.getElementById("loader");

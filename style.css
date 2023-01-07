@@ -488,8 +488,7 @@ overflow-y: hidden;
   top:750px;
   opacity:1;
   transition:all .2s;
-  -webkit-animation:bubble .4s forwards;
-  animation:bubble .48s forwards
+
   }
   
   @keyframes bubble {

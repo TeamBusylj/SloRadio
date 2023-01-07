@@ -100,6 +100,23 @@ function screensaver() {
    
 }
 
+function onloayde(){
+    var elas = document.getElementById('bottom');
+    var ela = document.getElementById('radioan');
+var el = document.querySelectorAll('.radii');
+for(var i = 0; i < el.length; i++) {
+    el[i].classList.add("radia");
+    ela.classList.add("radia");
+    elas.classList.add("buta");
+}
+setTimeout(()=>{
+for(var i = 0; i < el.length; i++) {
+    el[i].classList.remove("radia");
+    ela.classList.remove("radia");
+    elas.classList.remove("radia");
+}}, 3000);
+}
+
 function myShow() {
     var element = document.getElementById("screensaver");
     element.classList.remove("screen");
@@ -108,7 +125,15 @@ function myShow() {
    
    
 }
-
+function showcentri(){
+    var x = document.getElementById("centri");
+    if (x.style.display === "none") {
+        x.classList.add("anime");
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+}
 function loads(){
     
     var element = document.getElementById("loader");

@@ -14,7 +14,7 @@
 <title>SloRadio</title>
 </head>
 <div id=bodys class=bodys>
-  <body id=body onload=onloade()>
+  <body id=body onload="onloade();onloayde()">
     <div onclick=mutefVid() class=radioano>
       <div class=toper></div>
       <img class=radioan  src=sloradio.svg id=radioan onload="AndroidInterface.loadi()">
@@ -32,132 +32,133 @@
       <source id=audioId src type=audio/mpeg>
     </audio>
     <div class=radio id=radio>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href=javascript:screensaver() class=radiosi>
           <img src=batt.svg width=290 height=180 class="batt">
           <span style=font-size:55px;bottom:75%>Varčevanje <br> Baterije </span>
         </a>
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://live.radio.si/Radio1','r1 copy.svg','Radio 1')" class=radiosi>
           <img alt src=r1.svg>
           <span>Radio 1</span>
         </a>
         <img id=favi onclick="favi('live.radio.si/Radio1','r1 copy.svg','Radio 1')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii id=radii>
+      <div class="radii" id="radii" id=radii>
         <a id=aji href="javascript:myFunction('https://live.radio.si/Antena','antena copy.svg','Radio Antena')" class=radiosi>
           <img alt src=antena.svg  >
           <span>Radio <br>Antena </span>
         </a>
         <img id=favi onclick="favi('live.radio.si/Antena','antena copy.svg','Radio Antena')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
-        <a id=aji href="javascript:myFunction('https://stream.nextmedia.si/proxy/center2?mp=/center','center copy.svg','Hitradio Center')" class=radiosi>
+      <div class="radii" id="radii">
+        <a id=aji href="javascript:myFunction('https://stream.nextmedia.si/proxy/center2?mp=/center','center copy.svg','Hitradio Center'); javascript:showcentri()" class=radiosi>
           <img alt=radio src=center.svg  >
           <span>Radio <br>Center </span>
         </a>
         <img id=favi onclick="favi('stream.nextmedia.si/proxy/center2?mp=/center','center copy.svg','Hitradio Center')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://live.radio.si/Radio2','r2 copy.svg','Radio 2')" class=radiosi>
           <img alt=radio src=r2.svg  >
           <span>Radio 2</span>
         </a>
         <img id=favi onclick="favi('live.radio.si/Radio2','r2 copy.svg','Radio 2')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://live.radio.si/Salomon','salomon copy.svg','Radio Salomon')" class=radiosi>
           <img alt=radio src=salomon.svg  >
           <span>Radio <br>Salomon </span>
         </a>
         <img id=favi onclick="favi('live.radio.si/Salomon','salomon copy.svg','Radio Salomon')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://mp3.rtvslo.si/rsi','si copy.svg','Radio SI')" class=radiosi>
           <img alt=radio src=si.svg  >
           <span>Radio SI</span>
         </a>
         <img id=favi onclick="favi('mp3.rtvslo.si/rsi','si copy.svg','Radio SI')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://live.radio.si/Aktual','aktual copy.svg','Radio Aktual')" class=radiosi>
           <img alt=radio src=aktual.svg  >
           <span>Radio <br>Aktual </span>
         </a>
         <img id=favi onclick="favi('live.radio.si/Aktual','aktual copy.svg','Radio Aktual')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://mp3.rtvslo.si/val202','202 copy.svg','Val 202')" class=radiosi>
           <img alt=radio src=202.svg  >
           <span>Val 202</span>
         </a>
         <img id=favi onclick="favi('mp3.rtvslo.si/val202','202 copy.svg','Val 202')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://mp3.rtvslo.si/ra1','prvi copy.svg','Radio Prvi')" class=radiosi>
           <img alt=radio src=prvi.svg  >
           <span>Radio <br>Prvi </span>
         </a>
         <img id=favi onclick="favi('mp3.rtvslo.si/ra1','prvi copy.svg','Radio Prvi')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://stream.nextmedia.si/proxy/rockr1_1?mp=/rock','rock copy.svg','Rock Radio')" class=radiosi>
           <img alt=radio src=rock.svg  >
           <span>Rock <br>Radio </span>
         </a>
         <img id=favi onclick="favi('stream.nextmedia.si/proxy/rockr1_1?mp=/rock','rock copy.svg','Rock Radio')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://stream.exit.si/live','capris copy.svg','Radio Capris')" class=radiosi>
           <img alt=radio src=capris.svg  >
           <span>Radio <br>Capris </span>
         </a>
         <img id=favi onclick="favi('stream.exit.si/live','capris copy.svg','Radio Capris')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://live.radio.si/Veseljak','veseljak copy.svg','Radio Veseljak')" class=radiosi>
           <img alt=radio src=veseljak.svg  >
           <span>Radio <br>Veseljak </span>
         </a>
         <img id=favi onclick="favi('live.radio.si/Veseljak','veseljak copy.svg','Radio Veseljak')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://live.radio.si/ognjisce.mp3','ogenj copy.svg','Radio Ognjišče')" class=radiosi>
           <img alt src=ogenj.svg  >
           <span>Radio <br>Ognjišče </span>
         </a>
         <img id=favi onclick="favi('live.radio.si/ognjisce.mp3','ogenj copy.svg','Radio Ognjišče')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://stream1.radiocity.si/CityAAC128.aac','city copy.svg','Radio City')" class=radiosi>
           <img alt src=city.svg  >
           <span>Radio <br>City </span>
         </a>
         <img id=favi onclick="favi('stream1.radiocity.si/CityAAC128.aac','city copy.svg','Radio City')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://live.radio.si/murskival','mura copy.svg','Radio Murski Val')" class=radiosi>
           <img alt src=mura.svg  >
           <span>Murski <br>Val </span>
         </a>
         <img id=favi onclick="favi('live.radio.si/murskival','mura copy.svg','Radio Murski Val')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://mp3.rtvslo.si/rakp','koper copy.svg','Radio Koper')" class=radiosi>
           <img alt src=koper.svg  >
           <span>Radio <br>Koper </span>
         </a>
         <img id=favi onclick="favi('mp3.rtvslo.si/rakp','koper copy.svg','Radio Koper')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://live.radio.si/BOB','bob.jpg','Radio BOB')" class=radiosi>
           <img alt src=bob.jpg  >
           <span>Radio <br>BOB </span>
         </a>
         <img id=favi onclick="favi('live.radio.si/BOB','bob.jpg','Radio BOB')" alt class=favorite src=fav.svg  >
       </div>
-      <div class=radii>
+      <div class="radii" id="radii">
         <a id=aji href="javascript:myFunction('https://kruljo.radiostudent.si:8001/hiq','student.jpg','Radio Študent')" class=radiosi>
           <img alt src=student.jpg  >
           <span>Radio <br>Študent </span>
@@ -172,7 +173,7 @@
   <img onload=loaded() class=ggg id=ggg src=loader.svg>
 </div>
 <div id=screensaver class=screensaver onclick=myShow()></div>
-<div class=bottom>
+<div class=bottom id="bottom">
   <button class=butt>Slovenia</button>
   <img alt style=left:43%!important;right:0!important class=favorite onclick="window.location.href='favorit.html'" src=fav.svg   id=favorit>
   <button onclick="window.location.href='indexworld.html'" class="butt rig">World</button>

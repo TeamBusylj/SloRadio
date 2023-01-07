@@ -18,7 +18,7 @@
 </head>
 <div class="top"></div>
 <div id="bodys" class="bodys">
-  <body id="body" onload="onloade()">
+  <body id="body" onload="onloade();onloayde()">
     <div onclick="mutefVid();" class="radioano" >
       <div class="toper"></div>
       <img  class="radioan"  style="margin-right: auto !important; margin-left: auto !important; " src="sloradio.svg" id="radioan">
@@ -40,21 +40,21 @@
    
    
         <div class="radio" id="radio">
-          <div class="radii">
+          <div class="radii" id="radii">
             <a class="radiosi" href="english.html">
               <img alt="" src="english.svg"  >
               <span>English <br> Radio</span>
             </a>
           </div>
         
-            <div class="radii">
+            <div class="radii" id="radii">
               <a class="radiosi" href="hrvatska.html">
                 <img alt="" src="Flag_of_Croatia.svg"  >
                 <span>Hrvatski <br> Radio</span>
               </a>
           </div>
         
-          <div class="radii" data-link="r1.html')">
+          <div class="radii" id="radii" data-link="r1.html')">
             <a class="radiosi" >
               <img alt="" src="sloradiostop.svg"  >
               <span>Coming <br>Soon</span>
@@ -68,7 +68,7 @@
 
 
 <div id="screensaver" class="screensaver" onclick="myShow()"></div>
-<div class="bottom"> 
+<div class="bottom" id="bottom"> 
   <button onclick="window.location.href='index.html';" class="butt">Slovenia</button>
   <img alt="" style=" left: 43% !important; right: 0 !important;" class="favorite" onclick="window.location.href='favorit.html';"  src="fav.svg"   id="favorit">
 

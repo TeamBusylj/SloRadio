@@ -17,7 +17,7 @@
 </head>
 <div class="top"></div>
 <div id="bodys" class="bodys">
-  <body id="body" onload="onloade()">
+  <body id="body" onload="onloade();onloayde()">
     <div onclick="mutefVid();" class="radioano" >
       <div class="toper"></div>
       <img  class="radioan"   style="margin-right: auto !important; margin-left: auto !important; will-change: contents;" src="sloradio.svg" id="radioan">
@@ -40,13 +40,13 @@
     </audio>
    
     <div class="radio" id="radio"> 
-      <div class="radii">
+      <div class="radii" id="radii">
         <a id="aji" href="javascript:screensaver()" class="radiosi">
           <img alt="" src="batt.svg" width="290" height="180" class="batt">
           <span style="font-size: 55px; bottom: 75%;">Varčevanje<br> Baterije</span>
           </a> 
     </div>
-      <div class="radii">
+      <div class="radii" id="radii">
         <a id="aji" href="javascript:myFunction('http://c5.hostingcentar.com:8059/;', 'narodni.png', 'Bravo'); mayno()" class="radiosi">
           <img alt="" src="narodni.png"  >
          
@@ -54,13 +54,13 @@
         </a>
         <img id="favi" onclick="favi('live.narodni.hr:8059/stream/1/', 'narodni.png', 'Narodni')" alt="" class="favorite" src="fav.svg"  >
       </div>
-      <div class="radii">
+      <div class="radii" id="radii">
         <a id="aji" href="javascript:myFunction('https://stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" class="radiosi">
           <img alt="" src="otvoreni.jpg"  >
           <span>Otvoreni<br>&nbsp</span>
         </a> <img id="favi" onclick="favi('stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" alt="" class="favorite" src="fav.svg"  >
       </div>
-      <div class="radii">
+      <div class="radii" id="radii">
         <a id="aji" href="javascript:myFunction('https://s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')" class="radiosi">
           <img alt="" src="istra.jpg"  >
           <span>Radio<br>Istra</span>
@@ -77,7 +77,7 @@
 
 <div  class="loader" style="width: 100%;" id="loader"> <img onload="loaded()" class="ggg" id="ggg" src="loader.svg"></div>
 <div id="screensaver" class="screensaver" onclick="myShow()"></div>
-<div class="bottom"> 
+<div class="bottom" id="bottom"> 
   <button onclick="window.location.href='index.html';" class="butt">Slovenia</button>
   <img alt="" style=" left: 43% !important; right: 0 !important;" class="favorite" onclick="window.location.href='favorit.html';"  src="fav.svg"   id="favorit">
 

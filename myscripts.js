@@ -108,7 +108,7 @@ function myShow() {
     element.classList.remove("screen");
     let elem = document.querySelector("body");
 
-   showToast()
+    ContactJsInterface.showToast()
 }
 function loads(){
     

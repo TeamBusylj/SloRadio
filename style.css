@@ -213,6 +213,9 @@ overflow-y: hidden;
   body {
   background-color:#57b3ff
   }
+html {
+    background-color:#57b3ff
+    }
   
   .radii {
   background-color:#57b3ff;
@@ -264,6 +267,9 @@ overflow-y: hidden;
   .radioano {
   background-color:#071636
   }
+html {
+    background-color:#071636
+    }
   
   img.radioan {
   background-color:#071636;

@@ -1,3 +1,27 @@
+
+function onloayde() {
+    var elas = document.getElementById('bottom');
+    var ela = document.getElementById('radioan');
+var el = document.querySelectorAll('.radii');
+
+for(var i = 0; i < el.length; i++) {
+
+    ela.classList.add("radia");
+    elas.classList.add("buta");
+   
+   
+    el[i].classList.add("radia");
+  
+}
+setTimeout(()=>{
+
+   
+    ela.classList.remove("radia");
+    
+}, 900);
+}
+
+
 function getFavi(y, x, z) {
     const items = {localStorage } 
     console.log(items)
@@ -100,22 +124,6 @@ function screensaver() {
    
 }
 
-function onloayde(){
-    var elas = document.getElementById('bottom');
-    var ela = document.getElementById('radioan');
-var el = document.querySelectorAll('.radii');
-for(var i = 0; i < el.length; i++) {
-    el[i].classList.add("radia");
-    ela.classList.add("radia");
-    elas.classList.add("buta");
-}
-setTimeout(()=>{
-for(var i = 0; i < el.length; i++) {
-    el[i].classList.remove("radia");
-    ela.classList.remove("radia");
-    elas.classList.remove("radia");
-}}, 3000);
-}
 
 function myShow() {
     var element = document.getElementById("screensaver");

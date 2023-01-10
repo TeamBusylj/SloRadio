@@ -8,7 +8,7 @@
   gtag('config', 'G-0E74SP5Q9F');
 </script>
 <script src="myscripts.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -21,14 +21,8 @@
   <body id="body" onload="onloade();onloayde()">
     <div onclick="mutefVid();" class="radioano" >
       <div class="toper"></div>
-      <img  class="radioan"  style="margin-right: auto !important; margin-left: auto !important; " src="sloradio.svg" id="radioan">
-  <script>      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.getElementById("radioan").setAttribute('src', 'sloradiobel.svg');
-     }
-     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-         document.getElementById("radioan").setAttribute('src', 'sloradio.svg');
-     }
-     </script>
+      <img  class="radioan"  style="margin-right: auto !important; margin-left: auto !important; " src="./assets/sloradio.svg" id="radioan">
+ 
       <p id="p"> </p>
       
       
@@ -42,21 +36,21 @@
         <div class="radio" id="radio">
           <div class="radii" id="radii">
             <a class="radiosi" href="english.html">
-              <img alt="" src="english.svg"  >
+              <img alt="" src="./assets/english.svg"  >
               <span>English <br> Radio</span>
             </a>
           </div>
         
             <div class="radii" id="radii">
               <a class="radiosi" href="hrvatska.html">
-                <img alt="" src="Flag_of_Croatia.svg"  >
+                <img alt="" src="./assets/Flag_of_Croatia.svg"  >
                 <span>Hrvatski <br> Radio</span>
               </a>
           </div>
         
           <div class="radii" id="radii" data-link="r1.html')">
             <a class="radiosi" >
-              <img alt="" src="sloradiostop.svg"  >
+              <img alt="" src="./assets/sloradiostop.svg"  >
               <span>Coming <br>Soon</span>
             </a>
           </div>
@@ -69,10 +63,10 @@
 
 <div id="screensaver" class="screensaver" onclick="myShow()"></div>
 <div class="bottom" id="bottom"> 
-  <button onclick="window.location.href='index.html';" class="butt">Slovenia</button>
-  <img alt="" style=" left: 43% !important; right: 0 !important;" class="favorite" onclick="window.location.href='favorit.html';"  src="fav.svg"   id="favorit">
+  <button onclick="window.location.href='index.html';" class="butt" id="butt">Slovenia</button>
+  <img alt="" style=" left: 43% !important; right: 0 !important;" class="favorite" onclick="window.location.href='favorit.html';"  src="./assets/fav.svg"   id="favorit">
 
-  <button  class="butt rig">World</button>
+  <button  class="butt rig" id="rig" id="butt">World</button>
 </div>
 </body>
   </html>

@@ -8,7 +8,7 @@
   gtag('config', 'G-0E74SP5Q9F');
 </script>
 <script src="myscripts.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="style.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,14 +21,8 @@
   <body id="body" onload="getFavi(); onloade()">
     <div onclick="mutefVid()" class="radioano" >
       <div class="toper"></div>
-      <img  class="radioan"   style="margin-right: auto !important; margin-left: auto !important; will-change: contents;" src="sloradio.svg" id="radioan">
-  <script>      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.getElementById("radioan").setAttribute('src', 'sloradiobel.svg');
-     }
-     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-         document.getElementById("radioan").setAttribute('src', 'sloradio.svg');
-     }
-     </script>
+      <img  class="radioan"   style="margin-right: auto !important; margin-left: auto !important; will-change: contents;" src="./assets/sloradio.svg" id="radioan">
+ 
       <p id="p"> </p>
       
       
@@ -42,7 +36,7 @@
    
     <div class="radii" id="radii" data-link="r1.html')">
       <a class="radiosi" >
-        <img alt="" src="sloradiostop.svg"  >
+        <img alt="" src="./assets/sloradiostop.svg"  >
         <span>Coming <br>Soon</span>
       </a>
     </div>
@@ -55,10 +49,10 @@
 
 </body>
 
-<div  class="loader" style="width: 100%;" id="loader"> <img onload="loaded()" class="ggg" id="ggg" src="loader.svg"></div>
+<div  class="loader" style="width: 100%;" id="loader"> <img onload="loaded()" class="ggg" id="ggg" src="./assets/loader.svg"></div>
 <div id="screensaver" class="screensaver" onclick="myShow()"></div>
 <div class="bottom" id="bottom"> 
-  <button onclick="window.location.href='index.html';" class="butt">Slovenia</button>
-  <button onclick="window.location.href='indexworld.html';" class="butt rig">World</button>
+  <button onclick="window.location.href='index.html';" class="butt" id="butt">Slovenia</button>
+  <button onclick="window.location.href='indexworld.html';" class="butt rig" id="rig" id="butt">World</button>
 </div>
   </html>

@@ -191,7 +191,7 @@ overflow-y: hidden;
   padding-top:30px;
   top:-2px;
   width:100%;
-  height:330px;
+  height:350px;
   z-index:10;
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(10px);
@@ -200,6 +200,11 @@ overflow-y: hidden;
   }
   
   @media (prefers-color-scheme: light) {
+    .loader {
+      background-color: #9f4901;
+      box-shadow:transparent;
+      filter: invert(100%);
+      }
   img.radioan {
   background-color:#57b3ff;
   box-shadow:10px 10px 9px #57b3ff
@@ -246,10 +251,7 @@ overflow-y: hidden;
   background-color:#57b3ff
   }
   
-  .loader {
-  background-color:#57b3ff
-  }
-  
+ 
   .header1 {
   width:100%;
   height:30px;
@@ -268,10 +270,11 @@ overflow-y: hidden;
   }
   
   img.radioan {
-  background-color:#071636;
-  box-shadow:10px 10px 9px #071636
+  background-color:transparent;
+  box-shadow:transparent;
+  filter: invert(100%);
   }
-  
+
   .toper {
   background-color:#071636;
   box-shadow:10px 10px 9px #071636
@@ -399,7 +402,7 @@ overflow-y: hidden;
   background-color:#fff;
   position:relative;
   bottom:-10%;
-  opacity:.7;
+  opacity:0;
   backdrop-filter:blur(2px);
   border-radius:60px;
   font-size:60px;
@@ -421,7 +424,7 @@ overflow-y: hidden;
   display:none
   }
   img.radioan{
-    margin-right: auto !important; margin-left: auto !important; will-change: contents;
+    margin-right: auto !important; margin-left: auto !important; will-change: contents; opacity: 0 ; 
   }
   img:not(.radioan ):not(.ggg):not(.favorite) {
   margin-left:-51px;
@@ -448,7 +451,8 @@ transition: all .5s;
   }
   
   .radii:active {
-  transform:scale(0.95)
+  transform:scale(0.95);
+  -webkit-transform:scale(0.95) ;
   }
   
   a {
@@ -499,12 +503,12 @@ transition: all .5s;
   
   @keyframes bubble {
   0% {
-  right:30%;
+ 
   opacity:0
   }
   
   100% {
-  right:0;
+
   opacity:1
   }
   }
@@ -512,15 +516,20 @@ transition: all .5s;
   .zvok {
   display:none
   }
-  .radia{animation: mmm .9s ease forwards;}
+  .radia{animation: mmm .5s ease forwards;}
   @keyframes mmm {
     0%{opacity: 0; transform: scale(.5);}
-    100%{opacity: 1;transform: scale(1);}
+    100%{opacity: 1 ;transform: scale(1);}
+  }
+  .radian{animation: mmma .5s ease forwards;}
+  @keyframes mmma {
+    0%{opacity: 0; transform: scale(.5);}
+    100%{opacity: 1 ;transform: scale(1);}
   }
   .buta{animation: mmam .5s ease forwards;}
   @keyframes mmam {
-    0%{bottom: -300px;}
-    100%{bottom: -1px;}
+    0%{bottom: -300px; opacity: .7;}
+    100%{bottom: -1px; opacity: 1;}
   }
   .showw {
   opacity:1!important;

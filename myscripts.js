@@ -1,24 +1,29 @@
 
 function onloayde() {
+    var elaas = document.getElementById('butt');
+    var elasas = document.getElementById('rig');
     var elas = document.getElementById('bottom');
     var ela = document.getElementById('radioan');
 var el = document.querySelectorAll('.radii');
+elaas.classList.add("buta");
+ela.classList.add("radian");
+elas.classList.add("buta");
+elasas.classList.add("buta");
 
 for(var i = 0; i < el.length; i++) {
-
-    ela.classList.add("radia");
-    elas.classList.add("buta");
-   
-   
     el[i].classList.add("radia");
-  
 }
-setTimeout(()=>{
+setTimeout(function() {
+    ela.style.opacity = "1";
+    ela.classList.remove("radian");
+    for(var i = 0; i < el.length; i++) {
+        el[i].classList.remove("radia");
+        el[i].style.opacity = "1";
+    }
 
-   
-    ela.classList.remove("radia");
+
+}, 2000);
     
-}, 900);
 }
 
 
@@ -52,25 +57,15 @@ function myFunction(y, x, z) {
     var audio = document.getElementById("zvok")
     document.getElementById("audioId").setAttribute('src', y);
     var element = document.getElementById("radioan");
+    element.style.filter = "invert(0%)";
     element.classList.add("animated");
     audio.load();
-    if (x != "sloradio.svg") {
+
         setTimeout(function() {
-            document.getElementById("radioan").setAttribute('src', x);
+            document.getElementById("radioan").setAttribute('src', './assets/'+x);
         }, 200);
-    }
-    if (x == "sloradio.svg") {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            setTimeout(function() {
-                document.getElementById("radioan").setAttribute('src', 'sloradiobel.svg');
-            }, 200);
-        }
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-            setTimeout(function() {
-                document.getElementById("radioan").setAttribute('src', 'sloradio.svg');
-            }, 200);
-        }
-    }
+    
+   
     document.getElementById("p").innerHTML = z;
     audio.play();
 
@@ -84,7 +79,7 @@ window.onscroll = function() {
 }
 
 function scrollFunction() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 120) {
         document.getElementById("radioan").style.height = "300px";
         
 
@@ -93,9 +88,7 @@ function scrollFunction() {
         
     }
 }
-window.onbeforeunload = function() {
-    window.scrollTo(0, 0);
-}
+
 
 function mutefVid() {
 

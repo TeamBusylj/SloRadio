@@ -50,9 +50,31 @@ function favi(y, x, z) {
     function mayno(){
         alert("Mogoče ne bo delovalo.");
     }
-
-
+    window.addEventListener('offline', (event) => { ofline()});
+function ofline(){
+     document.getElementById("audioId").setAttribute('src', 'nn');
+var element = document.getElementById("radioan");
+element.classList.add("animated");
+        document.getElementById("radioan").setAttribute('src', './assets/wifi.svg');
+document.getElementById("p").innerHTML = 'No internet connection';
+loaded()
+onlinea = 'no'
+}
+window.addEventListener('online',  updateOnlineStatus);
+ function updateOnlineStatus() {
+    console.log("You are now connected to the network.");
+    onlinea = 'yes';
+  }
+window.addEventListener('offline', (event) => { onlinea = 'no'});
+var onlinea;
+window.onload = function(){ onlinea = 'yes';};
 function myFunction(y, x, z) {
+  
+
+      
+   
+   
+if (onlinea === 'yes'){
     loads()
     var audio = document.getElementById("zvok")
     document.getElementById("audioId").setAttribute('src', y);
@@ -68,8 +90,9 @@ function myFunction(y, x, z) {
    
     document.getElementById("p").innerHTML = z;
     audio.play();
-
+    }
 }
+
 
 
 window.onscroll = function() {
@@ -126,15 +149,7 @@ function myShow() {
    
    
 }
-function showcentri(){
-    var x = document.getElementById("centri");
-    if (x.style.display === "none") {
-        x.classList.add("anime");
-      x.style.display = "block";
-    } else {
-      x.style.display = "none";
-    }
-}
+
 function loads(){
     
     var element = document.getElementById("loader");

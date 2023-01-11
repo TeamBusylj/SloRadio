@@ -17,7 +17,7 @@
 <div id="bodys" class="bodys">
   <body id="body" onload="darko(); lastRadio(); setTimeout(loaded, 500);">
     <div onclick="mutefVid();" class="radioano" >
-      <img  class="radioan"    will-change: contents;" src="wifi.svg" id="radioan">
+      <img  class="radioan"    src="wifi.svg" id="radioan">
   
       <p id="p"> </p>
       
@@ -44,100 +44,13 @@
   -webkit-user-select: none;
   -webkit-touch-callout: none;
 }
-.screensaver {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 301;
-    top: 0%;
-    left: 0%;
-    background-color: #000000;
-    background-image: url(sloradiobel.svg);
-    opacity: 0;
-    z-index: -5;
-    background-repeat: no-repeat;
-    transition: all .5s;
-  
-    animation: mymove 40s infinite;
-  }
 
-  .radio{margin-right: 30px;}
-  @keyframes mymove {
-    0% {
-      background-position: center;
-    }
-    16% {
-      background-position: left top;
-    }
-    32% {
-      background-position: right top;
-    }
-    48% {
-      background-position: center;
-    }
-    64% {
-      background-position: right bottom;
-    }
-    80% {
-      background-position: left bottom;
-    }
-    96% {
-      background-position: center;
-    }
-    100% {
-      background-position: center;
-    }
-  }
-  .safari {
-    position: fixed;
-    top: 20px;
-    right: 0;
-    z-index: 11;
-    width: 200px;
-    height: 200px;
-    border-radius: 30px;
-    background-color: transparent;
-    border-width: 0px;
-  }
-  .nott {
-    display: none;
-  }
-  #bodys.hhd {
-    opacity: -5;
-    top: 800px;
-    transition: all 0.2s;
-  }
-  radio {
-    max-width: 100%;
-    max-height: 100vh;
-    margin: auto;
-  }
+
+
   
-  .back {
-    margin-top: 10px;
-    margin-left: 10px;
-    background-image: url("back.svg");
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 150px;
-    height: 150px;
-    z-index: 300;
-    background-color: transparent;
-    border-width: 0;
-    background-repeat: no-repeat;
-    background-size: 130px 130px;
-    transition: all 0.5s;
-  }
-  .back:active {
-    transform: rotate(220deg);
-  }
-  a {
-    position: relative;
-    padding: 20px;
-    color: transparent;
-    margin: 30px;
-  }
+  
+  .
+
   .radioano {
     width: 100%;
 
@@ -156,21 +69,8 @@
       transition: 0.2s;
     }
   }
-  .loader{
-width:100%;
-height: 330px;
-z-index: 0;
-position: fixed;
-top: 0%;
-left: 0%;
-border-radius: 100px;
 
-}
-@keyframes rotatse {
-    0%{transform: rotate(0deg);}
-    100%{transform: rotate(360deg);}
 
-}
 img.ggg{height: 220px;
     animation-name: rotatse;
 animation-duration: .8s;
@@ -180,18 +80,7 @@ animation-iteration-count: infinite;
     margin-right: auto;
     margin-top: 50px;
 }
-  .animated{  animation: radiom .2s forwards;}
-  @keyframes radiom {
-    0% {opacity: 1; scale: 1;}
-100% {opacity: 0; scale: .8;}
-  
-  }
-  .animated2{  animation: radwiom .2s forwards;}
-  @keyframes radwiom {
-  
-    0% {opacity: 0; scale: .8;}
-    100% {opacity: 1; scale: 1;}
-  }
+ 
   @media (orientation: portrait) {
     img.radioan {
       overflow: hidden;
@@ -199,9 +88,9 @@ animation-iteration-count: infinite;
   margin-left: auto;
   margin-right: auto;
       will-change: contents;
-    
+    margin-top: -530px;
      
-     padding-top: 30px;
+     padding-top: 0px;
       top: -2px;
       width: 600px;
       height: 600px;
@@ -219,24 +108,11 @@ animation-iteration-count: infinite;
     body {
         background-color: #57b3ff;
     }
-    .radii {
-        background-color: #57b3ff;
-    }
-    .radii{     border-color: black;}
+    
     span{color:black;}
     p{color:black;}
     html{text-shadow: 2px 2px 30px #000000;}
-    .bottom{
-        display: none;
-        width: 100%;
-        height:130px;
-        background-color: #57b3ff;
-        position: fixed;
-        bottom: -1px;
-        color: #000000;
-          }
-          .loader{background-color:#57b3ff;}
-          .header1{width: 100%; height: 30px; position: fixed; top:0;background-color:#57b3ff;}
+   
 }
 @media (prefers-color-scheme: dark) {
     img.radioan{
@@ -247,44 +123,25 @@ animation-iteration-count: infinite;
     body {
         background-color: #071636;
     }
- .radii {
-        background-color: #071636;
-    }
+
     p{color:white;}
     span{color:white;}
-    .radii{     border-color: white;}
+    
     html{text-shadow: 2px 2px 30px #14398f;}
-    .bottom{
-        display: none;
-        width: 100%;
-        height:130px;
-        background-color: #071636;
-        position: fixed;
-        bottom: -1px;
-        color: #ffffff;
-          }
-          .loader{background-color:#071636;}
-          .header1{width: 100%; height: 60px; position: fixed; top:-58px;background-color:#071636;}
+    
 }
 
 
 
 
-  .radii{background-color: rgba(0, 0, 0, .1);}
-  .darko {
-    box-shadow: 10px 10px 9px #14398f !important;
-    background-color: #14398f !important;
-    color: white !important;
-  }
-  
   @media (orientation: landscape) {
     p {
  
       font-size: 90px;
-    bottom: 240px;
+    bottom: 0px;
 
       margin-left: 50%;
-      position: relative;
+      position: absolute;
     }
   }
   
@@ -292,7 +149,7 @@ animation-iteration-count: infinite;
     p {
  
  font-size: 90px;
-
+text-align: center;
 display: block;
  margin-right: auto;
 margin-left: auto;
@@ -328,22 +185,6 @@ margin-left: auto;
     margin-bottom: -7px;
     margin-top: -1px;
   }
-  
-  .radii span {
-    -webkit-text-size-adjust:none;
-
-
-    font-size: 80px;
-   
-    position: absolute;
-    bottom: 100%;
-    left: 100%;
-  }
-  
-  .radii:active {
-    transform: scale(0.95);
-  }
-  
 
   .bodyd {
     background: #112230 !important;
@@ -354,13 +195,7 @@ margin-left: auto;
   p {
     transition: all 0.8;
   }
-  @media (orientation: portrait) {
-    p {
-    }
-  }
-  @media (orientation: landscape) {
-  
-  
+
   body {
     transition: all 0.4;
     overflow-x: hidden;
@@ -377,38 +212,10 @@ margin-left: auto;
     top: 600px;
     opacity: 1;
     transition: all 0.2s;
-    -webkit-animation: bubble .40s forwards; 
-        animation: bubble .40s forwards;
-  }
-  @keyframes bubble {
    
-       0%{ top: 600px;
-        opacity: 0;}
-        100%{ top: 750px;
-            opacity: 1;}
   }
+
  
-  .zvok {
-    display: none;
-  }
-  .showw {
-    display: block;
-  }
-  .screen {
-    opacity: 1;
-    transition: all .5s;
-    z-index: 301;
-  }
-  #centersi {
-    scale: 5;
-    margin: 0 auto;
-    display: block;
-    background-color: #ee2c49;
-    position: relative;
-    color: black;
-    border-radius: 30px;
-    border-width: 0;
-  }
   
 </style>
   </html>

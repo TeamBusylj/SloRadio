@@ -67,12 +67,8 @@ window.addEventListener('online',  updateOnlineStatus);
   }
 window.addEventListener('offline', (event) => { onlinea = 'no'});
 var onlinea;
-window.onload = function(){ onlinea = 'yes';};
-function myFunction(y, x, z) {
-  
 
-      
-   
+function myFunction(y, x, z) {
    
 if (onlinea === 'yes'){
     loads()

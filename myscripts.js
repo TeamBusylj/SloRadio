@@ -60,12 +60,29 @@ document.getElementById("p").innerHTML = 'No internet connection';
 loaded()
 onlinea = 'no'
 }
+window.addEventListener('offline',  updateOnlineStatuss);
 window.addEventListener('online',  updateOnlineStatus);
  function updateOnlineStatus() {
+  
     console.log("You are now connected to the network.");
+
+    document.getElementById("zvok").volume = 0;
+    var element = document.getElementById("radioan");
+    element.style.filter = "invert(100%)";
+    element.classList.add("animated");
+            document.getElementById("radioan").setAttribute('src', './assets/sloradio.svg');
+    document.getElementById("p").innerHTML = '';
+    loaded()
+
     onlinea = 'yes';
   }
-window.addEventListener('offline', (event) => { onlinea = 'no'});
+  function updateOnlineStatuss() {
+    document.getElementById("zvok").volume = 1;
+    var element = document.getElementById("radioan");
+    console.log("You are not connected to the network.");
+    onlinea = 'no';
+    element.style.filter = "invert(100%)";
+  }
 var onlinea;
 
 function myFunction(y, x, z) {
@@ -184,6 +201,7 @@ function onloade() {
     document.getElementById("audioId").setAttribute('src', "example.com");
  var elemento = document.getElementById("radioan");
  elemento.classList.remove("animated2");
+onlinea = 'yes'
  }
 
 

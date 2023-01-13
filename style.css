@@ -12,7 +12,7 @@
   top:0;
   left:0;
   background-color:#000;
-  background-image:url(sloradiobel.svg);
+  background-image:url(./assets/sloradiobel.svg);
   opacity:0;
   z-index:-5;
   background-repeat:no-repeat;

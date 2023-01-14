@@ -201,6 +201,9 @@ function onloade() {
     document.getElementById("audioId").setAttribute('src', "example.com");
  var elemento = document.getElementById("radioan");
  elemento.classList.remove("animated2");
+ document.getElementById("radioan").setAttribute('src', "./assets/wifi.svg");
+ document.getElementById("radioan").setAttribute('src', "./assets/sloradio.svg");
+
 onlinea = 'yes'
  }
 

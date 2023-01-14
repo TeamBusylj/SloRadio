@@ -130,15 +130,16 @@ function mutefVid() {
 
     var vid = document.getElementById("zvok");
     if (vid.muted == false) {
-        var element = document.getElementById("radioan");
-        element.classList.remove("animated2");
-        element.classList.add("muted");
+       document.getElementById("mute").setAttribute('src', './assets/mute.svg');
+       document.getElementById("murk").innerHTML = 'Brez zvoka';
+       document.getElementById("murk").style.fontSize = "55px";
+       document.getElementById("murk").style.bottom = "75%";
         vid.muted = true;
     } else {
-        var element = document.getElementById("radioan");
-        element.classList.remove("animated2");
-        element.classList.remove("muted");
-
+        document.getElementById("murk").style.bottom = "";
+        document.getElementById("mute").setAttribute('src', './assets/unmute.svg');
+        document.getElementById("murk").innerHTML = 'Zvok';
+        document.getElementById("murk").style.fontSize = "";
         vid.muted = false;
     }
 }

@@ -290,7 +290,8 @@ overflow-y: hidden;
   }
   
   p {
-  color:#fff
+  color:#fff;
+  transition: all .4s;
   }
   
   span {
@@ -417,7 +418,8 @@ overflow-y: hidden;
   }
   
   .butt:active {
-  scale:.9
+ font-size: 40px;
+
   }
   
   .hide {
@@ -451,8 +453,7 @@ transition: all .5s;
   }
   
   .radii:active {
-  transform:scale(0.95);
-  -webkit-transform:scale(0.95) ;
+width: 60%;
   }
   
   a {
@@ -529,7 +530,7 @@ transition: all .5s;
   .buta{animation: mmam .5s ease forwards;}
   @keyframes mmam {
     0%{bottom: -300px; opacity: .7;}
-    100%{bottom: -1px; opacity: 1;}
+    100%{bottom: -10px; opacity: 1;}
   }
   .showw {
   opacity:1!important;

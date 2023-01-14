@@ -19,7 +19,7 @@
       <div class=toper></div>
       <img class=radioan  src=./assets/sloradio.svg id=radioan >
       
-      <p id=p></p>
+      <p id=p>&nbsp</p>
     </div>
     <audio oncanplay=loaded() oncanplaythrough=loaded() onloadeddata=loaded() playsinline class=zvok autoplay id=zvok>
       <source id=audioId src type=audio/mpeg>
@@ -29,6 +29,12 @@
         <a id=aji href=javascript:screensaver() class=radiosi>
           <img src=./assets/batt.svg width=290 height=180 class="batt">
           <span style=font-size:55px;bottom:75%>Varčevanje <br> Baterije </span>
+        </a>
+      </div>
+      <div class="radii" id="radii">
+        <a id=aji href=javascript:mutefVid() class=radiosi>
+          <img id="mute" src=./assets/unmute.svg width=290 height=180 " class="batt">
+          <span id="murk" >Zvok </span>
         </a>
       </div>
       <div class="radii" id="radii">

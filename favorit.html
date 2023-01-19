@@ -1,58 +1,126 @@
- <!DOCTYPE html><head><!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0E74SP5Q9F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!DOCTYPE html>
 
-  gtag('config', 'G-0E74SP5Q9F');
-</script>
-<script src="myscripts.js"></script>
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E74SP5Q9F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-0E74SP5Q9F');
+    </script>
+    <script src="myscripts.js"></script>
 
-<link rel="stylesheet" href="style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
-<title>SloRadio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+    <title>SloRadio</title>
 </head>
 
-<div id="bodys" class="bodys">
-  <body id="body" onload="getFavi(); onloade()">
-    <div onclick="mutefVid()" class="radioano" >
-      <div class="toper"></div>
-      <img  class="radioan"   style="margin-right: auto !important; margin-left: auto !important; will-change: contents;" src="./assets/sloradio.svg" id="radioan">
- 
-      <p id="p"> </p>
-      
-      
-    </div>
-   
-    <audio oncanplay="loaded()" 
-    oncanplaythrough="loaded()"
-    onloadeddata="loaded()"  class="zvok" autoplay id="zvok">
+<body id="body" onload=" onloade();onloayde(); getFavi(); ">
+    <div id="bodys" class="bodys">
+        <div onclick="mutefVid();" class="radioano">
+            <div class="toper"></div>
+            <img class="radioan" src="./assets/sloradio.svg" id="radioan">
+            <p id="p"> </p>
+        </div>
+  <audio oncanplay="loaded()" oncanplaythrough="loaded()" onloadeddata="loaded()" class="zvok" autoplay id="zvok">
       <source id="audioId" src="" type="audio/mpeg">
-    </audio>
-   
-    <div class="radii"   data-link="r1.html')">
-      <a class="radiosi" >
-        <img alt="" src="./assets/sloradiostop.svg"  >
-        <span>Coming <br>Soon</span>
-      </a>
+   </audio>
+
+        <div class="radio" id="radio">
+            <div class="radii">
+                <a href="javascript:screensaver()" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/batt.svg" width="290" height="180" class="batt">
+                    <span style="font-size: 55px; bottom: 75%;">Varčevanje<br> Baterije</span>
+                </a>
+            </div>
+            <div class="radii">
+                <a href=javascript:mutefVid() class=radiosi>
+                    <img loading="lazy" id="mute" src=./assets/unmute.svg width=290 height=180 class="batt">
+                    <span id="murk">Zvok </span>
+                </a>
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one', 'bbc.png', 'BBC Radio 1')" class="radiosi">
+                    <img loading="lazy" alt="" id=imga src="">
+                    <span>BBC Radio&nbsp;1</span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('stream.live.vc.bbcmedia.co.uk/bbc_radio_one', 'bbc.png', 'BBC Radio 1')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_two', 'bbc2.png', 'BBC Radio 2')" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/bbc2.png">
+                    <span>BBC Radio&nbsp;2</span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('stream.live.vc.bbcmedia.co.uk/bbc_radio_two', 'bbc2.png', 'BBC Radio 2')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_three', 'bbc 3.png', 'BBC Radio 3')" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/bbc 3.png">
+                    <span>BBC Radio&nbsp;3</span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('stream.live.vc.bbcmedia.co.uk/bbc_radio_three', 'bbc 3.png', 'BBC Radio 3')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_fourfm?s=1672161242&e=1672175642&h=d819dac597ce9a239141ed297dcd4db6', 'bbc4.png', 'BBC Radio 4')" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/bbc4.png">
+                    <span>BBC Radio&nbsp;4</span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('stream.live.vc.bbcmedia.co.uk/bbc_radio_fourfm?s=1672161242&e=1672175642&h=d819dac597ce9a239141ed297dcd4db6', 'bbc4.png', 'BBC Radio 4')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_radio_five_live_online_nonuk?s=1672161427&e=1672175827&h=79685560560324864c227cd29deea32b', 'bbc5.png', 'BBC Radio 5')" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/bbc5.png">
+                    <span>BBC Radio&nbsp;5</span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('stream.live.vc.bbcmedia.co.uk/bbc_radio_five_live_online_nonuk?s=1672161427&e=1672175827&h=79685560560324864c227cd29deea32b', 'bbc5.png', 'BBC Radio 5')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://stream.live.vc.bbcmedia.co.uk/bbc_world_service', 'bbcworld.png', 'BBC World Service')" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/bbcworld.png">
+                    <span>BBC&nbsp;World<br> Service</span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('stream.live.vc.bbcmedia.co.uk/bbc_world_service', 'bbcworld.png', 'BBC World Service')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://radio.talksport.com/stream', 'talk.png', 'talkSPORT')" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/talk.png">
+                    <span>talkSPORT <br>&nbsp;</span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('radio.talksport.com/stream', 'talk.png', 'talkSPORT')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://radio.talksport.com/stream2', 'talk2.png', 'talkSPORT 2')" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/talk2.png">
+                    <span>talkSPORT <br>2 </span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('radio.talksport.com/stream2', 'talk2.png', 'talkSPORT 2')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://media-ssl.musicradio.com/Capital', 'caplon.png', 'Capital London')" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/caplon.png">
+                    <span>Capital <br>London </span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('media-ssl.musicradio.com/Capital', 'caplon.png', 'Capital London')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://media-ice.musicradio.com/LBCLondonMP3Low', 'lbcl.png', 'LBC London')" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/lbcl.png">
+                    <span>LBC <br>London </span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('media-ice.musicradio.com/LBCLondonMP3Low', 'lbcl.png', 'LBC London')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+            <div class="radii">
+                <a href="javascript:myFunction('https://live.kissfm.ro/kissfm.aacp', 'kiss.png', 'Kiss FM')" class="radiosi">
+                    <img loading="lazy" alt="" src="./assets/kiss.png">
+                    <span>Kiss <br>FM </span>
+                </a> <!-- <img loading="lazy" id="favi" onclick="favi('/live.kissfm.ro/kissfm.aacp', 'kiss.png', 'Kiss FM')" alt="" class="favorite" src="./assets/fav.svg"> -->
+            </div>
+        </div>
+
     </div>
 
-  </div>
+    <div class="loader" style="width: 100%;" id="loader"> <img loading="lazy"  class="ggg" id="ggg" src="./assets/loader.svg"></div>
+    <div id="screensaver" class="screensaver" onclick="myShow()"></div>
+    <div class="bottom" id="bottom">
+        <button onclick="window.location.href='index.html';" class="butt" id="butt">Slovenia</button>
+        <img loading="lazy" alt="" style=" left: 43% !important; right: 0 !important;" class="favorite" onclick="window.location.href='favorit.html';" src="./assets/fav.svg" id="favorit">
+        <button onclick="window.location.href='indexworld.html';" class="butt rig" id="rig" id="butt">World</button>
 
-
-
-
-
+    </div>
 </body>
 
-<div  class="loader" style="width: 100%;" id="loader"> <img onload="loaded()" class="ggg" id="ggg" src="./assets/loader.svg"></div>
-<div id="screensaver" class="screensaver" onclick="myShow()"></div>
-<div class="bottom" id="bottom"> 
-  <button onclick="window.location.href='index.html';" class="butt" id="butt">Slovenia</button>
-  <button onclick="window.location.href='indexworld.html';" class="butt rig" id="rig" id="butt">World</button>
-</div>
-  </html>
+</html>

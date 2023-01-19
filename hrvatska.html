@@ -1,89 +1,97 @@
- <!DOCTYPE html><head><!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0E74SP5Q9F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!DOCTYPE html>
 
-  gtag('config', 'G-0E74SP5Q9F');
-</script>
-<script src="myscripts.js"></script>
+<head><!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E74SP5Q9F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-<link rel="stylesheet" href="style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
-<title>SloRadio</title>
+    gtag('config', 'G-0E74SP5Q9F');
+  </script>
+  <script src="myscripts.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+  <title>SloRadio</title>
 </head>
 
 
-  <body id="body" onload="onloade();onloayde();">
-    <div id="bodys" class="bodys">
-    <div onclick="mutefVid();" class="radioano" >
+<body id="body" onload="onloade();onloayde();">
+  <div id="bodys" class="bodys">
+    <div onclick="mutefVid();" class="radioano">
       <div class="toper"></div>
-      <img  class="radioan"    src="./assets/sloradio.svg" id="radioan">
- 
+      <img class="radioan" src="./assets/sloradio.svg" id="radioan">
+
       <p id="p"> </p>
-      
-      
+
+
     </div>
-   
-    <audio oncanplay="loaded()" 
-    oncanplaythrough="loaded()"
-    onloadeddata="loaded()"  class="zvok" autoplay id="zvok">
+
+    <audio oncanplay="loaded()" oncanplaythrough="loaded()" onloadeddata="loaded()" class="zvok" autoplay id="zvok">
       <source id="audioId" src="" type="audio/mpeg">
     </audio>
-   
-    <div class="radio" id="radio"> 
-      <div class="radii"  >
-        <a   href="javascript:screensaver()" class="radiosi">
-          <img alt="" src="./assets/batt.svg" width="290" height="180" class="batt">
+
+    <div class="radio" id="radio">
+      <div class="radii">
+        <a href="javascript:screensaver()" class="radiosi">
+          <img loading="lazy" alt="" src="./assets/batt.svg" width="290" height="180" class="batt">
           <span style="font-size: 55px; bottom: 75%;">Varčevanje<br> Baterije</span>
-          </a> 
-    </div>
-    <div class="radii"  >
-      <a   href=javascript:mutefVid() class=radiosi>
-        <img id="mute" src=./assets/unmute.svg width=290 height=180 " class="batt">
-        <span id="murk" >Zvok </span>
-      </a>
-    </div>
-      <div class="radii"  >
-        <a   href="javascript:myFunction('http://c5.hostingcentar.com:8059/;', 'narodni.png', 'Bravo'); mayno()" class="radiosi">
-          <img alt="" src="./assets/narodni.png"  >
-         
+        </a>
+      </div>
+      <div class="radii">
+        <a href=javascript:mutefVid() class=radiosi>
+          <img loading="lazy" id="mute" src=./assets/unmute.svg width=290 height=180 " class=" batt">
+          <span id="murk">Zvok </span>
+        </a>
+      </div>
+      <div class="radii">
+        <a href="javascript:myFunction('http://c5.hostingcentar.com:8059/;', 'narodni.png', 'Bravo'); mayno()"
+          class="radiosi">
+          <img loading="lazy" alt="" src="./assets/narodni.png">
+
           <span>Bravo<br>(Narodni)</span>
         </a>
-        <!-- <img id="favi" onclick="favi('live.narodni.hr:8059/stream/1/', 'narodni.png', 'Narodni')" alt="" class="favorite" src="./assets/fav.svg"> -->
+        <!-- <img loading="lazy" id="favi" onclick="favi('live.narodni.hr:8059/stream/1/', 'narodni.png', 'Narodni')" alt="" class="favorite" src="./assets/fav.svg"> -->
       </div>
-      <div class="radii"  >
-        <a   href="javascript:myFunction('https://stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" class="radiosi">
-          <img alt="" src="./assets/otvoreni.jpg"  >
+      <div class="radii">
+        <a href="javascript:myFunction('https://stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')"
+          class="radiosi">
+          <img loading="lazy" alt="" src="./assets/otvoreni.jpg">
           <span>Otvoreni<br>&nbsp;</span>
-        </a> <!-- <img id="favi" onclick="favi('stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" alt="" class="favorite" src="./assets/fav.svg"> -->
+        </a>
+        <!-- <img loading="lazy" id="favi" onclick="favi('stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" alt="" class="favorite" src="./assets/fav.svg"> -->
       </div>
-      <div class="radii"  >
-        <a   href="javascript:myFunction('https://s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')" class="radiosi">
-          <img alt="" src="./assets/istra.jpg"  >
+      <div class="radii">
+        <a href="javascript:myFunction('https://s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')"
+          class="radiosi">
+          <img loading="lazy" alt="" src="./assets/istra.jpg">
           <span>Radio<br>Istra</span>
-        </a> <!-- <img id="favi" onclick="favi('s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')" alt="" class="favorite" src="./assets/fav.svg"> -->
+        </a>
+        <!-- <img loading="lazy" id="favi" onclick="favi('s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')" alt="" class="favorite" src="./assets/fav.svg"> -->
       </div>
-  </div>
-     
     </div>
 
+  </div>
 
 
 
 
 
-<div  class="loader" style="width: 100%;" id="loader"> <img onload="loaded()" class="ggg" id="ggg" src="./assets/loader.svg"></div>
-<div id="screensaver" class="screensaver" onclick="myShow()"></div>
-<div class="bottom" id="bottom"> 
-  <button onclick="window.location.href='index.html';" class="butt" id="butt">Slovenia</button>
-  <img alt="" style=" left: 43% !important; right: 0 !important;" class="favorite" onclick="window.location.href='favorit.html';"  src="./assets/fav.svg"   id="favorit">
 
-  <button onclick="window.location.href='indexworld.html';" class="butt rig" id="rig" id="butt">World</button>
-</div>
+  <div class="loader" style="width: 100%;" id="loader"> <img loading="lazy" class="ggg" id="ggg"
+      src="./assets/loader.svg"></div>
+  <div id="screensaver" class="screensaver" onclick="myShow()"></div>
+  <div class="bottom" id="bottom">
+    <button onclick="window.location.href='index.html';" class="butt" id="butt">Slovenia</button>
+    <img loading="lazy" alt="" style=" left: 43% !important; right: 0 !important;" class="favorite"
+      onclick="window.location.href='favorit.html';" src="./assets/fav.svg" id="favorit">
+
+    <button onclick="window.location.href='indexworld.html'" class="butt rig" id="rig" id="butt">World</button>
+  </div>
 
 </body>
-  </html>
+
+</html>

@@ -5,13 +5,14 @@ function onloayde() {
 	var ela = document.getElementById('radioan');
 	var el = document.querySelectorAll('.radii');
 	elaas.classList.add("buta");
-	ela.classList.add("radian");
+	
 	elas.classList.add("buta");
 	elasas.classList.add("buta");
 
 	for (var i = 0; i < el.length; i++) {
 		el[i].classList.add("radia");
 	}
+	ela.classList.add("radian");
 	setTimeout(function() {
 		ela.style.opacity = "1";
 		ela.classList.remove("radian");
@@ -25,10 +26,17 @@ function onloayde() {
 
 }
 
+function favi(x, y, z){
+	localStorage.setItem([
+	'1',	x, y, z
+	]);
 
-function getFavi(y, x, z) {
-	const items = {
-		localStorage
+}
+
+function getFavi() {
+document.getElementById("imga").src = (localStorage.x)
+	for (var i = 0; i < localStorage.length; i++) {
+		
 	}
 	console.log(items)
 	var favi = document.getElementById("radio")
@@ -37,13 +45,14 @@ function getFavi(y, x, z) {
 
 
 function favi(y, x, z) {
-	localStorage.setItem(z, x + y + z);
+	let lol = localStorage.length + 1;
+	localStorage.setItem(lol, x + ', ' + y + ', ' + z);
 	console.log(localStorage)
 	var img = document.getElementById('favi').src;
-	if (img.indexOf('fav.svg') != -1) {
-		document.getElementById('favi').src = 'favfill.svg';
+	if (document.querySelector(".favorite").src = ('./assets/fav.svg')) {
+		document.querySelector(".favorite").src = './assets/favfill.svg';
 	} else {
-		document.getElementById('favi').src = 'fav.svg';
+		document.querySelector(".favorite").src = './assets/fav.svg';
 	}
 
 }

@@ -1,221 +1,233 @@
- <!DOCTYPE html><head><!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0E74SP5Q9F"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<!DOCTYPE html><head><!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E74SP5Q9F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-0E74SP5Q9F');
-</script>
+    gtag('config', 'G-0E74SP5Q9F');
+  </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
-<title>SloRadio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+  <title>SloRadio</title>
 </head>
 
 <div id="bodys" class="bodys">
   <body id="body" onload="darko(); lastRadio(); setTimeout(loaded, 500);">
-    <div onclick="mutefVid();" class="radioano" >
-      <img loading="lazy"  class="radioan"    src="wifi.svg" id="radioan">
-  
-      <p id="p"> </p>
-      
-      
-    </div>
-   
-    <audio oncanplay="loaded()" 
-    oncanplaythrough="loaded()"
-    onloadeddata="loaded()"  class="zvok" autoplay id="zvok">
-      <source id="audioId" src="" type="audio/mpeg">
-    </audio>
-   
-    <p>You do not have internet connection</p>
+  <div onclick="mutefVid();" class="radioano" >
+    <img loading="lazy"  class="radioan"    src="wifi.svg" id="radioan">
+
+    <p id="p"> </p>
+
+
+  </div>
+
+
+
+  <p>Nimate internetne povezave</p>
 
 
 
 </div>
+<button onclick="reloadde();" class="butt rig" id="rig" id="butt">Poskusi znova</button>
 </body>
 
 
 
 <style>* {
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
-}
-
-
-
-  
-  
-  .
-
-  .radioano {
-    width: 100%;
-
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
   }
-  
-  @media (orientation: landscape) {
-    img.radioan {
-      overflow: hidden;
-        will-change: contents;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40%;
-      z-index: 10;
-      margin-left: 10px;
-      position: fixed;
-      transition: 0.2s;
+
+
+
+
+
+
+
+    .radioano {
+      width: 100%;
+
     }
+
+    @media (orientation: landscape) {
+      img.radioan {
+        overflow: hidden;
+          will-change: contents;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40%;
+        z-index: 10;
+        margin-left: 10px;
+        position: fixed;
+        transition: 0.2s;
+      }
+    }
+
+
+  img.ggg{height: 220px;
+      animation-name: rotatse;
+  animation-duration: .8s;
+  animation-iteration-count: infinite;
+     display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 50px;
   }
 
-
-img.ggg{height: 220px;
-    animation-name: rotatse;
-animation-duration: .8s;
-animation-iteration-count: infinite;
-   display: block;
+    @media (orientation: portrait) {
+      img.radioan {
+        overflow: hidden;
+        display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
-}
- 
-  @media (orientation: portrait) {
-    img.radioan {
-      overflow: hidden;
-      display: block;
+        will-change: contents;
+      margin-top: -530px;
+
+       padding-top: 0px;
+        top: -2px;
+        width: 600px;
+        height: 600px;
+        z-index: 10;
+
+        transition: all 0.2s;
+      }
+
+    }
+    @media (prefers-color-scheme: light) {
+      img.radioan{
+      background-color: transparent;
+      box-shadow: 0px 0px 0px #57b3ff;
+      }
+      body {
+          background-color: #57b3ff;
+          overflow: hidden;
+      }
+
+      span{color:black;}
+      p{color:black;}
+      html{text-shadow: 2px 2px 30px #000000;}
+
+  }
+  @media (prefers-color-scheme: dark) {
+      img.radioan{
+      background-color: transparent;
+      box-shadow: 0px 0px 0px #071636;
+      filter: invert(100%);
+      }
+      body {
+          background-color: #071636;
+      }
+
+      p{color:white;}
+      span{color:white;}
+
+      html{text-shadow: 2px 2px 30px #14398f;}
+
+  }
+
+
+
+
+    @media (orientation: landscape) {
+      p {
+
+        font-size: 90px;
+      bottom: 0px;
+
+        margin-left: 50%;
+        position: absolute;
+      }
+    }
+
+    @media (orientation: portrait) {
+      p {
+
+   font-size: 90px;
+  text-align: center;
+  display: block;
+   margin-right: auto;
   margin-left: auto;
-  margin-right: auto;
-      will-change: contents;
-    margin-top: -530px;
-     
-     padding-top: 0px;
-      top: -2px;
-      width: 600px;
-      height: 600px;
-      z-index: 10;
+  }
+    }
+    .muted{
+     opacity: .4;
+    }
 
+
+
+  .butt:active{font-size: 40px;}
+    .hide{display: none;}
+    img:not(.radioan ):not(.ggg) {
+      margin-left: -51px;
+      border-top-left-radius: 50px;
+      border-bottom-left-radius: 50px;
+      z-index: 0;
+      max-height: 60%;
+      margin-bottom: -7px;
+      margin-top: -1px;
+    }
+
+    .bodyd {
+      background: #112230 !important;
+    }
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+    p {
+      transition: all 0.8;
+    }
+
+    body {
+      transition: all 0.4;
+      overflow-x: hidden;
+    }
+
+    html {
+      font-family: "M PLUS Rounded 1c", sans-serif;
+
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .bodys {
+      position: relative;
+      top: 600px;
+      opacity: 1;
       transition: all 0.2s;
-    }
-    
-  }
-  @media (prefers-color-scheme: light) {
-    img.radioan{
-    background-color: transparent;
-    box-shadow: 0px 0px 0px #57b3ff;
-    }
-    body {
-        background-color: #57b3ff;
-    }
-    
-    span{color:black;}
-    p{color:black;}
-    html{text-shadow: 2px 2px 30px #000000;}
-   
-}
-@media (prefers-color-scheme: dark) {
-    img.radioan{
-    background-color: transparent;
-    box-shadow: 0px 0px 0px #071636;
-    filter: invert(100%);
-    }
-    body {
-        background-color: #071636;
+
     }
 
-    p{color:white;}
-    span{color:white;}
-    
-    html{text-shadow: 2px 2px 30px #14398f;}
-    
+    .butt {
+  width:60%;
+
+right: 20%;
+  height:100px;
+  background-color:#fff;
+  position:absolute;
+  bottom:10%;
+  opacity:1;
+  backdrop-filter:blur(2px);
+  border-radius:60px;
+  font-size:60px;
+  transition:all .2s;
+  -webkit-transition:all .2s;
+  border-width:0;
+  display: block;
+  }
+
+
+
+  </style>
+<script>
+reloadde()
+function reloadde(){
+
+window.location.href='https://teambusylj.github.io/SloRadio/'
+
 }
 
-
-
-
-  @media (orientation: landscape) {
-    p {
- 
-      font-size: 90px;
-    bottom: 0px;
-
-      margin-left: 50%;
-      position: absolute;
-    }
-  }
-  
-  @media (orientation: portrait) {
-    p {
- 
- font-size: 90px;
-text-align: center;
-display: block;
- margin-right: auto;
-margin-left: auto;
-}
-  }
-  .muted{
-   opacity: .4;
-  }
-
-  .butt{width: 30%;
-    left:10%;
-    height:100px;
-    background-color: #ffffff;
-    position: relative;
-    bottom: -10%;
-    opacity: .7;
-    backdrop-filter: blur(2px);
-    border-radius: 60px;
-    font-size: 60px;
-    transition: all .4s;
-    border-width: 0;
-    display: none;
-}
-.rig{ right:10% !important;   left:25%; }
-.butt:active{scale: .90;}
-  .hide{display: none;}
-  img:not(.radioan ):not(.ggg) {
-    margin-left: -51px;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-    z-index: 0;
-    max-height: 60%;
-    margin-bottom: -7px;
-    margin-top: -1px;
-  }
-
-  .bodyd {
-    background: #112230 !important;
-  }
-  a {
-    -webkit-tap-highlight-color: transparent;
-  }
-  p {
-    transition: all 0.8;
-  }
-
-  body {
-    transition: all 0.4;
-    overflow-x: hidden;
-  }
-  
-  html {
-    font-family: "M PLUS Rounded 1c", sans-serif;
-    
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .bodys {
-    position: relative;
-    top: 600px;
-    opacity: 1;
-    transition: all 0.2s;
-   
-  }
-
- 
-  
-</style>
-  </html>
+  </script>
+</html>

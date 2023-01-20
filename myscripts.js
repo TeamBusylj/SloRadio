@@ -60,49 +60,14 @@ function favi(y, x, z) {
 function mayno() {
 	alert("Mogoče ne bo delovalo.");
 }
-window.addEventListener('offline', (event) => {
-	ofline()
-});
 
-function ofline() {
-	document.getElementById("audioId").setAttribute('src', 'nn');
-	var element = document.getElementById("radioan");
-	element.classList.add("animated");
-	document.getElementById("radioan").setAttribute('src', './assets/wifi.svg');
-	document.getElementById("p").innerHTML = 'No internet connection';
-	loaded()
-	onlinea = 'no'
-}
-window.addEventListener('offline', updateOnlineStatuss);
-window.addEventListener('online', updateOnlineStatus);
 
-function updateOnlineStatus() {
 
-	console.log("You are now connected to the network.");
 
-	document.getElementById("zvok").volume = 0;
-	var element = document.getElementById("radioan");
-	element.style.filter = "invert(100%)";
-	element.classList.add("animated");
-	document.getElementById("radioan").setAttribute('src', './assets/sloradio.svg');
-	document.getElementById("p").innerHTML = '';
-	loaded()
-
-	onlinea = 'yes';
-}
-
-function updateOnlineStatuss() {
-	document.getElementById("zvok").volume = 1;
-	var element = document.getElementById("radioan");
-	console.log("You are not connected to the network.");
-	onlinea = 'no';
-	element.style.filter = "invert(100%)";
-}
-var onlinea;
 
 function myFunction(y, x, z) {
 
-	if (onlinea === 'yes') {
+	
 		loads()
 		var audio = document.getElementById("zvok")
 		document.getElementById("audioId").setAttribute('src', y);
@@ -118,7 +83,7 @@ function myFunction(y, x, z) {
 
 		document.getElementById("p").innerHTML = z;
 		audio.play();
-	}
+	
 }
 
 

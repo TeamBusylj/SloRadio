@@ -63,10 +63,10 @@ function mayno() {
 
 
 
-
-
+var loading;
 function myFunction(y, x, z) {
 
+if(loading === 'no'){
 	
 		loads()
 		var audio = document.getElementById("zvok")
@@ -84,6 +84,7 @@ function myFunction(y, x, z) {
 		document.getElementById("p").innerHTML = z;
 		audio.play();
 	
+	}
 }
 
 
@@ -145,7 +146,7 @@ function myShow() {
 }
 
 function loads() {
-
+	loading = 'yes';
 	var element = document.getElementById("loader");
 	element.classList.remove("hide");
 	element.classList.add("show");
@@ -165,6 +166,7 @@ function loaded() {
 	element.classList.add("hide");
 
 
+	loading = 'no'
 	elemento.classList.remove("animated");
 	elemento.classList.add("animated2");
 	setTimeout(function() {

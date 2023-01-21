@@ -26,41 +26,109 @@ function onloayde() {
 
 }
 
-function favi(x, y, z){
-	localStorage.setItem([
-	'1',	x, y, z
-	]);
 
-}
 
 function getFavi() {
-document.getElementById("imga").src = (localStorage.x)
-	for (var i = 0; i < localStorage.length; i++) {
-		
+	console.log('kk');
+	loading = 'no';
+	var aka = 1;
+	var oma = 1;
+	for (let i = 0; i < (localStorage.length); i++) {
+
+		let img = 'imga'+oma;
+		let radiiShow = 'favi'+oma;
+		let favicak = 'favica'+oma;
+	let ajevHref = 'a'+oma;
+	let kaka = 'asp'+oma;
+	var ahref = "javascript:myFunction('"+'https://'+localStorage.getItem(aka+"B")+"', '"+localStorage.getItem(aka+"A")+"', '"+localStorage.getItem(aka+"C")+"')";
+	console.log(ahref);
+	console.log(radiiShow);
+	document.getElementById(radiiShow).style.display = "none";
+	var name = localStorage.getItem(aka+"C");
+	document.getElementById(ajevHref).href = ahref;
+	document.getElementById(favicak).setAttribute(   "onclick" ,"javascript:favi('v', 'v', '"+name+"' )"   );
+	if (ahref.includes("null")){console.log(ahref);}else{
+	document.getElementById(radiiShow).style.display = "block";}
+	document.getElementById(kaka).textContent = localStorage.getItem(aka+"C") ;
+	var koko = localStorage.getItem(aka+"A");
+	console.log(koko);
+	if (koko !== null) {
+	if(koko.includes(" copy")){
+		document.getElementById(img).src = './assets/'+localStorage.getItem(aka+"A").replace(' copy',''); ;
+	}else{
+	document.getElementById(img).src = './assets/'+localStorage.getItem(aka+"A") ;
 	}
-	console.log(items)
-	var favi = document.getElementById("radio")
+}
+	oma = oma+1;
+	if(aka===1){
+		aka = 3;
+	}else{aka = aka+3;}
+
+}
 
 }
 
 
+localStorage.setItem('radiki', localStorage.getItem('radiki'));
+
 function favi(y, x, z) {
-	let lol = localStorage.length + 1;
-	localStorage.setItem(lol, x + ', ' + y + ', ' + z);
-	console.log(localStorage)
+	if(localStorage.getItem("radiki").indexOf(z) !== -1){
+		if (this.src = ('./assets/fav.svg')) {
+			this.src = './assets/favfill.svg';
+		} else {
+			this.src = './assets/fav.svg';
+		}
+		var radioOba = localStorage.getItem("radiki").indexOf(z)+z.length;
+		let radioObs = localStorage.getItem("radiki").charAt(radioOba);
+		localStorage.removeItem(radioObs+'A');
+		localStorage.removeItem(radioObs+'B');
+		localStorage.removeItem(radioObs+'C');
+		var radikil = localStorage.getItem("radiki");
+		var kora = radikil.replace(z+radioObs,'');
+		localStorage.setItem('radiki', kora);
+		console.log(localStorage.getItem("radiki"))
+		console.log(localStorage);
+		if(document.title === 'SloRadio-favi'){
+		getFavi()
+		}
+	
+	}
+	
+	else{
+
+if (localStorage.length===1){
+	var lol = 1;
+} else{
+	var lol = localStorage.length-1;
+}
+			
+	localStorage.setItem(lol+'A', x);
+	localStorage.setItem(lol+'B', y);
+	localStorage.setItem(lol+'C', z);
+	
+	console.log(localStorage);
 	var img = document.getElementById('favi').src;
 	if (document.querySelector(".favorite").src = ('./assets/fav.svg')) {
 		document.querySelector(".favorite").src = './assets/favfill.svg';
 	} else {
 		document.querySelector(".favorite").src = './assets/fav.svg';
 	}
+let radikia= localStorage.getItem("radiki")+' '+z+lol;
+localStorage.setItem('radiki', radikia);
+ 
+	}
 
+ 
+	
 }
+
 
 function mayno() {
 	alert("Mogoče ne bo delovalo.");
 }
 
+
+	
 
 
 var loading;

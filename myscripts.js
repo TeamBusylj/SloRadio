@@ -69,7 +69,6 @@ function getFavi() {
 }
 
 
-localStorage.setItem('radiki', localStorage.getItem('radiki'));
 
 function favi(y, x, z) {
 	if(localStorage.getItem("radiki").indexOf(z) !== -1){
@@ -250,6 +249,7 @@ function loaded() {
 }
 
 function onloade() {
+	localStorage.setItem('radiki', localStorage.getItem('radiki'));
 	var audio = document.getElementById("zvok")
 	document.getElementById("audioId").setAttribute('src', "example.com");
 	var elemento = document.getElementById("radioan");

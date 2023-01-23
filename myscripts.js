@@ -150,7 +150,7 @@ if(loading === 'no'){
 
 		document.getElementById("p").innerHTML = z;
 		audio.play();
-		AndroidInterface.playStart();
+
 	}
 }
 

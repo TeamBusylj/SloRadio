@@ -259,7 +259,7 @@ html {
   }
 }
 
-  /*  PORTRAIT  */
+                                                                                 /*  PORTRAIT  */
 
 @media (orientation: portrait) {
   img.radioan {
@@ -271,7 +271,6 @@ html {
     height:600px;
     z-index:50;
     transition:.4s;
-    padding-bottom:50px;
     transition:all .2s
   }
     
@@ -316,7 +315,7 @@ html {
   }
 }
 
-  /*  LANDSCAPE  */
+                                                                              /*  LANDSCAPE  */
 
 @media (orientation: landscape) {
   .radi {
@@ -360,7 +359,7 @@ html {
   }
 }
     
-  /*  OTHER  */
+                                                    /*  OTHER  */
 
 .screensaver {
   position:fixed;
@@ -403,6 +402,7 @@ img.radioan{
   will-change: contents; 
   opacity: 0;
   margin-top: 25px;
+  border-radius: 30px;
 }
 
 .top {

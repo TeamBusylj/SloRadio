@@ -132,7 +132,7 @@ function mayno() {
 
 var loading;
 function myFunction(y, x, z) {
-AndroidInterface.playStart();
+
 if(loading === 'no'){
 	
 		loads()
@@ -150,7 +150,7 @@ if(loading === 'no'){
 
 		document.getElementById("p").innerHTML = z;
 		audio.play();
-	
+		AndroidInterface.playStart();
 	}
 }
 

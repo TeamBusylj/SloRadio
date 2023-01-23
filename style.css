@@ -318,7 +318,7 @@ html {
                                                                               /*  LANDSCAPE  */
 
 @media (orientation: landscape) {
-  .radi {
+  .radii {
     right:-50%;
     border-style:solid;
     border-width:10px;

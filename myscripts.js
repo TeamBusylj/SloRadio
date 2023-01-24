@@ -158,10 +158,13 @@ if(loading === 'no'){
 
 
 function radiodkkd(z) {
-	
-	AndroidInterface.kakaK(z);
+	setTimeout(function() {
+		AndroidInterface.kakaK(z);
 
+
+	}, 2000);
 }
+	
 window.onscroll = function() {
 	if (screen.availHeight > screen.availWidth) {
 		scrollFunction()

@@ -160,7 +160,7 @@ function radiodkkd(z){
 		var fname=z;
 		console.log(fname);
 		alert("Prav");
-		AndroidInterface.radName(z, fname);
+		AndroidInterface.radName(fname);
 	}, 2000);
 
 	

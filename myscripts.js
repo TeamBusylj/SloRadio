@@ -154,19 +154,14 @@ if(loading === 'no'){
 	
 	}
 }
-function radiodkkd(z){
-	
-	setTimeout(function() {
-		var fname=z;
-		console.log(fname);
-		alert("Prav");
-		AndroidInterface.showNm(fname);
-	}, 2000);
 
+
+
+function radiokkd(z) {
 	
+	AndroidInterface.kakaK(z);
+
 }
-
-
 window.onscroll = function() {
 	if (screen.availHeight > screen.availWidth) {
 		scrollFunction()

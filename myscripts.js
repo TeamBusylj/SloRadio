@@ -152,7 +152,7 @@ if(loading === 'no'){
 		audio.play();
 		var fname=z;
 		console.log(fname);
-		AndroidInterface.radioName(fname);
+		AndroidInterface.radioName();
 	
 	}
 }

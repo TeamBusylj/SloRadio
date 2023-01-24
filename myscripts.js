@@ -150,13 +150,15 @@ if(loading === 'no'){
 
 		document.getElementById("p").innerHTML = z;
 		audio.play();
-		var fname=z;
-		console.log(fname);
-		AndroidInterface.radioName();
+		
 	
 	}
 }
-
+function myFunction(y,x,z){
+	var fname=z;
+		console.log(fname);
+		AndroidInterface.radioName();
+}
 
 
 window.onscroll = function() {

@@ -265,6 +265,6 @@ function onloade() {
 	document.getElementById("radioan").setAttribute('src', "./assets/wifi.svg");
 	document.getElementById("radioan").setAttribute('src', "./assets/sloradio.svg");
 
-	onlinea = 'yes'
+	onlinea = 'yes';
 	AndroidInterface.radioName("RadioS");
 }

@@ -150,7 +150,7 @@ if(loading === 'no'){
 
 		document.getElementById("p").innerHTML = z;
 		audio.play();
-
+AndroidInterface.radioName(z);
 	}
 }
 
@@ -258,6 +258,7 @@ function loaded() {
 localStorage.setItem('radiki', localStorage.getItem('radiki'));
 
 function onloade() {
+	AndroidInterface.radioName("RadioS");
 	var audio = document.getElementById("zvok")
 	document.getElementById("audioId").setAttribute('src', "example.com");
 	var elemento = document.getElementById("radioan");

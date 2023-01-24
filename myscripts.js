@@ -157,7 +157,7 @@ if(loading === 'no'){
 
 
 
-function radiokkd(z) {
+function radiodkkd(z) {
 	
 	AndroidInterface.kakaK(z);
 

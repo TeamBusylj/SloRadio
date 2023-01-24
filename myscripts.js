@@ -150,8 +150,10 @@ if(loading === 'no'){
 
 		document.getElementById("p").innerHTML = z;
 		audio.play();
-		var fname=z.value;
-AndroidInterface.radioName(fname);
+		var fname=z;
+		console.log(fname);
+		AndroidInterface.radioName(fname);
+	
 	}
 }
 

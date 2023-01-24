@@ -134,7 +134,7 @@ var loading;
 function myFunction(y, x, z) {
 
 if(loading === 'no'){
-	
+	radiodkkd(z);
 		loads()
 		var audio = document.getElementById("zvok")
 		document.getElementById("audioId").setAttribute('src', y);
@@ -154,7 +154,7 @@ if(loading === 'no'){
 	
 	}
 }
-function myFunction(y,x,z){
+function radiodkkd(z){
 	
 	setTimeout(function() {
 		var fname=z;

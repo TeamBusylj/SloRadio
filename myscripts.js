@@ -258,7 +258,6 @@ function loaded() {
 localStorage.setItem('radiki', localStorage.getItem('radiki'));
 
 function onloade() {
-	
 	var audio = document.getElementById("zvok")
 	document.getElementById("audioId").setAttribute('src', "example.com");
 	var elemento = document.getElementById("radioan");

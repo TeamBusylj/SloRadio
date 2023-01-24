@@ -150,7 +150,8 @@ if(loading === 'no'){
 
 		document.getElementById("p").innerHTML = z;
 		audio.play();
-AndroidInterface.radioName(z);
+		var fname=z.value;
+AndroidInterface.radioName(fname);
 	}
 }
 

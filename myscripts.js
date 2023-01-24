@@ -258,7 +258,7 @@ function loaded() {
 localStorage.setItem('radiki', localStorage.getItem('radiki'));
 
 function onloade() {
-	AndroidInterface.radioName("RadioS");
+	
 	var audio = document.getElementById("zvok")
 	document.getElementById("audioId").setAttribute('src', "example.com");
 	var elemento = document.getElementById("radioan");
@@ -267,4 +267,5 @@ function onloade() {
 	document.getElementById("radioan").setAttribute('src', "./assets/sloradio.svg");
 
 	onlinea = 'yes'
+	AndroidInterface.radioName("RadioS");
 }

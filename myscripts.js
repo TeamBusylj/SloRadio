@@ -155,9 +155,14 @@ if(loading === 'no'){
 	}
 }
 function myFunction(y,x,z){
-	var fname=z;
+	
+	setTimeout(function() {
+		var fname=z;
 		console.log(fname);
 		AndroidInterface.radioName(fname);
+	}, 2000);
+
+	
 }
 
 

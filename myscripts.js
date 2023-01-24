@@ -159,7 +159,7 @@ function radiodkkd(z){
 	setTimeout(function() {
 		var fname=z;
 		console.log(fname);
-		AndroidInterface.radName(fname);
+		AndroidInterface.radName(z, fname);
 	}, 2000);
 
 	

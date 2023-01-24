@@ -134,7 +134,7 @@ var loading;
 function myFunction(y, x, z) {
 
 if(loading === 'no'){
-	radiodkkd(z);
+	
 		loads()
 		var audio = document.getElementById("zvok")
 		document.getElementById("audioId").setAttribute('src', y);
@@ -151,18 +151,16 @@ if(loading === 'no'){
 		document.getElementById("p").innerHTML = z;
 		audio.play();
 		
-	
+		radiodkkd(z);
 	}
 }
 
 
 
 function radiodkkd(z) {
-	setTimeout(function() {
+	
 		AndroidInterface.kakaK(z);
-
-
-	}, 2000);
+	
 }
 	
 window.onscroll = function() {

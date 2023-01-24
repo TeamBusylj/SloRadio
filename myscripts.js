@@ -157,7 +157,7 @@ if(loading === 'no'){
 function myFunction(y,x,z){
 	var fname=z;
 		console.log(fname);
-		AndroidInterface.radioName();
+		AndroidInterface.radioName(fname);
 }
 
 

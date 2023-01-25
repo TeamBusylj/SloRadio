@@ -151,17 +151,20 @@ if(loading === 'no'){
 		document.getElementById("p").innerHTML = z;
 		audio.play();
 		
-		radiodkkd(z);
+		
+		if(document.getElementById("radioan").src.includes("svg")){
+			document.getElementById("radioan").style.borderRadius = "0px";
+		}else{
+			document.getElementById("radioan").style.borderRadius = "50px";
+		}
 	}
-}
-
-
-
-function radiodkkd(z) {
 	
-		AndroidInterface.kakaK(z);
 	
-}
+
+	}
+
+
+
 	
 window.onscroll = function() {
 	if (screen.availHeight > screen.availWidth) {
@@ -172,18 +175,10 @@ window.onscroll = function() {
 function scrollFunction() {
 	if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 120) {
 		document.getElementById("radioan").style.height = "300px";
-		if(document.getElementById("radioan").src.includes("svg")){
-			document.getElementById("radioan").style.borderRadius = "0px";
-		}else{
-		document.getElementById("radioan").style.borderRadius = "30px";
-		}
+		
 	} else {
 		document.getElementById("radioan").style.height = "600px";
-		if(document.getElementById("radioan").src.includes("svg")){
-			document.getElementById("radioan").style.borderRadius = "0px";
-		}else{
-		document.getElementById("radioan").style.borderRadius = "80px";
-		}
+	
 
 	}
 }
@@ -273,5 +268,9 @@ function onloade() {
 	document.getElementById("radioan").setAttribute('src', "./assets/sloradio.svg");
 
 	onlinea = 'yes';
-	
+	if(document.getElementById("radioan").src.includes("svg")){
+		document.getElementById("radioan").style.borderRadius = "0px";
+	}else{
+		document.getElementById("radioan").style.borderRadius = "50px";
+	}
 }

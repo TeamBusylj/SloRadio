@@ -77,10 +77,17 @@ html {
   display:none
 }
 
-.radii:active {
-  width: 60%;
+.radii:active span {
+font-size: 50px;
+bottom: 150%;
+left: 110%;
 }
-  
+
+img:not(.radioan ):not(.ggg):not(.favorite):active {
+ border-top-right-radius: 0px;
+ border-bottom-right-radius: 0px;
+}
+
 .butt:active {
   font-size: 40px; 
 }
@@ -425,12 +432,13 @@ img:not(.radioan ):not(.ggg):not(.favorite) {
   transition: all .5s;
 }
 
-.radii span {
+ span {
   -webkit-text-size-adjust:none;
   font-size:80px;
   position:absolute;
   bottom:100%;
-  left:100%
+  left:100%;
+  transition: all .2s;
 }
 
 img:not(.radioan ):not(.ggg):not(.favorite):not(.batt) { 

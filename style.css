@@ -417,8 +417,7 @@ img.radioan{
 
 img:not(.radioan ):not(.ggg):not(.favorite) {
   margin-left:-51px;
-  border-top-left-radius:50px;
-  border-bottom-left-radius:50px;
+ border-radius: 50px;
   z-index:0;
   max-height:60%;
   margin-bottom:-7px;

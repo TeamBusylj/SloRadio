@@ -269,7 +269,10 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
                                                                                  /*  PORTRAIT  */
 
 @media (orientation: portrait) {
+ 
   img.radioan {
+    margin-right: auto !important; 
+    margin-left: auto !important; 
     overflow:hidden;
     position:fixed;
     left:0;
@@ -356,11 +359,11 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     overflow-y:hidden;
     overflow:hidden;
     will-change:contents;
-    top:50%;
+    top:35%;
     transform:translateY(-50%);
-    width:40%;
+    width:30%;
     z-index:10;
-    margin-left:10px;
+    margin-left:70px !important;
     position:fixed;
     transition:.2s
   }
@@ -404,8 +407,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
 }
 
 img.radioan{
-  margin-right: auto !important; 
-  margin-left: auto !important; 
+ 
   will-change: contents; 
   opacity: 0;
   margin-top: 25px;

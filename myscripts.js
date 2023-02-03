@@ -2,10 +2,11 @@ function onloayde() {
 	var elaas = document.getElementById('butt');
 	var elasas = document.getElementById('rig');
 	var elas = document.getElementById('bottom');
+	var elaws = document.getElementById('favorit');
 	var ela = document.getElementById('radioan');
 	var el = document.querySelectorAll('.radii');
 	elaas.classList.add("buta");
-	
+	elaws.classList.add("buta");
 	elas.classList.add("buta");
 	elasas.classList.add("buta");
 
@@ -134,7 +135,7 @@ var loading;
 function myFunction(y, x, z) {
 
 if(loading === 'no'){
-	
+
 		loads()
 		var audio = document.getElementById("zvok")
 		document.getElementById("audioId").setAttribute('src', y);
@@ -142,7 +143,7 @@ if(loading === 'no'){
 		element.style.filter = "invert(0%)";
 		element.classList.add("animated");
 		audio.load();
-
+	
 		setTimeout(function() {
 			document.getElementById("radioan").setAttribute('src', './assets/' + x);
 		}, 200);
@@ -152,11 +153,7 @@ if(loading === 'no'){
 		audio.play();
 		
 		
-		if(document.getElementById("radioan").src.includes("svg")){
-			document.getElementById("radioan").style.borderRadius = "0px";
-		}else{
-			document.getElementById("radioan").style.borderRadius = "50px";
-		}
+		
 	}
 	
 	
@@ -209,6 +206,7 @@ function screensaver() {
 	element.classList.add("screen");
 	let elem = document.querySelector("body");
 	AndroidInterface.showToast();
+	AndroidInterface.screensaver();
 
 }
 
@@ -232,6 +230,7 @@ function loads() {
 	var elemento = document.getElementById("radioan");
 	elemento.classList.remove("animated2");
 	elemento.classList.add("animated");
+	
 }
 
 function loaded() {
@@ -241,7 +240,13 @@ function loaded() {
 	elemento.classList.add("animated");
 	element.classList.remove("show");
 	element.classList.add("hide");
-
+	console.log('xm')
+	if(document.getElementById("radioan").src.includes("svg")){
+		document.getElementById("radioan").style.borderRadius = "0px";
+	}else{
+		document.getElementById("radioan").style.borderRadius = "50px";
+	
+	}
 
 	loading = 'no'
 	elemento.classList.remove("animated");

@@ -201,7 +201,7 @@ function mutefVid() {
 
 
 
-function screensaver() {
+/*function screensaver() {
 	var element = document.getElementById("screensaver");
 	element.classList.add("screen");
 	let elem = document.querySelector("body");
@@ -209,7 +209,7 @@ function screensaver() {
 	AndroidInterface.screensaver();
 
 }
-
+*/
 
 function myShow() {
 	var element = document.getElementById("screensaver");

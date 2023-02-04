@@ -201,15 +201,17 @@ function mutefVid() {
 
 
 
-/*function screensaver() {
+function screensaver() {
+	/*
 	var element = document.getElementById("screensaver");
 	element.classList.add("screen");
 	let elem = document.querySelector("body");
+	*/
+
 	AndroidInterface.showToast();
 	AndroidInterface.screensaver();
 
 }
-*/
 
 function myShow() {
 	var element = document.getElementById("screensaver");

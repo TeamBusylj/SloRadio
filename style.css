@@ -48,11 +48,11 @@ html {
 }
 
 .radian{
-  animation: mmma 0.3s ease forwards; opacity: 0;
+  animation: mmma 0.5s ease forwards; opacity: 0;
 }
 
 .radia{
-  animation: mmm 0.3s ease forwards;
+  animation: mmm 0.5s ease forwards;
 }
 
 .animated2 {

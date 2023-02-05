@@ -18,7 +18,7 @@ function myLoop() {
     if (i < 100) {      
       myLoop();       
     }
-  }, 30)
+  }, 100)
 }
 
 myLoop();   

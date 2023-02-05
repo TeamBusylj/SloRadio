@@ -5,11 +5,12 @@ function onloayde() {
 	var elaws = document.getElementById('favorit');
 	var ela = document.getElementById('radioan');
 	var el = document.querySelectorAll('.radii');
+	ela.classList.add("radian");
 	elaas.classList.add("buta");
 	elaws.classList.add("buta");
 	elas.classList.add("buta");
 	elasas.classList.add("buta");
-	ela.classList.add("radian");
+
 	setTimeout(function() {
 		ela.style.opacity = "1";
 		ela.classList.remove("radian");

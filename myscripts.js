@@ -5,6 +5,9 @@ function onloayde() {
 	var elaws = document.getElementById('favorit');
 	var ela = document.getElementById('radioan');
 	var el = document.querySelectorAll('.radii');
+	setTimeout(function() {
+		ela.classList.add("radian");
+	}, 20);
 	ela.classList.add("radian");
 	elaas.classList.add("buta");
 	elaws.classList.add("buta");

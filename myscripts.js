@@ -9,7 +9,17 @@ function onloayde() {
 	elaws.classList.add("buta");
 	elas.classList.add("buta");
 	elasas.classList.add("buta");
+	ela.classList.add("radian");
+	setTimeout(function() {
+		ela.style.opacity = "1";
+		ela.classList.remove("radian");
+		for (var i = 0; i < el.length; i++) {
+			el[i].classList.remove("radia");
+			el[i].style.opacity = "1";
+		}
 
+
+	}, 2000);
 	var i = 0;                 
 function myLoop() {         
   setTimeout(function() {  
@@ -22,17 +32,7 @@ function myLoop() {
 }
 
 myLoop();   
-	ela.classList.add("radian");
-	setTimeout(function() {
-		ela.style.opacity = "1";
-		ela.classList.remove("radian");
-		for (var i = 0; i < el.length; i++) {
-			el[i].classList.remove("radia");
-			el[i].style.opacity = "1";
-		}
-
-
-	}, 2000);
+	
 
 }
 

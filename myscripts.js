@@ -10,9 +10,19 @@ function onloayde() {
 	elas.classList.add("buta");
 	elasas.classList.add("buta");
 
-	for (var i = 0; i < el.length; i++) {
-		el[i].classList.add("radia");
-	}
+	var i = 0;                  //  set your counter to 1
+
+function myLoop() {         //  create a loop function
+  setTimeout(function() {   //  call a 3s setTimeout when the loop is called
+    el[i].classList.add("radia");  //  your code here
+    i++;                    //  increment the counter
+    if (i < 100) {           //  if the counter < 10, call the loop function
+      myLoop();             //  ..  again which will trigger another 
+    }                       //  ..  setTimeout()
+  }, 30)
+}
+
+myLoop();   
 	ela.classList.add("radian");
 	setTimeout(function() {
 		ela.style.opacity = "1";

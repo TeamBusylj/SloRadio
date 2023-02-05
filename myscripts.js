@@ -10,15 +10,14 @@ function onloayde() {
 	elas.classList.add("buta");
 	elasas.classList.add("buta");
 
-	var i = 0;                  //  set your counter to 1
-
-function myLoop() {         //  create a loop function
-  setTimeout(function() {   //  call a 3s setTimeout when the loop is called
-    el[i].classList.add("radia");  //  your code here
-    i++;                    //  increment the counter
-    if (i < 100) {           //  if the counter < 10, call the loop function
-      myLoop();             //  ..  again which will trigger another 
-    }                       //  ..  setTimeout()
+	var i = 0;                 
+function myLoop() {         
+  setTimeout(function() {  
+    el[i].classList.add("radia");
+    i++;                    
+    if (i < 100) {      
+      myLoop();       
+    }            
   }, 30)
 }
 

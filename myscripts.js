@@ -294,3 +294,9 @@ function onloade() {
 		document.getElementById("radioan").style.borderRadius = "50px";
 	}
 }
+function worldradio(locationa){
+	var ret = locationa.replace('.html','');
+
+window.location.href = locationa;
+AndroidInterface.ret;
+}

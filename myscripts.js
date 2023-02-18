@@ -297,5 +297,5 @@ function onloade() {
 function worldradio(){
 
 window.location.href = 'indexworld.html';
-AndroidInterface.indexworld;
+AndroidInterface.indexworld();
 }

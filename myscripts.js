@@ -294,8 +294,8 @@ function onloade() {
 		document.getElementById("radioan").style.borderRadius = "50px";
 	}
 }
-function worldradio(locationa){
+function worldradio(){
 
-window.location.href = locationa;
+window.location.href = 'indexworld.html';
 AndroidInterface.indexworld;
 }

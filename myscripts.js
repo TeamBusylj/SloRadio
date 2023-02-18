@@ -295,8 +295,7 @@ function onloade() {
 	}
 }
 function worldradio(locationa){
-	var ret = locationa.replace('.html','');
 
 window.location.href = locationa;
-AndroidInterface.ret;
+AndroidInterface.indexworld;
 }

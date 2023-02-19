@@ -299,3 +299,8 @@ function worldradio(){
 window.location.href = 'indexworld.html';
 AndroidInterface.indexworld();
 }
+function indexRadio(){
+
+	window.location.href = 'index.html';
+	AndroidInterface.index();
+	}

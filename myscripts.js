@@ -304,3 +304,13 @@ function indexRadio(){
 	window.location.href = 'index.html';
 	AndroidInterface.index();
 	}
+	function english(){
+
+		window.location.href = 'index.html';
+		AndroidInterface.index();
+		}
+		function hrvatska(){
+
+			window.location.href = 'index.html';
+			AndroidInterface.index();
+			}

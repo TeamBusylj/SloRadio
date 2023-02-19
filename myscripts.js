@@ -307,10 +307,10 @@ function indexRadio(){
 	function english(){
 
 		window.location.href = 'english.html';
-		AndroidInterface.index();
+		AndroidInterface.angleski();
 		}
 		function hrvatska(){
 
 			window.location.href = 'hrvatska.html';
-			AndroidInterface.index();
+			AndroidInterface.hrvaski();
 			}

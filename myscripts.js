@@ -306,11 +306,11 @@ function indexRadio(){
 	}
 	function english(){
 
-		window.location.href = 'index.html';
+		window.location.href = 'english.html';
 		AndroidInterface.index();
 		}
 		function hrvatska(){
 
-			window.location.href = 'index.html';
+			window.location.href = 'hrvatska.html';
 			AndroidInterface.index();
 			}

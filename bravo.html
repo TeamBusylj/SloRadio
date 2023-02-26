@@ -1,1 +1,23 @@
-<html><link type="text/css" id="dark-mode" rel="stylesheet" href=""><head><meta name="viewport" content="width=device-width"></head><body><video controls="" autoplay="" name="media"><source src="http://c5.hostingcentar.com:8059/;" type="audio/mpeg"></video></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="lastsong" id="divLastsong">
+        <script type="text/javascript">
+            function GetLiveStreaming() {
+                $.get("https://data.radio.si/api/lastsongsxml/maxi", function (data, status) {
+                    $('#divLastsong').html(data);
+                });
+    
+                setTimeout(GetLiveStreaming, 30000);
+            };
+
+            setTimeout(GetLiveStreaming, 600);
+        </script>
+</body>
+</html>

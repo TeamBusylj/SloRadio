@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div class="lastsong" id="divLastsong">
-        <script type="text/javascript">
-            function GetLiveStreaming() {
-                $.get("https://data.radio.si/api/lastsongsxml/maxi", function (data, status) {
-                    $('#divLastsong').html(data);
-                });
-    
-                setTimeout(GetLiveStreaming, 30000);
-            };
 
-            setTimeout(GetLiveStreaming, 600);
-        </script>
+<body onload=" ">
+    <div class="lastsong" id="divLastsong"></div>
+    <script type="text/javascript">
+
+$('#divLastsong').load('https://radio1.si/Radio1#playlist-elements');
+			</script>
 </body>
 </html>

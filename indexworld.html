@@ -31,33 +31,36 @@
       <div class="toper"></div>
       <img loading="lazy"  class="radioan"  style="margin-right: auto !important; margin-left: auto !important; " src="./assets/sloradio.svg" id="radioan">
  
-      <p id="p"> </p>
+      <p id="p">&nbsp;</p>
       
       
     </div>
-   
+    <img alt="search" class=isci src=./assets/nehi.svg id=isci onclick="neiscimo()">
+        <img alt="search" class=isci src=./assets/search.svg id=iscilupa >
+        <input id="isciradio" class="isciradio" alt="Iščite radio...." oninput="iscimo()" placeholder="Išči radio..." >
+    <p id=noresults>Ni zadetkov</p>
     <video  class="zvok" autoplay id="zvok">
       <source id="audioId" src="" type="audio/mpeg">
     </video>
    
    
-        <div class="radio" id="radio">
+        <div  class="radio" id="radio">
           <div class="radii"  >
-            <a class="radiosi" href="javascript:english()">
+            <a alt="English Radio" class="radiosi" href="english.html">
               <img loading="lazy" alt="" src="./assets/english.svg"  >
               <span>English <br> Radio</span>
             </a>
           </div>
         
-            <div class="radii"  >
-              <a class="radiosi" href="javascript:hrvatska()">
+            <div  class="radii"  >
+              <a  alt="Hrvatski Radio" class="radiosi" href="hrvatska.html">
                 <img loading="lazy" alt="" src="./assets/Flag_of_Croatia.svg"  >
                 <span>Hrvatski <br> Radio</span>
               </a>
           </div>
         
           <div class="radii"   data-link="r1.html')">
-            <a class="radiosi" >
+            <a  alt="" class="radiosi" >
               <img loading="lazy" alt="" src="./assets/sloradiostop.svg"  >
               <span>Coming <br>Soon</span>
             </a>
@@ -71,7 +74,7 @@
 
 <div id="screensaver" class="screensaver" onclick="myShow()"></div>
 <div class="bottom" id="bottom"> 
-  <button onclick="indexRadio()" class="butt" id="butt">Slovenia</button>
+  <button onclick="window.location.href='index.html'" class="butt" id="butt">Slovenia</button>
   <img loading="lazy" alt="" style=" left: 43% !important; right: 0 !important;" class="favorite" onclick="window.location.href='favorit.html';"  src="./assets/fav.svg"   id="favorit">
 
   <button  class="butt rig" id="rig" id="butt">World</button>

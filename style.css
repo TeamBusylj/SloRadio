@@ -143,7 +143,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
 
 @media (prefers-color-scheme: dark) {
 
-  img:not(.radioan ):not(.ggg):not(.favorite) {
+  img:not(.radioan ):not(.ggg):not(.favorite):not(.isci) {
     filter: brightness(70%);
   }
 
@@ -151,6 +151,9 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     background-color:#071636
   }
   
+.isci {
+    filter: invert(100%);
+  }
   img.radioan {
     background-color:transparent;
     box-shadow:transparent;
@@ -288,7 +291,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     padding-top:30px;
     top:-2px;
     width:100%;
-    height:350px;
+    height:500px;
     z-index:10;
     backdrop-filter:blur(8px);
     -webkit-backdrop-filter:blur(10px);
@@ -309,7 +312,8 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     display:block;
     margin-bottom:15px;
     position:relative;
-    transition:all .2s
+    transition: all .2s;
+    transition-timing-function: ease;
   }
   p {
     transition:all .4;
@@ -367,6 +371,40 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     
                                                     /*  OTHER  */
 
+.isciradio{
+  font-family:"M PLUS Rounded 1c",sans-serif;
+  width:75%;
+  height: 110px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+  display: block;
+  background-color: rgba(250, 250, 250, 0.2);;
+  border-radius: 100px;
+  font-size: 70px;
+  padding-left: 30px;
+  padding-right: 130px;
+  color: #fff;
+  border-width: 0;
+  opacity: 0;
+  position: sticky;
+  top: 400px;
+  z-index: 200;
+}
+.isciradio:focus{  border-width: 0;}
+.isci{
+    width: 90px;
+  height: 90px;
+ right:60px;
+ z-index: 202;
+ position: sticky;
+ top: 410px;
+margin-left: 800px;
+ margin-bottom: -100px;
+}
+#noresults{display: none;}
+#isci{display: none;}
+#iscilupa{opacity: 0; z-index: 201;}
 .screensaver {
   position:fixed;
   width:100%;
@@ -419,7 +457,7 @@ img.radioan{
   display:none
 }
 
-img:not(.radioan ):not(.ggg):not(.favorite) {
+img:not(.radioan ):not(.ggg):not(.favorite):not(.isci) {
   margin-left:-51px;
  border-radius: 50px;
   z-index:0;
@@ -438,7 +476,7 @@ img:not(.radioan ):not(.ggg):not(.favorite) {
   transition: all .2s;
 }
 
-img:not(.radioan ):not(.ggg):not(.favorite):not(.batt) { 
+img:not(.radioan ):not(.ggg):not(.favorite):not(.batt):not(.isci) { 
   height: 290px;
   width: 290px;
 }

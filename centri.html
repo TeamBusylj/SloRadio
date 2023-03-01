@@ -31,13 +31,17 @@
         <div onclick="mutefVid();" class="radioano">
             <div class="toper"></div>
             <img class="radioan" src="./assets/sloradio.svg" id="radioan">
-            <p id="p"> </p>
+            <p id="p">&nbsp;</p>
         </div>
+       <img alt="search" class=isci src=./assets/nehi.svg id=isci onclick="neiscimo()">
+        <img alt="search" class=isci src=./assets/search.svg id=iscilupa >
+        <input id="isciradio" class="isciradio" alt="Iščite radio...." oninput="iscimo()" placeholder="Išči radio..." >
+        <p id=noresults>Ni zadetkov</p>
   <audio oncanplay="loaded()" oncanplaythrough="loaded()" onloadeddata="loaded()" class="zvok" autoplay id="zvok">
       <source id="audioId" src="" type="audio/mpeg">
    </audio>
 
-        <div class="radio" id="radio">
+        <div  alt="" class="radio" id="radio">
             <div class="radii">
                 <a href="javascript:screensaver()" class="radiosi">
                     <img loading="lazy" alt="" src="./assets/batt.svg" width="290" height="180" class="batt">
@@ -45,55 +49,55 @@
                 </a>
             </div>
             <div class="radii">
-                <a href=javascript:mutefVid() class=radiosi>
+                <a   alt="" href=javascript:mutefVid() class=radiosi>
                     <img loading="lazy" id="mute" src=./assets/unmute.svg width=290 height=180 class="batt">
                     <span id="murk">Zvok </span>
                 </a>
             </div>
             <div class="radii">
-                <a href="javascript:myFunction('https://stream.nextmedia.si/proxy/center2?mp=/center', 'center.png', 'Hitradio Center')" class="radiosi">
+                <a  alt="Hitradio Center"  href="javascript:myFunction('https://stream.nextmedia.si/proxy/center2?mp=/center', 'center.png', 'Hitradio Center')" class="radiosi">
                     <img loading="lazy" alt="" src="./assets/center.png">
                     <span>Hitradio<br>Center</span>
                 </a> <img loading="lazy" id="favi" onclick="favi('stream.nextmedia.si/proxy/center2?mp=/center', 'center.png', 'Hitradio Center')" alt="" class="favorite" src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a href="javascript:myFunction('https://stream.nextmedia.si/proxy/center_latin?mp=/center', 'center.png', 'Center Latin')" class="radiosi">
+                <a  alt="Center Latin"  href="javascript:myFunction('https://stream.nextmedia.si/proxy/center_latin?mp=/center', 'center.png', 'Center Latin')" class="radiosi">
                     <img loading="lazy" alt="" src="./assets/center.png">
                     <span>Center<br>Latin</span>
                 </a> <img loading="lazy" id="favi" onclick="favi('stream.nextmedia.si/proxy/center_latin?mp=/center', 'center.png', 'Center Latin')" alt="" class="favorite" src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a href="javascript:myFunction('https://stream.nextmedia.si/proxy/centeryu3?mp=/stream', 'center.png', 'Center Yu')" class="radiosi">
+                <a   alt="Center Yu"  href="javascript:myFunction('https://stream.nextmedia.si/proxy/centeryu3?mp=/stream', 'center.png', 'Center Yu')" class="radiosi">
                     <img loading="lazy" alt="" src="./assets/center.png">
                     <span>Center<br>Yu</span>
                 </a> <img loading="lazy" id="favi" onclick="favi('stream.nextmedia.si/proxy/centeryu3?mp=/stream', 'center.png', 'Center Yu')" alt="" class="favorite" src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a href="javascript:myFunction('https://stream.nextmedia.si/proxy/centerlove3?mp=/stream', 'center.png', 'Center Love')" class="radiosi">
+                <a   alt="Center Love"   href="javascript:myFunction('https://stream.nextmedia.si/proxy/centerlove3?mp=/stream', 'center.png', 'Center Love')" class="radiosi">
                     <img loading="lazy" alt="" src="./assets/center.png">
                     <span>Center<br>Love</span>
                 </a> <img loading="lazy" id="favi" onclick="favi('stream.nextmedia.si/proxy/centerlove3?mp=/stream', 'center.png', 'Center Love')" alt="" class="favorite" src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a href="javascript:myFunction('https://stream.nextmedia.si/proxy/centermix3?mp=/stream;', 'center.png', 'Center Megamix')" class="radiosi">
+                <a   alt="Center Megamix"  href="javascript:myFunction('https://stream.nextmedia.si/proxy/centermix3?mp=/stream;', 'center.png', 'Center Megamix')" class="radiosi">
                     <img loading="lazy" alt="" src="./assets/center.png">
                     <span>Center<br>Megamix</span>
                 </a> <img loading="lazy" id="favi" onclick="favi('stream.nextmedia.si/proxy/centermix3?mp=/stream;', 'center.png', 'Center Megamix')" alt="" class="favorite" src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a href="javascript:myFunction('https://stream.nextmedia.si/proxy/center2?mp=/center', 'center.png', 'Center 80`s')" class="radiosi">
+                <a   alt="Center 80's"   href="javascript:myFunction('https://stream.nextmedia.si/proxy/center2?mp=/center', 'center.png', 'Center 80`s')" class="radiosi">
                     <img loading="lazy" alt="" src="./assets/center.png">
                     <span>Center<br>80's</span>
                 </a> <img loading="lazy" id="favi" onclick="favi('stream.nextmedia.si/proxy/center2?mp=/center', 'center.png', 'Center 80`s');" alt="" class="favorite" src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a href="javascript:myFunction('https://stream.nextmedia.si/proxy/centerhit3?mp=/stream;', 'center.png', 'Center Top 100')" class="radiosi">
+                <a   alt="Center Top 100"   href="javascript:myFunction('https://stream.nextmedia.si/proxy/centerhit3?mp=/stream;', 'center.png', 'Center Top 100')" class="radiosi">
                     <img loading="lazy" alt="" src="./assets/center.png">
                     <span>Center<br>Top&nbsp;100</span>
                 </a> <img loading="lazy" id="favi" onclick="favi('stream.nextmedia.si/proxy/centerhit3?mp=/stream;', 'center.png', 'Center Top 100')" alt="" class="favorite" src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a href="javascript:myFunction('https://stream.nextmedia.si/proxy/centerpop3?mp=/stream', 'center.png', 'Center Fresh Pop')" class="radiosi">
+                <a   alt="Center Fresh Pop"  href="javascript:myFunction('https://stream.nextmedia.si/proxy/centerpop3?mp=/stream', 'center.png', 'Center Fresh Pop')" class="radiosi">
                     <img loading="lazy" alt="" src="./assets/center.png">
                     <span>Center<br>Fresh&nbsp;Pop</span>
                 </a> <img loading="lazy" id="favi" onclick="favi('stream.nextmedia.si/proxy/centerpop3?mp=/stream', 'center.png', 'Center Fresh Pop')" alt="" class="favorite" src="./assets/fav.svg">

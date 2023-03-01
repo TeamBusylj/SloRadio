@@ -1,4 +1,5 @@
 function onloayde() {
+	var iscira = document.getElementById('isciradio');
 	var elaas = document.getElementById('butt');
 	var elasas = document.getElementById('rig');
 	var elas = document.getElementById('bottom');
@@ -8,6 +9,8 @@ function onloayde() {
 	setTimeout(function() {
 		ela.classList.add("radian");
 	}, 20);
+	document.getElementById('iscilupa').classList.add("radian");
+	iscira.classList.add("radian");
 	ela.classList.add("radian");
 	elaas.classList.add("buta");
 	elaws.classList.add("buta");
@@ -25,17 +28,17 @@ function onloayde() {
 
 	}, 2000);
 	var i = 0;                 
-function myLoop() {         
+function myLoop(kkk) {         
   setTimeout(function() {  
     el[i].classList.add("radia");
     i++;                    
-    if (i < 100) {      
-      myLoop();       
+    if (i < kkk) {      
+      myLoop(el.length);       
     }
   }, 100)
 }
 
-myLoop();   
+myLoop(el.length);   
 	
 
 }
@@ -280,6 +283,7 @@ function loaded() {
 localStorage.setItem('radiki', localStorage.getItem('radiki'));
 
 function onloade() {
+	
 	var audio = document.getElementById("zvok")
 	document.getElementById("audioId").setAttribute('src', "example.com");
 	var elemento = document.getElementById("radioan");
@@ -287,6 +291,7 @@ function onloade() {
 	document.getElementById("radioan").setAttribute('src', "./assets/wifi.svg");
 	document.getElementById("radioan").setAttribute('src', "./assets/sloradio.svg");
 
+	document.getElementById('iscilupa').style.display = "block";
 	onlinea = 'yes';
 	if(document.getElementById("radioan").src.includes("svg")){
 		document.getElementById("radioan").style.borderRadius = "0px";
@@ -294,23 +299,91 @@ function onloade() {
 		document.getElementById("radioan").style.borderRadius = "50px";
 	}
 }
-function worldradio(){
 
-window.location.href = 'indexworld.html';
-AndroidInterface.indexworld();
-}
-function indexRadio(){
+////search//////
 
-	window.location.href = 'index.html';
-	AndroidInterface.index();
+			async function iscimo(){
+				window.scrollTo(0, 460, { behavior: 'smooth'})
+
+				var checkno=0;
+	var data = document.getElementById("isciradio").value.toLowerCase();
+	if(data === ''){neiscimo(); 	console.log('jjjj')}else{
+	var vsi = document.querySelectorAll('.radii');
+	const radiji = []
+	for (var i = 0; i < vsi.length; i++) {
+		var name = document.getElementsByTagName('a')[i].getAttribute('alt').toLowerCase();
+		radiji.push( "\n" + i + ' ' + name);
+		
+		document.getElementsByTagName('a')[i].parentElement.style.scale = "0";
+		
+		if (name.includes(data)){
+			showRadio(i);
+			
+		}else{
+hideRadio(i)
+checkno = checkno+ 1;
+		};
 	}
-	function english(){
+	
+	checkifno(i,checkno)
+	document.getElementById('iscilupa').style.display = "none";
+	document.getElementById('isci').style.display = "block";
 
-		window.location.href = 'english.html';
-		AndroidInterface.angleski();
-		}
-		function hrvatska(){
+ }}
+ /////////
 
-			window.location.href = 'hrvatska.html';
-			AndroidInterface.hrvaski();
-			}
+ //close search///////////
+ async function neiscimo(){
+	var data = '';
+	document.getElementById('isci').style.display = "none";
+	document.getElementById('iscilupa').style.display = "block";
+	var vsi = document.querySelectorAll('.radii');
+	const radiji = []
+
+	for (var i = 0; i < vsi.length; i++) {
+		var name = document.getElementsByTagName('a')[i].getAttribute('alt').toLowerCase();
+		radiji.push( "\n" + i + ' ' + name);
+		
+		document.getElementsByTagName('a')[i].parentElement.style.scale = "0";
+		document.getElementsByTagName('a')[i].parentElement.style.opacity = "0";
+		if (name.includes(data)){
+		
+			showRadio(i)
+		}else{
+hideRadio(i)
+
+		};
+	}
+	document.getElementById("isciradio").value = '';
+	
+ }
+ /////////////
+  async function hideRadio(i){
+	var radioanim = document.getElementsByTagName('a')[i].parentElement;
+		await new Promise(resolve => setTimeout(resolve, 200));
+			radioanim.style.display = "none";
+
+  }
+  async function showRadio(i){
+	document.getElementById('noresults').style.display = "none";
+	var radioanim = document.getElementsByTagName('a')[i].parentElement;
+		await new Promise(resolve => setTimeout(resolve, 201));
+		radioanim.style.scale = "0";
+		radioanim.style.display = "block";
+		await new Promise(resolve => setTimeout(resolve, 10));
+			radioanim.style.scale = "1";
+			radioanim.style.opacity = "1";
+  }
+  async function checkifno(i,checkno){
+	console.log(i+ ', '+checkno)
+	var radioanim = document.getElementById('noresults')
+if (i === checkno){
+	await new Promise(resolve => setTimeout(resolve, 201));
+	radioanim.style.scale = "0";
+		radioanim.style.display = "block";
+		radioanim.style.opacity = "0";
+		await new Promise(resolve => setTimeout(resolve, 10));
+			radioanim.style.scale = "1";
+			radioanim.style.opacity = "1";
+}
+  }

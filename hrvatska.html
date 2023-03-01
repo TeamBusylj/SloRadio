@@ -33,30 +33,33 @@
       <div class="toper"></div>
       <img class="radioan" src="./assets/sloradio.svg" id="radioan">
 
-      <p id="p"> </p>
+      <p id="p">&nbsp;</p>
 
 
     </div>
-
+    <img alt="search" class=isci src=./assets/nehi.svg id=isci onclick="neiscimo()">
+        <img alt="search" class=isci src=./assets/search.svg id=iscilupa >
+        <input id="isciradio" class="isciradio" alt="Iščite radio...." oninput="iscimo()" placeholder="Išči radio..." >
+    <p id=noresults>Ni zadetkov</p>
     <video data-v-0c2d5106="" oncanplay="loaded()" oncanplaythrough="loaded()" onloadeddata="loaded()" class="zvok" autoplay id="zvok">
       <source id="audioId" data-v-0c2d5106="" src="" type="audio/mpeg">
     </video>
 
     <div class="radio" id="radio">
       <div class="radii">
-        <a href="javascript:screensaver()" class="radiosi">
+        <a  alt="" href="javascript:screensaver()" class="radiosi">
           <img loading="lazy" alt="" src="./assets/batt.svg" width="290" height="180" class="batt">
           <span style="font-size: 55px; bottom: 75%;">Varčevanje<br> Baterije</span>
         </a>
       </div>
       <div class="radii">
-        <a href=javascript:mutefVid() class=radiosi>
-          <img loading="lazy" id="mute" src=./assets/unmute.svg width=290 height=180 " class=" batt">
+        <a  alt="" href=javascript:mutefVid() class=radiosi>
+          <img loading="lazy" id="mute" src=./assets/unmute.svg width=290 height=180 class=" batt">
           <span id="murk">Zvok </span>
         </a>
       </div>
       <div class="radii">
-        <a data-v-4e85072f href="javascript:myFunction('https://teambusylj.github.io/SloRadio/bravo.html', 'narodni.png', 'Bravo');"
+        <a  alt="Bravo (Narodni)" href="javascript:myFunction('https://teambusylj.github.io/SloRadio/bravo.html', 'narodni.png', 'Bravo');"
           class="radiosi">
           <img loading="lazy" alt="" src="./assets/narodni.png">
 
@@ -65,7 +68,7 @@
         <img loading="lazy" id="favi" onclick="favi('live.narodni.hr:8059/stream/1/', 'narodni.png', 'Narodni')" alt="" class="favorite" src="./assets/fav.svg">
       </div>
       <div class="radii">
-        <a href="javascript:myFunction('https://stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')"
+        <a  alt="Otvoreni" href="javascript:myFunction('https://stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')"
           class="radiosi">
           <img loading="lazy" alt="" src="./assets/otvoreni.jpg">
           <span>Otvoreni<br>&nbsp;</span>
@@ -73,7 +76,7 @@
         <img loading="lazy" id="favi" onclick="favi('stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" alt="" class="favorite" src="./assets/fav.svg">
       </div>
       <div class="radii">
-        <a href="javascript:myFunction('https://s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')"
+        <a  alt="Istra" href="javascript:myFunction('https://s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')"
           class="radiosi">
           <img loading="lazy" alt="" src="./assets/istra.jpg">
           <span>Radio<br>Istra</span>
@@ -93,11 +96,11 @@
       src="./assets/loader.svg"></div>
   <div id="screensaver" class="screensaver" onclick="myShow()"></div>
   <div class="bottom" id="bottom">
-    <button onclick="indexRadio()" class="butt" id="butt">Slovenia</button>
+    <button onclick="window.location.href='index.html'" class="butt" id="butt">Slovenia</button>
     <img loading="lazy" alt="" style=" left: 43% !important; right: 0 !important;" class="favorite"
       onclick="window.location.href='favorit.html';" src="./assets/fav.svg" id="favorit">
 
-    <button onclick="worldradio()" class="butt rig" id="rig" id="butt">World</button>
+    <button onclick="window.location.href='indexworld.html'" class="butt rig" id="rig" id="butt">World</button>
   </div>
 
 </body>

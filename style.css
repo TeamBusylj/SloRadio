@@ -84,8 +84,8 @@ left: 110%;
 }
 
 img:not(.radioan ):not(.ggg):not(.favorite):active {
- border-top-right-radius: 0px;
- border-bottom-right-radius: 0px;
+ border-top-right-radius: 0px !important;
+ border-bottom-right-radius: 0px !important;
 }
 
 

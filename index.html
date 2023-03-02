@@ -17,15 +17,9 @@
 
         gtag('config', 'G-0E74SP5Q9F');
     </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
- <script type="text/javascript">
-    
 
+  
 
-$.get("https://data.radio.si/api/lastsongsxml/maxi", function (data, status) {console.log(data)
-						$('#divLastsong').html(data);
-					});
- </script>
     <script src=myscripts.js></script>
     <meta name="viewport" content="user-scalable=no">
     <link rel=stylesheet href=style.css>
@@ -35,7 +29,7 @@ $.get("https://data.radio.si/api/lastsongsxml/maxi", function (data, status) {co
 
 <body id=body onload="onloade();onloayde(); loading = 'no'">
     <div id=bodys class=bodys>
-
+    
         <div class=radioano>
             <div class=toper></div>
             <img alt="img" class=radioan src=./assets/sloradio.svg id=radioan>
@@ -224,6 +218,16 @@ $.get("https://data.radio.si/api/lastsongsxml/maxi", function (data, status) {co
                     class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii">
+                <a alt="Radio Koper"
+                    href="javascript:myFunction('https://mp3.rtvslo.si/cape','cp.png','Radio Capodistria')"
+                    class=radiosi>
+                    <img loading="lazy" alt src=./assets/cp.png>
+                    <span>Radio <br>Capodistria </span>
+                </a>
+                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/cape','cp.png','Radio Capodistria')" alt
+                    class=favorite src="./assets/fav.svg">
+            </div>
+            <div class="radii">
                 <a alt="Radio Bob" href="javascript:myFunction('https://live.radio.si/BOB','bob.jpg','Radio BOB')"
                     class=radiosi>
                     <img loading="lazy" alt src=./assets/bob.jpg>
@@ -251,6 +255,66 @@ $.get("https://data.radio.si/api/lastsongsxml/maxi", function (data, status) {co
                     <span>Radio <br>Sraka </span>
                 </a>
                 <img loading="lazy" id=favi onclick="favi('sraka.siradiostream.net','sraka.jpg','Radio Sraka')" alt
+                    class=favorite src=./assets/fav.svg>
+            </div>
+            <div class="radii">
+                <a alt="Radio Maxi"
+                    href="javascript:myFunction('http://live.radio.si/Maxi','maxi.jpg','Radio Maxi')"
+                    class=radiosi>
+                    <img loading="lazy" alt src=./assets/maxi.jpg>
+                    <span>Radio <br>Maxi </span>
+                </a>
+                <img loading="lazy" id=favi onclick="favi('live.radio.si/Maxi','maxi.jpg','Radio Maxi')" alt
+                    class=favorite src=./assets/fav.svg>
+            </div>
+           <!-- <div class="radii">
+                <a alt="Radio Rogla"
+                    href="javascript:myFunction('http://193.105.67.24:8010/stream/1/','rogla.jpg','Radio Rogla')"
+                    class=radiosi>
+                    <img loading="lazy" alt src=./assets/rogla.jpg>
+                    <span>Radio <br>Rogla </span>
+                </a>
+                <img loading="lazy" id=favi onclick="favi('193.105.67.24:8010/stream/1/','rogla.jpg','Radio Rogla')" alt
+                    class=favorite src=./assets/fav.svg>
+            </div>-->
+            <div class="radii">
+                <a alt="Radio Hit"
+                    href="javascript:myFunction('https://stream.exit.si/radiohit','hit.png','Radio Hit')"
+                    class=radiosi>
+                    <img loading="lazy" alt src=./assets/hit.png>
+                    <span>Radio <br>Hit </span>
+                </a>
+                <img loading="lazy" id=favi onclick="favi('stream.exit.si/radiohit','hit.png','Radio Hit')" alt
+                    class=favorite src=./assets/fav.svg>
+            </div>
+            <div class="radii">
+                <a alt="Radio Ekspres"
+                    href="javascript:myFunction('https://stream.nextmedia.si/proxy/ekspres1?mp=/stream','ekspres.webp','Radio Ekspres')"
+                    class=radiosi>
+                    <img loading="lazy" alt src=./assets/ekspres.webp>
+                    <span>Radio <br>Ekspres </span>
+                </a>
+                <img loading="lazy" id=favi onclick="favi('stream.nextmedia.si/proxy/ekspres1?mp=/stream','ekspres.webp','Radio Ekspres')" alt
+                    class=favorite src=./assets/fav.svg>
+            </div>
+            <div class="radii">
+                <a alt="Radio Ars"
+                    href="javascript:myFunction('https://mp3.rtvslo.si/ars','Ars.png','Radio Ars')"
+                    class=radiosi>
+                    <img loading="lazy" alt src=./assets/Ars.png>
+                    <span>Radio <br>Ars </span>
+                </a>
+                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/ars','Ars.png','Radio Ars')" alt
+                    class=favorite src=./assets/fav.svg>
+            </div>
+            <div class="radii">
+                <a alt="Radio Maribor"
+                    href="javascript:myFunction('https://mp3.rtvslo.si/rmb','Maribor.png','Radio Maribor')"
+                    class=radiosi>
+                    <img loading="lazy" alt src=./assets/Maribor.png>
+                    <span>Radio <br>Maribor </span>
+                </a>
+                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/rmb','Maribor.png','Radio Maribor')" alt
                     class=favorite src=./assets/fav.svg>
             </div>
         </div>

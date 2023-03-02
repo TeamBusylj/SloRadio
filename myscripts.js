@@ -410,3 +410,4 @@ function checkUserAgent() {
 		document.getElementById('noresults').style.display = "none";
 	}
 }
+

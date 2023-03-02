@@ -398,3 +398,10 @@ if (i === checkno){
 			radioanim.style.opacity = "1";
 }
   }
+
+  function checkUserAgent() {
+	         
+	if (/Android|iPhone/i.test(navigator.userAgent)) {
+		document.getElementById('noresults').style.display = "none";
+	  }
+  }

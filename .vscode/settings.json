@@ -1,4 +1,6 @@
 {
    
-    "liveServer.settings.useLocalIp": true
+    "liveServer.settings.useLocalIp": true,
+    "liveServer.settings.multiRootWorkspaceName": "SloRadio",
+    "liveServer.settings.CustomBrowser": "chrome"
 }

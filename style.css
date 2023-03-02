@@ -307,7 +307,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     border-radius:60px;
     height:40%;
     width:75%;
-    -webkit-transition:all .2s;
+    -webkit-transition:all .5s;
     padding-bottom:-5px;
     display:block;
     margin-bottom:15px;
@@ -371,6 +371,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     
                                                     /*  OTHER  */
 
+.scrool{position: absolute; bottom:-500px;}
 .isciradio{
   font-family:"M PLUS Rounded 1c",sans-serif;
   width:75%;
@@ -390,8 +391,9 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   position: sticky;
   top: 400px;
   z-index: 200;
+
 }
-.isciradio:focus{  border-width: 0;}
+.isciradio:focus{  border-width: 0;   outline-width: 0;}
 .isci{
     width: 90px;
   height: 90px;

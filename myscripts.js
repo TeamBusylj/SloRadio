@@ -303,7 +303,7 @@ function onloade() {
 ////search//////
 
 			async function iscimo(){
-				window.scrollTo(0, 460, { behavior: 'smooth'})
+				window.scrollTo({left :0, top: 460,  behavior: 'smooth'})
 
 				var checkno=0;
 	var data = document.getElementById("isciradio").value.toLowerCase();
@@ -311,18 +311,21 @@ function onloade() {
 	var vsi = document.querySelectorAll('.radii');
 	const radiji = []
 	for (var i = 0; i < vsi.length; i++) {
+		
 		var name = document.getElementsByTagName('a')[i].getAttribute('alt').toLowerCase();
 		radiji.push( "\n" + i + ' ' + name);
 		
-		document.getElementsByTagName('a')[i].parentElement.style.scale = "0";
-		
+		document.getElementsByTagName('a')[i].parentElement.style.scale = ".8";
+		document.getElementsByTagName('a')[i].parentElement.style.opacity = "0";
 		if (name.includes(data)){
+			await new Promise(resolve => setTimeout(resolve, 10));
 			showRadio(i);
 			
 		}else{
 hideRadio(i)
 checkno = checkno+ 1;
 		};
+		
 	}
 	
 	checkifno(i,checkno)
@@ -334,6 +337,7 @@ checkno = checkno+ 1;
 
  //close search///////////
  async function neiscimo(){
+	window.scrollTo({left :0, top: 460,  behavior: 'smooth'})
 	var data = '';
 	document.getElementById('isci').style.display = "none";
 	document.getElementById('iscilupa').style.display = "block";
@@ -344,7 +348,7 @@ checkno = checkno+ 1;
 		var name = document.getElementsByTagName('a')[i].getAttribute('alt').toLowerCase();
 		radiji.push( "\n" + i + ' ' + name);
 		
-		document.getElementsByTagName('a')[i].parentElement.style.scale = "0";
+		document.getElementsByTagName('a')[i].parentElement.style.scale = "0.8";
 		document.getElementsByTagName('a')[i].parentElement.style.opacity = "0";
 		if (name.includes(data)){
 		
@@ -359,21 +363,28 @@ hideRadio(i)
  }
  /////////////
   async function hideRadio(i){
+	
+	
 	var radioanim = document.getElementsByTagName('a')[i].parentElement;
+	radioanim.style.opacity = "0";
 		await new Promise(resolve => setTimeout(resolve, 200));
 			radioanim.style.display = "none";
 
   }
   async function showRadio(i){
+	
 	document.getElementById('noresults').style.display = "none";
 	var radioanim = document.getElementsByTagName('a')[i].parentElement;
 		await new Promise(resolve => setTimeout(resolve, 201));
-		radioanim.style.scale = "0";
+		radioanim.style.opacity = "0";
+		radioanim.style.scale = "0.8";
 		radioanim.style.display = "block";
 		await new Promise(resolve => setTimeout(resolve, 10));
 			radioanim.style.scale = "1";
 			radioanim.style.opacity = "1";
   }
+
+
   async function checkifno(i,checkno){
 	console.log(i+ ', '+checkno)
 	var radioanim = document.getElementById('noresults')

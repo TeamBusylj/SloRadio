@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
 <head>
-<link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
-<link rel="manifest" href="./favicons/site.webmanifest">
-<link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#00569d">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+    <link rel="manifest" href="./favicons/site.webmanifest">
+    <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#00569d">
 
 
     <!-- Google tag (gtag.js) -->
@@ -14,7 +14,7 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-        
+
         gtag('config', 'G-0E74SP5Q9F');
     </script>
 
@@ -27,17 +27,17 @@
 
 <body id=body onload="onloade();onloayde(); loading = 'no'">
     <div id=bodys class=bodys>
-        
+
         <div class=radioano>
             <div class=toper></div>
             <img alt="img" class=radioan src=./assets/sloradio.svg id=radioan>
 
-            <p id=p>&nbsp;</p>
+            <p id=p></p>
         </div>
         <img alt="search" class="isci radian" src=./assets/nehi.svg id=isci onclick="neiscimo()">
-        <img alt="search" class=isci src=./assets/search.svg id=iscilupa >
-        <input id="isciradio" class="isciradio" alt="Iščite radio...." oninput="iscimo()" placeholder="Išči radio..." >
-        
+        <img alt="search" class=isci src=./assets/search.svg id=iscilupa>
+        <input id="isciradio" class="isciradio" alt="Iščite radio...." oninput="iscimo()" placeholder="Išči radio...">
+
         <p id=noresults>Ni zadetkov</p>
         <audio oncanplay=loaded() class=zvok autoplay id=zvok>
             <source id=audioId src="" type=audio/mpeg>
@@ -56,155 +56,194 @@
                 </a>
             </div>
             <div class="radii">
-                <a alt="Radio 1" href="javascript:myFunction('https://live.radio.si/Radio1','r1 copy.svg','Radio 1')" class=radiosi>
+                <a alt="Radio 1" href="javascript:myFunction('https://live.radio.si/Radio1','r1 copy.svg','Radio 1')"
+                    class=radiosi>
                     <img loading="lazy" alt="radio" src=./assets/r1.svg>
                     <span>Radio 1</span>
                 </a>
-               <img loading="lazy" style="display: block;" id=favi onclick="favi('live.radio.si/Radio1','r1 copy.svg','Radio 1')" alt class=favorite
-          src=./assets/fav.svg>
+                <img loading="lazy" style="display: block;" id=favi
+                    onclick="favi('live.radio.si/Radio1','r1 copy.svg','Radio 1')" alt class=favorite
+                    src=./assets/fav.svg>
             </div>
             <div class="radii" id=radii>
-                <a alt="Hitadio Antena" href="javascript:myFunction('https://live.radio.si/Antena','antena copy.svg','Hitradio Antena')" class=radiosi>
+                <a alt="Hitadio Antena"
+                    href="javascript:myFunction('https://live.radio.si/Antena','antena copy.svg','Hitradio Antena')"
+                    class=radiosi>
                     <img loading="lazy" alt src=./assets/antena.svg>
                     <span>Hitradio <br>Antena </span>
                 </a>
-                 <img loading="lazy" style="display: block;"  id=favi onclick="favi('live.radio.si/Antena','antena copy.svg','Radio Antena')" alt class=favorite
-          src=./assets/fav.svg>
+                <img loading="lazy" style="display: block;" id=favi
+                    onclick="favi('live.radio.si/Antena','antena copy.svg','Radio Antena')" alt class=favorite
+                    src=./assets/fav.svg>
             </div>
             <div class="radii">
-                <a alt="Hitadio Center"  href="centri.html" class=radiosi>
+                <a alt="Hitadio Center" href="centri.html" class=radiosi>
                     <img loading="lazy" alt=radio src=./assets/center.png>
                     <span>Hitadio <br>Center </span>
                 </a>
-                
+
             </div>
 
             <div class="radii">
-                <a alt="Radio 1 80-a" href="javascript:myFunction('https://live.radio.si/Radio2','r2.jpg','Radio 1 80-a')" class=radiosi>
+                <a alt="Radio 1 80-a"
+                    href="javascript:myFunction('https://live.radio.si/Radio2','r2.jpg','Radio 1 80-a')" class=radiosi>
                     <img loading="lazy" alt=radio src=./assets/r2.jpg>
                     <span>Radio&nbsp;1<br>80-a</span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('live.radio.si/Radio2','r2.jpg','Radio 1 80-a')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi onclick="favi('live.radio.si/Radio2','r2.jpg','Radio 1 80-a')" alt
+                    class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Radio Salomon"  href="javascript:myFunction('https://live.radio.si/Salomon','salomon copy.svg','Radio Salomon')" class=radiosi>
+                <a alt="Radio Salomon"
+                    href="javascript:myFunction('https://live.radio.si/Salomon','salomon copy.svg','Radio Salomon')"
+                    class=radiosi>
                     <img loading="lazy" alt=radio src=./assets/salomon.svg>
                     <span>Radio <br>Salomon </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('live.radio.si/Salomon','salomon copy.svg','Radio Salomon')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi onclick="favi('live.radio.si/Salomon','salomon copy.svg','Radio Salomon')"
+                    alt class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Radio SI" href="javascript:myFunction('https://mp3.rtvslo.si/rsi','si copy.svg','Radio SI')" class=radiosi>
+                <a alt="Radio SI" href="javascript:myFunction('https://mp3.rtvslo.si/rsi','si copy.svg','Radio SI')"
+                    class=radiosi>
                     <img loading="lazy" alt=radio src=./assets/si.svg>
                     <span>Radio SI</span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/rsi','si copy.svg','Radio SI')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/rsi','si copy.svg','Radio SI')" alt
+                    class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Radio Aktual"  href="javascript:myFunction('https://live.radio.si/Aktual','aktual copy.svg','Radio Aktual')" class=radiosi>
+                <a alt="Radio Aktual"
+                    href="javascript:myFunction('https://live.radio.si/Aktual','aktual copy.svg','Radio Aktual')"
+                    class=radiosi>
                     <img loading="lazy" alt=radio src=./assets/aktual.svg>
                     <span>Radio <br>Aktual </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('live.radio.si/Aktual','aktual copy.svg','Radio Aktual')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi onclick="favi('live.radio.si/Aktual','aktual copy.svg','Radio Aktual')" alt
+                    class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Val 202" href="javascript:myFunction('https://mp3.rtvslo.si/val202','202 copy.svg','Val 202')" class=radiosi>
+                <a alt="Val 202" href="javascript:myFunction('https://mp3.rtvslo.si/val202','202 copy.svg','Val 202')"
+                    class=radiosi>
                     <img loading="lazy" alt=radio src=./assets/202.svg>
                     <span>Val 202</span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/val202','202 copy.svg','Val 202')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/val202','202 copy.svg','Val 202')" alt
+                    class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Radio Prvi" href="javascript:myFunction('https://mp3.rtvslo.si/ra1','prvi copy.svg','Radio Prvi')" class=radiosi>
+                <a alt="Radio Prvi"
+                    href="javascript:myFunction('https://mp3.rtvslo.si/ra1','prvi copy.svg','Radio Prvi')"
+                    class=radiosi>
                     <img loading="lazy" alt=radio src=./assets/prvi.svg>
                     <span>Radio <br>Prvi </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/ra1','prvi copy.svg','Radio Prvi')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/ra1','prvi copy.svg','Radio Prvi')" alt
+                    class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Rock Radio" href="javascript:myFunction('https://stream.nextmedia.si/proxy/rockr1_1?mp=/rock','rock copy.svg','Rock Radio')" class=radiosi>
+                <a alt="Rock Radio"
+                    href="javascript:myFunction('https://stream.nextmedia.si/proxy/rockr1_1?mp=/rock','rock copy.svg','Rock Radio')"
+                    class=radiosi>
                     <img loading="lazy" alt=radio src=./assets/rock.svg>
                     <span>Rock <br>Radio </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('stream.nextmedia.si/proxy/rockr1_1?mp=/rock','rock copy.svg','Rock Radio')" alt
-          class=favorite src="./assets/fav.svg">
+                <img loading="lazy" id=favi
+                    onclick="favi('stream.nextmedia.si/proxy/rockr1_1?mp=/rock','rock copy.svg','Rock Radio')" alt
+                    class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Radio Capris" href="javascript:myFunction('https://stream.exit.si/live','capris copy.svg','Radio Capris')" class=radiosi>
+                <a alt="Radio Capris"
+                    href="javascript:myFunction('https://stream.exit.si/live','capris copy.svg','Radio Capris')"
+                    class=radiosi>
                     <img loading="lazy" alt=radio src=./assets/capris.svg>
                     <span>Radio <br>Capris </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('stream.exit.si/live','capris copy.svg','Radio Capris')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi onclick="favi('stream.exit.si/live','capris copy.svg','Radio Capris')" alt
+                    class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii" id="joa">
-                <a alt="Radio Veseljak" href="javascript:myFunction('https://live.radio.si/Veseljak','veseljak copy.svg','Radio Veseljak')" class=radiosi>
+                <a alt="Radio Veseljak"
+                    href="javascript:myFunction('https://live.radio.si/Veseljak','veseljak copy.svg','Radio Veseljak')"
+                    class=radiosi>
                     <img loading="lazy" alt=radio src=./assets/veseljak.svg>
                     <span>Radio <br>Veseljak </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('live.radio.si/Veseljak','veseljak copy.svg','Radio Veseljak')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi
+                    onclick="favi('live.radio.si/Veseljak','veseljak copy.svg','Radio Veseljak')" alt class=favorite
+                    src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Radio Ognjišče" href="javascript:myFunction('https://live.radio.si/ognjisce.mp3','ogenj copy.svg','Radio Ognjišče')" class=radiosi>
+                <a alt="Radio Ognjišče"
+                    href="javascript:myFunction('https://live.radio.si/ognjisce.mp3','ogenj copy.svg','Radio Ognjišče')"
+                    class=radiosi>
                     <img loading="lazy" alt src=./assets/ogenj.svg>
                     <span>Radio <br>Ognjišče </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('live.radio.si/ognjisce.mp3','ogenj copy.svg','Radio Ognjišče')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi
+                    onclick="favi('live.radio.si/ognjisce.mp3','ogenj copy.svg','Radio Ognjišče')" alt class=favorite
+                    src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Radio City" href="javascript:myFunction('https://stream1.radiocity.si/CityAAC128.aac','city copy.svg','Radio City')" class=radiosi>
+                <a alt="Radio City"
+                    href="javascript:myFunction('https://stream1.radiocity.si/CityAAC128.aac','city copy.svg','Radio City')"
+                    class=radiosi>
                     <img loading="lazy" alt src=./assets/city.svg>
                     <span>Radio <br>City </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('stream1.radiocity.si/CityAAC128.aac','city copy.svg','Radio City')" alt
-          class=favorite src="./assets/fav.svg">
+                <img loading="lazy" id=favi
+                    onclick="favi('stream1.radiocity.si/CityAAC128.aac','city copy.svg','Radio City')" alt
+                    class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Murski Val" href="javascript:myFunction('https://live.radio.si/murskival','mura copy.svg','Radio Murski Val')" class=radiosi>
+                <a alt="Murski Val"
+                    href="javascript:myFunction('https://live.radio.si/murskival','mura copy.svg','Radio Murski Val')"
+                    class=radiosi>
                     <img loading="lazy" alt src=./assets/mura.svg>
                     <span>Murski <br>Val </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('live.radio.si/murskival','mura copy.svg','Radio Murski Val')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi onclick="favi('live.radio.si/murskival','mura copy.svg','Radio Murski Val')"
+                    alt class=favorite src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Radio Koper" href="javascript:myFunction('https://mp3.rtvslo.si/rakp','koper copy.svg','Radio Koper')" class=radiosi>
+                <a alt="Radio Koper"
+                    href="javascript:myFunction('https://mp3.rtvslo.si/rakp','koper copy.svg','Radio Koper')"
+                    class=radiosi>
                     <img loading="lazy" alt src=./assets/koper.svg>
                     <span>Radio <br>Koper </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/rakp','koper copy.svg','Radio Koper')" alt class=favorite
-          src="./assets/fav.svg">
+                <img loading="lazy" id=favi onclick="favi('mp3.rtvslo.si/rakp','koper copy.svg','Radio Koper')" alt
+                    class=favorite src="./assets/fav.svg">
             </div>
-            <div class="radii" >
-                <a alt="Radio Bob" href="javascript:myFunction('https://live.radio.si/BOB','bob.jpg','Radio BOB')" class=radiosi>
+            <div class="radii">
+                <a alt="Radio Bob" href="javascript:myFunction('https://live.radio.si/BOB','bob.jpg','Radio BOB')"
+                    class=radiosi>
                     <img loading="lazy" alt src=./assets/bob.jpg>
                     <span>Radio <br>BOB </span>
                 </a>
-                <img loading="lazy" id=favi onclick="favi('live.radio.si/BOB','bob.jpg','Radio BOB')" alt class=favorite src="./assets/fav.svg">
+                <img loading="lazy" id=favi onclick="favi('live.radio.si/BOB','bob.jpg','Radio BOB')" alt class=favorite
+                    src="./assets/fav.svg">
             </div>
             <div class="radii">
-                <a alt="Radio Študent" href="javascript:myFunction('https://kruljo.radiostudent.si:8001/hiq','student.jpg','Radio Študent')" class=radiosi>
+                <a alt="Radio Študent"
+                    href="javascript:myFunction('https://kruljo.radiostudent.si:8001/hiq','student.jpg','Radio Študent')"
+                    class=radiosi>
                     <img loading="lazy" alt src=./assets/student.jpg>
                     <span>Radio <br>Študent </span>
                 </a>
-                 <img loading="lazy" id=favi onclick="favi('kruljo.radiostudent.si:8001/hiq','student.jpg','Radio Študent')" alt class=favorite
-          src=./assets/fav.svg>
+                <img loading="lazy" id=favi
+                    onclick="favi('kruljo.radiostudent.si:8001/hiq','student.jpg','Radio Študent')" alt class=favorite
+                    src=./assets/fav.svg>
             </div>
             <div class="radii">
-                <a alt="Radio Sraka" href="javascript:myFunction('https://sraka.siradiostream.net','sraka.jpg','Radio Sraka')" class=radiosi>
+                <a alt="Radio Sraka"
+                    href="javascript:myFunction('https://sraka.siradiostream.net','sraka.jpg','Radio Sraka')"
+                    class=radiosi>
                     <img loading="lazy" alt src=./assets/sraka.jpg>
                     <span>Radio <br>Sraka </span>
                 </a>
-                 <img loading="lazy" id=favi onclick="favi('sraka.siradiostream.net','sraka.jpg','Radio Sraka')" alt class=favorite
-          src=./assets/fav.svg>
+                <img loading="lazy" id=favi onclick="favi('sraka.siradiostream.net','sraka.jpg','Radio Sraka')" alt
+                    class=favorite src=./assets/fav.svg>
             </div>
         </div>
     </div>
@@ -215,7 +254,8 @@
     <div id=screensaver class=screensaver onclick=myShow()></div>
     <div class=bottom id="bottom">
         <button class=butt id=butt>Slovenia</button>
-        <img loading="lazy" alt style=left:43%!important;right:0!important; class=favorite onclick="window.location.href='favorit.html'" src=./assets/fav.svg id=favorit>
+        <img loading="lazy" alt style=left:43%!important;right:0!important; class=favorite
+            onclick="window.location.href='favorit.html'" src=./assets/fav.svg id=favorit>
         <button onclick="window.location.href='indexworld.html'" class="butt rig" id="rig">World</button>
     </div>
 </body>

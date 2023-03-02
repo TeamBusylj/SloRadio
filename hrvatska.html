@@ -2,13 +2,13 @@
 
 <head>
 
-<link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
-<link rel="manifest" href="./favicons/site.webmanifest">
-<link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#00569d">
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+  <link rel="manifest" href="./favicons/site.webmanifest">
+  <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#00569d">
 
-<!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E74SP5Q9F"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -33,56 +33,62 @@
       <div class="toper"></div>
       <img class="radioan" src="./assets/sloradio.svg" id="radioan">
 
-      <p id="p">&nbsp;</p>
+      <p id="p"></p>
 
 
     </div>
     <img alt="search" class="isci radian" src=./assets/nehi.svg id=isci onclick="neiscimo()">
-        <img alt="search" class=isci src=./assets/search.svg id=iscilupa >
-        <input id="isciradio" class="isciradio" alt="Iščite radio...." oninput="iscimo()" placeholder="Išči radio..." >
-            <p id=noresults>Ni zadetkov<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+    <img alt="search" class=isci src=./assets/search.svg id=iscilupa>
+    <input id="isciradio" class="isciradio" alt="Iščite radio...." oninput="iscimo()" placeholder="Išči radio...">
+    <p id=noresults>Ni zadetkov<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
 
-    <video data-v-0c2d5106="" oncanplay="loaded()" oncanplaythrough="loaded()" onloadeddata="loaded()" class="zvok" autoplay id="zvok">
+    <video data-v-0c2d5106="" oncanplay="loaded()" oncanplaythrough="loaded()" onloadeddata="loaded()" class="zvok"
+      autoplay id="zvok">
       <source id="audioId" data-v-0c2d5106="" src="" type="audio/mpeg">
     </video>
 
     <div class="radio" id="radio">
       <div class="radii">
-        <a  alt="" href="javascript:screensaver()" class="radiosi">
+        <a alt="" href="javascript:screensaver()" class="radiosi">
           <img loading="lazy" alt="" src="./assets/batt.svg" width="290" height="180" class="batt">
           <span style="font-size: 55px; bottom: 75%;">Varčevanje<br> Baterije</span>
         </a>
       </div>
       <div class="radii">
-        <a  alt="" href=javascript:mutefVid() class=radiosi>
+        <a alt="" href=javascript:mutefVid() class=radiosi>
           <img loading="lazy" id="mute" src=./assets/unmute.svg width=290 height=180 class=" batt">
           <span id="murk">Zvok </span>
         </a>
       </div>
       <div class="radii">
-        <a  alt="Bravo (Narodni)" href="javascript:myFunction('http://c5.hostingcentar.com:8059/;', 'narodni.png', 'Bravo');"
-          class="radiosi">
+        <a alt="Bravo (Narodni)"
+          href="javascript:myFunction('http://c5.hostingcentar.com:8059/;', 'narodni.png', 'Bravo');" class="radiosi">
           <img loading="lazy" alt="" src="./assets/narodni.png">
 
           <span>Bravo<br>(Narodni)</span>
         </a>
-        <img loading="lazy" id="favi" onclick="favi('live.narodni.hr:8059/stream/1/', 'narodni.png', 'Narodni')" alt="" class="favorite" src="./assets/fav.svg">
+        <img loading="lazy" id="favi" onclick="favi('live.narodni.hr:8059/stream/1/', 'narodni.png', 'Narodni')" alt=""
+          class="favorite" src="./assets/fav.svg">
       </div>
       <div class="radii">
-        <a  alt="Otvoreni" href="javascript:myFunction('https://stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')"
+        <a alt="Otvoreni"
+          href="javascript:myFunction('https://stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')"
           class="radiosi">
           <img loading="lazy" alt="" src="./assets/otvoreni.jpg">
           <span>Otvoreni<br>&nbsp;</span>
         </a>
-        <img loading="lazy" id="favi" onclick="favi('stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" alt="" class="favorite" src="./assets/fav.svg">
+        <img loading="lazy" id="favi" onclick="favi('stream.otvoreni.hr/otvoreni', 'otvoreni.jpg', 'Otvoreni')" alt=""
+          class="favorite" src="./assets/fav.svg">
       </div>
       <div class="radii">
-        <a  alt="Istra" href="javascript:myFunction('https://s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')"
+        <a alt="Istra"
+          href="javascript:myFunction('https://s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')"
           class="radiosi">
           <img loading="lazy" alt="" src="./assets/istra.jpg">
           <span>Radio<br>Istra</span>
         </a>
-        <img loading="lazy" id="favi" onclick="favi('s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')" alt="" class="favorite" src="./assets/fav.svg">
+        <img loading="lazy" id="favi" onclick="favi('s8.iqstreaming.com:8032/stream', 'istra.jpg', 'Radio Istra')"
+          alt="" class="favorite" src="./assets/fav.svg">
       </div>
     </div>
 

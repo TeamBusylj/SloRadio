@@ -1,4 +1,4 @@
-                                                                                            /*  ROOT  */
+/*                                                                                              ROOT  */
 
 * {
   user-select:none;
@@ -26,7 +26,7 @@ html {
 }
 
 
-                                                                          /*  SHORTS */
+/*                                                                           SHORTS */
 
 .fila {
   fill:#fff
@@ -139,7 +139,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   96% {background-position:center}
   100% {background-position:center}
 }
-                                                                                                 /*  DARK  */
+/*                                                                                                  DARK  */
 
 @media (prefers-color-scheme: dark) {
 
@@ -171,7 +171,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   
   .radii {
     background-color:#071636;
-    background-color:rgba(255, 255, 255, 0.01);
+    background-color:rgba(255, 255, 255, 0.03);
     border-color:#fff;
   }
   
@@ -206,7 +206,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   }
 }
 
-                                                                                                                    /*  LIGHT  */
+/*                                                                                                                     LIGHT  */
 
 @media (prefers-color-scheme: light) {
   
@@ -264,7 +264,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   }
 }
 
-                                                                                 /*  PORTRAIT  */
+/*                                                                                 /*  PORTRAIT  */
 
 @media (orientation: portrait) {
  
@@ -325,7 +325,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   }
 }
 
-                                                                              /*  LANDSCAPE  */
+ /*                                                                              /*  LANDSCAPE  */
 
 @media (orientation: landscape) {
   .radii {
@@ -369,7 +369,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   }
 }
     
-                                                    /*  OTHER  */
+/*                                                                                            /*  OTHER  */
 
 .scrool{position: absolute; bottom:-500px;}
 .isciradio{

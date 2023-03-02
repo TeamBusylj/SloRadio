@@ -304,6 +304,7 @@ function onloade() {
 
 			async function iscimo(){
 				window.scrollTo({left :0, top: 460,  behavior: 'smooth'})
+				document.getElementById('bottom').style.display = "none";
 
 				var checkno=0;
 	var data = document.getElementById("isciradio").value.toLowerCase();
@@ -337,6 +338,8 @@ checkno = checkno+ 1;
 
  //close search///////////
  async function neiscimo(){
+	document.getElementById('bottom').style.display = "block";
+
 	window.scrollTo({left :0, top: 460,  behavior: 'smooth'})
 	var data = '';
 	document.getElementById('isci').style.display = "none";

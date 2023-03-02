@@ -304,7 +304,7 @@ function onloade() {
 ////search//////
 
 async function iscimo() {
-	window.scrollTo({ left: 0, top: 460, behavior: 'smooth' })
+	window.scrollTo({ left: 0, top: 300, behavior: 'smooth' })
 	document.getElementById('bottom').style.display = "none";
 
 	var checkno = 0;
@@ -342,7 +342,7 @@ async function iscimo() {
 async function neiscimo() {
 	document.getElementById('bottom').style.display = "block";
 
-	window.scrollTo({ left: 0, top: 460, behavior: 'smooth' })
+	window.scrollTo({ left: 0, top: 300, behavior: 'smooth' })
 	var data = '';
 	document.getElementById('isci').style.display = "none";
 	document.getElementById('iscilupa').style.display = "block";

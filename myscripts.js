@@ -233,7 +233,7 @@ function screensaver() {
 	*/
 
 	
-	if (navigator.userAgent.includes("vw")) {
+	if (navigator.userAgent.includes("wv")) {
 		AndroidInterface.showToast();
 	AndroidInterface.screensaver();
 	}else{

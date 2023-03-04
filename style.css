@@ -92,7 +92,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
 
 
 
-/*  Keyframes  */
+/*                                                                                                   Keyframes  */
 
 @keyframes buttons {
   0%{bottom: -300px; opacity: .7;}

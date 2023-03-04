@@ -1,4 +1,4 @@
-function onloayde() {
+async function onloayde() {
 	var iscira = document.getElementById('isciradio');
 	var elaas = document.getElementById('butt');
 	var elasas = document.getElementById('rig');
@@ -17,34 +17,23 @@ function onloayde() {
 	elas.classList.add("buta");
 	elasas.classList.add("buta");
 
-	setTimeout(function () {
-		ela.style.opacity = "1";
-		ela.classList.remove("radian");
-		for (var i = 0; i < el.length; i++) {
-			el[i].classList.remove("radia");
-			el[i].style.opacity = "1";
-		}
-
-
-	}, el.length*110);
-	var i = 0;
-	function myLoop(kkk) {
-		setTimeout(function () {
+	for (let i = 0; i < el.length; i++) {
+		await delay(90);
 			el[i].classList.add("radia");
-			i++;
-			if (i < kkk) {
-				myLoop(el.length);
-			}
-		}, 90)
+			removelasses(el, i);
+			await delay(40);
 	}
-
-	myLoop(el.length);
-
-
+	async function removelasses(es, a){
+		await delay(501);
+		es[a].style.opacity = "1";
+			es[a].classList.remove("radia");
+		}
 }
+function delay(time) {
+	return new Promise(resolve => setTimeout(resolve, time));
+  }
 
-
-
+ 
 function getFavi() {
 	console.log('kk');
 	loading = 'no';

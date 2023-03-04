@@ -240,18 +240,35 @@ function screensaver() {
 	var element = document.getElementById("screensaver");
 	element.classList.add("screen");
 	let elem = document.querySelector("body");
+	if (elem.requestFullscreen) {
+		elem.requestFullscreen();
+	  } else if (elem.webkitRequestFullscreen) { /* Safari */
+		elem.webkitRequestFullscreen();
+	  } else if (elem.msRequestFullscreen) { /* IE11 */
+		elem.msRequestFullscreen();
+	  }
 	}
 
 }
 
 function myShow() {
-	var element = document.getElementById("screensaver");
-	element.classList.remove("screen");
-	let elem = document.querySelector("body");
-	AndroidInterface.showmy();
+	
+	
+	if (navigator.userAgent.includes("wv")) {
+		AndroidInterface.showmy();
+	}else{
+		var element = document.getElementById("screensaver");
+		element.classList.remove("screen");
+		let elem = document.querySelector("body");
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+		  } else if (document.webkitExitFullscreen) { /* Safari */
+			document.webkitExitFullscreen();
+		  } else if (document.msExitFullscreen) { /* IE11 */
+			document.msExitFullscreen();
+		  }
 
-
-}
+}}
 
 function loads() {
 	

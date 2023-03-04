@@ -190,15 +190,15 @@ function scrollFunction() {
 	}
 }
 function scrollFunction() {
-	if (document.documentElement.scrollTop > 120) {
+	if (document.documentElement.scrollTop > 300) {
 		document.getElementById("radioan").style.height = '300px';
 		
 	} else {
 		var gs = document.documentElement.scrollTop;
 		
 		if (gs < 0) {	document.getElementById("radioan").style.height = '600px';}else{
-		var sj = reverseNumber(document.documentElement.scrollTop, 0, 120);
-			document.getElementById("radioan").style.height = sj*4+'px';
+		var sj = reverseNumber(document.documentElement.scrollTop, 0, 600);
+			document.getElementById("radioan").style.height = sj+'px';
 		}
 }
 var gs = document.documentElement.scrollTop; if (gs < 2) {	document.getElementById("radioan").style.height = '600px';}}

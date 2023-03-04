@@ -280,7 +280,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     height:600px;
     z-index:50;
     transition:.4s;
-    transition:all .2s
+    transition:all 0s
   }
     
   .toper {

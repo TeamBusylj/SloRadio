@@ -146,7 +146,11 @@ function myFunction(y, x, z) {
 		var audio = document.getElementById("zvok")
 		document.getElementById("audioId").setAttribute('src', y);
 		var element = document.getElementById("radioan");
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			element.style.filter = "invert(0%) brightness(70%)";
+		}else{
 		element.style.filter = "invert(0%)";
+		}
 		element.classList.add("animated");
 		audio.load();
 
@@ -177,16 +181,30 @@ window.onscroll = function () {
 
 function scrollFunction() {
 	if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 120) {
-		document.getElementById("radioan").style.height = "300px";
-
+		document.getElementById("ggg").style.height = "220px";
+		document.getElementById("ggg").style.marginTop = "50px";
 	} else {
-		document.getElementById("radioan").style.height = "600px";
-
+		document.getElementById("ggg").style.height = "350px";
+		document.getElementById("ggg").style.marginTop = "150px";
 
 	}
 }
-
-
+function scrollFunction() {
+	if (document.documentElement.scrollTop > 120) {
+		document.getElementById("radioan").style.height = '300px';
+		
+	} else {
+		var gs = document.documentElement.scrollTop;
+		
+		if (gs < 0) {	document.getElementById("radioan").style.height = '600px';}else{
+		var sj = reverseNumber(document.documentElement.scrollTop, 0, 120);
+			document.getElementById("radioan").style.height = sj*4+'px';
+		}
+}
+var gs = document.documentElement.scrollTop; if (gs < 2) {	document.getElementById("radioan").style.height = '600px';}}
+function reverseNumber(num,min,max) {
+    return (max + min) - num;
+}
 function mutefVid() {
 
 	var vid = document.getElementById("zvok");
@@ -214,8 +232,15 @@ function screensaver() {
 	let elem = document.querySelector("body");
 	*/
 
-	AndroidInterface.showToast();
+	
+	if (navigator.userAgent.includes("vw")) {
+		AndroidInterface.showToast();
 	AndroidInterface.screensaver();
+	}else{
+	var element = document.getElementById("screensaver");
+	element.classList.add("screen");
+	let elem = document.querySelector("body");
+	}
 
 }
 
@@ -229,6 +254,7 @@ function myShow() {
 }
 
 function loads() {
+	
 	loading = 'yes';
 	var element = document.getElementById("loader");
 	element.classList.remove("hide");
@@ -236,6 +262,8 @@ function loads() {
 	element.classList.remove("animated");
 	element.classList.add("animated2");
 	var elemento = document.getElementById("radioan");
+	elemento.classList.remove("show");
+	elemento.classList.add("hide");
 	elemento.classList.remove("animated2");
 	elemento.classList.add("animated");
 
@@ -245,23 +273,18 @@ function loaded() {
 	var element = document.getElementById("loader");
 	var elemento = document.getElementById("radioan");
 
-	elemento.classList.add("animated");
+	
 	element.classList.remove("show");
 	element.classList.add("hide");
-	console.log('xm')
-	if (document.getElementById("radioan").src.includes("svg")) {
-		document.getElementById("radioan").style.borderRadius = "0px";
-	} else {
-		document.getElementById("radioan").style.borderRadius = "50px";
-
-	}
-
+	elemento.classList.remove("hide");
+	elemento.classList.add("show");
+		elemento.style.borderRadius = "50px";
 	loading = 'no'
 	elemento.classList.remove("animated");
 	elemento.classList.add("animated2");
 	setTimeout(function () {
+		
 		element.classList.remove("animated2");
-		elemento.classList.remove("animated2");
 	}, 500);
 
 

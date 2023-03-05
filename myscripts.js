@@ -333,7 +333,7 @@ function onloade() {
 ////search//////
 
 async function iscimo() {
-	window.scrollTo({ left: 0, top: 300, behavior: 'smooth' })
+	window.scrollTo({ left: 0, top: 285, behavior: 'smooth' })
 	document.getElementById('bottom').style.display = "none";
 
 	var checkno = 0;

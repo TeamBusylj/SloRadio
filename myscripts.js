@@ -57,7 +57,7 @@ var ime = useSkup3;
 
 
 var ahref = "javascript:myFunction("+ "'https://" + link + "'" + ",'" + slika + "'" +  ",'" + ime + "')";
-var favica = "javascript:favi("+ "'" + link + "'" + ",'" + slika + "'" +  ",'" + ime + "')";
+var favica = "javascript:favi("+ "'" + link + "'" + ",'" + slika + "'" +  ",'" + ime + "', this)";
 console.log(ahref + 'k');
 document.getElementById("favi"+j).style.display = "block";
 document.getElementById("a"+j).setAttribute('href', ahref);
@@ -70,7 +70,7 @@ j=j+1}}
 
 
 
-function favi(y, x, z) {
+function favi(y, x, z, thi) {
 	var jeye ;
 	for(var i = 1;i<100;i++){
 	
@@ -78,11 +78,13 @@ function favi(y, x, z) {
 		localStorage.removeItem(i);
 		jeye = 'ja';
 console.log(jeye)
+thi.setAttribute('src', './assets/fav.svg') 
 		break;}
 		
 	}
 	if(jeye === undefined){
 	for(var i = 1;i<100;i++){
+		thi.setAttribute('src', './assets/favfill.svg') 
 		if(localStorage.getItem(i) == null){
 		localStorage.setItem(localStorage.length+1, y + ' @ ' + x +  ' % ' + z);
 		console.log(jeye+'k')

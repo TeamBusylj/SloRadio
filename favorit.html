@@ -1,109 +1,121 @@
 <!DOCTYPE html>
 
 <head>
-<link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
-<link rel="manifest" href="./favicons/site.webmanifest">
-<link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#00569d">
 
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicons/favicon-16x16.png">
+  <link rel="manifest" href="./favicons/site.webmanifest">
+  <link rel="mask-icon" href="./favicons/safari-pinned-tab.svg" color="#00569d">
 
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E74SP5Q9F"></script>
-      <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
-          gtag('js', new Date());
-          
-          gtag('config', 'G-0E74SP5Q9F');
-      </script>
-    <script src="myscripts.js"></script>
-    <meta name="viewport" content="user-scalable=no">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
-    <title>SloRadio-favi</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E74SP5Q9F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-0E74SP5Q9F');
+  </script>
+  <script src="myscripts.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap" rel="stylesheet">
+  <title>SloRadio</title>
 </head>
 
-<body id="body" onload=" onloade();onloayde(); getFavi(); loading = 'no';">
-    <div id="bodys" class="bodys">
-        <div class="radioano">
-            <div class="toper"></div>
-            <img class="radioan" src="./assets/sloradio.svg" id="radioan">
-            <p id="p"> </p>
-        </div>
-  <audio oncanplay="loaded()" oncanplaythrough="loaded()" onloadeddata="loaded()" class="zvok" autoplay id="zvok">
-      <source id="audioId" src="" type="audio/mpeg">
-   </audio>
 
-        <div class="radio" id="radio">
-        <div class="radii">
-                <a  href="javascript:screensaver()" class="radiosi">
+<body id="body" onload="onloade();onloayde();getFavi(); loading = 'no';">
+  <div id="bodys" class="bodys">
+    <div class="radioano">
+      <div class="toper"></div>
+      <img class="radioan" src="./assets/sloradio.svg" id="radioan">
+
+      <p id="p"></p>
+
+
+    </div>
+    <img alt="search" class="isci radian" src=./assets/nehi.svg id=isci onclick="neiscimo()">
+    <img alt="search" class=isci src=./assets/search.svg id=iscilupa>
+    <input id="isciradio" class="isciradio" alt="Iščite radio...." oninput="iscimo()" placeholder="Išči radio...">
+    <p id=noresults>Ni zadetkov<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+    <p id=nofavi>Nimate priljubljenih radijev<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+    <video data-v-0c2d5106="" oncanplay="loaded()" oncanplaythrough="loaded()" onloadeddata="loaded()" class="zvok"
+      autoplay id="zvok">
+      <source id="audioId" data-v-0c2d5106="" src="" type="audio/mpeg">
+    </video>
+
+    <div class="radio" id="radio">
+        <div class="radii" id="scre" >
+                <a  href="javascript:screensaver()" class="radiosi" >
                     <img loading="lazy" alt="" src="./assets/batt.svg" width="290" height="180" class="batt">
                     <span style="font-size: 55px; bottom: 75%;">Varčevanje<br> Baterije</span>
                 </a>
             </div>
-            <div class="radii">
-                <a href=javascript:mutefVid() class=radiosi>
+            <div class="radii" id="scre2">
+                <a href=javascript:mutefVid() class=radiosi >
                     <img loading="lazy" onclick="" id ="mute" src=./assets/unmute.svg width=290 height=180 class="batt">
                     <span id="murk">Zvok </span>
                 </a>
             </div>
-            <div class="radii"  style="display:none;" id="favi1">
+            <div class="radii"  style="display:none; " id="favi1">
                 <a  href="" class="radiosi" id="a1">
                     <img loading="lazy" alt="" id=imga1 src="">
                     <span id="asp1" ></span>
                 </a>  <img loading="lazy" onclick="" id ="favica1"  alt="" class="favorite" src="./assets/fav.svg"> 
             </div>
-            <div class="radii"  style="display:none;" id="favi2">
+            <div class="radii"  style="display:none; " id="favi2">
                 <a  href="" class="radiosi" id="a2">
                     <img loading="lazy" alt="" id=imga2 src="">
                     <span id="asp2" ></span>
                 </a>  <img loading="lazy" onclick="" id ="favica2" alt="" class="favorite" src="./assets/fav.svg"> 
             </div>
-            <div class="radii"  style="display:none;" id="favi3">
+            <div class="radii"  style="display:none; " id="favi3">
                 <a  href="" class="radiosi" id="a3">
                     <img loading="lazy" alt="" id=imga3 src="">
                     <span id="asp3" ></span>
                 </a>  <img loading="lazy" onclick="" id ="favica3"  alt="" class="favorite" src="./assets/fav.svg"> 
             </div>
-            <div class="radii"  style="display:none;" id="favi4">
+            <div class="radii"  style="display:none; " id="favi4">
                 <a  href="" class="radiosi" id="a4">
                     <img loading="lazy" alt="" id=imga4 src="">
                     <span id="asp4" ></span>
                 </a>  <img loading="lazy" onclick="" id ="favica4"  alt="" class="favorite" src="./assets/fav.svg"> 
             </div>
-            <div class="radii"  style="display:none;" id="favi5">
+            <div class="radii"  style="display:none; " id="favi5">
                 <a  href="" class="radiosi" id="a5">
                     <img loading="lazy" alt="" id=imga5 src="">
                     <span id="asp5" ></span>
                 </a>  <img loading="lazy" onclick="" id ="favica5"  alt="" class="favorite" src="./assets/fav.svg"> 
             </div>
-            <div class="radii"  style="display:none;" id="favi6">
+            <div class="radii"  style="display:none; " id="favi6">
                 <a  href="" class="radiosi" id="a6">
                     <img loading="lazy" alt="" id=imga6 src="">
                     <span id="asp6" ></span>
                 </a>   <img loading="lazy" id=favi onclick="joka()" alt class=favorite
                 src="./assets/fav.svg">
             </div>
-            <div class="radii"  style="display:none;" id="favi7">
+            <div class="radii"  style="display:none; " id="favi7">
                 <a  href="" class="radiosi" id="a7">
                     <img loading="lazy" alt="" id=imga7 src="">
                     <span id="asp7" ></span>
                 </a>  <img loading="lazy" onclick="" id ="favica7" alt="" class="favorite" src="./assets/fav.svg"> 
             </div>
-            <div class="radii"  style="display:none;" id="favi8">
+            <div class="radii"  style="display:none; " id="favi8">
                 <a  href="" class="radiosi" id="a8">
                     <img loading="lazy" alt="" id=imga8 src="">
                     <span id="asp8" ></span>
                 </a>  <img loading="lazy" onclick="" id ="favica8"  alt="" class="favorite" src="./assets/fav.svg"> 
             </div>
-            <div class="radii"  style="display:none;" id="favi9">
+            <div class="radii"  style="display:none; " id="favi9">
                 <a  href="" class="radiosi" id="a9">
                     <img loading="lazy" alt="" id=imga9 src="">
                     <span id="asp9" ></span>
                 </a>  <img loading="lazy" onclick="" id ="favica9"  alt="" class="favorite" src="./assets/fav.svg"> 
             </div>
-            <div class="radii"  style="display:none;" id="favi10">
+            <div class="radii"  style="display:none; " id="favi10">
                 <a  href="" class="radiosi" id="a10">
                     <img loading="lazy" alt="" id=imga10 src="">
                     <span id="asp10" ></span>
@@ -111,15 +123,25 @@
             </div>
         </div>
 
-    </div>
 
-    <div class="loader" style="width: 100%;" id="loader"> <img loading="lazy"  class="ggg" id="ggg" src="./assets/loader.svg"></div>
-    <div id="screensaver" class="screensaver" onclick="myShow()"></div>
-    <div class="bottom" id="bottom">
-        <button onclick="window.location.href='index.html';" class="butt" id="butt">Slovenia</button>
-        <button onclick="window.location.href='indexworld.html';" class="butt rig" id="rig" id="butt">World</button>
+  </div>
 
-    </div>
+
+
+  <p class="scrool">&nbsp;</p>
+
+
+  <div class="loader" style="width: 100%;" id="loader"> <img loading="lazy" class="ggg" id="ggg"
+      src="./assets/loader.svg"></div>
+  <div id="screensaver" class="screensaver" onclick="myShow()"></div>
+  <div class="bottom" id="bottom">
+    <button onclick="window.location.href='index.html'" class="butt" id="butt">Slovenia</button>
+    <img loading="lazy" alt="" style=" left: 43% !important; right: 0 !important;" class="favorite"
+      onclick="window.location.href='favorit.html';" src="./assets/fav.svg" id="favorit">
+
+    <button onclick="window.location.href='indexworld.html'" class="butt rig" id="rig" id="butt">World</button>
+  </div>
+
 </body>
 
 </html>

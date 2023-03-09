@@ -390,7 +390,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   border-width: 0;
   opacity: 0;
   position: sticky;
-  top: 400px;
+  top: 350px;
   z-index: 200;
 
 }
@@ -401,11 +401,12 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
  right:60px;
  z-index: 202;
  position: sticky;
- top: 410px;
+ top: 360px;
 margin-left: 850px;
  margin-bottom: -100px;
 }
 #noresults{display: none;}
+#nofavi{display: none;}
 #isci{display: none;}
 #iscilupa{opacity: 0; z-index: 201;}
 .screensaver {
@@ -538,8 +539,8 @@ a {
   right:20px;
   width: 86px;
   height: auto;
-  opacity: 0;
-  display: none;
+  opacity: 1;
+
 }
   
 

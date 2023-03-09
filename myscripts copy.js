@@ -13,7 +13,7 @@ async function onloayde() {
 	iscira.classList.add("radian");
 	ela.classList.add("radian");
 	elaas.classList.add("buta");
-	
+	elaws.classList.add("buta");
 	elas.classList.add("buta");
 	elasas.classList.add("buta");
 
@@ -35,65 +35,99 @@ function delay(time) {
 
  
 function getFavi() {
-	var j = 1;
-	document.getElementById("nofavi").style.display = "block";
-	document.getElementById("scre").style.display = "none";
-	document.getElementById("scre2").style.display = "none";
-	for(var i = 1; i<100; i++){
-		document.getElementById("favi"+j).style.display = "none";
-var useSkup = localStorage.getItem(i);
-if (useSkup != null){
-	
-		document.getElementById("scre").style.display = "block";
-	document.getElementById("scre2").style.display = "block";
-	document.getElementById("nofavi").style.display = "none";
-var link = useSkup.substring(0, useSkup.indexOf(' @ ')); 
-var useSkup2 = useSkup.replace(link+" @ ", "");
+	console.log('kk');
+	loading = 'no';
+	var aka = 1;
+	var oma = 1;
+	for (let i = 0; i < (localStorage.length); i++) {
 
-var slika = useSkup2.substring(0, useSkup2.indexOf(' % ')); 
-var useSkup3 = useSkup2.replace(slika+" % ", "")
+		let img = 'imga' + oma;
+		let radiiShow = 'favi' + oma;
+		let favicak = 'favica' + oma;
+		let ajevHref = 'a' + oma;
+		let kaka = 'asp' + oma;
+		var ahref = "javascript:myFunction('" + 'https://' + localStorage.getItem(aka + "B") + "', '" + localStorage.getItem(aka + "A") + "', '" + localStorage.getItem(aka + "C") + "')";
+		console.log(ahref);
+		console.log(radiiShow);
+		document.getElementById(radiiShow).style.display = "none";
+		var name = localStorage.getItem(aka + "C");
+		document.getElementById(ajevHref).href = ahref;
+		document.getElementById(favicak).setAttribute("onclick", "javascript:favi('v', 'v', '" + name + "' )");
+		if (ahref.includes("null")) { console.log(ahref); } else {
+			document.getElementById(radiiShow).style.display = "block";
+		}
+		document.getElementById(kaka).textContent = localStorage.getItem(aka + "C");
+		var koko = localStorage.getItem(aka + "A");
+		console.log(koko);
+		if (koko !== null) {
+			if (koko.includes(" copy")) {
+				document.getElementById(img).src = './assets/' + localStorage.getItem(aka + "A").replace(' copy', '');;
+			} else {
+				document.getElementById(img).src = './assets/' + localStorage.getItem(aka + "A");
+			}
+		}
+		oma = oma + 1;
+		if (aka === 1) {
+			aka = 3;
+		} else { aka = aka + 3; }
 
-var ime = useSkup3;
-
-
-var ahref = "javascript:myFunction("+ "'https://" + link + "'" + ",'" + slika + "'" +  ",'" + ime + "')";
-var favica = "javascript:favi("+ "'" + link + "'" + ",'" + slika + "'" +  ",'" + ime + "')";
-console.log(ahref + 'k');
-document.getElementById("favi"+j).style.display = "block";
-document.getElementById("a"+j).setAttribute('href', ahref);
-document.getElementById("favica"+j).setAttribute('onclick', favica);
-document.getElementById("imga"+j).setAttribute('src', './assets/'+slika);
-document.getElementById("asp"+j).innerHTML = ime;
-j=j+1}}
+	}
 
 }
 
 
 
 function favi(y, x, z) {
-	var jeye ;
-	for(var i = 1;i<100;i++){
-	
-	if(localStorage.getItem(i) === y + ' @ ' + x +  ' % ' + z){
-		localStorage.removeItem(i);
-		jeye = 'ja';
-console.log(jeye)
-		break;}
-		
-	}
-	if(jeye === undefined){
-	for(var i = 1;i<100;i++){
-		if(localStorage.getItem(i) == null){
-		localStorage.setItem(localStorage.length+1, y + ' @ ' + x +  ' % ' + z);
-		console.log(jeye+'k')
-		break;
-}
+	if (localStorage.getItem("radiki").indexOf(z) !== -1) {
+		if (this.src = ('./assets/fav.svg')) {
+			this.src = './assets/favfill.svg';
+		} else {
+			this.src = './assets/fav.svg';
+		}
+		var radioOba = localStorage.getItem("radiki").indexOf(z) + z.length;
+		let radioObs = localStorage.getItem("radiki").charAt(radioOba);
+		localStorage.removeItem(radioObs + 'A');
+		localStorage.removeItem(radioObs + 'B');
+		localStorage.removeItem(radioObs + 'C');
+		var radikil = localStorage.getItem("radiki");
+		var kora = radikil.replace(z + radioObs, '');
+		localStorage.setItem('radiki', kora);
+		console.log(localStorage.getItem("radiki"))
+		console.log(localStorage);
+		if (document.title === 'SloRadio-favi') {
+			getFavi()
+		}
+
 	}
 
+	else {
+
+		if (localStorage.length === 1) {
+			var lol = 1;
+		} else {
+			var lol = localStorage.length - 1;
+		}
+
+		localStorage.setItem(lol + 'A', x);
+		localStorage.setItem(lol + 'B', y);
+		localStorage.setItem(lol + 'C', z);
+
+		console.log(localStorage);
+		var img = document.getElementById('favi').src;
+		if (document.querySelector(".favorite").src = ('./assets/fav.svg')) {
+			document.querySelector(".favorite").src = './assets/favfill.svg';
+		} else {
+			document.querySelector(".favorite").src = './assets/fav.svg';
+		}
+		let radikia = localStorage.getItem("radiki") + ' ' + z + lol;
+		localStorage.setItem('radiki', radikia);
+
+	}
+
+
+
 }
-if(window.location.href.includes('favorit')){getFavi()}
-console.log(localStorage);
-}
+
 
 function mayno() {
 	alert("Mogoče ne bo delovalo.");
@@ -276,7 +310,7 @@ function loaded() {
 
 
 }
-
+localStorage.setItem('radiki', localStorage.getItem('radiki'));
 
 function onloade() {
 

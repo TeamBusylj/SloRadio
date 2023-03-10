@@ -1,6 +1,6 @@
 async function onloayde() {
 	if(localStorage.getItem('vsiradii') == null){localStorage.setItem('vsiradii','')}
-	if(!window.location.href.includes('favorit')){getSrcki()}
+	if(!window.location.href.includes('favorit')  && !window.location.href.includes('world')){getSrcki()}
 	var iscira = document.getElementById('isciradio');
 	var elaas = document.getElementById('butt');
 	var elasas = document.getElementById('rig');

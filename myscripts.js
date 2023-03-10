@@ -102,6 +102,10 @@ function favi(y, x, z, thi) {
 		jeye = 'ja';
 console.log(jeye)
 thi.setAttribute('src', './assets/fav.svg') 
+var ha = localStorage.getItem('vsiradii');
+
+	localStorage.setItem('vsiradii', ha.replace(z+';', ""));
+
 		break;}
 		
 	}

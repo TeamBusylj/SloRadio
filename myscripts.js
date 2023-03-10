@@ -8,6 +8,7 @@ async function onloayde() {
 	var elaws = document.getElementById('favorit');
 	var ela = document.getElementById('radioan');
 	var el = document.querySelectorAll('.radii');
+	fa()
 	setTimeout(function () {
 		ela.classList.add("radian");
 	}, 20);
@@ -30,6 +31,7 @@ async function onloayde() {
 		es[a].style.opacity = "1";
 			es[a].classList.remove("radia");
 		}
+		
 }
 function delay(time) {
 	return new Promise(resolve => setTimeout(resolve, time));
@@ -130,14 +132,20 @@ console.log(localStorage);
 function mayno() {
 	alert("Mogoče ne bo delovalo.");
 }
-
-
-
-
-
+function fa(){
+const boxes = document.getElementsByClassName('radii')
+for (const box of boxes) {
+	box.addEventListener('click', function onClick() {
+		var geta = box.getElementsByTagName('a')[0];
+		var gg = geta.getAttribute('href');
+		
+		eval(gg)
+		
+	});
+}
+}
 var loading;
 function myFunction(y, x, z) {
-
 	if (loading === 'no') {
 
 		loads()

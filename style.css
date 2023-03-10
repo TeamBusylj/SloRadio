@@ -323,6 +323,8 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     font-size:100px;
     margin-top:0;
     margin-bottom: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 
@@ -407,6 +409,7 @@ margin-left: 850px;
 }
 #noresults{display: none;}
 #nofavi{display: none;}
+.mansi{font-size: smaller;}
 #isci{display: none;}
 #iscilupa{opacity: 0; z-index: 201;}
 .screensaver {

@@ -1,4 +1,6 @@
 async function onloayde() {
+	if(localStorage.getItem('vsiradii') == null){localStorage.setItem('vsiradii','')}
+	if(!window.location.href.includes('favorit')){getSrcki()}
 	var iscira = document.getElementById('isciradio');
 	var elaas = document.getElementById('butt');
 	var elasas = document.getElementById('rig');
@@ -34,6 +36,26 @@ function delay(time) {
   }
 
  
+function getSrcki(){
+	var vsi = document.querySelectorAll('.radii');
+
+		
+
+		for (var i = 2; i < vsi.length; i++) {
+		var tale = document.getElementsByTagName('a')[i].getAttribute('alt');
+	
+			if(localStorage.getItem('vsiradii').includes(tale)){
+				console.log(tale)
+					var kk = vsi[i].querySelector("#favi");
+					kk.setAttribute('src', './assets/favfill.svg') ;
+			}
+
+		}
+	
+}
+
+
+
 function getFavi() {
 	var j = 1;
 	document.getElementById("nofavi").style.display = "block";
@@ -71,9 +93,10 @@ j=j+1}}
 
 
 function favi(y, x, z, thi) {
+
 	var jeye ;
 	for(var i = 1;i<100;i++){
-	
+		
 	if(localStorage.getItem(i) === y + ' @ ' + x +  ' % ' + z){
 		localStorage.removeItem(i);
 		jeye = 'ja';
@@ -86,6 +109,9 @@ thi.setAttribute('src', './assets/fav.svg')
 	for(var i = 1;i<100;i++){
 		thi.setAttribute('src', './assets/favfill.svg') 
 		if(localStorage.getItem(i) == null){
+			if(localStorage.getItem('vsiradii') !== null){
+				localStorage.setItem('vsiradii', localStorage.getItem('vsiradii') +z + ';');
+			}else{localStorage.setItem('vsiradii', z + ';');}
 		localStorage.setItem(localStorage.length+1, y + ' @ ' + x +  ' % ' + z);
 		console.log(jeye+'k')
 		break;

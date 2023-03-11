@@ -138,7 +138,7 @@ for (const box of boxes) {
 	box.addEventListener('click', function onClick() {
 		var geta = box.getElementsByTagName('a')[0];
 		var gg = geta.getAttribute('href');
-		
+		var gg = gg.replace('ff', '');
 		eval(gg)
 		
 	});
@@ -211,8 +211,9 @@ var gs = document.documentElement.scrollTop; if (gs < 2) {	document.getElementBy
 function reverseNumber(num,min,max) {
     return (max + min) - num;
 }
-function mutefVid() {
-
+function mutefVid(k) {
+	if (k == 'ff'){
+console.log('mk');
 	var vid = document.getElementById("zvok");
 	if (vid.muted == false) {
 		document.getElementById("mute").setAttribute('src', './assets/mute.svg');
@@ -228,7 +229,7 @@ function mutefVid() {
 		vid.muted = false;
 	}
 }
-
+}
 
 
 function screensaver() {

@@ -12,7 +12,8 @@
     opacity:1;
     transition:all .2s;
     -webkit-animation:bubble .4s forwards;
-    animation:bubble .48s forwards
+    animation:bubble .48s forwards;
+    
 }
 
 body {
@@ -22,7 +23,10 @@ body {
       
 html {
     font-family:"M PLUS Rounded 1c",sans-serif;
-    -webkit-tap-highlight-color:transparent
+    -webkit-tap-highlight-color:transparent;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-touch-callout:none
 }
 
 
@@ -268,8 +272,51 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
 /*                                                                                 /*  PORTRAIT  */
 
 @media (orientation: portrait) {
- 
+  .isci{
+    width: 90px;
+  height: 90px;
+ right:60px;
+ z-index: 202;
+ position: sticky;
+ top: 360px;
+margin-left: 850px;
+ margin-bottom: -100px;
+}
+  .loader {
+    width:100%;
+    height:330px;
+    z-index:110;
+    position:fixed;
+    top:0;
+    left:0;
+    border-radius:100px;
+    opacity:0;
+    margin-top: 10px;
+  }
+  
+  .isciradio{
+    font-family:"M PLUS Rounded 1c",sans-serif;
+    width:75%;
+    height: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+    display: block;
+    background-color: rgba(250, 250, 250, 0.2);;
+    border-radius: 100px;
+    font-size: 70px;
+    padding-left: 30px;
+    padding-right: 130px;
+    color: #fff;
+    border-width: 0;
+    opacity: 0;
+    position: sticky;
+    top: 350px;
+    z-index: 200;
+  
+  }
   img.radioan {
+    margin-top: 25px;
     margin-right: auto !important; 
     margin-left: auto !important; 
     overflow:hidden;
@@ -331,6 +378,45 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
  /*                                                                              /*  LANDSCAPE  */
 
 @media (orientation: landscape) {
+  #noresults{
+    transition:all .4;
+    background-color:transparent;
+    text-align:center;
+    font-size:90px;
+    margin-top:0;
+    position:fixed;
+    right:-20%;
+    bottom:10%
+  }
+  .isci{
+    width: 90px;
+  height: 90px;
+ right:-970px;
+ z-index: 202;
+ position: relative;
+ top: -600px;
+margin-left: 850px;
+ margin-bottom: -100px;
+}
+  .isciradio{
+    font-family:"M PLUS Rounded 1c",sans-serif;
+    width:40%;
+    height: 110px;
+    margin-bottom: 60px;
+    display: block;
+    background-color: rgba(250, 250, 250, 0.2);;
+    border-radius: 100px;
+    font-size: 70px;
+    padding-left: 30px;
+    padding-right: 130px;
+    color: #fff;
+    border-width: 0;
+    opacity: 0;
+    z-index:330;
+    right:-50%;
+    position: relative;
+    top:-600px;
+  }
   .radii {
     right:-50%;
     border-style:solid;
@@ -346,7 +432,8 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     position:relative;
     transition:all .2s;
     -webkit-transition:all .2s;
-    top:-600px
+    top:-600px;
+    opacity: 0;
   }
   p {
     transition:all .4;
@@ -362,51 +449,34 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
     overflow-y:hidden;
     overflow:hidden;
     will-change:contents;
-    top:35%;
+    top: 10%;
     transform:translateY(-50%);
-    width:30%;
+    width:700px;
     z-index:10;
     margin-left:70px !important;
     position:fixed;
     transition:.2s
   }
+  .loader {
+    width:30%;
+    height:330px;
+    z-index:11;
+    position:fixed;
+    top:35%;
+    left:7%;
+    border-radius:100px;
+    opacity:0;
+    margin-top: 10px;
+  }
+  
 }
     
 /*                                                                                            /*  OTHER  */
 
 .scrool{position: absolute; bottom:-500px;}
-.isciradio{
-  font-family:"M PLUS Rounded 1c",sans-serif;
-  width:75%;
-  height: 110px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 60px;
-  display: block;
-  background-color: rgba(250, 250, 250, 0.2);;
-  border-radius: 100px;
-  font-size: 70px;
-  padding-left: 30px;
-  padding-right: 130px;
-  color: #fff;
-  border-width: 0;
-  opacity: 0;
-  position: sticky;
-  top: 350px;
-  z-index: 200;
 
-}
 .isciradio:focus{  border-width: 0;   outline-width: 0;}
-.isci{
-    width: 90px;
-  height: 90px;
- right:60px;
- z-index: 202;
- position: sticky;
- top: 360px;
-margin-left: 850px;
- margin-bottom: -100px;
-}
+
 #noresults{display: none;}
 #nofavi{display: none;}
 .mansi{font-size: smaller;}
@@ -450,7 +520,7 @@ img.radioan{
  
   will-change: contents; 
   opacity: 0;
-  margin-top: 25px;
+
   border-radius: 30px;
 }
 
@@ -506,17 +576,6 @@ img.ggg {
   margin-top:50px;
 }
 
-.loader {
-  width:100%;
-  height:330px;
-  z-index:110;
-  position:fixed;
-  top:0;
-  left:0;
-  border-radius:100px;
-  opacity:0;
-  margin-top: 10px;
-}
 
 .radioano {
   margin-top: 25px;

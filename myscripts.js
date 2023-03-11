@@ -316,9 +316,9 @@ function loaded() {
 
 
 }
-
-
 function onloade() {
+
+	 
 
 	var audio = document.getElementById("zvok")
 	document.getElementById("audioId").setAttribute('src', "example.com");
@@ -339,7 +339,8 @@ function onloade() {
 ////search//////
 
 async function iscimo() {
-	window.scrollTo({ left: 0, top: 285, behavior: 'smooth' })
+	if(window.innerHeight > window.innerWidth){
+	window.scrollTo({ left: 0, top: 285, behavior: 'smooth' })}
 	document.getElementById('bottom').style.display = "none";
 
 	var checkno = 0;

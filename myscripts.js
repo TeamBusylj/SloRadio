@@ -167,10 +167,12 @@ function myFunction(y, x, z) {
 
 		document.getElementById("p").innerHTML = z;
 		if (navigator.userAgent.includes("wv")) {
+			console.log('PLaying Android')
 			AndroidInterface.playAudio(y);
+			
 		}else{
 		audio.play();
-
+console.log('PLaying web')
 		}
 
 	}

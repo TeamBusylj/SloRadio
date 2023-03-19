@@ -166,9 +166,12 @@ function myFunction(y, x, z) {
 
 
 		document.getElementById("p").innerHTML = z;
+		if (navigator.userAgent.includes("wv")) {
+			AndroidInterface.playAudio(y);
+		}else{
 		audio.play();
 
-
+		}
 
 	}
 

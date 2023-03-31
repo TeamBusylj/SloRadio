@@ -452,4 +452,9 @@ function checkUserAgent() {
 		document.getElementById('noresults').style.display = "none";
 	}
 }
+function remov(){
+	document.getElementsByTagName("BODY")[0].style.backgroundColor = "transparent";
+	document.getElementById("toper").style.backgroundColor = "transparent"
+	document.getElementById("p").style.backgroundColor = "transparent"
+}
 

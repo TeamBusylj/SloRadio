@@ -166,7 +166,6 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
 
   .toper {
     background-color:#071636;
-    box-shadow:10px 10px 9px #071636
   }
   
   body {
@@ -222,13 +221,13 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
 
   img.radioan {
     background-color:#57b3ff;
-    box-shadow:10px 10px 9px #57b3ff;
+    
     filter:brightness(100%) !important;
   }
   
   .toper {
     background-color:#57b3ff;
-    box-shadow:10px 10px 9px #57b3ff
+
   }
   
   body {

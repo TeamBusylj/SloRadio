@@ -457,4 +457,15 @@ function remov(){
 	document.getElementById("toper").style.backgroundColor = "transparent"
 	document.getElementById("p").style.backgroundColor = "transparent"
 }
+function changeCol(color){
+	remov();
+	var el = document.querySelectorAll('.radii');
+	for (let i = 0; i < el.length; i++) {
+		
+			el[i].style.backgroundColor = color
 
+	}
+}
+function changeRad(color){
+	document.getElementById("toper").style.backgroundColor = color
+}

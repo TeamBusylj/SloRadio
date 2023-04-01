@@ -470,4 +470,9 @@ function changeCol(color){
 }
 function changeRad(color){
 	document.getElementById("toper").style.backgroundColor = color
+
+}
+function changeSer(color){
+	document.getElementById("isciradio").style.backgroundColor = color
+	
 }

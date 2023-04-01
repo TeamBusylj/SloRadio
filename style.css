@@ -220,7 +220,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   }
 
   img.radioan {
-    background-color:#57b3ff;
+ 
     
     filter:brightness(100%) !important;
   }

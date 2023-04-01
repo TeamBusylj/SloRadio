@@ -474,5 +474,6 @@ function changeRad(color){
 }
 function changeSer(color){
 	document.getElementById("isciradio").style.backgroundColor = color
+	document.getElementById("isciradio").style.opacity = '1'
 	
 }

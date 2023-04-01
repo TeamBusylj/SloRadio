@@ -445,7 +445,7 @@ async function checkifno(i, checkno) {
 		radioanim.style.opacity = "1";
 	}
 }
-
+var android = 'no'
 function checkUserAgent() {
 
 	if (/Android|iPhone/i.test(navigator.userAgent)) {
@@ -458,7 +458,7 @@ function remov(){
 	document.getElementById("p").style.backgroundColor = "transparent"
 	
 }
-function changeCol(color){
+function changeCol(color, c2, c3){
 	remov();
 	var el = document.querySelectorAll('.radii');
 	for (let i = 0; i < el.length; i++) {
@@ -467,13 +467,9 @@ function changeCol(color){
 			el[i].style.borderColor = 'transparent'
 
 	}
-}
-function changeRad(color){
-	document.getElementById("toper").style.backgroundColor = color
-
-}
-function changeSer(color){
-	document.getElementById("isciradio").style.backgroundColor = color
+	document.getElementById("toper").style.backgroundColor = c2
+	document.getElementById("isciradio").style.backgroundColor = c3
 	document.getElementById("isciradio").style.opacity = '1'
-	
+	android = 'yes'
 }
+

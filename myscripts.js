@@ -456,6 +456,7 @@ function remov(){
 	document.getElementsByTagName("BODY")[0].style.backgroundColor = "transparent";
 	document.getElementById("toper").style.backgroundColor = "transparent"
 	document.getElementById("p").style.backgroundColor = "transparent"
+	
 }
 function changeCol(color){
 	remov();
@@ -463,6 +464,7 @@ function changeCol(color){
 	for (let i = 0; i < el.length; i++) {
 		
 			el[i].style.backgroundColor = color
+			el[i].style.borderColor = 'transparent'
 
 	}
 }

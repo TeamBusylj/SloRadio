@@ -142,8 +142,10 @@ for (const box of boxes) {
 		var geta = box.getElementsByTagName('a')[0];
 		var gg = geta.getAttribute('href');
 		var gg = gg.replace('ff', '');
+		console.log(gg)
+		if(!gg.includes('mutefVid')&&!gg.includes('screen')){
 		eval(gg)
-		
+		}
 	});
 }
 }
@@ -170,7 +172,8 @@ function myFunction(y, x, z) {
 
 		document.getElementById("p").innerHTML = z;
 		if (navigator.userAgent.includes("wv")) {
-			console.log('PLaying Android')
+			console.log('PLaying Android');
+			alert('Android')
 			AndroidInterface.playAudio(y);
 			
 		}else{
@@ -220,7 +223,7 @@ function reverseNumber(num,min,max) {
     return (max + min) - num;
 }
 function mutefVid(k) {
-	if (k == 'ff'){
+
 console.log('mk');
 	var vid = document.getElementById("zvok");
 	if (vid.muted == false) {
@@ -236,7 +239,7 @@ console.log('mk');
 		document.getElementById("murk").style.fontSize = "";
 		vid.muted = false;
 	}
-}
+
 }
 
 

@@ -9,16 +9,24 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="divLastSong" class="divLastSong"></div>
     <script>
-    function GetLiveStreaming() {
-        $.get("https://data.radio.si/api/lastsongsxml/maxi", function (data, status) {
-            $('#divLastsong').html(data);
-        });
+  
+  function GetLiveStreaming() {
+    fetch('https://data.radio.si/api/lastsongsxml/maxi', {
+		method: 'GET',
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+			'X-RapidAPI-Host': 'famous-quotes4.p.rapidapi.com',
+		},
+	})
+					setTimeout(GetLiveStreaming, 3000);
+				};
+              
 
-        setTimeout(GetLiveStreaming, 30000);
-    };
-
-    setTimeout(GetLiveStreaming, 600);
+				setTimeout(GetLiveStreaming, 600);
+			
+  
 </script>
 ggrwfaf
 </body>

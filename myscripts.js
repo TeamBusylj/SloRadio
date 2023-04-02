@@ -468,6 +468,8 @@ function changeCol(color, c2, c3){
 
 	}
 	document.getElementById("toper").style.backgroundColor = c2
+	document.getElementById("radioano").style.backgroundColor = c2
+	document.getElementById("loader").style.backgroundColor = c2
 	document.getElementById("isciradio").style.backgroundColor = c3
 	document.getElementById("isciradio").style.opacity = '1'
 	android = 'yes'

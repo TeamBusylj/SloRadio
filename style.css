@@ -181,6 +181,7 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   p {
     color:#fff;
     transition: all .4s;
+    background-color:transparent;
   }
   
   span {
@@ -246,7 +247,8 @@ img:not(.radioan ):not(.ggg):not(.favorite):active {
   }
   
   p {
-    color:#000
+    color:#000;
+    background-color:transparent;
   }
   
   html {

@@ -296,6 +296,7 @@ margin-left: 800px;
   }
   
   .isciradio{
+    overscroll-behavior: none;
     font-family:"M PLUS Rounded 1c",sans-serif;
     width:75%;
     height: 110px;
@@ -328,10 +329,12 @@ margin-left: 800px;
     height:600px;
     z-index:50;
     transition:.4s;
-    transition:all 0s
+    transition:all 0s;
+    overscroll-behavior: none;
   }
     
   .toper {
+    overscroll-behavior: none;
     overflow:hidden;
     will-change:contents;
     position:fixed;
@@ -400,6 +403,7 @@ margin-left: 850px;
  margin-bottom: -100px;
 }
   .isciradio{
+    overscroll-behavior: none;
     font-family:"M PLUS Rounded 1c",sans-serif;
     width:40%;
     height: 110px;

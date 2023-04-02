@@ -8,6 +8,7 @@ async function onloayde() {
 	var elaws = document.getElementById('favorit');
 	var ela = document.getElementById('radioan');
 	var el = document.querySelectorAll('.radii');
+	var elak = document.getElementById('radio');
 	fa()
 	setTimeout(function () {
 		ela.classList.add("radian");
@@ -16,20 +17,22 @@ async function onloayde() {
 	iscira.classList.add("radian");
 	ela.classList.add("radian");
 	elaas.classList.add("buta");
-	
+	elak.classList.add("radia");
 	elas.classList.add("buta");
 	elasas.classList.add("buta");
 
 	for (let i = 0; i < el.length; i++) {
-		await delay(90);
+		scrollTo(0, 0)
 			el[i].classList.add("radia");
 			removelasses(el, i);
-			await delay(40);
+			scrollTo(0, 0)
 	}
 	async function removelasses(es, a){
+		scrollTo(0, 0)
 		await delay(501);
 		es[a].style.opacity = "1";
 			es[a].classList.remove("radia");
+			scrollTo(0, 0)
 		}
 		
 }

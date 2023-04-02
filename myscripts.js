@@ -22,17 +22,17 @@ async function onloayde() {
 	elasas.classList.add("buta");
 
 	for (let i = 0; i < el.length; i++) {
-		scrollTo(0, 0)
+	
 			el[i].classList.add("radia");
 			removelasses(el, i);
-			scrollTo(0, 0)
+		
 	}
 	async function removelasses(es, a){
 		scrollTo(0, 0)
 		await delay(501);
 		es[a].style.opacity = "1";
 			es[a].classList.remove("radia");
-			scrollTo(0, 0)
+		
 		}
 		
 }

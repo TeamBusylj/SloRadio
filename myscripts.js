@@ -150,7 +150,7 @@ for (const box of boxes) {
 }
 }
 var loading;
-function myFunction(y, x, z) {
+async function myFunction(y, x, z) {
 	if (loading === 'no') {
 
 		loads()
@@ -172,11 +172,18 @@ function myFunction(y, x, z) {
 
 		document.getElementById("p").innerHTML = z;
 		if (navigator.userAgent.includes("wv")) {
+			document.getElementById("audioId").setAttribute('src', 'f');
 			console.log('PLaying Android');
-			alert('Android')
+		document.getElementById('radio').style.opacity= '0!important'
+		await delay(501);
+		audio.load();
+		loaded()
+		document.getElementById('radio').style.opacity = '1'
+		audio.volume = 0
 			AndroidInterface.playAudio(y);
 			
 		}else{
+			audio.volume = 1
 		audio.play();
 console.log('PLaying web')
 		}

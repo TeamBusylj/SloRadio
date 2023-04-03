@@ -466,17 +466,17 @@ function checkUserAgent() {
 		document.getElementById('noresults').style.display = "none";
 	}
 }
-function remov(x,y){
+function remov(x,y,z){
 	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 		document.getElementsByTagName("BODY")[0].style.backgroundColor = y;
-	}else{document.getElementsByTagName("BODY")[0].style.backgroundColor = x;}
+	}else{document.getElementsByTagName("BODY")[0].style.backgroundColor = z;}
 	
 	document.getElementById("toper").style.backgroundColor = "transparent"
 	document.getElementById("p").style.backgroundColor = "transparent"
 	
 }
-function changeCol(color, c2, c3){
-	remov(color, c2);
+function changeCol(color, c2, c3, c4){
+	remov(color, c2,c4);
 	var el = document.querySelectorAll('.radii');
 	for (let i = 0; i < el.length; i++) {
 		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {

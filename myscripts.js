@@ -1,5 +1,4 @@
 async function onloayde() {
-	
 	if(localStorage.getItem('vsiradii') == null){localStorage.setItem('vsiradii','')}
 	if(!window.location.href.includes('favorit')  && !window.location.href.includes('world')){getSrcki()}
 	var iscira = document.getElementById('isciradio');
@@ -466,28 +465,20 @@ function checkUserAgent() {
 		document.getElementById('noresults').style.display = "none";
 	}
 }
-function remov(x,y,z){
-	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		document.getElementsByTagName("BODY")[0].style.backgroundColor = y;
-	}else{document.getElementsByTagName("BODY")[0].style.backgroundColor = z;}
-	
+function remov(){
+	document.getElementsByTagName("BODY")[0].style.backgroundColor = "transparent";
 	document.getElementById("toper").style.backgroundColor = "transparent"
 	document.getElementById("p").style.backgroundColor = "transparent"
 	
 }
-function changeCol(color, c2, c3, c4){
-	remov(color, c2,c4);
+function changeCol(color, c2, c3){
+	remov();
 	var el = document.querySelectorAll('.radii');
 	for (let i = 0; i < el.length; i++) {
-		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		
 			el[i].style.backgroundColor = color
 			el[i].style.borderColor = 'transparent'
 
-		}else{
-			el[i].style.backgroundColor = c2
-			el[i].style.borderColor = 'transparent'
-		}
-			
 	}
 	
 	document.getElementById("toper").style.backgroundColor = c2

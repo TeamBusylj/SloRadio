@@ -465,21 +465,30 @@ function checkUserAgent() {
 		document.getElementById('noresults').style.display = "none";
 	}
 }
-function remov(){
-	document.getElementsByTagName("BODY")[0].style.backgroundColor = "transparent";
+function remov(x,y){
+	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+		document.getElementsByTagName("BODY")[0].style.backgroundColor = "transparent";
+	}else{document.getElementsByTagName("BODY")[0].style.backgroundColor = "color";}
+	
 	document.getElementById("toper").style.backgroundColor = "transparent"
 	document.getElementById("p").style.backgroundColor = "transparent"
 	
 }
 function changeCol(color, c2, c3){
-	remov();
+	remov(color, c2);
 	var el = document.querySelectorAll('.radii');
 	for (let i = 0; i < el.length; i++) {
-		
+		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 			el[i].style.backgroundColor = color
 			el[i].style.borderColor = 'transparent'
 
+		}else{
+			el[i].style.backgroundColor = c2
+			el[i].style.borderColor = 'transparent'
+		}
+			
 	}
+	
 	document.getElementById("toper").style.backgroundColor = c2
 	document.getElementById("radioano").style.backgroundColor = c2
 	document.getElementById("loader").style.backgroundColor = c2

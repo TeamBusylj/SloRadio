@@ -466,9 +466,9 @@ function checkUserAgent() {
 	}
 }
 function remov(x,y){
-	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-		document.getElementsByTagName("BODY")[0].style.backgroundColor = "transparent";
-	}else{document.getElementsByTagName("BODY")[0].style.backgroundColor = "color";}
+	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		document.getElementsByTagName("BODY")[0].style.backgroundColor = c2;
+	}else{document.getElementsByTagName("BODY")[0].style.backgroundColor = color;}
 	
 	document.getElementById("toper").style.backgroundColor = "transparent"
 	document.getElementById("p").style.backgroundColor = "transparent"

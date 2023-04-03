@@ -1,4 +1,5 @@
 async function onloayde() {
+	
 	if(localStorage.getItem('vsiradii') == null){localStorage.setItem('vsiradii','')}
 	if(!window.location.href.includes('favorit')  && !window.location.href.includes('world')){getSrcki()}
 	var iscira = document.getElementById('isciradio');
@@ -467,8 +468,8 @@ function checkUserAgent() {
 }
 function remov(x,y){
 	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		document.getElementsByTagName("BODY")[0].style.backgroundColor = c2;
-	}else{document.getElementsByTagName("BODY")[0].style.backgroundColor = color;}
+		document.getElementsByTagName("BODY")[0].style.backgroundColor = y;
+	}else{document.getElementsByTagName("BODY")[0].style.backgroundColor = x;}
 	
 	document.getElementById("toper").style.backgroundColor = "transparent"
 	document.getElementById("p").style.backgroundColor = "transparent"

@@ -180,6 +180,7 @@ async function myFunction(y, x, z) {
 		loaded()
 		document.getElementById('radio').style.opacity = '1'
 		audio.volume = 0
+		
 			AndroidInterface.playAudio(y);
 			
 		}else{
@@ -359,7 +360,7 @@ function onloade() {
 
 async function iscimo() {
 	if(window.innerHeight > window.innerWidth){
-	window.scrollTo({ left: 0, top: 285, behavior: 'smooth' })}
+	window.scrollTo({ left: 0, top: 280, behavior: 'smooth' })}
 	document.getElementById('bottom').style.display = "none";
 
 	var checkno = 0;

@@ -175,9 +175,7 @@ async function myFunction(y, x, z) {
 			document.getElementById("audioId").setAttribute('src', 'f');
 			console.log('PLaying Android');
 		document.getElementById('radio').style.opacity= '0!important'
-		await delay(501);
 		audio.load();
-		loaded()
 		document.getElementById('radio').style.opacity = '1'
 		audio.volume = 0
 		
@@ -201,7 +199,7 @@ console.log('PLaying web')
 window.onscroll = function () {
 	if (screen.availHeight > screen.availWidth) {
 		scrollFunction()
-	}
+	} 
 }
 
 function scrollFunction() {
@@ -213,6 +211,7 @@ function scrollFunction() {
 		document.getElementById("ggg").style.marginTop = "150px";
 
 	}
+	
 }
 function scrollFunction() {
 	if (document.documentElement.scrollTop > 300) {
@@ -225,6 +224,7 @@ function scrollFunction() {
 		var sj = reverseNumber(document.documentElement.scrollTop, 0, 600);
 			document.getElementById("radioan").style.height = sj+'px';
 		}
+		
 }
 var gs = document.documentElement.scrollTop; if (gs < 2) {	document.getElementById("radioan").style.height = '600px';}}
 function reverseNumber(num,min,max) {

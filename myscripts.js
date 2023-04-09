@@ -176,6 +176,9 @@ async function myFunction(y, x, z) {
 
 
 		document.getElementById("p").innerHTML = z;
+		if(y.includes('rtv')){audio.volume = 1
+			audio.play();
+	console.log('PLaying web')}else{
 		if (navigator.userAgent.includes("wv")) {
 			document.getElementById("audioId").setAttribute('src', 'f');
 			console.log('PLaying Android');
@@ -193,7 +196,7 @@ async function myFunction(y, x, z) {
 		audio.play();
 console.log('PLaying web')
 		}
-
+	}
 	}
 
 

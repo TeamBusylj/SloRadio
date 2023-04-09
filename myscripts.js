@@ -10,6 +10,7 @@ async function onloayde() {
 	var el = document.querySelectorAll('.radii');
 	var elak = document.getElementById('radio');
 	fa()
+	
 	setTimeout(function () {
 		ela.classList.add("radian");
 	}, 20);
@@ -34,7 +35,11 @@ async function onloayde() {
 			es[a].classList.remove("radia");
 		
 		}
-		
+		if (navigator.userAgent.includes("wv")) {
+			document.getElementById('bottom').style.display = 'none';
+			document.getElementById('butt').style.display = 'none';
+			document.getElementById('rig').style.display = 'none';
+		}
 }
 function delay(time) {
 	return new Promise(resolve => setTimeout(resolve, time));
@@ -175,7 +180,9 @@ async function myFunction(y, x, z) {
 			document.getElementById("audioId").setAttribute('src', 'f');
 			console.log('PLaying Android');
 		document.getElementById('radio').style.opacity= '0!important'
+		await delay(501);
 		audio.load();
+		loaded()
 		document.getElementById('radio').style.opacity = '1'
 		audio.volume = 0
 		

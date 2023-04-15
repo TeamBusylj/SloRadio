@@ -22,7 +22,7 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 01-22;Hr/Sodna Dvorana;DAN-INT.;12 Jana,194 Črt,292 POLICISTA INT. 2x;Tanja Potočnik,Aljaž Tepina;
 01-23;Hr/Pred Sodiščem;DAN-EXT.;2 Lara,1 Mark,21 Mia,291 Policaj  EXT. 1x;Gaja Filač,Matej Zemljič,Zala Djurić;
 01-24;Lj/Pasaža/Lokal;DAN-INT.;18 Nina,4 Dino,2V Lara Videoklic,227 LOKAL A 3x 19.2.,228 LOKAL AA 4x 19.2.;Melani Mekicar,Matino Antunović,Gaja Filač;
-01-24A;Hr/Pred Sodiščem;DAN-EXT;2 Lara,18V Nina Videoklic,291 Policaj  EXT. 1x;Gaja Filač,Melani Mekicar;
+01-24;Hr/Pred Sodiščem;DAN-EXT;2 Lara,18V Nina Videoklic,291 Policaj  EXT. 1x;Gaja Filač,Melani Mekicar;
 01-25;Lj/Julijino Stanovanje/Dnevna Soba;DAN-INT.;10 Julija;Sabina Kogovšek;
 01-26;Lj/Julijino Stanovanje/Predsoba;DAN-INT.;10 Julija,19 Bb;Sabina Kogovšek,Valter Dragan;
 01-27;Hr/Pred Sodiščem;DAN-EXT.;2 Lara,1 Mark,21 Mia,12 Jana,194 Črt,291 Policaj  EXT. 1x;Gaja Filač,Matej Zemljič,Zala Djurić,Tanja Potočnik,Aljaž Tepina;
@@ -153,8 +153,8 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 06-22;Lj/Edvardovo Stanovanje/Jedilnica;DAN-INT.;3 Edvard,11 David;Aleš Valič,Blaž Valič;
 06-23;Lj/Bb-Jeva Pisarna;DAN-INT.;19 Bb,39 Tajnica;Valter Dragan,Vesna Ponorac;
 06-24;Lj/Kovačeva Mesnica;DAN-INT.;7 Frenk,4 Dino,23 Borut,200 pasaža standard (3);Gaber Trseglav,Matino Antunović,Miha Rodman;
-06-25;Lj/Nadino stanovanje/Ordinacija;DAN-INT.;2 Lara,13 Nada,238 NADINA PACIENTKA;Gaja Filač,Aleksandra Balmazović;
-07-01;Lj/Nadino stanovanje/Ordinacija;DAN-INT.;2 Lara,13 Nada,238 NADINA PACIENTKA;Gaja Filač,Aleksandra Balmazović;
+06-25;Lj/Nadino stanovanje/Ordinacija;DAN-INT.;2 Lara,13 Nada,238 NADINA PACIENTK;Gaja Filač,Aleksandra Balmazović;
+07-01;Lj/Nadino stanovanje/Ordinacija;DAN-INT.;2 Lara,13 Nada,238 NADINA PACIENTK;Gaja Filač,Aleksandra Balmazović;
 07-02;Lj/Kovačeva Mesnica;DAN-INT.;7 Frenk,4 Dino,23 Borut,200 pasaža standard (3);Gaber Trseglav,Matino Antunović,Miha Rodman;
 07-03;Lj/Bb-Jeva Pisarna;DAN-INT.;19 Bb,39 Tajnica;Valter Dragan,Vesna Ponorac;
 07-04;Kemp/Janina Parcela/Pred Avtodomom;DAN-EXT;12 Jana,194 Črt,206 KEMP STANDARD (7);Tanja Potočnik,Aljaž Tepina;
@@ -254,10 +254,10 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 10-21;Lj/Pasaža;DAN-INT.;7 Frenk,5 Saška,6 Meri,200 pasaža standard (3);Gaber Trseglav,Mila Peršin,Vesna Pernarčič;
 10-22;Lj/Julijino Stanovanje/Dnevna Soba;DAN-INT.;10 Julija,19 Bb;Sabina Kogovšek,Valter Dragan;
 10-23;Lj/Pasaža/Lokal;DAN-INT.;6 Meri,23 Borut,210 LOKAL STANDARD (4);Vesna Pernarčič,Miha Rodman;
-10-23A;Lj/Dolenčevo Stanovanje/Dnevna Soba;NOČ-INT;161 Stane,250 Operativec;Bojan Maroševič,Damjan M. Trbovc;
+10-23;Lj/Dolenčevo Stanovanje/Dnevna Soba;NOČ-INT;161 Stane,250 Operativec;Bojan Maroševič,Damjan M. Trbovc;
 10-24;Lj/Kozmetični Salon/Sprejemnica;NOČ-INT.;6 Meri;Vesna Pernarčič;
 10-25;Lj/Nadino Stanovanje/Dnevni Del;NOČ-INT.;2 Lara;Gaja Filač;
-10-25A;Lj/Dolenčevo Stanovanje/Kabinet;NOČ-INT.;161 Stane,250 Operativec;Bojan Maroševič,Damjan M. Trbovc;
+10-25;Lj/Dolenčevo Stanovanje/Kabinet;NOČ-INT.;161 Stane,250 Operativec;Bojan Maroševič,Damjan M. Trbovc;
 10-26;Lj/Vila/Vhodna Veža s Stopniščem;NOČ-INT.;1 Mark,21 Mia,10 Julija,19 Bb;Matej Zemljič,Zala Djurić,Sabina Kogovšek,Valter Dragan;
 10-27;Lj/Dolenčevo Stanovanje/Kabinet;NOČ-INT.;161 Stane,252 Erika;Bojan Maroševič,Bernarda Oman;
 11-01;Lj/Vila/Vhodna Veža s Stopniščem;NOČ-INT.;1 Mark,21 Mia,10 Julija,19 Bb;Matej Zemljič,Zala Djurić,Sabina Kogovšek,Valter Dragan;
@@ -573,7 +573,7 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 22-22;Lj/Bistro Lotus;DAN-INT.;10 Julija,19 Bb,411 Natakarica,302 STATISTI LOTUS C 6x 10.4.;Sabina Kogovšek,Valter Dragan,Ksenija Žunić;
 22-23;Kemp/Janina Parcela/Avtodom;NOČ-INT.;12 Jana,14OFF Hrvoje Off,194OFF Črt Off,206 KEMP STANDARD (7);Tanja Potočnik,Alen Šalinović,Aljaž Tepina;
 22-24;Kemp/Janina Parcela/Pred Avtodomom;NOČ-EXT.;14 Hrvoje,12 Jana,7 Frenk,206 KEMP STANDARD (7);Alen Šalinović,Tanja Potočnik,Gaber Trseglav;
-22-24A;Kemp/Janina Parcela/Avtodom;NOČ-INT.;12 Jana,14OFF Hrvoje Off,206 KEMP STANDARD (7);Tanja Potočnik,Alen Šalinović;
+22-24;Kemp/Janina Parcela/Avtodom;NOČ-INT.;12 Jana,14OFF Hrvoje Off,206 KEMP STANDARD (7);Tanja Potočnik,Alen Šalinović;
 22-25;Lj/Nadino Stanovanje/Vhodna Veža;NOČ-INT.;2 Lara,255 Vid;Gaja Filač,Gašper Lovrec;
 22-26;Lj/Dolenčevo Stanovanje/Dnevna Soba;NOČ-INT.;19 Bb,258 Sanja;Valter Dragan,Nina Rakovec;
 23-01;Lj/Steinerjeva Klinika/Sprejemnica;DAN-INT.;2 Lara,255 Vid;Gaja Filač,Gašper Lovrec;
@@ -591,7 +591,7 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 23-13;Lj/Dolenčevo Stanovanje/Dnevna Soba;DAN-INT.;15 Pečnik,252 Erika,258 Sanja;Matija Rupel,Bernarda Oman,Nina Rakovec;
 23-14;Kemp/Sanitarije/Pred Sanitarijami;DAN-EXT.;14 Hrvoje,7 Frenk,206 KEMP STANDARD (7);Alen Šalinović,Gaber Trseglav;
 23-15;Lj/Steinerjeva Klinika/Sprejemnica;DAN-INT.;2 Lara,21 Mia,322 Sestra;Gaja Filač,Zala Djurić,Saša Majnarič;
-23-16;Kemp/Bar Na Plaži;DAN-EXT.;4 Dino,5 Saška,258 Sanja,206 KEMP STANDARD (7),241 PAR - STAREJŠI GOSPOD IN GOSPA;Matino Antunović,Mila Peršin,Nina Rakovec;
+23-16;Kemp/Bar Na Plaži;DAN-EXT.;4 Dino,5 Saška,258 Sanja,206 KEMP STANDARD (7),241 PAR - STAREJŠI GOSPOD IN GOSP;Matino Antunović,Mila Peršin,Nina Rakovec;
 23-17;Kemp/Pred recepcijo;DAN-EXT.;14 Hrvoje,12 Jana,206 KEMP STANDARD (7);Alen Šalinović,Tanja Potočnik;
 23-18;Kemp/Recepcija;DAN-INT.;14 Hrvoje,12 Jana;Alen Šalinović,Tanja Potočnik;
 23-19;Kemp/Stanetova Parcela;DAN-EXT.;3 Edvard,4 Dino,258 Sanja,206 KEMP STANDARD (7);Aleš Valič,Matino Antunović,Nina Rakovec;
@@ -978,7 +978,7 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 38-13;Kemp/Janina Parcela/Pred Avtodomom;DAN-EXT.;12 Jana,213 KEMP MANJ (3),410 Kupec 1;Tanja Potočnik;
 38-14;Lj/Dolenčevo Stanovanje/Kabinet;DAN-INT.;3 Edvard,258 Sanja;Aleš Valič,Nina Rakovec;
 38-15;Kemp/Ex Renatova Parcela/Pred Prikolico;DAN-EXT;5 Saška,6PS Meri PS,213 KEMP MANJ (3);Mila Peršin,Vesna Pernarčič;
-38-15A;Lj/Kozmetični Salon;DAN-INT.;6 Meri,5PS Saška PS;Vesna Pernarčič,Mila Peršin;
+38-15;Lj/Kozmetični Salon;DAN-INT.;6 Meri,5PS Saška PS;Vesna Pernarčič,Mila Peršin;
 38-16;Kemp/Janina Parcela/Pred Avtodomom;DAN-EXT.;14 Hrvoje,12 Jana,206 KEMP STANDARD (7);Alen Šalinović,Tanja Potočnik;
 38-17;Lj/Kmetija/Med Travniki;DAN-EXT.;2 Lara,257 Dr. Mirt;Gaja Filač,Žiga Udir;
 38-18;Lj/Pečnikova Pisarna;DAN-INT.;15 Pečnik,258 Sanja;Matija Rupel,Nina Rakovec;
@@ -1063,7 +1063,7 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 41-17;Lj/Steinerjeva Klinika/Sprejemnica;DAN-INT.;2 Lara,1 Mark,257 Dr. Mirt;Gaja Filač,Matej Zemljič,Žiga Udir;
 41-18;Kemp/Pred recepcijo;DAN-EXT.;10 Julija,16 Ela,11 David,206 KEMP STANDARD (7);Sabina Kogovšek,Mei Rabič,Blaž Valič;
 41-19;Kemp/Edvardova parcela/Pred prikolico;DAN-EXT.;3 Edvard,11 David,206 KEMP STANDARD (7);Aleš Valič,Blaž Valič;
-41-20;Kemp/Bar Na Plaži;DAN-EXT.;14 Hrvoje,4 Dino,206 KEMP STANDARD (7),245 GOST BARA;Alen Šalinović,Matino Antunović;
+41-20;Kemp/Bar Na Plaži;DAN-EXT.;14 Hrvoje,4 Dino,206 KEMP STANDARD (7),245 GOST BAR;Alen Šalinović,Matino Antunović;
 41-21;Kemp/Janina Parcela/Pred Avtodomom;DAN-EXT.;12 Jana,206 KEMP STANDARD (7);Tanja Potočnik;
 41-22;Kemp/Janina Parcela/Avtodom;DAN-INT./EXT.;12 Jana;Tanja Potočnik;
 41-23;Kemp/Naravna plaža;DAN-EXT.;10 Julija,16 Ela,11 David,206 KEMP STANDARD (7);Sabina Kogovšek,Mei Rabič,Blaž Valič;
@@ -1276,10 +1276,10 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 49-24;Kemp/Travnik Nad Kempom;DAN-EXT.;16 Ela,9 Renato;Mei Rabič,Primož Vrhovec;
 49-25;Lj/Bistro Lotus;DAN-INT.;2 Lara,1 Mark,21 Mia,257 Dr. Mirt,209 STATISTI LOTUS A 6x 9.4.;Gaja Filač,Matej Zemljič,Zala Djurić,Žiga Udir;
 49-26;Kemp/Edvardova parcela/Pred prikolico;DAN-EXT.;10 Julija,11 David,206 KEMP STANDARD (7),9OFF Renato Off;Sabina Kogovšek,Blaž Valič,Primož Vrhovec;
-49-26A;Kemp/Travnik Nad Kempom;DAN-EXT.;9 Renato;Primož Vrhovec;
+49-26;Kemp/Travnik Nad Kempom;DAN-EXT.;9 Renato;Primož Vrhovec;
 50-01;Lj/Bistro Lotus;DAN-INT.;2 Lara,1 Mark,21 Mia,257 Dr. Mirt,209 STATISTI LOTUS A 6x 9.4.;Gaja Filač,Matej Zemljič,Zala Djurić,Žiga Udir;
 50-02;Kemp/Edvardova parcela/Pred prikolico;DAN-EXT.;10 Julija,11 David,206 KEMP STANDARD (7),9PS Renato PS;Sabina Kogovšek,Blaž Valič,Primož Vrhovec;
-50-02A;Kemp/Travnik Nad Kempom;DAN-EXT.;9 Renato,10PS Julija PS,11PS David PS;Primož Vrhovec,Sabina Kogovšek,Blaž Valič;
+50-02;Kemp/Travnik Nad Kempom;DAN-EXT.;9 Renato,10PS Julija PS,11PS David PS;Primož Vrhovec,Sabina Kogovšek,Blaž Valič;
 50-03;Kemp/Travnik Nad Kempom/Renatov Avto;DAN-INT/EXT.;16 Ela,9 Renato;Mei Rabič,Primož Vrhovec;
 50-04;Lj/Bistro Lotus;DAN-INT.;2 Lara,1 Mark,21 Mia,257 Dr. Mirt,209 STATISTI LOTUS A 6x 9.4.,367 Natakar;Gaja Filač,Matej Zemljič,Zala Djurić,Žiga Udir,Dario Nožić Serini Dacho;
 50-05;Lj/Dolenčevo Stanovanje/Dnevna Soba;DAN-INT.;15 Pečnik,258 Sanja;Matija Rupel,Nina Rakovec;
@@ -1440,7 +1440,7 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 56-03;Kemp/Ex-Renatova Parcela;DAN-EXT.;4 Dino,5 Saška,6 Meri,1000 Voziček;Matino Antunović,Mila Peršin,Vesna Pernarčič;
 56-04;Lj/Pasaža/Lokal;DAN-INT.;14 Hrvoje,18 Nina,303 STATISTI PASAŽA A 3x 14.4.,304 STATIST LOKAL B 1x 14.4.;Alen Šalinović,Melani Mekicar;
 56-05;Lj/Steinerjeva Klinika/Sprejemnica;DAN-INT.;2 Lara,250 Operativec;Gaja Filač,Damjan M. Trbovc;
-56-05A;Lj/Steinerjeva Klinika/Sprejemnica;DAN-INT.;2 Lara,250 Operativec;Gaja Filač,Damjan M. Trbovc;
+56-05;Lj/Steinerjeva Klinika/Sprejemnica;DAN-INT.;2 Lara,250 Operativec;Gaja Filač,Damjan M. Trbovc;
 56-06;Kemp/Recepcija;DAN-INT.;4 Dino,5 Saška,1000 Voziček;Matino Antunović,Mila Peršin;
 56-07;Lj/Steinerjeva Klinika/Sprejemnica;DAN-INT.;2 Lara,257 Dr. Mirt;Gaja Filač,Žiga Udir;
 56-08;Lj/Pasaža/Lokal;DAN-INT.;14 Hrvoje,18 Nina,303 STATISTI PASAŽA A 3x 14.4.,304 STATIST LOKAL B 1x 14.4.;Alen Šalinović,Melani Mekicar;
@@ -1561,14 +1561,14 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 60-20;Lj/Julijino Stanovanje/Dnevna Soba;DAN-INT.;1 Mark,3 Edvard;Matej Zemljič,Aleš Valič;
 60-21;Lj/Julijino Stanovanje/Predsoba;DAN-INT.;2 Lara,1 Mark;Gaja Filač,Matej Zemljič;
 60-22;Lj/Kozmetični Salon;DAN-INT.;5 Saška,1000 Voziček,380 Pia,6V Meri Videoklic,7V Frenk Videoklic,409 Stranka kozmetičnega salona 8,295 LOKAL A 3x 5.4.;Mila Peršin,Špela Škofič,Vesna Pernarčič,Gaber Trseglav,Verica Lendero;
-60-22A;Kemp/Kovačeva Parcela/Pred Prikolico;DAN-EXT;7 Frenk,6 Meri;Gaber Trseglav,Vesna Pernarčič;
+60-22;Kemp/Kovačeva Parcela/Pred Prikolico;DAN-EXT;7 Frenk,6 Meri;Gaber Trseglav,Vesna Pernarčič;
 60-23;Lj/Dolenčevo Stanovanje/Kabinet;DAN-INT.;258 Sanja;Nina Rakovec;
 60-24;Lj/Steinerjeva Klinika/Pisarna/Ordinacija;DAN-INT.;10 Julija,19 Bb,20 Petra;Sabina Kogovšek,Valter Dragan,Maja Zupan;
 60-25;Lj/Julijino Stanovanje/Dnevna Soba;DAN-INT.;2 Lara,1 Mark,3 Edvard;Gaja Filač,Matej Zemljič,Aleš Valič;
 61-01;Lj/Steinerjeva Klinika/Pisarna/Ordinacija;DAN-INT.;10 Julija,19 Bb,20 Petra;Sabina Kogovšek,Valter Dragan,Maja Zupan;
 61-02;Lj/Julijino Stanovanje/Dnevna Soba;DAN-INT.;2 Lara,1 Mark,3 Edvard;Gaja Filač,Matej Zemljič,Aleš Valič;
 61-03;Lj/Pasaža/Pred mesnico;DAN-INT.;5 Saška,1000 Voziček,4V Dino Videoklic;Mila Peršin,Matino Antunović;
-61-03A;Kemp/Bar Na Plaži;DAN-EXT.;4 Dino;Matino Antunović;
+61-03;Kemp/Bar Na Plaži;DAN-EXT.;4 Dino;Matino Antunović;
 61-04;Lj/Steinerjeva Klinika/Sprejemnica;DAN-INT.;20 Petra,258 Sanja,266 NOVINARJI 3x 26.3.;Maja Zupan,Nina Rakovec;
 61-05;Lj/Steinerjeva Klinika/Pisarna/Ordinacija;DAN-INT.;10 Julija,19 Bb,258 Sanja;Sabina Kogovšek,Valter Dragan,Nina Rakovec;
 61-06;Lj/Julijino Stanovanje/Jedilnica;DAN-INT.;2 Lara,1 Mark,11 David;Gaja Filač,Matej Zemljič,Blaž Valič;
@@ -1944,7 +1944,7 @@ krneki;01-01;Kemp/Plaža;DAN-EXT.;2OFF Lara Off,1OFF Mark Off;Gaja Filač,Matej 
 75-04;Kemp/Pomol;DAN-EXT.;2 Lara,1 Mark;Gaja Filač,Matej Zemljič;
 75-05;Lj/Bistro Lotus;DAN-INT.;258 Sanja,202 Natakar,214 LOTUS MANJ (3),367 Natakar;Nina Rakovec,Dario Nožić Serini Dacho;
 75-06;Kemp/Larin Šotor;DAN-INT./EXT.;2 Lara,18V Nina Videoklic;Gaja Filač,Melani Mekicar;
-75-06A;Videoklic/ havaji;DAN-EXT;18 Nina;Melani Mekicar;
+75-06;Videoklic/ havaji;DAN-EXT;18 Nina;Melani Mekicar;
 75-07;Kemp/Restavracija;DAN-INT.;14 Hrvoje,3 Edvard,11 David,4 Dino;Alen Šalinović,Aleš Valič,Blaž Valič,Matino Antunović;
 75-08;Kemp/Klubska soba;DAN-INT.;12 Jana,5 Saška,6 Meri,13 Nada;Tanja Potočnik,Mila Peršin,Vesna Pernarčič,Aleksandra Balmazović;
 75-09;Lj/Bistro Lotus;DAN-INT.;19 Bb,202 Natakar,367 Natakar;Valter Dragan,Dario Nožić Serini Dacho;

@@ -1,5 +1,4 @@
-
-      {1, "Radio 1", "r1.png", "https://live.radio.si/Radio1", "Več dobre glasbe","radio1.si}
+ {1, "Radio 1", "r1.png", "https://live.radio.si/Radio1", "Več dobre glasbe","radio1.si}
       {2, "Hitradio Antena", "antena.png", "https://live.radio.si/Antena", "Ritem mladosti","radioantena.si}
       {3, "Hitradio Center", "center.png", "file:///C:/Users/timbi/OneDrive/Documents/GitHub/SloRadio/centri.html", "","}
       {4, "Radio 1 80-a", "r2.jpg", "https://live.radio.si/Radio2", "","radio80.si}
@@ -28,4 +27,3 @@
       {27, "Koroški Radio", "Koroški.png", "https://live.radio.si/Koroski", "Ritem Koroške","}
       {28, "Radio Ptuj", "Ptuj.png", "https://live.radio.si/Ptuj", "Največje uspešnice vseh časov","}
       {29, "Radio Krka", "Krka.jpg", "https://live.radio.si/Krka", "Dolenjska v srcu", "")
-

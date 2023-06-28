@@ -26,4 +26,4 @@
       {26, "Radio Triglav", "Triglav.png", "https://live.radio.si/Triglav", "Radio za radovedne","}
       {27, "Koroški Radio", "Koroški.png", "https://live.radio.si/Koroski", "Ritem Koroške","}
       {28, "Radio Ptuj", "Ptuj.png", "https://live.radio.si/Ptuj", "Največje uspešnice vseh časov","}
-      {29, "Radio Krka", "Krka.jpg", "https://live.radio.si/Krka", "Dolenjska v srcu", "")
+      {29, "Radio Krka", "Krka.jpg", "https://live.radio.si/Krka", "Dolenjska v srcu", ""}

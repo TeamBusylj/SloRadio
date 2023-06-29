@@ -29,5 +29,5 @@
  {"id": 28, "title": "Radio Rogla", "image": "rogla2.jpg", "link": "http://193.105.67.24:8010/;?type=http&nocache=3804", "slogan": "", "stran": "radiorogla.si/"},
 {"id"=29, "title"="Radio Ptuj", "image"="Ptuj.png", "link"="https://live.radio.si/Ptuj", "slogan"="Največje uspešnice vseh časov", "stran"=""},
 {"id"=30, "title"="Radio Krka", "image"="Krka.jpg", "link"="https://live.radio.si/Krka", "slogan"="Dolenjska v srcu", "stran"=""},
-{"id"=31, "title"="Radio Net FM", "image"="netfm.jpg", "link"="https://reflector.radionet.si:8000/stream.ogg", "slogan"="", "stran"="http://www.radionet.si/"}
+{"id"=31, "title"="Radio Net FM", "image"="netfm.jpg", "link"="http://reflector.radionet.si:8000/stream.ogg", "slogan"="", "stran"="http://www.radionet.si/"}
 ]

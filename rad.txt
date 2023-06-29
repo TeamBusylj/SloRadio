@@ -26,4 +26,5 @@
   {"id": 25, "title": "Radio Maribor", "image": "Maribor.png", "link": "https://mp3.rtvslo.si/rmb", "slogan": "", "stran": "rtvslo.si/radio-maribor"},
   {"id": 26, "title": "Radio Triglav", "image": "Triglav.png", "link": "https://live.radio.si/Triglav", "slogan": "Radio za radovedne", "stran": ""},
   {"id": 27, "title": "Koroški Radio", "image": "Koroški.png", "link": "https://live.radio.si/Koroski", "slogan": "Ritem Koroške", "stran": "koroski-radio.si/"}
+ {"id": 28, "title": "Radio Rogla", "image": "rogla2.jpg", "link": "http://193.105.67.24:8010/;?type=http&nocache=3804", "slogan": "", "stran": "radiorogla.si/"}
 ]

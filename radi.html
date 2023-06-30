@@ -3,7 +3,7 @@
 
 <head>
     <script  src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
-     
+     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -104,7 +104,7 @@ localStorage.setItem("radio", JSON.stringify(jsonObject))
  }
  async function submit() {
   
-    require(['axios'], function (axios) {
+    
 const owner = 'TeamBusylj';
 const repo = 'SloRadio';
 const path = 'rad.txt';
@@ -134,7 +134,7 @@ axios({
   .catch((error) => {
     console.error(error);
   });
-});
+
 }
 
  

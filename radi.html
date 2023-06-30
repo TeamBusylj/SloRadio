@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="edit()">
+   
+    <button id="show " onclick="crelement()">New radio</button>
+    <button onclick="submit()">Submit</button>
+    <div id="everything"></div>
+
+</body>
+
+<script>
+    var jsonObject
+    function edit() {
+        var obj = document.getElementById("everything")
+        var txt = ""
+        
+        fetch('https://teambusylj.github.io/SloRadio/rad.txt')
+            .then(response => response.text())
+            .then(data => {
+                // Handle the file contents here
+                txt = data
+
+                obj.innerHTML = txt
+                console.log(obj.innerHTML);
+                 jsonObject = JSON.parse(obj.innerHTML);
+                for (var i = 0; i < jsonObject.length; i++) {
+                    var elm = document.createElement("div")
+                    document.body.appendChild(elm);
+                    var txtw = document.createElement("p")
+                    txtw.innerHTML = JSON.stringify(jsonObject[i].title + "<br>" + jsonObject[i].link + "<br>" + jsonObject[i].slogan + "<br>" + jsonObject[i].stran)
+                    txtw.innerHTML = txtw.innerHTML.replace('"', '').replace('"', '')
+                    elm.appendChild(txtw);
+                }
+            })
+            .catch(error => {
+                console.error('Error retrieving file:', error);
+            });
+
+    }
+ function crelement(){
+    var elm = document.createElement("div")
+    elm.style.position = "fixed"
+    elm.style.display = "block"
+    elm.style.width = "96%"
+    elm.style.top = "0"
+    elm.style.left = "0"
+    elm.style.height = "96%"
+    elm.style.backgroundColor = "gray"
+        document.body.appendChild(elm);
+                    var sub = document.createElement("input")
+                    sub.type = "text"
+                    sub.style.display = "block"
+                    sub.value = "Radio Name"
+                    elm.appendChild(sub);
+                    var sub2 = document.createElement("input")
+                    sub2.type = "text"
+                    sub2.style.display = "block"
+                    sub2.value = "Radio Image name"
+                    elm.appendChild(sub2);
+                    var sub3 = document.createElement("input")
+                    sub3.type = "text"
+                    sub3.style.display = "block"
+                    sub3.value = "Radio Streaming url"
+                    elm.appendChild(sub3);
+                    var sub4 = document.createElement("input")
+                    sub4.type = "text"
+                    sub4.style.display = "block"
+                    sub4.value = "Radio Slogan"
+                    elm.appendChild(sub4);
+                    var sub5 = document.createElement("input")
+                    sub5.type = "text"
+                    sub5.value = "Radio Website"
+                    sub5.style.display = "block"
+                    elm.appendChild(sub5);
+                    var submitButton = document.createElement('button');
+                    submitButton.style.scale = "3"
+                    submitButton.style.marginTop = "30px"
+                    submitButton.innerHTML = "Submit"
+                    elm.appendChild(submitButton);
+                  submitButton.addEventListener("click", function(){
+console.log(jsonObject);
+var newob = {
+    id: jsonObject[jsonObject.length - 1].id+1,
+    title : sub.value,
+    image: sub2.value,
+    link: sub3.value,
+    slogan : sub4.value,
+    stran: sub5.value
+}
+jsonObject.push(newob)
+elm.style.display = "none"
+localStorage.setItem("radio", JSON.stringify(jsonObject))
+});
+
+ }
+ function submit() {
+  // Set the required parameters
+  var owner = 'TeamBusylj';
+  var repo = 'SloRadio';
+  var path = 'rad.txt';
+  var token = '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';
+
+  // Set the new content for the file
+  var newContent = JSON.stringify(jsonObject);
+
+  // Make the API request to delete the file
+  fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': 'Bearer ' + token,
+      'Content-Type': 'application/json',
+    },
+  })
+    .then(response => {
+      if (response.status === 200) {
+        // File deleted successfully, now create a new file
+
+        // Create the request payload for creating the file
+        var requestData = {
+          message: 'Create file',
+          content: btoa(newContent),
+        };
+
+        // Make the API request to create the file
+        return fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestData),
+        });
+      } else {
+        throw new Error('Failed to delete file');
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('File deleted and recreated successfully:', data);
+    })
+    .catch(error => {
+      console.error('Error deleting and recreating file:', error);
+    });
+}
+
+
+ 
+</script>
+<style>
+    input {
+        margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30px;
+    width: 600px;
+    border-radius: 30px;
+    border-width: 0;
+    }
+    div {
+        background-color: aliceblue;
+        border-radius: 30px;
+        text-align: center;
+        max-width: 100%;
+        display: inline-block;
+        padding: 10px;
+        margin: 5px;
+    }
+    #everything{
+        display:none;
+    }
+</style>
+
+</html>

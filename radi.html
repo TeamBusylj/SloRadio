@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <script  src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -100,38 +102,39 @@ localStorage.setItem("radio", JSON.stringify(jsonObject))
 });
 
  }
-function submit() {
-  // Set the required parameters
-  var owner = 'TeamBusylj';
-  var repo = 'SloRadio';
-  var path = 'rad.txt';
-  var token = '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';
+ async function submit() {
+  
+    require(['axios'], function (axios) {
+const owner = 'TeamBusylj';
+const repo = 'SloRadio';
+const path = 'rad.txt';
+const token = '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';
 
-  // Set the new content for the file
-  var newContent = JSON.stringify(jsonObject);
+const content = JSON.stringify(jsonObject).toString('base64');
+const message = 'Update radios';
+const branch = 'main';
 
-  // Create the request payload
-  var requestData = {
-    message: 'Update file',
-    content: btoa(encodeURIComponent(newContent)),
-  };
-
-  // Make the API request to edit the file
-  fetch(`https://api.github.com/repos/TeamBusylj/SloRadio/contents/rad.txt?ref=main`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': 'Bearer ' + token,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(requestData),
+axios({
+  method: 'PUT',
+  url: `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
+  headers: {
+    Authorization: `token ${token}`,
+    Accept: 'application/vnd.github.v3+json',
+  },
+  data: {
+    message,
+    content,
+    branch,
+  },
+  
+})
+  .then((response) => {
+    console.log(response.data);
   })
-    .then(response => response.json())
-    .then(data => {
-      console.log('File edited successfully:', data);
-    })
-    .catch(error => {
-      console.error('Error editing file:', error);
-    });
+  .catch((error) => {
+    console.error(error);
+  });
+});
 }
 
  
@@ -161,3 +164,5 @@ function submit() {
 </style>
 
 </html>
+
+

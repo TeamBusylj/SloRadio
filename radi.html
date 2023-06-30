@@ -103,38 +103,39 @@ localStorage.setItem("radio", JSON.stringify(jsonObject))
 
  }
  async function submit() {
-  
-    
-const owner = 'TeamBusylj';
-const repo = 'SloRadio';
-const path = 'rad.txt';
-const token = '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';
+  const owner = 'TeamBusylj';
+  const repo = 'SloRadio';
+  const path = 'rad.txt';
+  const token = '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';
 
-const content = JSON.stringify(jsonObject).toString('base64');
-const message = 'Update radios';
-const branch = 'main';
+  const content = JSON.stringify(jsonObject).toString('base64');
+  const message = 'Update radios';
+  const branch = 'main';
 
-axios({
-  method: 'PUT',
-  url: `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
-  headers: {
-    Authorization: `token ${token}`,
-    Accept: 'application/vnd.github.v3+json',
-  },
-  data: {
-    message,
-    content,
-    branch,
-  },
-  
-})
-  .then((response) => {
-    console.log(response.data);
-  })
-  .catch((error) => {
+  try {
+    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message,
+        content,
+        branch,
+      }),
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      console.log(responseData);
+    } else {
+      throw new Error('Request failed with status code ' + response.status);
+    }
+  } catch (error) {
     console.error(error);
-  });
-
+  }
 }
 
  

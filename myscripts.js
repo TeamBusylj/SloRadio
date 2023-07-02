@@ -10,9 +10,10 @@ async function onloayde() {
 	var el = document.querySelectorAll('.radii');
 	var elak = document.getElementById('radio');
 	fa()
-	
+	var sezi
 	setTimeout(function () {
 		ela.classList.add("radian");
+
 	}, 20);
 	document.getElementById('iscilupa').classList.add("radian");
 	iscira.classList.add("radian");
@@ -25,6 +26,12 @@ async function onloayde() {
 	for (let i = 0; i < el.length; i++) {
 	
 			el[i].classList.add("radia");
+			let kak = el[i].getElementsByTagName('a')[0].href + '\n'
+		kak=	kak.split("','")
+		let kako = kak[0]
+		if(kako == undefined){console.log(kako)}else{
+		console.log(kako.replace("javascript:myFunction('", "") )
+		}
 			removelasses(el, i);
 		
 	}
@@ -35,11 +42,13 @@ async function onloayde() {
 			es[a].classList.remove("radia");
 		
 		}
+		console.log(sezi)
 		if (navigator.userAgent.includes("wv")) {
 			document.getElementById('bottom').style.display = 'none';
 			document.getElementById('butt').style.display = 'none';
 			document.getElementById('rig').style.display = 'none';
 		}
+
 }
 function delay(time) {
 	return new Promise(resolve => setTimeout(resolve, time));

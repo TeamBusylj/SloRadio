@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="edit()">
+
+    <button id="show " onclick="crelement()">New radio</button>
+    <button onclick="submit()">Submit</button>
+    <div id="everything"></div>
+    <select name="cars" id="radi">
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+    </select>
+</body>
+
+<script>
+    var jsonObject
+    function edit() {
+        var obj = document.getElementById("everything")
+        var txt = ""
+        var country = "Slovenia"
+        fetch('https://teambusylj.github.io/SloRadio/Radio/List/')
+            .then(response => response.text())
+            .then(data => {
+
+
+            })
+            .catch(error => {
+                console.error('Error retrieving file list:', error);
+            });
+        fetch('https://teambusylj.github.io/SloRadio/Radio/List/' + country + '.txt')
+            .then(response => response.text())
+            .then(data => {
+                // Handle the file contents here
+                txt = data
+
+                obj.innerHTML = txt
+                console.log(obj.innerHTML);
+                jsonObject = JSON.parse(obj.innerHTML);
+                for (var i = 0; i < jsonObject.length; i++) {
+                    var elm = document.createElement("div")
+                    document.body.appendChild(elm);
+                    var txtw = document.createElement("p")
+                    txtw.innerHTML = JSON.stringify(jsonObject[i].title + "<br>" + jsonObject[i].link + "<br>" + jsonObject[i].slogan + "<br>" + jsonObject[i].stran)
+                    txtw.innerHTML = txtw.innerHTML.replace('"', '').replace('"', '')
+                    elm.appendChild(txtw);
+                }
+            })
+            .catch(error => {
+                console.error('Error retrieving file:', error);
+            });
+
+    }
+
+    async function imgica(imgf, sham, fname) {
+        const url = "https://api.github.com/repos/TeamBusylj/SloRadio/contents/Radio/images/" + fname.name;
+        const owner = 'TeamBusylj';
+        const repo = 'SloRadio';
+        const path = 'rad.txt';
+        const token = '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';
+
+        const stringToEncode = imgf;
+        console.log(imgf);
+        const content = btoa(imgf);
+        console.log(content);
+        const message = 'Update radios upload image';
+        const branch = 'main';
+        try {
+
+            const response = await fetch(url, {
+                method: 'PUT',
+
+                headers: {
+                    Authorization: "token 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",
+                    'Content-Type': 'image',
+                    Accept: 'application/vnd.github.v3+json',
+                },
+                body: JSON.stringify({
+                    message,
+                    sha: sham,
+                    content: content,
+                    branch,
+                }),
+            });
+
+
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log('File updated:', responseData);
+            } else {
+                const responseData = await response.json();
+                console.log(responseData);
+                throw new Error('Request failed with status code ' + response.status + JSON.stringify(responseData));
+
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
+    var img = ""
+    function crelement() {
+        var elm = document.createElement("div")
+        elm.style.position = "fixed"
+        elm.style.display = "block"
+        elm.style.width = "96%"
+        elm.style.top = "0"
+        elm.style.left = "0"
+        elm.style.height = "96%"
+        elm.style.backgroundColor = "gray"
+        document.body.appendChild(elm);
+        var sub = document.createElement("input")
+        sub.type = "text"
+        sub.style.display = "block"
+        sub.value = "Radio Name"
+        elm.appendChild(sub);
+        var sub2 = document.createElement("input")
+        sub2.type = "text"
+        sub2.style.display = "none"
+        sub2.value = "Radio Image name"
+        elm.appendChild(sub2);
+        var sub3 = document.createElement("input")
+        sub3.type = "text"
+        sub3.style.display = "block"
+        sub3.value = "Radio Streaming url"
+        elm.appendChild(sub3);
+        var sub4 = document.createElement("input")
+        sub4.type = "text"
+        sub4.style.display = "block"
+        sub4.value = "Radio Slogan"
+        elm.appendChild(sub4);
+        var sub5 = document.createElement("input")
+        sub5.type = "text"
+        sub5.value = "Radio Website"
+        sub5.style.display = "block"
+        elm.appendChild(sub5);
+        var sub6 = document.createElement("input")
+        sub6.type = "file"
+
+        sub6.style.display = "block"
+        elm.appendChild(sub6);
+        sub6.addEventListener('change', (event) => {
+            const reader = new FileReader();
+            const selectedFile = event.target.files[0];
+            reader.onload = (event) => {
+                const imageData = event.target.result;
+
+
+
+                sub2.value = imageData.name
+                console.log(imageData);
+                fetch('https://api.github.com/repos/TeamBusylj/SloRadio/contents')
+                    .then(response => response.text())
+                    .then(data => {
+                        sha = data.substring(data.indexOf('"path": "Radio",\n    "sha": ') + 29, data.indexOf(' "size": 0,\n    "url": "https://api.github.com/repos/TeamBusylj/SloRadio/contents/Radio?ref=main",') - 6)
+                        console.log(sha);
+                        imgica(imageData, sha, selectedFile)
+
+                    })
+                    .catch(error => {
+                        console.error('Error retrieving file:', error);
+                    });
+
+
+
+
+            }
+            reader.readAsBinaryString(selectedFile);
+        });
+        var submitButton = document.createElement('button');
+        submitButton.style.scale = "3"
+        submitButton.style.marginTop = "30px"
+        submitButton.innerHTML = "Submit"
+        elm.appendChild(submitButton);
+        submitButton.addEventListener("click", function () {
+
+            console.log(jsonObject);
+            var newob = {
+                id: jsonObject[jsonObject.length - 1].id + 1,
+                title: sub.value,
+                image: sub2.value,
+                link: sub3.value,
+                slogan: sub4.value,
+                stran: sub5.value
+            }
+            jsonObject.push(newob)
+            elm.style.display = "none"
+            localStorage.setItem("radio", JSON.stringify(jsonObject))
+        });
+
+    }
+    async function submit() {
+
+
+        //const encodedContent = btoa(content); // Encode the content as base64
+        var sha = ""
+
+        fetch('https://teambusylj.github.io/SloRadio/Radio/List/' + country + '.txt')
+            .then(response => response.text())
+            .then(data => {
+                sha = data.substring(data.indexOf('"sha":') + 8, data.indexOf('"size"') - 5)
+                console.log(data.substring(data.indexOf('"sha":') + 8, data.indexOf('"size"') - 5));
+                newa(sha)
+
+            })
+            .catch(error => {
+                console.error('Error retrieving file:', error);
+            });
+
+
+    }
+
+
+
+    async function newa(sha) {
+        const url = 'https://teambusylj.github.io/SloRadio/Radio/List/' + country + '.txt';
+        const owner = 'TeamBusylj';
+        const repo = 'SloRadio';
+        const path = 'rad.txt';
+        const token = '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';
+
+        const stringToEncode = JSON.stringify(jsonObject);
+        const encoder = new TextEncoder();
+        const data = encoder.encode(stringToEncode);
+        const content = btoa(String.fromCharCode.apply(null, data));
+
+        const message = 'Update radios';
+        const branch = 'main';
+        try {
+            console.log(sha);
+            const response = await fetch(url, {
+                method: 'PUT',
+
+                headers: {
+                    Authorization: `token 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`,
+                    'Content-Type': 'application/json',
+                    Accept: 'application/vnd.github.v3+json',
+                },
+                body: JSON.stringify({
+                    sha: sha,
+                    message,
+                    content: content,
+                    branch,
+                }),
+            });
+
+
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log('File updated:', responseData);
+            } else {
+                const responseData = await response.json();
+                console.log(responseData);
+                throw new Error('Request failed with status code ' + response.status + JSON.stringify(responseData));
+
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+</script>
+<style>
+    input {
+        margin: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 30px;
+        width: 600px;
+        border-radius: 30px;
+        border-width: 0;
+    }
+
+    div {
+        background-color: aliceblue;
+        border-radius: 30px;
+        text-align: center;
+        max-width: 100%;
+        display: inline-block;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    #everything {
+        display: none;
+    }
+</style>
+
+</html>

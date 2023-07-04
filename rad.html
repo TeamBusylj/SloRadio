@@ -12,44 +12,85 @@
 <body onload="edit()">
 
     <button id="show " onclick="crelement()">New radio</button>
+    <button id="newcou" onclick="newCou()">New country</button>
     <button onclick="submit()">Submit</button>
     <div id="everything"></div>
     <select name="cars" id="radi">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
+        <option value="select">Select Country</option>
+    </select>
+    <select name="radisi" id="cntr">
+
     </select>
 </body>
 
 <script>
+    async function newCou() {
+
+        var newka = prompt("new country name", "")
+
+        var sha
+        var elm = document.createElement("option")
+        elm.innerHTML = newka
+        radi.appendChild(elm);
+        elm.selected = true;
+        jsonObject = []
+        fetch('https://api.github.com/repos/TeamBusylj/SloRadio/contents/Radio')
+            .then(response => response.text())
+            .then(data => {
+                sha = data.substring(data.indexOf('"path": "Radio/List",\n    "sha": ') + 34, data.indexOf(' "size": 0,\n    "url": "https://api.github.com/repos/TeamBusylj/SloRadio/contents/Radio/List?ref=main",') - 6)
+                console.log(sha);
+                addCountxt(sha)
+
+            })
+            .catch(error => {
+                console.error('Error retrieving file:', error);
+            });
+
+
+        crelement()
+    }
     var jsonObject
     function edit() {
         var obj = document.getElementById("everything")
         var txt = ""
-        var country = "Slovenia"
-        fetch('https://teambusylj.github.io/SloRadio/Radio/List/')
+        var country = "slovenia"
+        fetch('https://api.github.com/repos/TeamBusylj/SloRadio/contents/Radio/List/')
             .then(response => response.text())
             .then(data => {
-
-
+                var jso = JSON.parse(data)
+                var list = document.getElementById("radi")
+                for (var i = 0; i < jso.length; i++) {
+                    var elm = document.createElement("option")
+                    elm.innerHTML = jso[i]["name"].replace(".txt", "")
+                    radi.appendChild(elm);
+                }
             })
             .catch(error => {
                 console.error('Error retrieving file list:', error);
             });
-        fetch('https://teambusylj.github.io/SloRadio/Radio/List/' + country + '.txt')
+
+    }
+    var obj = document.getElementById("everything")
+    document.getElementById("radi").addEventListener('change', (event) => {
+        fetch('https://teambusylj.github.io/SloRadio/Radio/List/' + document.getElementById("radi").options[document.getElementById("radi").selectedIndex].text + '.txt')
             .then(response => response.text())
             .then(data => {
                 // Handle the file contents here
                 txt = data
-
+                console.log(data);
                 obj.innerHTML = txt
-                console.log(obj.innerHTML);
+
+                var cntr = document.getElementById("cntr")
+                cntr.style.display = "none"
                 jsonObject = JSON.parse(obj.innerHTML);
                 for (var i = 0; i < jsonObject.length; i++) {
                     var elm = document.createElement("div")
                     document.body.appendChild(elm);
                     var txtw = document.createElement("p")
+                    var drp = document.createElement("option")
+                    drp.innerHTML = jsonObject[i].title
+                    cntr.appendChild(drp);
+                      
                     txtw.innerHTML = JSON.stringify(jsonObject[i].title + "<br>" + jsonObject[i].link + "<br>" + jsonObject[i].slogan + "<br>" + jsonObject[i].stran)
                     txtw.innerHTML = txtw.innerHTML.replace('"', '').replace('"', '')
                     elm.appendChild(txtw);
@@ -58,15 +99,13 @@
             .catch(error => {
                 console.error('Error retrieving file:', error);
             });
-
-    }
-
+    })
     async function imgica(imgf, sham, fname) {
         const url = "https://api.github.com/repos/TeamBusylj/SloRadio/contents/Radio/images/" + fname.name;
         const owner = 'TeamBusylj';
         const repo = 'SloRadio';
         const path = 'rad.txt';
-        const token = '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';
+        const token = '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';
 
         const stringToEncode = imgf;
         console.log(imgf);
@@ -80,7 +119,7 @@
                 method: 'PUT',
 
                 headers: {
-                    Authorization: "token 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",
+                    Authorization: "token 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",
                     'Content-Type': 'image',
                     Accept: 'application/vnd.github.v3+json',
                 },
@@ -110,6 +149,11 @@
 
     var img = ""
     function crelement() {
+        document.getElementById("cntr").style.display = "block"
+        document.getElementById("cntr").style.position = "fixed"
+        document.getElementById("cntr").style.marginTop = "200px";
+        document.getElementById("cntr").style.zIndex = "300";
+
         var elm = document.createElement("div")
         elm.style.position = "fixed"
         elm.style.display = "block"
@@ -149,6 +193,7 @@
 
         sub6.style.display = "block"
         elm.appendChild(sub6);
+
         sub6.addEventListener('change', (event) => {
             const reader = new FileReader();
             const selectedFile = event.target.files[0];
@@ -182,18 +227,57 @@
         submitButton.style.marginTop = "30px"
         submitButton.innerHTML = "Submit"
         elm.appendChild(submitButton);
-        submitButton.addEventListener("click", function () {
-
-            console.log(jsonObject);
+        var plusButton = document.createElement('button');
+        plusButton.style.scale = "3"
+        plusButton.style.marginTop = "30px"
+        plusButton.style.marginLeft = "200px"
+        plusButton.innerHTML = "Add to existing radio"
+        elm.appendChild(plusButton);
+        plusButton.addEventListener("click", function () {
+            console.log(jsonObject[document.getElementById("cntr").selectedIndex])
+            jsonObject[document.getElementById("cntr").selectedIndex].parent = "yes"
+            
+            if (JSON.stringify(jsonObject) == "[]") {
+                var id = 1
+            } else {
+                var id = jsonObject[jsonObject.length - 1].id + 1
+            }
             var newob = {
-                id: jsonObject[jsonObject.length - 1].id + 1,
+                id: document.getElementById("cntr").selectedIndex+1,
                 title: sub.value,
                 image: sub2.value,
                 link: sub3.value,
                 slogan: sub4.value,
-                stran: sub5.value
+                stran: sub5.value,
+                nested: "yes",
+                parent:"no"
+             
             }
+         jsonObject.splice(document.getElementById("cntr").selectedIndex+1, 0, newob);
+            console.log(jsonObject)
+            elm.style.display= "none"
+        })
+
+        submitButton.addEventListener("click", function () {
+            console.log(JSON.stringify(jsonObject));
+            if (JSON.stringify(jsonObject) == "[]") {
+                var id = 1
+            } else {
+                var id = jsonObject[jsonObject.length - 1].id + 1
+            }
+
+            var newob = {
+                id: id,
+                title: sub.value,
+                image: sub2.value,
+                link: sub3.value,
+                slogan: sub4.value,
+                stran: sub5.value,
+                nested: "no"
+            }
+            
             jsonObject.push(newob)
+            console.log(jsonObject);
             elm.style.display = "none"
             localStorage.setItem("radio", JSON.stringify(jsonObject))
         });
@@ -204,8 +288,8 @@
 
         //const encodedContent = btoa(content); // Encode the content as base64
         var sha = ""
-
-        fetch('https://teambusylj.github.io/SloRadio/Radio/List/' + country + '.txt')
+        var country = document.getElementById("radi").options[document.getElementById("radi").selectedIndex].text
+        fetch('https://api.github.com/repos/TeamBusylj/SloRadio/contents/Radio/List/' + country + '.txt')
             .then(response => response.text())
             .then(data => {
                 sha = data.substring(data.indexOf('"sha":') + 8, data.indexOf('"size"') - 5)
@@ -223,7 +307,8 @@
 
 
     async function newa(sha) {
-        const url = 'https://teambusylj.github.io/SloRadio/Radio/List/' + country + '.txt';
+        var country = document.getElementById("radi").options[document.getElementById("radi").selectedIndex].text
+        const url = 'https://api.github.com/repos/TeamBusylj/SloRadio/contents/Radio/List/' + country + '.txt';
         const owner = 'TeamBusylj';
         const repo = 'SloRadio';
         const path = 'rad.txt';
@@ -242,7 +327,7 @@
                 method: 'PUT',
 
                 headers: {
-                    Authorization: `token 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`,
+                    Authorization: `token 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`,
                     'Content-Type': 'application/json',
                     Accept: 'application/vnd.github.v3+json',
                 },
@@ -264,6 +349,44 @@
                 throw new Error('Request failed with status code ' + response.status + JSON.stringify(responseData));
 
             }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    async function addCountxt(sha) {
+        var country = document.getElementById("radi").options[document.getElementById("radi").selectedIndex].text
+        const url = 'https://api.github.com/repos/TeamBusylj/SloRadio/contents/Radio/List/' + country + '.txt';
+        const message = 'Update new country';
+        const branch = 'main';
+        try {
+            console.log(sha);
+            const response = await fetch(url, {
+                method: 'PUT',
+
+                headers: {
+                    Authorization: `token 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`,
+                    'Content-Type': 'application/json',
+                    Accept: 'application/vnd.github.v3+json',
+                },
+                body: JSON.stringify({
+                    sha: sha,
+                    message,
+                    content: btoa("[]"),
+                    branch,
+                }),
+            });
+
+
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log('File updated:', responseData);
+            } else {
+                const responseData = await response.json();
+                console.log(responseData);
+                throw new Error('Request failed with status code ' + response.status + JSON.stringify(responseData));
+
+            }
+
         } catch (error) {
             console.error(error);
         }

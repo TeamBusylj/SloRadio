@@ -21,6 +21,7 @@
     <select name="radisi" id="cntr">
 
     </select>
+    <div id="error"></div>
 </body>
 
 <script>
@@ -42,7 +43,7 @@
                 addCountxt(sha)
 
             })
-            .catch(error => {
+            .catch(error => { document.getElementById("error").innerHtml = error
                 console.error('Error retrieving file:', error);
             });
 
@@ -65,7 +66,7 @@
                     radi.appendChild(elm);
                 }
             })
-            .catch(error => {
+            .catch(error => { document.getElementById("error").innerHtml = error
                 console.error('Error retrieving file list:', error);
             });
 
@@ -96,7 +97,7 @@
                     elm.appendChild(txtw);
                 }
             })
-            .catch(error => {
+            .catch(error => { document.getElementById("error").innerHtml = error
                 console.error('Error retrieving file:', error);
             });
     })
@@ -105,7 +106,7 @@
         const owner = 'TeamBusylj';
         const repo = 'SloRadio';
         const path = 'rad.txt';
-        const token = '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';
+        const token = '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';
 
         const stringToEncode = imgf;
         console.log(imgf);
@@ -119,7 +120,7 @@
                 method: 'PUT',
 
                 headers: {
-                    Authorization: "token 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",
+                    Authorization: "token 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",
                     'Content-Type': 'image',
                     Accept: 'application/vnd.github.v3+json',
                 },
@@ -141,7 +142,7 @@
                 throw new Error('Request failed with status code ' + response.status + JSON.stringify(responseData));
 
             }
-        } catch (error) {
+        } catch (error) { document.getElementById("error").innerHtml = error
             console.error(error);
         }
     }
@@ -170,7 +171,7 @@
         elm.appendChild(sub);
         var sub2 = document.createElement("input")
         sub2.type = "text"
-        sub2.style.display = "none"
+        sub2.style.display = "block"
         sub2.value = "Radio Image name"
         elm.appendChild(sub2);
         var sub3 = document.createElement("input")
@@ -212,7 +213,7 @@
                         imgica(imageData, sha, selectedFile)
 
                     })
-                    .catch(error => {
+                    .catch(error => { document.getElementById("error").innerHtml = error
                         console.error('Error retrieving file:', error);
                     });
 
@@ -297,7 +298,7 @@
                 newa(sha)
 
             })
-            .catch(error => {
+            .catch(error => { document.getElementById("error").innerHtml = error
                 console.error('Error retrieving file:', error);
             });
 
@@ -327,7 +328,7 @@
                 method: 'PUT',
 
                 headers: {
-                    Authorization: `token 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`,
+                    Authorization: `token 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`,
                     'Content-Type': 'application/json',
                     Accept: 'application/vnd.github.v3+json',
                 },
@@ -349,7 +350,7 @@
                 throw new Error('Request failed with status code ' + response.status + JSON.stringify(responseData));
 
             }
-        } catch (error) {
+        } catch (error) { document.getElementById("error").innerHtml = error
             console.error(error);
         }
     }
@@ -364,7 +365,7 @@
                 method: 'PUT',
 
                 headers: {
-                    Authorization: `token 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`,
+                    Authorization: `token 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`,
                     'Content-Type': 'application/json',
                     Accept: 'application/vnd.github.v3+json',
                 },
@@ -387,7 +388,7 @@
 
             }
 
-        } catch (error) {
+        } catch (error) { document.getElementById("error").innerHtml = error
             console.error(error);
         }
     }

@@ -1,1 +1,80 @@
-[{"id":1,"title":"BBC Radio 1","image":"bbc.png","link":"https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one","slogan":"","stran":"https://www.bbc.co.uk/sounds/play/live:bbc_radio_one"}]
+[
+  {
+"id" : ""
+    "title": "BBC Radio 1",
+    "image": "bbc.png",
+    "link": "https://stream.live.vc.bbcmedia.co.uk/bbc_radio_one",
+    "slogan": "",
+    "stran": "https://www.bbc.co.uk/radio1"
+  },
+  {
+    "title": "BBC Radio 2",
+    "image": "bbc2.png",
+    "link": "https://stream.live.vc.bbcmedia.co.uk/bbc_radio_two",
+    "slogan": "",
+    "stran": "https://www.bbc.co.uk/radio2"
+  },
+  {
+    "title": "BBC Radio 3",
+    "image": "bbc 3.png",
+    "link": "https://stream.live.vc.bbcmedia.co.uk/bbc_radio_three",
+    "slogan": "",
+    "stran": "https://www.bbc.co.uk/radio3"
+  },
+  {
+    "title": "BBC Radio 4",
+    "image": "bbc4.png",
+    "link": "https://stream.live.vc.bbcmedia.co.uk/bbc_radio_fourfm?s=1672161242&e=1672175642&h=d819dac597ce9a239141ed297dcd4db6",
+    "slogan": "",
+    "stran": "https://www.bbc.co.uk/radio4"
+  },
+  {
+    "title": "BBC Radio 5",
+    "image": "bbc5.png",
+    "link": "https://stream.live.vc.bbcmedia.co.uk/bbc_radio_five_live_online_nonuk?s=1672161427&e=1672175827&h=79685560560324864c227cd29deea32b",
+    "slogan": "",
+    "stran": "https://www.bbc.co.uk/5live"
+  },
+  {
+    "title": "BBC World Service",
+    "image": "bbcworld.png",
+    "link": "https://stream.live.vc.bbcmedia.co.uk/bbc_world_service",
+    "slogan": "",
+    "stran": "https://www.bbc.co.uk/worldserviceradio"
+  },
+  {
+    "title": "talkSPORT",
+    "image": "talk.png",
+    "link": "https://radio.talksport.com/stream",
+    "slogan": "",
+    "stran": "https://talksport.com/"
+  },
+  {
+    "title": "talkSPORT 2",
+    "image": "talk2.png",
+    "link": "https://radio.talksport.com/stream2",
+    "slogan": "",
+    "stran": "https://talksport.com/"
+  },
+  {
+    "title": "Capital London",
+    "image": "caplon.png",
+    "link": "https://media-ssl.musicradio.com/Capital",
+    "slogan": "",
+    "stran": "https://www.capitalfm.com/london/"
+  },
+  {
+    "title": "LBC London",
+    "image": "lbcl.png",
+    "link": "https://media-ice.musicradio.com/LBCLondonMP3Low",
+    "slogan": "",
+    "stran": "https://www.lbc.co.uk/"
+  },
+  {
+    "title": "Kiss FM",
+    "image": "kiss.png",
+    "link": "https://live.kissfm.ro/kissfm.aacp",
+    "slogan": "",
+    "stran": "https://www.kissfmuk.com/"
+  }
+]

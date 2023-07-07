@@ -1,0 +1,241 @@
+#desks .switch {
+    border-radius: 20px;
+  background:#4b8ae9;
+}
+
+ #desks button {
+
+    border-radius: 20px;
+}
+#desks .player {
+   width: calc(50% - 15px);
+  margin: 5px 0 0 10px;
+    border-radius: 10px;
+}
+#desks .join {
+  margin: 5px 0 0 10px;
+    border-radius: 10px;
+      width: calc(50% - 15px);
+     
+}
+#desks section>div {
+    background:#4b8ae9;
+    border-radius: 23px;
+
+}
+#desks .switch button.selected {
+    background: #2a4977;
+}
+#desks section>div .join {
+    background: #2a772d;
+}
+#desks section>.create button {
+    background:#2a4977;
+}
+body{
+font-family: 'Roboto', sans-serif!important;
+}
+#desks section>div  .player {
+  cursor:default;
+    background: #2a4977;
+}
+#desks section>div  .player.member {
+    background: #2a4977;
+}
+#desks section>div  .player.board {
+    background: #2a4977;
+}
+#desks section>div  .player.bot {
+    background: #2a4977;
+}
+#desks section>div p span {
+  display:none;
+    float: none;
+    font-size: 20px;
+    margin-left: 6px;
+}
+#desks section>div p {
+    height: 25px;
+}
+#desks section>div .join.prohibit {
+    cursor: not-allowed;
+    font-size: 0px;
+background:#9d2929;;
+}
+.join.prohibit:after  {
+  content:"Premalo ratinga";
+
+  font-size:17px;
+}
+#aside #profile img{
+  border-radius:20px;
+}
+#aside #profile {
+    min-height: 155px;
+    background: #4b8ae9;
+    padding: 10px;
+    border-radius: 20px;
+  color: white;
+}
+.id, .which, .logout{
+  display:none
+}
+#aside #profile .buyCredits {
+    padding: 12px 0;
+    margin-top: 5px;
+  border-radius:10px;
+    background: #2a4977;
+}
+#aside #profile .rating {
+  margin-top:7px;
+    color: #2a4977;
+}
+#corner {
+     background: #4b8ae9;
+    padding: 10px;
+    border-radius: 20px;
+}
+#tabs {
+     background: #4b8ae9;
+    padding: 10px;
+    border-radius: 20px;
+}
+#corner .english,
+#corner .settings {
+  border-radius:15px;
+}
+#tabs a {
+  
+    background: #2a4977;
+  border-radius:10px;
+    opacity: 1;
+}
+#bid table button {
+    border-radius:13px;
+    background: #2a4977;
+}
+#bid table button.popular{
+   background: #2a4977;
+}
+#bid table button:hover, #bid table button.popular {
+    background:#1b3150;
+}
+#bonus button.next {
+     border-radius:15px;
+    background: #1b3150;
+}
+#bonus button {
+   border-radius:15px;
+    background: #2a4977;
+}
+
+input[type=button], input[type=submit], button {
+    background: #2a4977;
+    border-radius: 20px;
+}
+
+#bonus table td.choice {
+    background: #2a4977;
+ 
+    border-radius: 10px;
+}
+#bonus table th {
+   border-radius: 10px;
+    background: #1b3150;
+
+}
+#windows>div {
+    
+    background: rgba(228,218,205,0.6);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  
+    border-radius: 30px;
+ 
+}
+#scores .data table td {
+    padding: 5px;
+    padding-right: 10px;
+}
+#scores .data table td:nth-of-type(1), #scores .data table td:nth-of-type(2) {
+    text-align: right;
+    padding-left: 15px;
+}
+#player0 .picture, #player1 .picture, #player2 .picture, #player3 .picture {
+    border-width:0;
+  
+    border-radius: 15px;
+ 
+}
+#player0 .bid span, #player1 .bid span, #player2 .bid span, #player3 .bid span {
+  border-radius: 10px;
+  margin:5px;
+}
+#player0 .picture img, #player0 .picture div, #player1 .picture img, #player1 .picture div, #player2 .picture img, #player2 .picture div, #player3 .picture img, #player3 .picture div {
+background: rgba(0,0,0,0.5);
+    border-radius: 40px;
+  padding:5px;
+}
+#scores .data table {
+    margin-bottom: 5px;
+    background: rgba(1000,1000,1000, 0.5);
+    border-radius: 20px;
+    margin: 10px;
+}
+#scores .data h2 img {
+    height: 32px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    vertical-align: -9px;
+    margin-right: 8px;
+    margin-left: 18px;
+    border-radius: 10px;
+}
+#ended table tr.before, #ended table tr.after {
+    font-size: 20px;
+}
+#ended table tr.delta {
+    font-size: 34px;
+}
+#right section, #right table {
+    background-color: #fff9;
+    padding: 8px;
+    border-radius: 10px;
+}
+#results .names, #results .sum {
+    font-weight: bold;
+    font-size: 15px;
+}
+#results.show {
+  
+    margin: 5px;
+}
+#ended table tr.places img {
+    height: 50px;
+ 
+    border-radius: 10px;
+}
+#right section, #right table {
+    border-radius: 10px;
+    margin: 5px;
+}
+#create section.human.show {
+    display: block;
+    border-radius: 15px;
+    padding: 6px;
+}
+#create section.options label input:checked:before {
+    background: #354976;
+    border-radius: 40px;
+}
+#create section.options label input:before {
+border-radius:40px;
+}
+html {
+  -webkit-tap-highlight-color: transparent;}
+button:active{
+  transform:scale(.8);
+}
+button{
+  transition:all .1s;
+}

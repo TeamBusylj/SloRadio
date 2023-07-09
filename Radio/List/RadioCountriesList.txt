@@ -1,3 +1,4 @@
 [
-{"id": 1,"title": "English radio","image": "english.png","slogan":  "english","stran":"","nested":"no","parent":"no"},
+{"id": 1,"title": "Slovenski radio","image": "slovenia.png","slogan":  "slovenia","stran":"","nested":"no","parent":"no"},
+{"id": 2,"title": "English radio","image": "english.png","slogan":  "english","stran":"","nested":"no","parent":"no"}
 ]

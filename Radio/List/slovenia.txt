@@ -366,6 +366,7 @@
 		"link": "http://mp3.rtvslo.si:8000/mmr",
 		"slogan": "",
 		"stran": "https://www.rtvslo.si/mmr",
-		"nested": "no"
+		"nested": "no",
+"parent": "no"
 	}
 ]

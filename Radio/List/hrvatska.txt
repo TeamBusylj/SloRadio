@@ -6,6 +6,7 @@
 		"link": "http://c5.hostingcentar.com:8059/;",
 		"slogan": "",
 		"stran": "br.hr",
-		"nested": "no"
+		"nested": "no",
+"parent":"no"
 	}
 ]

@@ -22,7 +22,7 @@
 	{
 		"id": 3,
 		"title": "Radio Max",
-		"image": "undefined",
+		"image": "max.jpg",
 		"link": "https://azuracast.novi-net.net/radio/8010/radiomax.mp3",
 		"slogan": "Radio Slogan",
 		"stran": "https://www.radiomax.hr/",
@@ -32,7 +32,7 @@
 	{
 		"id": 4,
 		"title": "Antena Zagreb",
-		"image": "undefined",
+		"image": "antenazagreb.webp",
 		"link": "http://live.antenazagreb.hr:8002/",
 		"slogan": "Prijepodne na Anteni Zagreb",
 		"stran": "https://www.antenazagreb.hr/",

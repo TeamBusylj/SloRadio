@@ -7,6 +7,36 @@
 		"slogan": "",
 		"stran": "br.hr",
 		"nested": "no",
-"parent":"no"
+		"parent": "no"
+	},
+	{
+		"id": 2,
+		"title": "Otvoreni radio",
+		"image": "otvoreni.jpg",
+		"link": "https://stream.otvoreni.hr/otvoreni",
+		"slogan": "Tvoj feel good radio",
+		"stran": "www.otvoreni.hr/",
+		"nested": "no",
+		"parent": "no"
+	},
+	{
+		"id": 3,
+		"title": "Radio Max",
+		"image": "undefined",
+		"link": "https://azuracast.novi-net.net/radio/8010/radiomax.mp3",
+		"slogan": "Radio Slogan",
+		"stran": "https://www.radiomax.hr/",
+		"nested": "no",
+		"parent": "no"
+	},
+	{
+		"id": 4,
+		"title": "Antena Zagreb",
+		"image": "undefined",
+		"link": "http://live.antenazagreb.hr:8002/",
+		"slogan": "Prijepodne na Anteni Zagreb",
+		"stran": "https://www.antenazagreb.hr/",
+		"nested": "no",
+		"parent": "no"
 	}
 ]

@@ -25,5 +25,15 @@
 		"slogan": "hrvatska",
 		"stran": "Radio Website",
 		"nested": "no"
+	},
+	{
+		"id": 4,
+		"title": "Österreichischer Radio",
+		"image": "austr.png",
+		"link": "---",
+		"slogan": "austria",
+		"stran": "---",
+		"nested": "no",
+		"parent": "no"
 	}
 ]

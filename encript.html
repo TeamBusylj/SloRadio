@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encripto</title>
+</head>
+
+<body>
+    <input id="input" type="text"><button onclick="encript()">Encript</button></input><br>
+    <input id="input2" type="text"><button onclick="decrypt()">Decript</button></input>
+    <div style="width: 100%; height: 100%;">
+    <xmp style="white-space: pre-wrap; text-align: justify;  font-size: 1.4em;" id="answer">Type</xmp>
+</div>
+</body>
+
+<script>
+
+
+
+    function encript() {
+        var input = document.getElementById("input")
+        var text = input.value
+        var randommp = getRandomNumber()
+        var txtPos = alphabetPosition(text).split(",")
+
+        for (let i = 0; i < txtPos.length; i++) {
+            txtPos[i] = (txtPos[i] * 5532 + 1026) * randommp
+
+    
+            txtPos[i] = String(txtPos[i]).split("").reverse().join(""), 10;
+            txtPos[i] = txtPos[i] + " "
+        }
+       txtPos.unshift(randommp+" ")
+       console.log(txtPos);
+     txtPos = txtPos.reverse()
+       console.log(txtPos);
+        document.getElementById("answer").innerHTML =   txtPos.toString().replace(/,/g, "") + "<br><br>" + "Copied"
+        navigator.clipboard.writeText( document.getElementById("answer").innerHTML.replace(" <br><br>Copied", ""));
+        setTimeout(() => {
+            document.getElementById("answer").innerHTML =   txtPos.toString().replace(/,/g, "")
+        }, "1000");
+
+
+    }
+
+
+
+    function alphabetPosition(text) {
+        var result = "";
+        for (var i = 0; i < text.length; i++) {
+            var code = text.codePointAt(i) + 1
+            result += code + ","
+        }
+
+        return result.slice(0, result.length - 1);
+    }
+
+
+
+
+    function decrypt() {
+        var input = document.getElementById("input2")
+        var text = input.value
+
+        var txtPos = text.split(" ")
+        txtPos=  txtPos.reverse()
+        console.log(txtPos);
+        for (let i = 1; i < txtPos.length; i++) {
+
+
+            txtPos[i] = parseInt(String(txtPos[i]).split("").reverse().join(""), 10) + " ";
+
+            txtPos[i] = (txtPos[i] / txtPos[0] - 1026) / 5532
+            if (txtPos[i] <= 65535) { } else {
+                txtPos = ["Not the correct code, encript you message here."]
+                break
+            }
+            txtPos[i] = String.fromCharCode(txtPos[i])
+
+
+        }
+        txtPos.splice(0, 1)
+        document.getElementById("answer").innerHTML = txtPos.toString().replace(/,/g, "")
+    }
+
+
+
+    function alphabetPosition(text) {
+        var result = "";
+        for (var i = 0; i < text.length; i++) {
+            var code = text.codePointAt(i)
+            result += code + ","
+        }
+
+        return result.slice(0, result.length - 1);
+    }
+
+
+
+    function getRandomNumber() {
+        // Generate a random number between 0 (inclusive) and 1 (exclusive)
+        const randomDecimal = Math.random();
+
+        // Scale the random number to fit the desired range (min to max)
+        const randomInRange = randomDecimal * (1000000 - 2 + 1);
+
+        // Floor the number to get a whole number within the range (min to max)
+        const randomNumber = Math.floor(randomInRange) + 2;
+
+        return randomNumber;
+    }
+
+
+
+
+</script>
+
+</html>

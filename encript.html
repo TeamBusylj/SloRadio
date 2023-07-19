@@ -11,8 +11,8 @@
     <input id="input" type="text"><button onclick="encript()">Encript</button></input><br>
     <input id="input2" type="text"><button onclick="decrypt()">Decript</button></input>
     <div style="width: 100%; height: 100%;">
-    <xmp style="white-space: pre-wrap; text-align: justify;  font-size: 1.4em;" id="answer">Type</xmp>
-</div>
+        <xmp style="white-space: pre-wrap; text-align: justify;  font-size: 1.4em;" id="answer">Type</xmp>
+    </div>
 </body>
 
 <script>
@@ -22,24 +22,29 @@
     function encript() {
         var input = document.getElementById("input")
         var text = input.value
-        var randommp = getRandomNumber()
+        var randommp = getRandomNumber(2, 1000000)
         var txtPos = alphabetPosition(text).split(",")
 
         for (let i = 0; i < txtPos.length; i++) {
             txtPos[i] = (txtPos[i] * 5532 + 1026) * randommp
 
-    
+         
+            
+         var rnd=   getRandomNumber(10, 99)
+         console.log(i== txtPos.length-1);
+            txtPos[i] =  txtPos[i]*rnd + String(rnd)
             txtPos[i] = String(txtPos[i]).split("").reverse().join(""), 10;
-            txtPos[i] = txtPos[i] + " "
+          txtPos[i] = txtPos[i] + "-"
+           
         }
-       txtPos.unshift(randommp+" ")
-       console.log(txtPos);
-     txtPos = txtPos.reverse()
-       console.log(txtPos);
-        document.getElementById("answer").innerHTML =   txtPos.toString().replace(/,/g, "") + "<br><br>" + "Copied"
-        navigator.clipboard.writeText( document.getElementById("answer").innerHTML.replace(" <br><br>Copied", ""));
+        txtPos.unshift(randommp)
+ 
+        txtPos = txtPos.reverse()
+       
+        document.getElementById("answer").innerHTML = txtPos.toString().replace(/,/g, "") + "<br><br>" + "Copied"
+        navigator.clipboard.writeText(document.getElementById("answer").innerHTML.replace("<br><br>Copied", ""));
         setTimeout(() => {
-            document.getElementById("answer").innerHTML =   txtPos.toString().replace(/,/g, "")
+            document.getElementById("answer").innerHTML = txtPos.toString().replace(/,/g, "").substring(0,  txtPos.toString().length-1)
         }, "1000");
 
 
@@ -64,16 +69,23 @@
         var input = document.getElementById("input2")
         var text = input.value
 
-        var txtPos = text.split(" ")
-        txtPos=  txtPos.reverse()
-        console.log(txtPos);
+        var txtPos = text.split("-")
+        txtPos = txtPos.reverse()
+       
         for (let i = 1; i < txtPos.length; i++) {
-
-
-            txtPos[i] = parseInt(String(txtPos[i]).split("").reverse().join(""), 10) + " ";
-
+            console.log("----"+txtPos[i].toString());
+            console.log(txtPos[i]);
+            txtPos[i] = String(txtPos[i]).split("").reverse().join(""), 10;
+            console.log(txtPos[i]);
+            txtPos[i] = txtPos[i].toString().substring(0, txtPos[i].toString().length-2)/txtPos[i].toString().substring(txtPos[i].toString().length-2,txtPos[i].toString().length)
+            console.log(txtPos[i].toString());
+         
+      
+          
+           
             txtPos[i] = (txtPos[i] / txtPos[0] - 1026) / 5532
-            if (txtPos[i] <= 65535) { } else {
+        
+            if (txtPos[i] < 65536 && txtPos[i] > 0 ) { } else {
                 txtPos = ["Not the correct code, encript you message here."]
                 break
             }
@@ -83,6 +95,10 @@
         }
         txtPos.splice(0, 1)
         document.getElementById("answer").innerHTML = txtPos.toString().replace(/,/g, "")
+        if (    document.getElementById("answer").innerHTML == "" ||   document.getElementById("answer").innerHTML.includes("�"))  {
+              "Not the correct code, encript you message here."
+                document.getElementById("answer").innerHTML =       "Not the correct code, encript you message here."
+            }
     }
 
 
@@ -99,15 +115,15 @@
 
 
 
-    function getRandomNumber() {
+    function getRandomNumber(min, max) {
         // Generate a random number between 0 (inclusive) and 1 (exclusive)
         const randomDecimal = Math.random();
 
         // Scale the random number to fit the desired range (min to max)
-        const randomInRange = randomDecimal * (1000000 - 2 + 1);
+        const randomInRange = randomDecimal * (max - min + 1);
 
         // Floor the number to get a whole number within the range (min to max)
-        const randomNumber = Math.floor(randomInRange) + 2;
+        const randomNumber = Math.floor(randomInRange) + min;
 
         return randomNumber;
     }

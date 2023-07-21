@@ -180,7 +180,7 @@ if(randomCharacter == undefined){
         }
         for (var i = 2; i < 7; i++) {
             
-       document.getElementsByTagName("input")[i].setAttrubute("disabled")
+       document.getElementsByTagName("input")[i].setAttrubute("disabled", "")
             if( document.getElementsByTagName("input")[i].value.substring(0,1).toUpperCase() !== randomCharacter){
                document.getElementsByTagName("input")[i].style.background = ' url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/cancel/materialsymbolsrounded/cancel_grad200fill1_48px.svg") no-repeat 95% 50% , linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
             }

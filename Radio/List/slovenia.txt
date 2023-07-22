@@ -94,7 +94,7 @@
 		"title": "Radio Aktual",
 		"image": "aktual.png",
 		"link": "https://live.radio.si/Aktual",
-		"slogan": "Narejen za moja ušesa",
+		"slogan": "Narejen za tvoja ušesa",
 		"stran": "radioaktual.si",
 		"nested": "no",
 		"parent": "no"

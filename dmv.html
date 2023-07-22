@@ -58,7 +58,7 @@ var randomCharacter
         time = prompt('Čas igre v sekundah:');   
         document.getElementById('time').innerHTML ="Čas igre (" +time + " sekund)"; 
         const xhr = new XMLHttpRequest();
-xhr.open("POST", "/signaling");
+xhr.open("POST", "/SloRadio/dmvCommunicate");
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.send(JSON.stringify({
   "id": Math.random()

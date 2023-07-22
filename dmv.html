@@ -21,8 +21,8 @@
         <input id="food" type="text" name="Jed" placeholder="Jed"></input><br>
         <input id="job" type="text" name="Poklic" placeholder="Poklic"></input><br>
         <button id="finish" onclick="start()">Prični</button>
-        <button style="background-image: none;margin-top: 30px;" id="time" onclick="timer()">Čas igre (privzeto 2
-            minuti)</button>
+        <button style="background-image: none;margin-top: 30px;" id="time" onclick="timer()">Čas igre (2.5
+            min)</button>
             <button style="background-image: none;margin-top: 30px;" id="crka" onclick="letter()">Izberi črko</button>
             <button style="background-image: none;margin-top: 30px; display: none;" id="zakluc" onclick="finish()">Zaključi</button>
 <h1 style=" position: relative;
@@ -52,11 +52,11 @@ var randomCharacter
        
     })
 
-    function timer() { time = prompt('Čas igre v sekundah:') };
+    function timer() { time = prompt('Čas igre v sekundah:');   document.getElementById('time').innerHTML ="Čas igre (" +time + " sekund)"; };
 
     function start() {
 
-        document.getElementById('ques').style.top = "80px"
+        document.getElementById('ques').style.top = "20px"
       
 
         for (var i = 0; i < 8; i++) {
@@ -180,7 +180,7 @@ if(randomCharacter == undefined){
         }
         for (var i = 2; i < 7; i++) {
             
-       document.getElementsByTagName("input")[i].setAttrubute("disabled", "")
+       
             if( document.getElementsByTagName("input")[i].value.substring(0,1).toUpperCase() !== randomCharacter){
                document.getElementsByTagName("input")[i].style.background = ' url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/cancel/materialsymbolsrounded/cancel_grad200fill1_48px.svg") no-repeat 95% 50% , linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
             }
@@ -254,28 +254,34 @@ if(randomCharacter == undefined){
 
     button {
         transition: all .3s ease-in-out;
-        width: 30%;
-        border-width: 0;
-        padding: 4px;
-        font-size: large;
-        height: 50px;
-        display: block;
-        border-radius: 20px;
-        position: relative;
-        margin: 0 auto 0 auto;
-        background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/play_circle/materialsymbolsrounded/play_circle_fill1_48px.svg") no-repeat 5% 50%, rgb(7, 147, 52)
+    width: 40%;
+    border-width: 0;
+    min-width: 150px;
+    padding: 4px;
+    font-size: large;
+    min-height: 60px;
+    height: calc(100vh / 5);
+    display: block;
+    border-radius: 20px;
+    position: relative;
+    margin: 0 auto 0 auto;
+    background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/play_circle/materialsymbolsrounded/play_circle_fill1_48px.svg") no-repeat 5% 50%, rgb(7, 147, 52);
     }
 
     p {
-        transition: all .3s ease-in-out;
-        font-size: 40px;
-        position: fixed;
-        display: block;
-        top: 0;
-        margin: 0 auto 0 auto;
-        background-color: rgb(7, 147, 52);
-        border-radius: 20px;
-        padding: 10px;
+        z-index: 500;
+    transition: all .3s ease-in-out;
+    font-size: 3.8vh;
+    position: sticky;
+    display: block;
+    /* left: 50%; */
+    top: 10px;
+    /* right: 50%; */
+    margin: 0 auto 0 auto;
+    background-color: rgb(7, 147, 52);
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
     }
 </style>
 

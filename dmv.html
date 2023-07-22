@@ -2,9 +2,8 @@
 <html lang="sl">
 
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/6.1.4/adapter.js"></script>
-  <script src="https://requirejs.org/docs/release/2.3.6/comments/require.js"></script>
 
+ 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DMV</title>
@@ -57,26 +56,11 @@ var randomCharacter
     function timer() { 
         time = prompt('Čas igre v sekundah:');   
         document.getElementById('time').innerHTML ="Čas igre (" +time + " sekund)"; 
-        const xhr = new XMLHttpRequest();
-xhr.open("POST", "/SloRadio/dmvCommunicate");
-xhr.setRequestHeader("Content-Type", "application/json");
-xhr.send(JSON.stringify({
-  "id": Math.random()
-}));
+      
 
-xhr.onload = function() {
-  if (xhr.status === 200) {
-    const data = JSON.parse(xhr.responseText);
-    const otherClientId = data.id;
-
-    // Establish a direct connection with the other client.
-    const socket = new WebSocket(`ws://localhost:8080/${otherClientId}`);
-
-    // Send a text message to the other client.
-    socket.send("Hello!");
-  }
-};
-
+plant.use('/index.html', ({req, res}) => {
+  res.html('<!DOCTYPE html><html><body>Hello</body></html>')
+})
 
 }
 
@@ -134,10 +118,11 @@ if(randomCharacter == undefined){
     }
 
     async function finish() {
+        document.getElementById("ques").style.opacity = ".3"
         var name = document.getElementById('name').value
         var surname = document.getElementById("surname").value
         var job = document.getElementById("job").value
-       
+       var placeName = document.getElementById("dmv").value
         time -= 1
                 clearInterval(intrvl);
                
@@ -204,14 +189,58 @@ if(randomCharacter == undefined){
             }
             console.log('https://pxweb.stat.si/SiStatData/api/v1/sl/Data?query=' + surname);
         }
+        const apiKey = 'YOUR_API_KEY';
+
+
+const apiUrl = "http://api.geonames.org/searchJSON?q="+ encodeURIComponent(
+  placeName)+"&username=timkovic";
+
+fetch(apiUrl)
+  .then((response) => response.json())
+  .then((data) => {
+   
+    console.log(data.geonames.length == 0);
+    document.getElementById("ques").style.opacity = "1"
+    if (data.geonames.length == 0) {
+       console.log(1);
+                  document.getElementById('dmv').style.background = ' url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/cancel/materialsymbolsrounded/cancel_grad200fill1_48px.svg") no-repeat 95% 50%/6%  , linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
+                 
+              
+              } else {
+                console.log(2);
+                  if(placeName.substring(0,1).toUpperCase() !== randomCharacter){Ž 
+                    console.log(3);
+                  document.getElementById('dmv').style.background = ' url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/cancel/materialsymbolsrounded/cancel_grad200fill1_48px.svg") no-repeat 95% 50%/6%  , linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
+                  }else{
+                    
+                    console.log(4);
+                      document.getElementById('dmv').style.background = ' url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") no-repeat 95% 50%/6%  , linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
+                  }
+                 
+              }
+
+  })
+  .catch((error) => {
+    console.error('Error fetching data:', error);
+  });
+
         for (var i = 2; i < 7; i++) {
            
       
             if( document.getElementsByTagName("input")[i].value.substring(0,1).toUpperCase() !== randomCharacter){
+                document.getElementsByTagName("input")[i].setAttribute("disabled","")
                document.getElementsByTagName("input")[i].style.background = ' url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/cancel/materialsymbolsrounded/cancel_grad200fill1_48px.svg") no-repeat 95% 50% /6% , linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
             }  
                       
                     }
+                    for (var i = 0; i < 8; i++) {
+           
+      
+         
+               document.getElementsByTagName("input")[i].setAttribute("disabled","")
+
+                     
+                   }
                   
     }
     

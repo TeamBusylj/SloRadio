@@ -34,7 +34,7 @@
 		"title": "Center Love",
 		"image": "center.png",
 		"link": "http://stream.radiocenter.si:8060/stream?type=http&amp;nocache=708",
-		"slogan": "Najboljši pop današnjih dniNajboljša ljubezenska glasba vseh čas",
+		"slogan": "Najboljša ljubezenska glasba vseh časov",
 		"stran": "https://www.radiocenter.si/live/center-love/",
 		"nested": "yes",
 		"parent": "no"
@@ -367,6 +367,6 @@
 		"slogan": "",
 		"stran": "https://www.rtvslo.si/mmr",
 		"nested": "no",
-"parent": "no"
+		"parent": "no"
 	}
 ]

@@ -182,7 +182,7 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
         timer.innerHTML = "Še " + Math.floor(time / 60) + " min in " + ((time % 60) + 1) + " s. Črka je " + randomCharacter
         intrvl = setInterval(function () {
             if (time == 0) {
-                time -= 1
+            
                 clearInterval(intrvl);
 
                 finish()

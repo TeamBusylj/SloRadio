@@ -11,7 +11,8 @@
 </head>
 
 <body>
-    <p id="timer" style="height: 0;"> <p id="koncala" style="height: 0; font-size: 20px!important;"></p>
+    <p id="timer" class="koncala" style="height: 0;"> </p>
+    <p  id="koncalaa" class="koncala" style="z-index: 400; height: 0;position: relative;"></p>
     <div class="ques" id="ques">
         <input id="name" type="text" name="ime" placeholder="Ime"> <br>
         <input id="surname" type="text" name="priimek" placeholder="Priimek"></input>
@@ -62,8 +63,8 @@ var randomCharacter
     addEventListener('load', function () {
         time = 150
       if(localStorage.getItem("ime") !== null){
-        newimem = localStorage.localStorage.getItem("ime")
-        document.getElementById('tvojime').innerHTML = localStorage.localStorage.getItem("ime")
+        newimem = localStorage.getItem("ime")
+        document.getElementById('tvojime').innerHTML = "Ime: "+localStorage.getItem("ime")
       }
     })
     var pubnub = new PubNub({
@@ -85,7 +86,16 @@ pubnub.addListener({
         document.getElementById('letter').innerHTML = payload.message
     randomCharacter =  document.getElementById('letter').innerHTML
         }else{
-            document.getElementById('koncala').innerHTML =+ payload.message
+            if(document.getElementById('koncalaa').innerHTML == ""){
+                document.getElementById('koncalaa').innerHTML = document.getElementById('koncalaa').innerHTML+payload.message
+                document.getElementById("koncalaa")  .style.height =  "initial"
+            }else{
+            document.getElementById('koncalaa').innerHTML = document.getElementById('koncalaa').innerHTML+"<br>"+payload.message
+         
+            }
+          
+          
+            document.getElementById("koncalaa").style.display = "block"
         }
     }
   }
@@ -140,7 +150,8 @@ if(randomCharacter == undefined){
         console.log(time);
 
         var timer = document.getElementById("timer")
-        timer.style.height = "50px"
+        timer.style.height = "initial"
+      
         timer.innerHTML = "Še " + Math.floor(time / 60) + " min in " + ((time % 60)+1) + " s. Črka je " + randomCharacter
       intrvl =  setInterval(function () { 
             if(time == 0){
@@ -177,7 +188,7 @@ if(randomCharacter == undefined){
         time -= 1
         pubnub.publish({
   channel: 'ws-channel',
-  message: "Oseba "+ newimem +"je že končala."
+  message: "Oseba "+ newimem +" je že končala."
 })
                 clearInterval(intrvl);
                
@@ -263,7 +274,7 @@ fetch(apiUrl)
               
               } else {
                 console.log(2);
-                  if(placeName.substring(0,1).toUpperCase() !== randomCharacter){Ž 
+                  if(placeName.substring(0,1).toUpperCase() !== randomCharacter){
                     console.log(3);
                   document.getElementById('dmv').style.background = ' url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/cancel/materialsymbolsrounded/cancel_grad200fill1_48px.svg") no-repeat 95% 50%/6%  , linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
                   }else{
@@ -338,13 +349,13 @@ fetch(apiUrl)
         display: block;
         background: linear-gradient(200deg, rgba(92, 30, 166, 1) 0%, rgba(200, 67, 94, 1) 100%);
         color: white;
-        font-size: calc(100vh / 26);
+        font-size: 100%;
         transition: all .3s ease-in-out;
     }
 
     ::placeholder {
         color: white;
-        font-size: calc(100vh / 26);
+        font-size: 90%;
         
         opacity: .5;
     }
@@ -379,12 +390,12 @@ fetch(apiUrl)
     background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/play_circle/materialsymbolsrounded/play_circle_fill1_48px.svg") no-repeat 5% 50%, rgb(7, 147, 52);
     }
     @media screen and (min-width: 630px) {
- p {
+ .koncala {
      font-size: 50px!important;
   }
 }
 
-    p {
+    .koncala {
       
         z-index: 500;
     transition: all .3s ease-in-out;
@@ -394,15 +405,17 @@ fetch(apiUrl)
     /* left: 50%; */
     top: 10px;
     /* right: 50%; */
-    margin: 0 auto 0 auto;
+    margin: 10px auto 0 auto;
     background-color: rgb(7, 147, 52);
     border-radius: 20px;
     padding: 10px;
+  
     text-align: center;
     }
     #zakluc{
         height: initial !important;
     }
+
 </style>
 
 </html>

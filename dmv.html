@@ -67,7 +67,7 @@ pubnub.subscribe({
 pubnub.addListener({
   message: payload => {
     console.log('Message from client: ' + payload.message + "<br>")
-    if(Number.isInteger(payload.message)){
+    if(!isNaN(parseInt(payload.message, 10))){
     time = payload.message
     document.getElementById('time').innerHTML ="Čas igre (" +time + " sekund)"; 
     }else{
@@ -79,7 +79,17 @@ pubnub.addListener({
 })
 
     function timer() { 
-        time = prompt('Čas igre v sekundah:');   
+        while (true) {
+        time = prompt('Čas igre v sekundah:'); 
+       
+
+// Check if the input was a valid integer
+if (!isNaN(parseInt(time, 10))) {
+ 
+  break; // Exit the loop if the input is a valid integer
+} else {
+  alert("Please enter a valid integer!");
+} }
         document.getElementById('time').innerHTML ="Čas igre (" +time + " sekund)"; 
       
         pubnub.publish({

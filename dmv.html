@@ -23,7 +23,7 @@
         <input id="object" type="text" name="Predmet" placeholder="Predmet"></input><br>
         <input id="food" type="text" name="Jed" placeholder="Jed"></input><br>
         <input id="job" type="text" name="Poklic" placeholder="Poklic"></input><br>
-        <button id="finish" onclick="start()">Prični</button>
+        <button id="finish" onclick="pressStart()">Prični</button>
         <button style="background-image: none;margin-top: 30px;" id="time" onclick="timer()">Čas igre (2.5
             min)</button>
             <button style="background-image: none;margin-top: 30px;" id="crka" onclick="letter()">Izberi črko</button>
@@ -78,6 +78,7 @@ pubnub.subscribe({
 pubnub.addListener({
   message: payload => {
     console.log('Message from client: ' + payload.message + "<br>")
+    if(payload.message == "START"){start()}else{
     if(!isNaN(parseInt(payload.message, 10))){
     time = payload.message
     document.getElementById('time').innerHTML ="Čas igre (" +time + " sekund)"; 
@@ -98,6 +99,7 @@ pubnub.addListener({
             document.getElementById("koncalaa").style.display = "block"
         }
     }
+}
   }
 
 })
@@ -123,12 +125,18 @@ if (!isNaN(parseInt(time, 10))) {
      
 
 }
-
+function pressStart(){
+    pubnub.publish({
+  channel: 'ws-channel',
+  message: "START"
+})
+}
     function start() {
 
         document.getElementById('ques').style.top = "20px"
         document.getElementById('timer').style.display = "block"
-
+        time -= 1
+       
         for (var i = 0; i < 8; i++) {
             
             document.getElementsByTagName("input")[i].style.display = " block;"

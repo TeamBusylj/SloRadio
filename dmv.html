@@ -2,6 +2,7 @@
 <html lang="sl">
 
 <head>
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.2.2.min.js"></script>
 
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="UTF-8">
@@ -42,7 +43,10 @@ for (var i = 0; i < 20; i++) {
     document.getElementById('letter').innerHTML =  alphabet[Math.floor(Math.random() * alphabet.length)].toUpperCase()
     randomCharacter =  document.getElementById('letter').innerHTML
         }
-
+        pubnub.publish({
+  channel: 'ws-channel',
+  message: randomCharacter
+})
 }
 var intrvl
 var alphabet = "abcčdefghijklmnoprsštuvzž"
@@ -50,17 +54,39 @@ var randomCharacter
      var time
     addEventListener('load', function () {
         time = 150
-       
+      
     })
+    var pubnub = new PubNub({
+  publishKey: 'demo',
+  subscribeKey: 'demo',
+  userId: "" + Math.random()
+})
+pubnub.subscribe({
+  channels: ['ws-channel']
+})
+pubnub.addListener({
+  message: payload => {
+    console.log('Message from client: ' + payload.message + "<br>")
+    if(Number.isInteger(payload.message)){
+    time = payload.message
+    document.getElementById('time').innerHTML ="Čas igre (" +time + " sekund)"; 
+    }else{
+        document.getElementById('letter').innerHTML = payload.message
+    randomCharacter =  document.getElementById('letter').innerHTML
+    }
+  }
+
+})
 
     function timer() { 
         time = prompt('Čas igre v sekundah:');   
         document.getElementById('time').innerHTML ="Čas igre (" +time + " sekund)"; 
       
-
-plant.use('/index.html', ({req, res}) => {
-  res.html('<!DOCTYPE html><html><body>Hello</body></html>')
+        pubnub.publish({
+  channel: 'ws-channel',
+  message: time
 })
+     
 
 }
 
@@ -90,7 +116,7 @@ if(randomCharacter == undefined){
 
         var timer = document.getElementById("timer")
         timer.style.height = "50px"
-        timer.innerHTML = "Še " + Math.floor(time / 60) + " min in " + (time % 60)+1 + " s. Črka je " + randomCharacter
+        timer.innerHTML = "Še " + Math.floor(time / 60) + " min in " + ((time % 60)+1) + " s. Črka je " + randomCharacter
       intrvl =  setInterval(function () { 
             if(time == 0){
                 time -= 1

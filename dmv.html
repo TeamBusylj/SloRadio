@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <p id="timer" style="height: 0;"></p>
+    <p id="timer" style="height: 0;"> <p id="koncala" style="height: 0; font-size: 20px!important;"></p>
     <div class="ques" id="ques">
         <input id="name" type="text" name="ime" placeholder="Ime"> <br>
         <input id="surname" type="text" name="priimek" placeholder="Priimek"></input>
@@ -26,6 +26,7 @@
         <button style="background-image: none;margin-top: 30px;" id="time" onclick="timer()">Čas igre (2.5
             min)</button>
             <button style="background-image: none;margin-top: 30px;" id="crka" onclick="letter()">Izberi črko</button>
+            <button style="background-image: none;margin-top: 30px;" id="tvojime" onclick="ime()">Ime</button>
             <button style="background-image: none; display: none;" id="zakluc" onclick="finish()">Zaključi</button>
 <h1 style=" position: relative;
 margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
@@ -34,7 +35,12 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
 </body>
 
 <script>
-
+function ime(){
+  
+    newimem = prompt('Kako ti bo ime?')
+    document.getElementById('tvojime').innerHTML = "Ime: "+newimem; 
+    localStorage.setItem("ime", newimem)
+}
 async function letter(){
     
 
@@ -48,13 +54,17 @@ for (var i = 0; i < 20; i++) {
   message: randomCharacter
 })
 }
+var newimem = " "
 var intrvl
 var alphabet = "abcčdefghijklmnoprsštuvzž"
 var randomCharacter
      var time
     addEventListener('load', function () {
         time = 150
-      
+      if(localStorage.getItem("ime") !== null){
+        newimem = localStorage.localStorage.getItem("ime")
+        document.getElementById('tvojime').innerHTML = localStorage.localStorage.getItem("ime")
+      }
     })
     var pubnub = new PubNub({
   publishKey: 'demo',
@@ -71,8 +81,12 @@ pubnub.addListener({
     time = payload.message
     document.getElementById('time').innerHTML ="Čas igre (" +time + " sekund)"; 
     }else{
+        if(payload.message.length == 1){
         document.getElementById('letter').innerHTML = payload.message
     randomCharacter =  document.getElementById('letter').innerHTML
+        }else{
+            document.getElementById('koncala').innerHTML =+ payload.message
+        }
     }
   }
 
@@ -118,6 +132,7 @@ if(randomCharacter == undefined){
         setTimeout(() => {
             document.getElementById('zakluc').style.display = "block"
             document.getElementById('finish').style.display = "none"
+            document.getElementById('tvojime').style.display = "none"
             document.getElementById('letter').style.display = "none"
             document.getElementById('time').style.display = "none"
             document.getElementById('crka').style.display = "none"
@@ -160,6 +175,10 @@ if(randomCharacter == undefined){
         var job = document.getElementById("job").value
        var placeName = document.getElementById("dmv").value
         time -= 1
+        pubnub.publish({
+  channel: 'ws-channel',
+  message: "Oseba "+ newimem +"je že končala."
+})
                 clearInterval(intrvl);
                
                 setTimeout(() => {

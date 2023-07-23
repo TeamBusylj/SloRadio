@@ -45,6 +45,11 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
         document.getElementById('tvojime').innerHTML = "Ime: " + newimem;
         localStorage.setItem("ime", newimem)
         refreshSeznam()
+        pubnub.publish({
+  channel: 'ws-channel',
+  message: "justcome"
+})
+
     }
     async function letter() {
 
@@ -71,6 +76,10 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
             newimem = localStorage.getItem("ime")
             document.getElementById('tvojime').innerHTML = "Ime: " + localStorage.getItem("ime")
             refreshSeznam()
+            pubnub.publish({
+  channel: 'ws-channel',
+  message: "justcome"
+})
         } else {
             ime()
             
@@ -89,6 +98,12 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
     pubnub.addListener({
         message: payload => {
             console.log('Message from client: ' + payload.message + "<br>")
+            if (payload.message == "justcome") {  
+                document.getElementById('listUser').innerHTML = ""
+                pubnub.publish({
+  channel: 'ws-channel',
+  message: "!USER!"+ newimem 
+}) } else {
             if (payload.message == "START") { start() } else {
                 if (!isNaN(parseInt(payload.message, 10))) {
                     time = payload.message
@@ -99,10 +114,25 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
                         randomCharacter = document.getElementById('letter').innerHTML
                     } else {
                         if(payload.message.includes("!USER!")  &&   !document.getElementById('listUser').innerHTML.includes(payload.message.substring(6, payload.message.length))){
-                            document.getElementById('listUser').innerHTML +=  '<div class="user"> <img src="https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/account_circle/materialsymbolsrounded/account_circle_grad200fill1_48px.svg"></img><p>'+payload.message.substring(6, payload.message.length) + '</p></div>'
+                           var newname = document.createElement("div")
+                           newname.classList.add("user")
+                           newname.style.scale = "0"
+                           if(payload.message.substring(6, payload.message.length) == newimem){
+                            newname.innerHTML = '<img src="https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/account_circle/materialsymbolsrounded/account_circle_grad200fill1_48px.svg"></img><p>'+payload.message.substring(6, payload.message.length) + '<br>(You)</p>'
+
+                           }else{
+                           newname.innerHTML = '<img src="https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/account_circle/materialsymbolsrounded/account_circle_grad200fill1_48px.svg"></img><p>'+payload.message.substring(6, payload.message.length) + '</p>'
+                           }
+                           document.getElementById('listUser').appendChild(newname)
+                           setTimeout(() => {
+                            newname.style.scale = "1"
+        }, "10");
                         }else if (!payload.message.includes("!USER!")){
                         if (document.getElementById('koncalaa').innerHTML == "") {
+
                             document.getElementById('koncalaa').innerHTML = document.getElementById('koncalaa').innerHTML + payload.message
+                                  document.getElementById('zakluc').style.display = "block"
+                                
                             document.getElementById("koncalaa").style.height = "initial"
                         } else {
                             document.getElementById('koncalaa').innerHTML = document.getElementById('koncalaa').innerHTML + "<br>" + payload.message
@@ -114,7 +144,7 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
                     }
                 }
                 }
-            }
+            }}
         }
 
     })
@@ -452,6 +482,9 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
         height: initial !important;
     }
     .user{
+        width: 20vw;
+        min-width: 20px;
+        transition: all .3s ease-in-out;
         display: flex;
     flex-direction: column;
     width: 50px;

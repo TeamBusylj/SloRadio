@@ -359,12 +359,17 @@ fetch(apiUrl)
     margin: 0 auto 0 auto;
     background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/play_circle/materialsymbolsrounded/play_circle_fill1_48px.svg") no-repeat 5% 50%, rgb(7, 147, 52);
     }
+    @media screen and (min-width: 630px) {
+ p {
+     font-size: 50px!important;
+  }
+}
 
     p {
       
         z-index: 500;
     transition: all .3s ease-in-out;
-    font-size: 3.8vh;
+    font-size: 7vw;
     position: sticky;
     display: none;
     /* left: 50%; */
@@ -375,6 +380,9 @@ fetch(apiUrl)
     border-radius: 20px;
     padding: 10px;
     text-align: center;
+    }
+    #zakluc{
+        height: initial !important;
     }
 </style>
 

@@ -69,7 +69,7 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
     var alphabet = "abcčdefghijklmnoprsštuvzž"
     var randomCharacter
     var time
-    var listOfUsedWords = []
+    var listOfUsedWords = {1:["!Text!","","","!!!"]}
     addEventListener('load', function () {
 
         time = 150
@@ -98,7 +98,7 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
     })
     pubnub.addListener({
         message: payload => {
-            console.log('Message from client: ' + payload.message + "<br>")
+            console.log(payload.message)
             if (payload.message == "justcome") {
                 document.getElementById('listUser').innerHTML = ""
                 pubnub.publish({
@@ -113,9 +113,10 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
                         document.getElementById('time').innerHTML = "Čas igre (" + time + " sekund)";
                     } else {
 
-                        if (payload.message.includes("!TEXT!")) {
-                            listOfUsedWords.push(payload.message.substring(6, payload.message.length).toLowerCase())
+                        if (payload.message[0] == "!TEXT!") {
 
+                           listOfUsedWords[Object.keys(listOfUsedWords).length+1] = payload.message
+                           
                         } else {
                             if (payload.message.length == 1) {
                                 document.getElementById('letter').innerHTML = payload.message
@@ -251,62 +252,91 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
             time -= 1
         }, 1000);
 
-console.log(listOfUsedWords);
+        console.log(listOfUsedWords);
         for (var i = 0; i < 8; i++) {
-           
-            document.getElementsByTagName("input")[i].addEventListener('keyup',function (e)  {
-               
-                const text = e.currentTarget.value;
-                let ifitis = true
-                console.log(e);
-                var activeElement = document.activeElement;
+
+            document.getElementsByTagName("input")[i].addEventListener('keyup', function (e) {
+
+            let text = e.currentTarget.value;
              
-                if (checkValuesAfterColon(listOfUsedWords, text.toLowerCase())) {
-                    console.log("kkkkk");
-                    e.srcElement.style.background = '  linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
-    e.srcElement.style.opacity = '1'
-                 
-                } else {
-                  
+                let found = false;
+
+for (const key in listOfUsedWords) {
+    console.log("kkk");
+  if (Object.prototype.hasOwnProperty.call(listOfUsedWords, key)) {
+   
+    const array = listOfUsedWords[key];
+    console.log(array[3]+" --------"+ text.toLowerCase());
+    if (array[3].toLowerCase() == text.toLowerCase()) {
+        console.log("kkk3");
+      found = true;
+      console.log(`The string "${text}" exists in the object.`);
+      break;
+    }else{
+
+        clearTimeout(timer);
+
+timer = setTimeout(() => {
+
+    pubnub.publish({
+        channel: 'ws-channel',
+        message: ["!TEXT!", e.srcElement.name, newimem, text]
+    })
+    ifitis = false
+}, 1500);
+
+    }
+  }
+}
+if (found) {
+    for (const [index, array] of Object.entries(listOfUsedWords)) {
+      if (!array[3].toLowerCase().includes(text.toLowerCase())) {
+        console.log(`The string "${text}" doesn't exist in array with index ${index}.`);
+       
+      }else{
+        console.log(`The string "${text}" DOES exist in array with index ${index}. This is like this: ${array}`);
+        console.log(array[2].toLowerCase()+" : "+newimem + " ------ "+array[1].toLowerCase() +" : "+ e.srcElement.name);
+        if(array[2].toLowerCase() !== newimem  && array[1].toLowerCase() == e.srcElement.name.toLowerCase()){
+        e.srcElement.style.background = ' url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/lock/materialsymbolsrounded/lock_grad200fill1_48px.svg") no-repeat 95% 50%/6%  , linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
+                    e.srcElement.style.opacity = '.5'
+        }
+      }
+    }
+  }else{
+    e.srcElement.style.background = '  linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
+                    e.srcElement.style.opacity = '1'
+  }
+
                
-    console.log("kkkaa");
-             if(false){
-              e.srcElement.style.background = ' url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/lock/materialsymbolsrounded/lock_grad200fill1_48px.svg") no-repeat 95% 50%/6%  , linear-gradient(200deg,rgba(92,30,166,1) 0%,rgba(200,67,94,1)  100%)'
-e.srcElement.style.opacity = '.5'
-             }
-                 
-                }
-                clearTimeout(timer);
-
-                if (ifitis) {
-                    if (!listOfUsedWords.some((element) => element.endsWith(text.toLowerCase()))) {
-                    timer = setTimeout(() => {
-
-                        pubnub.publish({
-                            channel: 'ws-channel',
-                            message: "!TEXT!" +e.srcElement.name+": " +newimem+": " + text
-                        })
-                        ifitis = false
-                    }, 1500);
-                }}
-            });
 
 
+
+
+
+            })
 
         }
+    }
+    function deepIncludesWithIndex(arr, target) {
+        let foundIndex = -1;
 
+        arr.some((item, index) => {
+            if (Array.isArray(item)) {
+                if (deepIncludesWithIndex(item, target) !== -1) {
+                    foundIndex = index;
+                    return true;
+                }
+            } else {
+                if (item === target) {
+                    foundIndex = index;
+                    return true;
+                }
+            }
+        });
+
+        return foundIndex;
     }
-    function checkValuesAfterColon(arr, str2) {
-  return arr.every(value => {
-    const colonIndex = value.lastIndexOf(':');
-    if (colonIndex !== -1) {
-      const valueAfterColon = value.substring(colonIndex + 2);
-      console.log(valueAfterColon);
-      return valueAfterColon === str2;
-    }
-    return false; // If there's no colon in the value, it is not considered a match.
-  });
-}
+
     async function finish() {
         document.getElementById('zakluc').style.display = "none"
         document.getElementById("ques").style.opacity = ".5"
@@ -566,13 +596,14 @@ e.srcElement.style.opacity = '.5'
         display: flex;
 
     }
-    .submit{
+
+    .submit {
         display: inline;
-    opacity: 1;
-    width: auto;
-    left: 83vw;
-    position: relative;
-    width: calc(100vw - 98%);
+        opacity: 1;
+        width: auto;
+        left: 83vw;
+        position: relative;
+        width: calc(100vw - 98%);
     }
 </style>
 <script>

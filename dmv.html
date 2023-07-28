@@ -14,28 +14,35 @@
     <p id="timer" class="koncala" style="height: 0;"> </p>
     <p id="koncalaa" class="koncala" style="z-index: 400; height: 0;position: relative;"></p>
     <div class="ques" id="ques">
-        <input id="name" type="text" name="ime" placeholder="Ime"> <br>
-        <input id="surname" type="text" name="priimek" placeholder="Priimek"></input>
+        <input autocomplete="one-time-code" id="name" type="text" name="ime" placeholder="Ime"> <br>
+        <input autocomplete="one-time-code" id="surname" type="text" name="priimek" placeholder="Priimek"></input>
         </input><br>
-        <input id="plant" type="text" name="Rastlina" placeholder="Rastlina"></input><br>
-        <input id="animal" type="text" name="Žival" placeholder="Žival"></input><br>
-        <input id="dmv" type="text" name="DMV" placeholder="DMV"></input><br>
-        <input id="object" type="text" name="Predmet" placeholder="Predmet"></input><br>
-        <input id="food" type="text" name="Jed" placeholder="Jed"></input><br>
-        <input id="job" type="text" name="Poklic" placeholder="Poklic"></input><br>
-        <button id="finish" onclick="pressStart()">Prični</button>
-        <button style="background-image: none;margin-top: 30px;" id="time" onclick="timer()">Čas igre (2.5
-            min)</button>
-        <button style="background-image: none;margin-top: 30px;" id="crka" onclick="letter()">Izberi črko</button>
-        <button style="background-image: none;margin-top: 30px;" id="tvojime" onclick="ime()">Ime</button>
+        <input autocomplete="one-time-code" id="plant" type="text" name="Rastlina" placeholder="Rastlina"></input><br>
+        <input autocomplete="one-time-code" id="animal" type="text" name="Žival" placeholder="Žival"></input><br>
+        <input autocomplete="one-time-code"id="dmv" type="text" name="DMV" placeholder="DMV"></input><br>
+        <input autocomplete="one-time-code" id="object" type="text" name="Predmet" placeholder="Predmet"></input><br>
+        <input autocomplete="one-time-code"id="food" type="text" name="Jed" placeholder="Jed"></input><br>
+        <input autocomplete="one-time-code"id="job" type="text" name="Poklic" placeholder="Poklic"></input><br>
+       
         <button style="background-image: none; display: none;" id="zakluc" onclick="finish()">Zaključi</button>
-        <h1 style=" position: relative;
-margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
-        <div id="listUser">
-
-        </div>
+       
+        
     </div>
+ 
+    <div class="btns" id="btns">
+    <button style="margin-top: 30px; margin-right: 20px; margin-left: 20px;" autocomplete="one-time-code"id="finish" onclick="pressStart()">Prični</button>
+    <button style="background-image: none;margin-top: 30px;margin-right: 20px; margin-left: 20px;" id="time" onclick="timer()">Čas igre (2.5
+        min)</button>
+    <button style="background-image: none;margin-top: 30px;margin-right: 20px; margin-left: 20px;" id="crka" onclick="letter()">Izberi črko</button>
+    <button style="background-image: none;margin-top: 30px;margin-right: 20px; margin-left: 20px;" id="tvojime" onclick="ime()">Ime</button>
 
+   
+    <div id="listUser">
+
+    </div>
+   </div>
+   <h1 style=" position: relative;
+   margin: 0px auto 0 auto; font-size: 70px;" id="letter"></h1>
 </body>
 
 <script>
@@ -127,10 +134,10 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
                                     newname.classList.add("user")
                                     newname.style.scale = "0"
                                     if (payload.message.substring(6, payload.message.length) == newimem) {
-                                        newname.innerHTML = '<img src="https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/account_circle/materialsymbolsrounded/account_circle_grad200fill1_48px.svg"></img><p>' + payload.message.substring(6, payload.message.length) + '<br>(You)</p>'
+                                        newname.innerHTML = '<img style="width: 100%;" src="https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/account_circle/materialsymbolsrounded/account_circle_grad200fill1_48px.svg"></img><p>' + payload.message.substring(6, payload.message.length) + '<br>(You)</p>'
 
                                     } else {
-                                        newname.innerHTML = '<img src="https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/account_circle/materialsymbolsrounded/account_circle_grad200fill1_48px.svg"></img><p>' + payload.message.substring(6, payload.message.length) + '</p>'
+                                        newname.innerHTML = '<img style="width: 100%;" src="https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/account_circle/materialsymbolsrounded/account_circle_grad200fill1_48px.svg"></img><p>' + payload.message.substring(6, payload.message.length) + '</p>'
                                     }
                                     document.getElementById('listUser').appendChild(newname)
                                     setTimeout(() => {
@@ -198,8 +205,7 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
     }
     function start() {
 
-        document.getElementById('ques').style.top = "20px"
-        document.getElementById('timer').style.display = "block"
+        document.getElementById('ques').style.display = "flex"
         time -= 1
 
         for (var i = 0; i < 8; i++) {
@@ -213,6 +219,9 @@ margin: 50px auto 0 auto; font-size: 70px;" id="letter"></h1>
         }
 
         setTimeout(() => {
+            document.getElementById('ques').style.top = "20px"
+            document.getElementById('ques').style.opacity = "1"
+        document.getElementById('timer').style.display = "block"
             document.getElementById('zakluc').style.display = "block"
             document.getElementById('finish').style.display = "none"
             document.getElementById('listUser').style.display = "none"
@@ -471,17 +480,30 @@ if (found) {
 
 </script>
 <style>
-    body {
+   html {
         background: linear-gradient(200deg, rgb(30, 166, 73) 0%, rgb(67, 105, 200) 100%);
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
-
+.btns{
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    top: 30px;
+    -ms-transform: translateY(-50%);
+    /* transform: translateY(-50%); */
+    height: 90vh;
+    width: 100vw;
+    display: flex;
+    /* flex-direction: column;*/
+}
     .ques {
+        display: none;
         transition: all .3s ease;
-        display: flex;
+      opacity: 0;
         flex-direction: column;
-        top: -400px;
+        top: -1vh;
         width: 100%;
         height: 90vh;
         position: relative;
@@ -490,14 +512,11 @@ if (found) {
     input:not(.submit) {
         display: none;
         opacity: 0;
-
         min-height: 30px;
         min-width: 180px;
         width: calc(100% - 60px);
         flex: 1;
-
-        height: calc(100vh / 26);
-        /* Divide viewport height by 7 to distribute the height equally */
+       
         border: 1px solid #000;
         margin-left: auto;
         margin-right: auto;
@@ -510,8 +529,17 @@ if (found) {
         color: white;
         font-size: 100%;
         transition: all .3s ease-in-out;
+        resize: none;
     }
-
+    input:focus{
+        font-size: 140%;
+        transition: all .1s ease-in-out;
+       padding: 10px 5px 10px 5px;
+    }
+    input:hover{
+        transition: all .1s ease-in-out;
+        filter:brightness(1.1);
+    }
     ::placeholder {
         color: white;
         font-size: 90%;
@@ -532,23 +560,34 @@ if (found) {
     #primk {
         margin-top: 40px;
     }
-
+    .container > button { 
+        flex: 50%;
+    } 
     button {
+       
         transition: all .3s ease-in-out;
-        width: 40%;
-        border-width: 0;
-        min-width: 150px;
-        padding: 4px;
-        font-size: large;
-        min-height: 60px;
-        height: calc(100vh / 5);
-        display: block;
-        border-radius: 20px;
-        position: relative;
-        margin: 0 auto 0 auto;
-        background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/play_circle/materialsymbolsrounded/play_circle_fill1_48px.svg") no-repeat 5% 50%, rgb(7, 147, 52);
+    width: 40%;
+    border-width: 0;
+    min-width: 150px;
+    padding: 4px;
+    font-size: large;
+    height: 15vh;
+    display: block;
+    border-radius: 20px;
+    aspect-ratio: 20/ 1;
+    position: relative;
+    margin: 0;
+    background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/play_circle/materialsymbolsrounded/play_circle_fill1_48px.svg") no-repeat 5% 50%, rgb(7, 147, 52);
     }
 
+    button:active{
+        transition: all .1s ease-in-out;
+        transform: scale(.7);
+    }
+    button:hover{
+        transition: all .1s ease-in-out;
+        filter:brightness(1.1);
+    }
     @media screen and (min-width: 630px) {
         .koncala {
             font-size: 50px !important;
@@ -578,23 +617,26 @@ if (found) {
     }
 
     .user {
-        width: 20vw;
-        min-width: 20px;
+        
+       
+      
         transition: all .3s ease-in-out;
         display: flex;
         flex-direction: column;
-        width: 50px;
-        padding: 20px;
+       
+        padding: 10px;
         border-radius: 30px;
-        margin-left: auto;
-        margin-right: auto;
+       margin: 10px;
         text-align: center;
         background: rgb(7 99 147);
     }
 
     div#listUser {
-        display: flex;
-
+        flex: 1;
+display: flex;
+justify-content: center;
+margin-top: 20px;
+width: 100%;
     }
 
     .submit {

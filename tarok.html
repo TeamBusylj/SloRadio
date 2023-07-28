@@ -8,204 +8,256 @@
 </head>
 
 <body>
+
     <button id="newgame" onclick="newGame()">New game</button>
     <button id="game" onclick="Game()"> Existing game</button>
 </body>
 
 <script>
-function addScore(){
+    function addScore() {
 
-    var newElement = document.createElement("div")
+        var newElement = document.createElement("div")
         newElement.setAttribute("class", "scrScreen");
         var games = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
-           
-            "Tri": [10, true,"", true],
-            "Dve": [20, true,"", true],
-            "Ena": [30, true,"", true],
-            "Solo tri": [40, true,"", false],
-            "Solo dve": [50, true,"", false],
-            "Solo ena": [60, true,"", false],
-            "Valat": [250, false,"", true],
-            "Barvni valat": [125, false,"", true],
-            "Berač":[70, false,"", false],
-            "Odprti berač":[90, false,"", false],
-            "Solo brez talona": [80, true, "", false],
+
+            "Tri": [10, true, "", true],
+            "Dve": [20, true, "", true],
+            "Ena": [30, true, "", true],
+            "Solo tri": [40, true, "", false],
+            "Solo dve": [50, true, "", false],
+            "Solo ena": [60, true, "", false],
+            "Valat": [250, false, "", true],
+            "Barvni valat": [125, false, "", true],
+            "Berač": [70, false, "", false],
+            "Odprti berač": [90, false, "", false],
+            "Solo brez talona": [80, false, "", false],
         }
-        for(const key in games){
-                let btn  = document.createElement("button")
-                btn.innerHTML = key
-                btn.addEventListener("click", function () {newElement.remove();calculate(key, games[key])})
-                newElement.appendChild(btn)
+        for (const key in games) {
+            let btn = document.createElement("button")
+            btn.innerHTML = key
+            btn.addEventListener("click", function () { newElement.remove(); calculate(key, games[key]) })
+            newElement.appendChild(btn)
         }
         document.body.appendChild(newElement)
 
-}
+    }
 
-function calculate(gameName, properties){
-    var btn  = document.createElement("button")
-    var btn2  = document.createElement("button")
-var points = properties[0]
-var razlikaTF = properties[1]
-var teamWork = properties[3]
-var newElement = document.createElement("div")
+    function calculate(gameName, properties) {
+        var btn = document.createElement("button")
+        var btn2 = document.createElement("button")
+        var points = properties[0]
+        var razlikaTF = properties[1]
+        var teamWork = properties[3]
+        var newElement = document.createElement("div")
         newElement.setAttribute("class", "scrScreen");
-document.body.appendChild(newElement)
+        document.body.appendChild(newElement)
 
-if(teamWork){
-   
-    btn.innerHTML = "Sam"
-    btn2.innerHTML = "S partnerjem"
-    newElement.appendChild(btn)
-    newElement.appendChild(btn2)
- 
-} else{
-    alone(newElement, gameName, properties)
-}
+        if (teamWork) {
 
+            btn.innerHTML = "Sam"
+            btn2.innerHTML = "S partnerjem"
+            newElement.appendChild(btn)
+            newElement.appendChild(btn2)
 
-btn.addEventListener("click", function () {
-
-    this.remove();
-    btn2.remove();
-
-   alone(newElement, gameName, properties)
-})
-
-     btn2.addEventListener("click", function () {btn.remove();btn2.remove();
-      partner(newElement, gameName, properties)
-    
-    
-    })
+        } else {
+            alone(newElement, gameName, properties)
+        }
 
 
+        btn.addEventListener("click", function () {
 
-}
+            this.remove();
+            btn2.remove();
 
-function alone(newElement, gameName, properties){
+            alone(newElement, gameName, properties)
+        })
 
-    if(properties[1]){
-        var razlika = prompt("Koliko je bilo razlike")
-    }
-    
-    var btn22  = document.createElement("button")
-   var btn23  = document.createElement("button")
-   var slct = document.createElement("select")
-   for(const user in listOfPlayers){
-    slct.innerHTML += "<option>"+user+"</option>"
-   }
-   newElement.appendChild(slct)
+        btn2.addEventListener("click", function () {
+            btn.remove(); btn2.remove();
+            partner(newElement, gameName, properties)
 
-   newElement.appendChild( document.createElement("br"))
-    btn22.innerHTML = "Zmagal"
-    btn23.innerHTML = "Izgubil"
-    newElement.appendChild(btn22)
-    newElement.appendChild(btn23)
-    document.body.appendChild(newElement)
 
-    btn22.addEventListener("click", function () {
+        })
 
-this.remove();
-btn23.remove();
-if(properties[1]){
-    listOfPlayers[slct.value].push(parseInt(properties[0])+parseInt(razlika))
-    }else{
-        listOfPlayers[slct.value].push(parseInt(properties[0]))
-    }
-newElement.remove()
-document.querySelector(".cntScreen").remove()
-count()
-})
-btn23.addEventListener("click", function () {
 
-this.remove();
-btn23.remove();
-if(properties[1]){
-    listOfPlayers[slct.value].push(-Math.abs((parseInt(properties[0])+parseInt(razlika))))
-    }else{
-        listOfPlayers[slct.value].push(-Math.abs(parseInt(properties[0])))
+
     }
 
-newElement.remove()
-document.querySelector(".cntScreen").remove()
-count()
-})
+    function alone(newElement, gameName, properties) {
+        var difNu = document.createElement("input")
+        if (properties[1]) {
 
-}
-function partner(newElement, gameName, properties){
+            difNu.type = "number"
+            difNu.min = 0
+            difNu.placeholder = "Razlika..."
+            difNu.max = 34
+            newElement.appendChild(difNu)
+            difNu .focus()
+            var razlika
+            difNu.addEventListener("change", function () {
+                razlika = difNu.value
+                let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                razlika = nearestMultipleOf5;
+            })
+        }
+        let lnbrk = document.createElement("div")
+        lnbrk.classList.add("break")
+        newElement.appendChild(lnbrk)
+        var btn22 = document.createElement("button")
+        var btn23 = document.createElement("button")
+        var slct = document.createElement("select")
+        for (const user in listOfPlayers) {
+            slct.innerHTML += "<option>" + user + "</option>"
+        }
+        newElement.appendChild(slct)
+        let lnbrk2 = document.createElement("div")
+        lnbrk2.classList.add("break")
+        newElement.appendChild(lnbrk2)
+        newElement.appendChild(document.createElement("br"))
+        btn22.innerHTML = "Zmagal"
+        btn23.innerHTML = "Izgubil"
+        newElement.appendChild(btn22)
+        newElement.appendChild(btn23)
+        document.body.appendChild(newElement)
 
-if(properties[1]){
-    var razlika = prompt("Koliko je bilo razlike")
-}
+        btn22.addEventListener("click", function () {
+            if (difNu.value !== null) {
+                let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                razlika = nearestMultipleOf5;
+                this.remove();
+                btn23.remove();
+                if (properties[1]) {
+                    listOfPlayers[slct.value].push(parseInt(properties[0]) + parseInt(razlika))
+                } else {
+                    listOfPlayers[slct.value].push(parseInt(properties[0]))
+                }
+                newElement.remove()
+                document.querySelector(".cntScreen").remove()
+                count()
+            }
+        })
+        btn23.addEventListener("click", function () {
+            if (difNu.value !== null) {
+                let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                razlika = nearestMultipleOf5;
+                this.remove();
+                btn23.remove();
+                if (properties[1]) {
+                    listOfPlayers[slct.value].push(-Math.abs((parseInt(properties[0]) + parseInt(razlika))))
+                } else {
+                    listOfPlayers[slct.value].push(-Math.abs(parseInt(properties[0])))
+                }
 
-var btn22  = document.createElement("button")
-var btn23  = document.createElement("button")
-var slct = document.createElement("select")
-for(const user in listOfPlayers){
-slct.innerHTML += "<option>"+user+"</option>"
-}
-var slct2 = document.createElement("select")
-for(const user in listOfPlayers){
-slct2.innerHTML += "<option>"+user+"</option>"
-}
+                newElement.remove()
+                document.querySelector(".cntScreen").remove()
+                count()
+            }
+        })
 
-newElement.appendChild(slct2)
-newElement.appendChild(slct)
-newElement.appendChild( document.createElement("br"))
-btn22.innerHTML = "Zmagal"
-btn23.innerHTML = "Izgubil"
-newElement.appendChild(btn22)
-newElement.appendChild(btn23)
-document.body.appendChild(newElement)
 
-btn22.addEventListener("click", function () {
+    }
+    function partner(newElement, gameName, properties) {
 
-this.remove();
-btn23.remove();
-if(properties[1]){
-listOfPlayers[slct.value].push(parseInt(properties[0])+parseInt(razlika))
-listOfPlayers[slct2.value].push(parseInt(properties[0])+parseInt(razlika))
-}else{
-    listOfPlayers[slct.value].push(parseInt(properties[0]))
-    listOfPlayers[slct2.value].push(parseInt(properties[0]))
-}
-newElement.remove()
-document.querySelector(".cntScreen").remove()
-count()
-})
-btn23.addEventListener("click", function () {
+        var difNu = document.createElement("input")
+        if (properties[1]) {
 
-this.remove();
-btn23.remove();
-if(properties[1]){
-listOfPlayers[slct.value].push(-Math.abs((parseInt(properties[0])+parseInt(razlika))))
-listOfPlayers[slct2.value].push(-Math.abs((parseInt(properties[0])+parseInt(razlika))))
-}else{
-    listOfPlayers[slct.value].push(-Math.abs(parseInt(properties[0])))
-    listOfPlayers[slct2.value].push(-Math.abs(parseInt(properties[0])))
-}
+            difNu.type = "number"
+            difNu.min = 0
+            difNu.placeholder = "Razlika..."
+            difNu.max = 34
+            newElement.appendChild(difNu)
+           difNu .focus()
+            var razlika
+            difNu.addEventListener("change", function () {
+                razlika = difNu.value
+                let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                difNu.value = nearestMultipleOf5;
+            })
+        }
 
-newElement.remove()
-document.querySelector(".cntScreen").remove()
-count()
-})
+        let lnbrk = document.createElement("div")
+        lnbrk.classList.add("break")
+        newElement.appendChild(lnbrk)
+        var btn22 = document.createElement("button")
+        var btn23 = document.createElement("button")
+        var slct = document.createElement("select")
+        var slct2 = document.createElement("select")
+        for (const user in listOfPlayers) {
+            slct.innerHTML += "<option>" + user + "</option>"
+            slct2.innerHTML += "<option>" + user + "</option>"
+        }
+        newElement.appendChild(slct)
+        newElement.appendChild(slct2)
+        let lnbrk2 = document.createElement("div")
+        lnbrk2.classList.add("break")
+        newElement.appendChild(lnbrk2)
+        newElement.appendChild(document.createElement("br"))
+        btn22.innerHTML = "Zmagal"
+        btn23.innerHTML = "Izgubil"
+        newElement.appendChild(btn22)
+        newElement.appendChild(btn23)
+        document.body.appendChild(newElement)
 
-}
+
+        btn22.addEventListener("click", function () {
+            if (difNu.value !== null) {
+                let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                razlika = nearestMultipleOf5;
+                this.remove();
+                btn23.remove();
+                if (properties[1]) {
+                    listOfPlayers[slct.value].push(parseInt(properties[0]) + parseInt(razlika))
+                    listOfPlayers[slct2.value].push(parseInt(properties[0]) + parseInt(razlika))
+                } else {
+                    listOfPlayers[slct.value].push(parseInt(properties[0]))
+                    listOfPlayers[slct2.value].push(parseInt(properties[0]))
+                }
+                newElement.remove()
+                document.querySelector(".cntScreen").remove()
+                count()
+            }
+        })
+        btn23.addEventListener("click", function () {
+            if (difNu.value !== null) {
+                let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                razlika = nearestMultipleOf5;
+                this.remove();
+                btn23.remove();
+                if (properties[1]) {
+                    listOfPlayers[slct.value].push(-Math.abs((parseInt(properties[0]) + parseInt(razlika))))
+                    listOfPlayers[slct2.value].push(-Math.abs((parseInt(properties[0]) + parseInt(razlika))))
+                } else {
+                    listOfPlayers[slct.value].push(-Math.abs(parseInt(properties[0])))
+                    listOfPlayers[slct2.value].push(-Math.abs(parseInt(properties[0])))
+                }
+            }
+            newElement.remove()
+            document.querySelector(".cntScreen").remove()
+            count()
+        })
+
+    }
 
     function Game() {
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
-    
+
         var slct = document.createElement("select")
+        slct.innerHTML += "<option>Select</option>"
         document.body.appendChild(newElement)
-for(const user in localStorage){
-slct.innerHTML += "<option>"+user+"</option>"
-}
-newElement.appendChild(slct)
-slct.addEventListener("change", function () {
-    listOfPlayers =  JSON.parse(localStorage[slct.value])
-    newElement.remove()
-        count()
-})
+        for (var i = 0; i < localStorage.length; i++) {
+            let user = Object.keys(localStorage)[i];
+            console.log(user);
+            slct.innerHTML += "<option>" + user + "</option>"
+        }
+        newElement.appendChild(slct)
+        slct.addEventListener("change", function () {
+            if (slct.value !== "Select") {
+                listOfPlayers = JSON.parse(localStorage[slct.value])
+                newElement.remove()
+                count()
+            }
+        })
     }
     var listOfPlayers = {}
     function newGame() {
@@ -218,17 +270,21 @@ slct.addEventListener("change", function () {
         newPl.innerHTML = "Add player"
         newPl.setAttribute("class", "child");
         onePl.setAttribute("class", "child");
+        onePl.placeholder = "Ime..."
         endPl.setAttribute("class", "child");
         endPl.innerHTML = "Confirm"
         newElement.appendChild(onePl)
+        onePl.focus()
         newElement.appendChild(newPl)
         newElement.appendChild(endPl)
         document.body.appendChild(newElement)
         newPl.addEventListener("click", function () {
             let onePl2 = document.createElement("input")
             onePl2.setAttribute("class", "child");
+            onePl2.placeholder = "Ime..."
             newElement.appendChild(onePl2)
             newElement.insertBefore(onePl2, newPl);
+            onePl2.focus()
         })
         endPl.addEventListener("click", function () {
             for (var i = 0; i < document.getElementsByTagName('input').length; i++) {
@@ -237,7 +293,7 @@ slct.addEventListener("change", function () {
             }
             newElement.style.display = "none"
             console.log(listOfPlayers);
-            localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, ''), JSON.stringify(listOfPlayers))
+            localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
             count()
         })
 
@@ -245,13 +301,13 @@ slct.addEventListener("change", function () {
     }
 
     function count() {
-        localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, ''), JSON.stringify(listOfPlayers))
+        localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
         document.getElementById("newgame").style.display = "none"
         document.getElementById("game").style.display = "none"
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "cntScreen");
-        newElement.addEventListener("click", function () {addScore()})
-       
+        newElement.addEventListener("click", function () { addScore() })
+
         var rezultLine = document.createElement("div")
         for (const key in listOfPlayers) {
             let name = key
@@ -259,24 +315,24 @@ slct.addEventListener("change", function () {
             var pljr = document.createElement("div")
             let i = 0
             let points = 0
-            
+
             pljr.innerHTML = '<p style="z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background: #DCB585; padding-top: 20px;margin-top: -50px;">' + name + '</p>'
-            pljr.innerHTML += '<p style=  "backdrop-filter: blur(5px);" >&nbsp</p>'
+            pljr.innerHTML += '<p style=  "" >&nbsp</p>'
             while (i < pnts.length) {
                 pljr.innerHTML += '<p style=  "" >' + pnts[i] + '</p>'
                 points += pnts[i]
                 i++
             }
-          
-            pljr.innerHTML += '<p style=  "backdrop-filter: blur(5px);" >&nbsp</p>'
-            
+
+            pljr.innerHTML += '<p style=  "" >&nbsp</p>'
+
             pljr.setAttribute("class", "chl");
             pljr.style.display = "inline-block;"
             rezultLine.innerHTML += '<p  style="flex:1; " >' + points + '</p>'
-            newElement.appendChild(pljr) 
+            newElement.appendChild(pljr)
         }
-       rezultLine.setAttribute("class", "crezultLine");
-       document.body.appendChild(rezultLine)
+        rezultLine.setAttribute("class", "crezultLine");
+        document.body.appendChild(rezultLine)
         document.body.appendChild(newElement)
 
     }
@@ -287,7 +343,14 @@ slct.addEventListener("change", function () {
 </script>
 
 <style>
+    .break {
+        flex-basis: 100%;
+        height: 0;
+    }
+
     .chl {
+        min-height: 100vh;
+        height: auto;
         flex: 1;
         text-align: center;
         font-size: large;
@@ -315,20 +378,51 @@ slct.addEventListener("change", function () {
         height: 100%;
         backdrop-filter: blur(5px);
     }
-    .scrScreen > button { 
+
+    button:active {
+        box-shadow: 0px 0px #888888;
+    }
+
+    button {
+        transition: all .05s;
         position: relative;
-    flex-basis: 100px;
-    border-radius: 30px;
-    border-width: 0;
-    background-color: #DCB585;
-    box-shadow: 5px 5px #888888;
-  margin: 10px;
-    height: 40px;
-} 
+        flex-basis: 100px;
+        border-radius: 30px;
+        border-width: 0;
+        background-color: #DCB585;
+        box-shadow: 5px 5px #888888;
+        margin: 10px;
+        height: 40px;
+    }
+
+    select:active {
+        box-shadow: 0px 0px #888888;
+        border-width: 0;
+    }
+
+    select {
+        transition: all .05s;
+        margin: 30px;
+        width: 40vw;
+        border-width: 0;
+        border-radius: 20px;
+        padding: 7px;
+        box-shadow: 5px 5px #888888;
+    }
+
+    input {
+        margin: 30px;
+        width: 40vw;
+        border-width: 0;
+        border-radius: 20px;
+        padding: 7px;
+        box-shadow: 5px 5px #888888;
+    }
+
     .scrScreen {
         z-index: 500000;
         display: flex;
-        flex-direction:row;
+        flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
         top: 0;
@@ -344,25 +438,27 @@ slct.addEventListener("change", function () {
         flex-direction: row;
         width: 100%;
         top: 0;
-      
+
         justify-content: center;
         align-items: top;
         height: 100%;
-       
+
     }
+
     .crezultLine {
+        box-shadow: 0px 10px 20px #000;
         background: #DCB585;
         z-index: 400;
         overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    bottom: 0;
-    position: fixed;
-    justify-content: center;
-    align-items: top;
-    text-align: center;
-    border-top: 1px solid;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        bottom: 0;
+        position: fixed;
+        justify-content: center;
+        align-items: top;
+        text-align: center;
+        border-top: 1px solid;
     }
 
     .child {
@@ -371,8 +467,9 @@ slct.addEventListener("change", function () {
     }
 
     body {
-        background-attachment:fixed;
-        background: #DCB585 url("https://valat.si/assets/images/wood.webp");
+        margin: 0;
+        background-attachment: fixed;
+        background: #DCB585;
     }
 </style>
 

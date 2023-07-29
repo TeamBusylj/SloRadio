@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sl">
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,8 @@
 
 <script>
     function addScore() {
-
+        listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));;console.log("AHA")
+        console.log("AHA")
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "scrScreen");
         var games = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
@@ -26,6 +27,7 @@
             "Solo tri": [40, true, "", false],
             "Solo dve": [50, true, "", false],
             "Solo ena": [60, true, "", false],
+            "Klop": ["", false, "", true],
             "Valat": [250, false, "", true],
             "Barvni valat": [125, false, "", true],
             "Berač": [70, false, "", false],
@@ -35,11 +37,48 @@
         for (const key in games) {
             let btn = document.createElement("button")
             btn.innerHTML = key
-            btn.addEventListener("click", function () { newElement.remove(); calculate(key, games[key]) })
+            btn.addEventListener("click", function () { newElement.remove(); 
+                if(key == "Klop"){klop(newElement)}else{calculate(key, games[key])} })
             newElement.appendChild(btn)
         }
         document.body.appendChild(newElement)
 
+    }
+
+    function klop(newElement2){
+        var newElement = document.createElement("div")
+        newElement.setAttribute("class", "scrScreen");
+        document.body.appendChild(newElement)
+
+        for (const user in listOfPlayers) {
+            let klopPlayer = document.createElement("input")
+           klopPlayer.classList.add("klopPlayer")
+            klopPlayer.type = "number"
+            klopPlayer.min = 0
+            klopPlayer.name = user
+            klopPlayer.placeholder = "Točke osebe "+ user +"..."
+            newElement.appendChild(klopPlayer)
+       
+           
+            
+        }
+        var btn = document.createElement("button")
+        btn.innerHTML = "Končano"
+        let lnbrk = document.createElement("div")
+        lnbrk.classList.add("break")
+        newElement.appendChild(lnbrk)
+        newElement.appendChild(btn)
+        btn.addEventListener("click", function () {
+            var plNombers = document.getElementsByClassName("klopPlayer");
+for (var i = 0; i < plNombers.length; i++) {
+        listOfPlayers[plNombers[i].name].push(-Math.abs(parseInt(plNombers[i].value)))
+}
+newElement.remove()
+newElement2.remove()
+document.querySelector(".cntScreen").remove()
+document.querySelector(".crezultLine").remove()
+                count()
+})
     }
 
     function calculate(gameName, properties) {
@@ -121,7 +160,7 @@
         document.body.appendChild(newElement)
 
         btn22.addEventListener("click", function () {
-            if (difNu.value !== null) {
+         if (difNu.value !== "" || properties[1]) {
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
@@ -133,11 +172,12 @@
                 }
                 newElement.remove()
                 document.querySelector(".cntScreen").remove()
+                document.querySelector(".crezultLine").remove()
                 count()
             }
         })
         btn23.addEventListener("click", function () {
-            if (difNu.value !== null) {
+         if (difNu.value !== "" || properties[1]) {
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
@@ -150,6 +190,7 @@
 
                 newElement.remove()
                 document.querySelector(".cntScreen").remove()
+                document.querySelector(".crezultLine").remove()
                 count()
             }
         })
@@ -200,7 +241,7 @@
 
 
         btn22.addEventListener("click", function () {
-            if (difNu.value !== null) {
+         if (difNu.value !== "" || properties[1]) {
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
@@ -214,11 +255,13 @@
                 }
                 newElement.remove()
                 document.querySelector(".cntScreen").remove()
+                document.querySelector(".crezultLine").remove()
                 count()
             }
         })
         btn23.addEventListener("click", function () {
-            if (difNu.value !== null) {
+      
+         if (difNu.value !== "" || properties[1]) {
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
@@ -230,15 +273,18 @@
                     listOfPlayers[slct.value].push(-Math.abs(parseInt(properties[0])))
                     listOfPlayers[slct2.value].push(-Math.abs(parseInt(properties[0])))
                 }
-            }
+         
             newElement.remove()
             document.querySelector(".cntScreen").remove()
+            document.querySelector(".crezultLine").remove()
             count()
+        }
         })
 
     }
 
     function Game() {
+        
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
 
@@ -255,12 +301,21 @@
             if (slct.value !== "Select") {
                 listOfPlayers = JSON.parse(localStorage[slct.value])
                 newElement.remove()
+                listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));;console.log("AHA")
                 count()
+                
             }
         })
     }
+    function undo(){
+        listOfPlayers = JSON.parse(JSON.stringify(listOfPlayersCopy));;console.log("AHA")
+        document.querySelector(".cntScreen").remove()
+        count()
+    }
     var listOfPlayers = {}
+    var listOfPlayersCopy = {}
     function newGame() {
+      
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
         var onePl = document.createElement("input")
@@ -294,6 +349,7 @@
             newElement.style.display = "none"
             console.log(listOfPlayers);
             localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
+               listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));;console.log("AHA")
             count()
         })
 
@@ -301,13 +357,24 @@
     }
 
     function count() {
+      
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
         document.getElementById("newgame").style.display = "none"
         document.getElementById("game").style.display = "none"
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "cntScreen");
         newElement.addEventListener("click", function () { addScore() })
-
+        if(JSON.stringify(listOfPlayers) !== JSON.stringify(listOfPlayersCopy)){
+            var btn22 = document.createElement("button")
+            btn22.innerHTML = "Nazaj"
+            btn22.classList.add("undo")
+  
+            document.body.appendChild(btn22)
+            btn22.addEventListener("click", function () {
+                undo()
+            })
+            btn22.remove()
+        }
         var rezultLine = document.createElement("div")
         for (const key in listOfPlayers) {
             let name = key
@@ -316,7 +383,7 @@
             let i = 0
             let points = 0
 
-            pljr.innerHTML = '<p style="z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background: #DCB585; padding-top: 20px;margin-top: -50px;">' + name + '</p>'
+            pljr.innerHTML = '<p style="z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background-color: var(--bgColor); padding-top: 20px;margin-top: -50px;">' + name + '</p>'
             pljr.innerHTML += '<p style=  "" >&nbsp</p>'
             while (i < pnts.length) {
                 pljr.innerHTML += '<p style=  "" >' + pnts[i] + '</p>'
@@ -343,12 +410,18 @@
 </script>
 
 <style>
+    .undo{
+        position: fixed;
+    right: 10px;
+    bottom: 50px;
+    }
     .break {
         flex-basis: 100%;
         height: 0;
     }
 
     .chl {
+        color:var(--colorTxt);
         min-height: 100vh;
         height: auto;
         flex: 1;
@@ -367,6 +440,7 @@
     }
 
     .whlScreen {
+        color:var(--colorTxt);
         z-index: 500000;
         display: flex;
         flex-direction: column;
@@ -384,12 +458,13 @@
     }
 
     button {
+        color:var(--colorTxt);
         transition: all .05s;
         position: relative;
         flex-basis: 100px;
         border-radius: 30px;
         border-width: 0;
-        background-color: #DCB585;
+        background-color: var(--bgColor);
         box-shadow: 5px 5px #888888;
         margin: 10px;
         height: 40px;
@@ -420,13 +495,14 @@
     }
 
     .scrScreen {
+        color:var(--colorTxt);
         z-index: 500000;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
         top: 0;
-        position: absolute;
+        position: fixed;
         justify-content: center;
         align-content: center;
         height: 100%;
@@ -434,6 +510,7 @@
     }
 
     .cntScreen {
+        color:var(--colorTxt);
         display: flex;
         flex-direction: row;
         width: 100%;
@@ -446,8 +523,9 @@
     }
 
     .crezultLine {
+        color:var(--colorTxt);
         box-shadow: 0px 10px 20px #000;
-        background: #DCB585;
+        background-color:var(--bgColor) ;
         z-index: 400;
         overflow: hidden;
         display: flex;
@@ -467,10 +545,15 @@
     }
 
     body {
+        color:var(--colorTxt);
         margin: 0;
         background-attachment: fixed;
-        background: #DCB585;
+        background-color: var(--bgColor);
     }
+    :root {
+  --bgColor: #DCB585;
+  --colorTxt: rgb(255, 242, 242);
+}
 </style>
 
 </html>

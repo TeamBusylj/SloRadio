@@ -15,8 +15,8 @@
 
 <script>
     function adaptColor(bg, txt){
-    document.querySelector(':root').style.setProperty('--bgColor', bg);
-    document.querySelector(':root').style.setProperty('--colorTxt', txt)
+    document.body.style.setProperty('--bgColor', bg);
+    document.body.style.setProperty('--colorTxt', txt)
     console.log("Colors" + bg +", "+txt);
 }
     function addScore() {

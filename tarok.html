@@ -405,7 +405,11 @@ document.querySelector(".crezultLine").remove()
     }
 
 
-
+function adaptColor(bg, txt){
+    document.querySelector(':root').style.setProperty('--bgColor', bg);
+    document.querySelector(':root').style.setProperty('--colorTxt', txt)
+    console.log("Colors" + bg +", "+txt);
+}
 
 </script>
 

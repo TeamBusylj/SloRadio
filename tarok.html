@@ -422,9 +422,7 @@
 
     function count() {
 
-        if (navigator.userAgent.includes("wv")) {
-                AndroidInterface.saveData(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
-            }
+       
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
         document.getElementById("newgame").style.display = "none"
         document.getElementById("game").style.display = "none"
@@ -468,6 +466,9 @@
         rezultLine.setAttribute("class", "crezultLine");
         document.body.appendChild(rezultLine)
         document.body.appendChild(newElement)
+        if (navigator.userAgent.includes("wv")) {
+                AndroidInterface.saveData(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
+            }
 
     }
 

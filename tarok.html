@@ -153,6 +153,7 @@ document.querySelector(".crezultLine").remove()
         for (const user in listOfPlayers) {
             slct.innerHTML += "<option>" + user + "</option>"
         }
+
         newElement.appendChild(slct)
         let lnbrk2 = document.createElement("div")
         lnbrk2.classList.add("break")
@@ -165,7 +166,7 @@ document.querySelector(".crezultLine").remove()
         document.body.appendChild(newElement)
 
         btn22.addEventListener("click", function () {
-         if (difNu.value !== "" || properties[1]) {
+         if (difNu.value !== "" || properties[1] == false) {
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
@@ -182,7 +183,7 @@ document.querySelector(".crezultLine").remove()
             }
         })
         btn23.addEventListener("click", function () {
-         if (difNu.value !== "" || properties[1]) {
+         if (difNu.value !== "" || properties[1] == false) {
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
@@ -246,7 +247,7 @@ document.querySelector(".crezultLine").remove()
 
 
         btn22.addEventListener("click", function () {
-         if (difNu.value !== "" || properties[1]) {
+         if (difNu.value !== "" || properties[1] == false) {
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
@@ -266,7 +267,7 @@ document.querySelector(".crezultLine").remove()
         })
         btn23.addEventListener("click", function () {
       
-         if (difNu.value !== "" || properties[1]) {
+         if (difNu.value !== "" || properties[1] == false) {
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
@@ -388,7 +389,7 @@ document.querySelector(".crezultLine").remove()
             let i = 0
             let points = 0
 
-            pljr.innerHTML = '<p style="z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background-color: var(--bgColor); padding-top: 20px;margin-top: -50px;">' + name + '</p>'
+            pljr.innerHTML = '<p style="padding-bottom: 10px;box-shadow:  12px -9px 20px #000;z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background-color: var(--bgColor); padding-top: 20px;margin-top: -50px;">' + name + '</p>'
             pljr.innerHTML += '<p style=  "" >&nbsp</p>'
             while (i < pnts.length) {
                 pljr.innerHTML += '<p style=  "" >' + pnts[i] + '</p>'
@@ -400,7 +401,7 @@ document.querySelector(".crezultLine").remove()
 
             pljr.setAttribute("class", "chl");
             pljr.style.display = "inline-block;"
-            rezultLine.innerHTML += '<p  style="flex:1; " >' + points + '</p>'
+            rezultLine.innerHTML += '<p  style="flex:1;border-right: 1px solid; " >' + points + '</p>'
             newElement.appendChild(pljr)
         }
         rezultLine.setAttribute("class", "crezultLine");
@@ -415,6 +416,20 @@ document.querySelector(".crezultLine").remove()
 </script>
 
 <style>
+    #newgame{
+        position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+    }
+    #game{
+        position: absolute;
+  top: 60%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+    }
     .undo{
         position: fixed;
     right: 10px;
@@ -432,7 +447,7 @@ document.querySelector(".crezultLine").remove()
         flex: 1;
         text-align: center;
         font-size: large;
-        border-right: 1px solid;
+        border-right: 1px solid; 
     }
 
     .chl2 {
@@ -441,7 +456,20 @@ document.querySelector(".crezultLine").remove()
         font-size: large;
         position: absolute;
         bottom: 0;
-        border-right: 1px solid;
+   border-right: 1px solid; 
+    }
+    .chl::after{
+        content: '';
+        
+    height: 55vh;
+    position: fixed;
+    justify-content: center;
+    /* right: -12.1vw; */
+    display: none;
+    width: 1px;
+    overflow: hidden;
+    top: 25vh;
+    background-color: #000000;
     }
 
     .whlScreen {

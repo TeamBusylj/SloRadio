@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krizanke</title>
+</head>
+
+<body>
+    <div id="crossword-container"></div>
+</body>
+
+<script>
+
+    const words = {
+        1: ["pojasnjuješ", "razlagaš"],
+        2: ["komfortni", "udobni"],
+        3: ["lakota", "glad"],
+        4: ["pesnik župančič", "oton"],
+        5: ["prodajalec rib", "ribar"],
+        6: ["denar nekdanje sfrj", "dinar"],
+        7: ["lutecij", "lu"],
+        8: ["brez... se še čevelj ne obuje", "muje"],
+        9: ["zimsko oblačilo", "plašč"],
+        10: ["prebivalec viča", "vičan"],
+        11: ["mednarodna oznaka urugvaja", "uru"],
+        12: ["pleteno ali kvačkano ogrinjalo", "plet"],
+        13: ["vprašalnica", "kateri"]
+    };
+
+    function generateCrosswordGrid(data) {
+        const crosswordContainer = document.getElementById('crossword-container');
+        const crosswordGrid = document.createElement('table');
+        crosswordContainer.appendChild(crosswordGrid)
+        var isLetterFound = false
+        while(isLetterFound == false){
+        var random1 = words[Math.floor(Math.random() * Object.keys(words).length+1)][1]
+        var random2 = words[Math.floor(Math.random() * Object.keys(words).length+1)][1]
+        var sameChar = findFirstMatchingLetter(random1, random2)
+        if(sameChar !== null && random1!== random2){
+            
+            isLetterFound = true
+        }
+        }
+        console.log(random1 + ", " + random2 + " --- " + sameChar);
+        var entr = document.createElement("tr")
+        crosswordGrid.appendChild(entr)
+        for (const letter of random1) {
+
+            let entd = document.createElement("td")
+            if (letter == sameChar) {
+                for (let i =-1; i <  random2.indexOf(sameChar)-1 ; i++){
+                    setTimeout(function() {
+                let entr2 = document.createElement("tr")
+                crosswordGrid.insertBefore(entr2, entr)
+                for (let a = 1; a < random1.indexOf(letter)+1 ; a++) {
+                    var mmmm = document.createElement("td")
+                    mmmm.innerHTML = "&nbsp"
+                    mmmm.style.border = "0.5px solid"
+                    entr2.appendChild(mmmm)
+                    crosswordGrid.insertBefore(entr2, entr)
+                }
+                let trWord = document.createElement("td")
+                trWord.innerHTML = random2.charAt(i+1 )
+                    entr2.appendChild(trWord)
+                    crosswordGrid.insertBefore(entr2, entr)
+            }, 0);
+            }
+        }
+        if (letter == sameChar) {
+                for (let i = random2.indexOf(sameChar); i < random2.length-1 ; i++){
+                    console.log("llllll");
+                let entr2 = document.createElement("tr")
+                crosswordGrid.appendChild(entr2)
+                for (let a = 1; a < random1.indexOf(letter)+1 ; a++) {
+                    var mmmm = document.createElement("td")
+                    mmmm.innerHTML = "&nbsp"
+                    mmmm.style.border = "0.5px solid"
+                   entr2.appendChild(mmmm)
+                }
+                let trWord = document.createElement("td")
+                trWord.innerHTML = random2.charAt(i+1 )
+
+                entr2.appendChild(trWord)
+            }
+            }
+            entd.innerHTML = letter
+            entr.appendChild(entd)
+            entr.classList.add("oneWord")
+        }
+
+
+    }
+
+    generateCrosswordGrid(words);
+
+    function findFirstMatchingLetter(word1, word2) {
+        for (const letter of word1) {
+            if (word2.includes(letter)) {
+                return letter;
+            }
+        }
+
+        return null; // Return null if no matching letter is found
+    }
+    
+
+</script>
+<style>
+    td {
+        border: 2px solid;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        font-size: 100%;
+    }
+</style>
+
+</html>

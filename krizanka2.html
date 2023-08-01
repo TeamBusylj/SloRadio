@@ -5,7 +5,7 @@
     <title>Cross word Puzzel</title>
 </head>
 
-<body onload="randomWords()">
+<body onload="randomWords();">
     <div id="leftBox">
         <table id="puzzel">
 
@@ -16,17 +16,28 @@
 
     </table>
     <p id="times"></p>
-    <div id="hints"></div>
-    <button onclick="randomWords()">Create</button>
+    <div style="display: none;" id="hints"></div>
+    <button onclick="randomWords(); scrptRun = 0; noOfPre  = 0;">Create</button>
     <button onclick="check()">Check</button>
     <button onclick="solve()">Solve</button>
+    <!--<input type="number" style="width: auto !important;" id="chngGrid" placeholder="Grid size"></input>
+    <input type="number" style="width: auto !important;" id="chngWord" placeholder="Word number"></input>-->
 </body>
 <script>
     var gridSize = 15;
-    var words = [['s', 'zdravnik'], ['Prestolnica stajerske', 'maribor'], ['Narejena iz sadja', 'marmelada'], ['Najbližja zvezda', 'sonce'], ['studiranje', 'razmisljanje'], ['Glavno mesto rusije', 'Moskva'], ['d', 'Racunalnik'], ['d', 'Vesolje'], ['d', 'Glad'], ['d', 'Dinar'], ['d', 'Aristokrat'], ['d', 'Ateist']];
+    var wordNumber = 10
+    var words = [['s', 'zdravnik'], ['Prestolnica stajerske', 'maribor'], ['Narejena iz sadja', 'marmelada'], ['Najbližja zvezda', 'sonce'], ['studiranje', 'razmisljanje'], ['Glavno mesto rusije', 'Moskva'], ['d', 'Racunalnik'], ['d', 'Vesolje'], ['d', 'Glad'], ['d', 'Dinar'], ['d', 'Aristokrat'], ['d', 'Ateist'], ['d', 'Utrinek'], ['Pretiti', 'Groziti'], ['Adam in...', 'Eva'], ['d', 'Udobni'], ['d', 'Mutant'], ['Nemška reka', 'Ren']];
     var items = []
    var scrptRun = 0
    var noOfPre  = 0
+   /*
+   document.getElementById("chngGrid").addEventListener("input", function(e){
+    gridSize = e.srcElement.value
+   })
+   document.getElementById("chngWord").addEventListener("input", function(e){
+    wordNumber = e.srcElement.value
+   })
+   */
     function checkWordPlacement(word, row, col, deltaRow, deltaCol, cross) {
         // Check if the word can be placed at the specified position and direction
         let intersectingLetter = '';
@@ -69,17 +80,26 @@
 
         return array;
     }
+
     function randomWords() {
+   
         scrptRun++
         items = []
         for (let i = 0; i < gridSize; i++) {
         items.push(Array(gridSize).fill('0'));
     }
+    if(scrptRun>99){
+        let table = document.getElementById("crossword");
+        table.innerHTML=""
+        let scriptData = document.getElementById("times");
+        scriptData.innerHTML = "<b>Uh, that didn't work...</b><br> you chosed too much words for too small grid. Either try again or change the numbers.<br> The script repeated <b>" + scrptRun+"</b> times, with total of <b>" + noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ")+"</b> word repositions."
+        return
+    }
         const placedWords = []; // Track the words that have already been placed
         const placedWordsDesc = [];
         words = shuffle(words)
      
-        for (let a = 0; a < 10; a++) {
+        for (let a = 0; a < wordNumber; a++) {
 
 
             let word = " " + words[a][1] + " "
@@ -109,7 +129,7 @@
                 
                     if (intersectingLetter !== false  ) {
                         if(isCross.length>0 && isCross!== " "|| placedWords.length<1){
-                        console.log(isCross);
+    
                       // items[row][col] = placedWords.length;
                         for (let i = 0; i < word.length; i++) {
                             items[row][col + i] = word[i].toUpperCase();
@@ -128,7 +148,7 @@
                     if (intersectingLetter !== false  || placedWords.length<1) {
                         if(isCross.length>0 && isCross!== " "|| placedWords.length<1){
                              
-                        console.log(isCross);
+                       
                         for (let i = 0; i < word.length; i++) {
                             items[row + i][col] = word[i].toUpperCase();
                         }
@@ -151,14 +171,14 @@
             }
           
         };
-console.log(placedWords);
+
 var hints = document.getElementById("hints");
 for (let i = 0; i < placedWords.length; i++) {
   
     hints.innerHTML += "<br>"+i+placedWordsDesc[i]
     
 }
-        if(placedWords.length > 8){
+        if(placedWords.length > wordNumber-1){
         generateCrossword();} else{
             randomWords()
         }
@@ -168,9 +188,10 @@ for (let i = 0; i < placedWords.length; i++) {
 
 
     function generateCrossword() {
+        console.log('Done')
         var table = document.getElementById("crossword");
         var scriptData = document.getElementById("times");
-     scriptData.innerHTML = "The script repeated <b>" + scrptRun+"</b> times, with total of <b>" + noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ");+"</b> word repositions."
+     scriptData.innerHTML = "The script repeated <b>" + scrptRun+"</b> times, with total of <b>" + noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ")+"</b> word repositions."
         table.innerHTML=""
 
         items.forEach(function (row, rowIndex) {
@@ -256,13 +277,21 @@ for (let i = 0; i < placedWords.length; i++) {
         border: 1.5px solid;
         width: 5vw;
         height: 5vw;
-        font-size: 30px;
+        font-size:  120%;
     }
-
+td{
+    width: 5vw;
+        height: 5vw;
+}
     .blank {
+
         display: inline-block;
-        width: 26px;
-        height: 28px;
+       width: 5vw;
+        height: 5vw;
+    }
+    button{
+        width: 90px;
+        height: 50px;
     }
 </style>
 

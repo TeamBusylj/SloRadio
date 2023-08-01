@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cross word Puzzel</title>
+</head>
+
+<body >
+    <div id="leftBox">
+        <table id="puzzel">
+
+        </table>
+    </div>
+
+    <table id="crossword">
+
+    </table>
+    <div id="hints"></div>
+    <button onclick="randomWords()">Create</button>
+    <button onclick="check()">Check</button>
+    <button onclick="solve()">Solve</button>
+</body>
+<script>
+    var gridSize = 15;
+    var words = [['s', 'zdravnik'], ['Prestolnica stajerske', 'maribor'], ['Narejena iz sadja', 'marmelada'], ['Najbližja zvezda', 'sonce'], ['studiranje', 'razmisljanje'], ['Glavno mesto rusije', 'Moskva'], ['d', 'Racunalnik'], ['d', 'Vesolje'], ['d', 'Glad'], ['d', 'Dinar'], ['d', 'Aristokrat'], ['d', 'Ateist']];
+    var items = []
+   
+    function checkWordPlacement(word, row, col, deltaRow, deltaCol, cross) {
+        // Check if the word can be placed at the specified position and direction
+        let intersectingLetter = '';
+        for (let i = 0; i < word.length; i++) {
+            let newRow = row + i * deltaRow;
+            let newCol = col + i * deltaCol;
+
+            if (
+                newRow < 0 || newRow >= gridSize || newCol < 0 || newCol >= gridSize ||
+                (items[newRow][newCol] !== '0' && items[newRow][newCol] !== word[i].toUpperCase())
+            ) {
+                if(cross == 0){
+            return false
+        } 
+            } else if (items[newRow][newCol] === word[i].toUpperCase()) {
+                intersectingLetter += word[i].toUpperCase();
+            } 
+        }
+        if(cross == 0){
+            return intersectingLetter || true;
+        } else{
+            return intersectingLetter;
+        }
+       
+    }
+    function shuffle(array) {
+        let currentIndex = array.length, randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex != 0) {
+
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [array[currentIndex], array[randomIndex]] = [
+                array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+    }
+    function randomWords() {
+        items = []
+        for (let i = 0; i < gridSize; i++) {
+        items.push(Array(gridSize).fill('0'));
+    }
+        const placedWords = []; // Track the words that have already been placed
+        const placedWordsDesc = [];
+        words = shuffle(words)
+       
+        for (let a = 0; a < 10; a++) {
+
+
+            let word = " " + words[a][1] + " "
+           
+            let isHorizontal = Math.random() >= 0.5; // Randomly choose horizontal or vertical placement
+            let row, col;
+            let intersectingLetter = '';
+        
+            let rpt = 0
+            let usedSpotsrow = []
+            let usedSpotscolumn = []
+            while (true) {
+             
+                row = Math.floor(Math.random() * gridSize);
+                while (usedSpotsrow.includes(row)) {
+                    row = Math.floor(Math.random() * gridSize);
+                }
+                col = Math.floor(Math.random() * gridSize);
+                while (usedSpotsrow.includes(col)) {
+                    col = Math.floor(Math.random() * gridSize);
+                }
+
+                if (isHorizontal && col + word.length <= gridSize - 1) {
+                    intersectingLetter = checkWordPlacement(word, row, col, 0, 1, 0);
+                    let isCross = checkWordPlacement(word, row, col, 0, 1, 1);
+                    isCross.replace(/ /g,"")
+                
+                    if (intersectingLetter !== false  ) {
+                        if(isCross.length>0 && isCross!== " "|| placedWords.length<1){
+                        console.log(isCross);
+                      // items[row][col] = placedWords.length;
+                        for (let i = 0; i < word.length; i++) {
+                            items[row][col + i] = word[i].toUpperCase();
+                        }
+                        placedWords.push(word);
+                        placedWordsDesc.push(words[a][0]); // Track the placed word
+                        break;
+                    }
+                    }
+                } else if (!isHorizontal && row + word.length <= gridSize - 1) {
+                    intersectingLetter = checkWordPlacement(word, row, col, 1, 0, 0);
+                    let isCross = checkWordPlacement(word, row, col, 1, 0, 1);
+                    isCross.replace(/ /g,"")
+                   ;
+                       
+                    if (intersectingLetter !== false  || placedWords.length<1) {
+                        if(isCross.length>0 && isCross!== " "|| placedWords.length<1){
+                             
+                        console.log(isCross);
+                        for (let i = 0; i < word.length; i++) {
+                            items[row + i][col] = word[i].toUpperCase();
+                        }
+                        placedWords.push(word); // Track the placed word
+                        placedWordsDesc.push(words[a][0])
+                        break;
+                    }
+                    }
+
+                }
+                if (rpt > 2000) {
+                    isHorizontal = !isHorizontal
+                }
+                if (rpt > 4000) {
+                    break
+                    console.log("nope");
+                }
+                
+                rpt++
+            }
+          
+        };
+console.log(placedWords);
+var hints = document.getElementById("hints");
+for (let i = 0; i < placedWords.length; i++) {
+  
+    hints.innerHTML += "<br>"+i+placedWordsDesc[i]
+    
+}
+        if(placedWords.length > 8){
+        generateCrossword();} else{
+            randomWords()
+        }
+    }
+
+
+
+
+    function generateCrossword() {
+        var table = document.getElementById("crossword");
+     
+        table.innerHTML=""
+
+        items.forEach(function (row, rowIndex) {
+            let tr = document.createElement("tr");
+            table.appendChild(tr);
+            row.forEach(function (oneLetter, colIndex) {
+                let td = document.createElement("td");
+                let input;
+                if (oneLetter === '0' || items[rowIndex][colIndex] == " ") {
+                    input = document.createElement("div");
+                    input.classList.add("blank");
+                } else {
+                    input = document.createElement("input");
+                    input.maxLength = "1";
+
+                    input.addEventListener("input", function (e) {
+                        if (input.value.length === 1) {
+                            let nextOneLeft = "tr_" + (rowIndex + 1) + "_" + colIndex;
+                            if (document.querySelector("." + nextOneLeft).tagName === "DIV") {
+                                nextOneLeft = "tr_" + rowIndex + "_" + (colIndex + 1);
+                            }
+                            document.querySelector("." + nextOneLeft).focus();
+                        }
+                    });
+                }
+                input.classList.add("tr_" + rowIndex + "_" + colIndex);
+
+                td.appendChild(input);
+                tr.appendChild(td);
+            });
+        });
+    }
+
+    function check() {
+        items.forEach(function (row) {
+            var a = 0
+            row.forEach(function (oneLetter) {
+                let valuen = document.querySelector(".tr_" + items.indexOf(row) + "_" + a)
+
+                if (valuen.tagName !== "DIV") {
+
+                    if (valuen.value == oneLetter) {
+                        valuen.style.backgroundColor = "green"
+                    } else {
+
+                        valuen.style.backgroundColor = "red"
+                    }
+                }
+                a++
+            })
+
+        })
+
+    }
+    function solve() {
+        items.forEach(function (row) {
+            var a = 0
+            row.forEach(function (oneLetter) {
+                let valuen = document.querySelector(".tr_" + items.indexOf(row) + "_" + a)
+
+                if (valuen.tagName !== "DIV") {
+
+
+               
+                    valuen.value = oneLetter
+
+                }
+                a++
+            })
+
+        })
+
+    }
+</script>
+
+<script>
+
+</script>
+<style>
+    input {
+        border-radius: 7px;
+        text-align: center;
+        border: 1.5px solid;
+        width: 5vw;
+        height: 5vw;
+        font-size: 30px;
+    }
+
+    .blank {
+        display: inline-block;
+        width: 26px;
+        height: 28px;
+    }
+</style>
+
+</html>

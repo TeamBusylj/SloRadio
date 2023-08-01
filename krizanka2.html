@@ -5,7 +5,7 @@
     <title>Cross word Puzzel</title>
 </head>
 
-<body >
+<body onload="randomWords()">
     <div id="leftBox">
         <table id="puzzel">
 
@@ -15,6 +15,7 @@
     <table id="crossword">
 
     </table>
+    <p id="times"></p>
     <div id="hints"></div>
     <button onclick="randomWords()">Create</button>
     <button onclick="check()">Check</button>
@@ -24,7 +25,8 @@
     var gridSize = 15;
     var words = [['s', 'zdravnik'], ['Prestolnica stajerske', 'maribor'], ['Narejena iz sadja', 'marmelada'], ['Najbližja zvezda', 'sonce'], ['studiranje', 'razmisljanje'], ['Glavno mesto rusije', 'Moskva'], ['d', 'Racunalnik'], ['d', 'Vesolje'], ['d', 'Glad'], ['d', 'Dinar'], ['d', 'Aristokrat'], ['d', 'Ateist']];
     var items = []
-   
+   var scrptRun = 0
+   var noOfPre  = 0
     function checkWordPlacement(word, row, col, deltaRow, deltaCol, cross) {
         // Check if the word can be placed at the specified position and direction
         let intersectingLetter = '';
@@ -68,6 +70,7 @@
         return array;
     }
     function randomWords() {
+        scrptRun++
         items = []
         for (let i = 0; i < gridSize; i++) {
         items.push(Array(gridSize).fill('0'));
@@ -75,7 +78,7 @@
         const placedWords = []; // Track the words that have already been placed
         const placedWordsDesc = [];
         words = shuffle(words)
-       
+     
         for (let a = 0; a < 10; a++) {
 
 
@@ -84,12 +87,12 @@
             let isHorizontal = Math.random() >= 0.5; // Randomly choose horizontal or vertical placement
             let row, col;
             let intersectingLetter = '';
-        
+           
             let rpt = 0
             let usedSpotsrow = []
             let usedSpotscolumn = []
             while (true) {
-             
+             noOfPre++
                 row = Math.floor(Math.random() * gridSize);
                 while (usedSpotsrow.includes(row)) {
                     row = Math.floor(Math.random() * gridSize);
@@ -166,7 +169,8 @@ for (let i = 0; i < placedWords.length; i++) {
 
     function generateCrossword() {
         var table = document.getElementById("crossword");
-     
+        var scriptData = document.getElementById("times");
+     scriptData.innerHTML = "The script repeated <b>" + scrptRun+"</b> times, with total of <b>" + noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ");+"</b> word repositions."
         table.innerHTML=""
 
         items.forEach(function (row, rowIndex) {

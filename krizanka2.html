@@ -16,7 +16,7 @@
 
     </table>
     <p id="times"></p>
-    <div style="display: none;" id="hints"></div>
+    <div id="hints"></div>
     <button onclick="randomWords(); scrptRun = 0; noOfPre  = 0;">Create</button>
     <button onclick="check()">Check</button>
     <button onclick="solve()">Solve</button>
@@ -24,20 +24,51 @@
     <input type="number" style="width: auto !important;" id="chngWord" placeholder="Word number"></input>-->
 </body>
 <script>
-    var gridSize = 15;
+    var gridSize = 25;
     var wordNumber = 10
-    var words = [['s', 'zdravnik'], ['Prestolnica stajerske', 'maribor'], ['Narejena iz sadja', 'marmelada'], ['Najbližja zvezda', 'sonce'], ['studiranje', 'razmisljanje'], ['Glavno mesto rusije', 'Moskva'], ['d', 'Racunalnik'], ['d', 'Vesolje'], ['d', 'Glad'], ['d', 'Dinar'], ['d', 'Aristokrat'], ['d', 'Ateist'], ['d', 'Utrinek'], ['Pretiti', 'Groziti'], ['Adam in...', 'Eva'], ['d', 'Udobni'], ['d', 'Mutant'], ['Nemška reka', 'Ren']];
+    var words = [
+        ['Oseba, ki zdravi', 'zdravnik'],
+        ['Prestolnica štajerske', 'maribor'],
+        ['Namaz iz sadja', 'marmelada'],
+        ['Naša zvezda', 'sonce'],
+        ['studiranje', 'razmisljanje'],
+        ['Glavno mesto Rusije', 'Moskva'],
+        ['Naprava za obdelavo podatkov', 'Racunalnik'],
+        ['Prostor zunaj Zemlje', 'Vesolje'],
+        ['Lakota', 'Glad'],
+        ['Denarna enota v nekdanji SFRJ', 'Dinar'],
+        ['Pripadnik visokih družbenih slojev', 'Aristokrat'],
+        ['Nevernica', 'Ateistka'],
+        ['Kratkotrajen vtis', 'Utrinek'],
+        ['Pretiti', 'Groziti'],
+        ['Adam in...', 'Eva'],
+        ['Komfortni', 'Udobni'],
+        ['Genetska sprememba organizma', 'Mutant'],
+        ['Reka v Nemčiji', 'Ren'],
+        ['Komunikacijska naprava', 'interkom'],
+        ['Duševna zaostalost', 'Idiotija'],
+        ['Proces tvorbe kristalov', 'Kristalizacija'],
+        ['Polno veličine in ambicij', 'Velikopotezno'],
+        ['Birokratska organizacija', 'Birokracija'],
+        ['Zgodovinsko mesto v Mezopotamiji', 'Babilon'],
+        ['Osvobajanje čustvene napetosti', 'Katarsis'],
+        ['Izstopajoče in nenavadno', 'Ekstravagantno'],
+        ['Konec sveta ali katastrofa', 'Apokalipsa'],
+        ['Samodejno delovanje', 'Avtomatsko'],
+        ['Neuspeh in trpljenje', 'Klavrnost'],
+        ['Izjemni strah pred nečim', 'Fobija']
+    ];
     var items = []
-   var scrptRun = 0
-   var noOfPre  = 0
-   /*
-   document.getElementById("chngGrid").addEventListener("input", function(e){
-    gridSize = e.srcElement.value
-   })
-   document.getElementById("chngWord").addEventListener("input", function(e){
-    wordNumber = e.srcElement.value
-   })
-   */
+    var scrptRun = 0
+    var noOfPre = 0
+    /*
+    document.getElementById("chngGrid").addEventListener("input", function(e){
+     gridSize = e.srcElement.value
+    })
+    document.getElementById("chngWord").addEventListener("input", function(e){
+     wordNumber = e.srcElement.value
+    })
+    */
     function checkWordPlacement(word, row, col, deltaRow, deltaCol, cross) {
         // Check if the word can be placed at the specified position and direction
         let intersectingLetter = '';
@@ -49,19 +80,19 @@
                 newRow < 0 || newRow >= gridSize || newCol < 0 || newCol >= gridSize ||
                 (items[newRow][newCol] !== '0' && items[newRow][newCol] !== word[i].toUpperCase())
             ) {
-                if(cross == 0){
-            return false
-        } 
+                if (cross == 0) {
+                    return false
+                }
             } else if (items[newRow][newCol] === word[i].toUpperCase()) {
                 intersectingLetter += word[i].toUpperCase();
-            } 
+            }
         }
-        if(cross == 0){
+        if (cross == 0) {
             return intersectingLetter || true;
-        } else{
+        } else {
             return intersectingLetter;
         }
-       
+
     }
     function shuffle(array) {
         let currentIndex = array.length, randomIndex;
@@ -82,37 +113,37 @@
     }
 
     function randomWords() {
-   
+        document.getElementById("hints").innerHTML = ""
         scrptRun++
         items = []
         for (let i = 0; i < gridSize; i++) {
-        items.push(Array(gridSize).fill('0'));
-    }
-    if(scrptRun>99){
-        let table = document.getElementById("crossword");
-        table.innerHTML=""
-        let scriptData = document.getElementById("times");
-        scriptData.innerHTML = "<b>Uh, that didn't work...</b><br> you chosed too much words for too small grid. Either try again or change the numbers.<br> The script repeated <b>" + scrptRun+"</b> times, with total of <b>" + noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ")+"</b> word repositions."
-        return
-    }
+            items.push(Array(gridSize).fill('0'));
+        }
+        if (scrptRun > 99) {
+            let table = document.getElementById("crossword");
+            table.innerHTML = ""
+            let scriptData = document.getElementById("times");
+            scriptData.innerHTML = "<b>Uh, that didn't work...</b><br> you chosed too much words for too small grid. Either try again or change the numbers.<br> The script repeated <b>" + scrptRun + "</b> times, with total of <b>" + noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ") + "</b> word repositions."
+            return
+        }
         const placedWords = []; // Track the words that have already been placed
         const placedWordsDesc = [];
         words = shuffle(words)
-     
+
         for (let a = 0; a < wordNumber; a++) {
 
 
             let word = " " + words[a][1] + " "
-           
+          
             let isHorizontal = Math.random() >= 0.5; // Randomly choose horizontal or vertical placement
             let row, col;
             let intersectingLetter = '';
-           
+
             let rpt = 0
             let usedSpotsrow = []
             let usedSpotscolumn = []
             while (true) {
-             noOfPre++
+                noOfPre++
                 row = Math.floor(Math.random() * gridSize);
                 while (usedSpotsrow.includes(row)) {
                     row = Math.floor(Math.random() * gridSize);
@@ -125,37 +156,49 @@
                 if (isHorizontal && col + word.length <= gridSize - 1) {
                     intersectingLetter = checkWordPlacement(word, row, col, 0, 1, 0);
                     let isCross = checkWordPlacement(word, row, col, 0, 1, 1);
-                    isCross.replace(/ /g,"")
-                
-                    if (intersectingLetter !== false  ) {
-                        if(isCross.length>0 && isCross!== " "|| placedWords.length<1){
-    
-                      // items[row][col] = placedWords.length;
-                        for (let i = 0; i < word.length; i++) {
-                            items[row][col + i] = word[i].toUpperCase();
+                    isCross.replace(/ /g, "")
+
+                    if (intersectingLetter !== false) {
+                        if (isCross.length > 0 && isCross !== " " || placedWords.length < 1) {
+
+                            // items[row][col] = placedWords.length;
+                            for (let i = 0; i < word.length; i++) {
+
+                                if (i == 0) {  items[row][col + i] = word[i].toUpperCase() + "!" + a + "➡️"
+                            
+                            } else {
+                                    items[row][col + i] = word[i].toUpperCase();
+                                }
+                          
+                            }
+                            placedWords.push(word);
+                            placedWordsDesc.push(words[a][0]); // Track the placed word
+                            break;
                         }
-                        placedWords.push(word);
-                        placedWordsDesc.push(words[a][0]); // Track the placed word
-                        break;
-                    }
                     }
                 } else if (!isHorizontal && row + word.length <= gridSize - 1) {
                     intersectingLetter = checkWordPlacement(word, row, col, 1, 0, 0);
                     let isCross = checkWordPlacement(word, row, col, 1, 0, 1);
-                    isCross.replace(/ /g,"")
-                   ;
-                       
-                    if (intersectingLetter !== false  || placedWords.length<1) {
-                        if(isCross.length>0 && isCross!== " "|| placedWords.length<1){
-                             
-                       
-                        for (let i = 0; i < word.length; i++) {
-                            items[row + i][col] = word[i].toUpperCase();
+                    isCross.replace(/ /g, "")
+                        ;
+
+                    if (intersectingLetter !== false || placedWords.length < 1) {
+                        if (isCross.length > 0 && isCross !== " " || placedWords.length < 1) {
+
+
+                            for (let i = 0; i < word.length; i++) {
+
+                                if (i == 0) {
+                                    items[row][col + i] = word[i].toUpperCase() + "!" + a+ "⬇️"
+                                     continue;
+                                    } else {
+                                    items[row + i][col] = word[i].toUpperCase();
+                                }
+                            }
+                            placedWords.push(word); // Track the placed word
+                            placedWordsDesc.push(words[a][0])
+                            break;
                         }
-                        placedWords.push(word); // Track the placed word
-                        placedWordsDesc.push(words[a][0])
-                        break;
-                    }
                     }
 
                 }
@@ -166,20 +209,21 @@
                     break
                     console.log("nope");
                 }
-                
+
                 rpt++
             }
-          
+
         };
 
-var hints = document.getElementById("hints");
-for (let i = 0; i < placedWords.length; i++) {
-  
-    hints.innerHTML += "<br>"+i+placedWordsDesc[i]
-    
-}
-        if(placedWords.length > wordNumber-1){
-        generateCrossword();} else{
+        var hints = document.getElementById("hints");
+        for (let i = 0; i < placedWords.length; i++) {
+            o = i + 1
+            hints.innerHTML += "<br><b>" + o + "</b>. " + placedWordsDesc[i]
+
+        }
+        if (placedWords.length > wordNumber - 1) {
+            generateCrossword();
+        } else {
             randomWords()
         }
     }
@@ -191,9 +235,14 @@ for (let i = 0; i < placedWords.length; i++) {
         console.log('Done')
         var table = document.getElementById("crossword");
         var scriptData = document.getElementById("times");
-     scriptData.innerHTML = "The script repeated <b>" + scrptRun+"</b> times, with total of <b>" + noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ")+"</b> word repositions."
-        table.innerHTML=""
-
+        scriptData.innerHTML = "The script repeated <b>" + scrptRun + "</b> times, with total of <b>" + noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ") + "</b> word repositions."
+        table.innerHTML = ""
+        items = items.map(subArray => {
+  if (subArray.every(value => value === "0")) {
+    return subArray.slice(1);
+  }
+  return subArray;
+});
         items.forEach(function (row, rowIndex) {
             let tr = document.createElement("tr");
             table.appendChild(tr);
@@ -206,14 +255,34 @@ for (let i = 0; i < placedWords.length; i++) {
                 } else {
                     input = document.createElement("input");
                     input.maxLength = "1";
-
+                    if (oneLetter.includes("!")) {
+                        input.value = oneLetter.substring(oneLetter.indexOf("!")+1, oneLetter.length)
+                                input.style.borderWidth = "0"
+                                input.setAttribute("disabled","")
+                    }
                     input.addEventListener("input", function (e) {
                         if (input.value.length === 1) {
-                            let nextOneLeft = "tr_" + (rowIndex + 1) + "_" + colIndex;
-                            if (document.querySelector("." + nextOneLeft).tagName === "DIV") {
-                                nextOneLeft = "tr_" + rowIndex + "_" + (colIndex + 1);
+                          
+                            let nextOneLeft =  "tr_" + rowIndex + "_" + (colIndex + 1)
+                         console.log(document.querySelector("." + "tr_" + rowIndex + "_" + (colIndex - 1)));
+                            if (document.querySelector("." + "tr_" + rowIndex + "_" + (colIndex - 1)).tagName !== 'DIV') {
+                                if(document.querySelector("." + "tr_" + rowIndex + "_" + (colIndex - 1)).value.includes("➡️")){
+                                console.log("1---"+document.querySelector("." + "tr_" + rowIndex + "_" + (colIndex - 1)).value);}
+                                document.querySelector("." + nextOneLeft).focus();
+                            } else if (document.querySelector("." + "tr_" + (rowIndex) + "_" + (colIndex - 1)).value !== ""&&document.querySelector("." + "tr_" + (rowIndex) + "_" + (colIndex - 1)).value !== undefined && document.querySelector("." + "tr_" + (rowIndex) + "_" + (colIndex + 1)).value == ""){
+                               console.log( document.querySelector("." + "tr_" + (rowIndex) + "_" + (colIndex - 1)).value)
+                                console.log("2");
+                               
+                                document.querySelector("." + nextOneLeft).focus();
+                            } else if (!isNaN(document.querySelector("." + "tr_" + (rowIndex + 1) + "_" + colIndex ).value) && document.querySelector("." + "tr_" + (rowIndex + 1) + "_" + colIndex ).value !== ""){
+                                document.querySelector("." + "tr_" + (rowIndex + 1) + "_" + colIndex ).focus();
+                            
+                              }  else{
+                                console.log("3");
+                                document.querySelector("." + "tr_" + (rowIndex + 1) + "_" + colIndex).focus();
                             }
-                            document.querySelector("." + nextOneLeft).focus();
+        
+                           
                         }
                     });
                 }
@@ -233,11 +302,12 @@ for (let i = 0; i < placedWords.length; i++) {
 
                 if (valuen.tagName !== "DIV") {
 
-                    if (valuen.value == oneLetter) {
+                    if (valuen.value.toUpperCase() == oneLetter.toUpperCase()) {
                         valuen.style.backgroundColor = "green"
                     } else {
-
-                        valuen.style.backgroundColor = "red"
+                        console.log(valuen.style.borderWidth !== 0);
+                            if( valuen.style.borderWidth !== "0px") {
+                        valuen.style.backgroundColor = "red"}
                     }
                 }
                 a++
@@ -255,8 +325,8 @@ for (let i = 0; i < placedWords.length; i++) {
                 if (valuen.tagName !== "DIV") {
 
 
-               
-                    valuen.value = oneLetter
+
+                    valuen.value = oneLetter.toUpperCase()
 
                 }
                 a++
@@ -272,24 +342,28 @@ for (let i = 0; i < placedWords.length; i++) {
 </script>
 <style>
     input {
+        transition: all .2s;
         border-radius: 7px;
         text-align: center;
         border: 1.5px solid;
         width: 5vw;
         height: 5vw;
-        font-size:  120%;
+        font-size: 120%;
     }
-td{
-    width: 5vw;
+
+    td {
+        width: 5vw;
         height: 5vw;
-}
+    }
+
     .blank {
 
         display: inline-block;
-       width: 5vw;
+        width: 5vw;
         height: 5vw;
     }
-    button{
+
+    button {
         width: 90px;
         height: 50px;
     }

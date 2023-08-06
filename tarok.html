@@ -317,7 +317,7 @@ slct.innerHTML= "<option>Glavni igralec</option>"
         btn22.addEventListener("click", function () {
         
           
-            if (difNu.value !== "" || properties[1] == false) {
+            if (difNu.value !== "" || properties[18] == false) {
               if( slct.selectedIndex !== 0  && slct2.selectedIndex !== 0){
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
@@ -729,6 +729,7 @@ listOfPlayers[playedUser][0]=  listOfPlayers[user][0].replace('*', '')
         margin: 0;
         background-attachment: fixed;
         background-color: var(--bgColor);
+        
     }
     @keyframes showScreen{
       0%{opacity:0;scale:.2;backdrop-filter: blur(0)}

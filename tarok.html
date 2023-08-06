@@ -126,14 +126,14 @@ listOfPlayers[key][0] += "*"
                 if(gamename == "Klop"){
                 
                   if (plNombers[i].value > 0){
-                    radlciDodaj()
+             
                       
-               plusScore(plNombers[i].name, -Math.abs(parseInt(plNombers[i].value)))}else{
-                 plusScore(plNombers[i].name, 0)
+               aloneplusScore(plNombers[i].name, -Math.abs(parseInt(plNombers[i].value)))}else{
+                 aloneplusScore(plNombers[i].name, 0)
                 }
                 }
                 else{
-                    plusScore(plNombers[i].name,parseInt(plNombers[i].value))
+                    aloneplusScore(plNombers[i].name,parseInt(plNombers[i].value))
                 }
             }
             newElement.remove()

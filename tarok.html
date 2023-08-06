@@ -519,7 +519,8 @@ listOfPlayers[playedUser][0]=  listOfPlayers[user][0].replace('*', '')
             let i = 1
             let points = 0
   pljr.innerHTML = '<p style="padding-bottom: 10px;box-shadow:  12px -9px 20px #000;z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background-color: var(--bgColor); padding-top: 20px;margin-top: -50px;">' + name +listOfPlayers[key][0]+'</p>'
-pljr.innerHTML= String(pljr.innerHTML).replace('undefined', '')            pljr.innerHTML += '<p style=  "" >&nbsp</p>'
+pljr.innerHTML= String(pljr.innerHTML).replace('undefined', '')      ;   
+    pljr.innerHTML += '<p style=  "" >&nbsp</p>'
             while (i < pnts.length) {
                 pljr.innerHTML += '<p style=  "" >' + pnts[i] + '</p>'
                 points += pnts[i]

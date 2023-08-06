@@ -21,8 +21,8 @@
         console.log("Colors" + bg + ", " + txt);
     }
     function addScore() {
-        listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));; console.log("AHA")
-        console.log("AHA")
+        listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
+        
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "scrScreen");
         var iks = document.createElement("img")
@@ -45,26 +45,50 @@
             "Solo ena": [60, true, "", false],
             "Klop": ["", false, "", true],
             "Valat": [250, false, "", true],
-            "Barvni valat": [125, false, "", true],
+            "Barvni Valat": [125, false, "", true],
             "Berač": [70, false, "", false],
-            "Odprti berač": [90, false, "", false],
+            "Odprti Berač": [90, false, "", false],
             "Solo brez talona": [80, false, "", false],
             "Po meri": ["", false, "", true],
+             "Dodaj radlce": ["", false, "", true]
         }
         for (const key in games) {
             let btn = document.createElement("button")
             btn.innerHTML = key
             btn.addEventListener("click", function () {
-                newElement.remove();
-                if (key == "Klop" || key == "Po meri") { klop(newElement,key ) } else { calculate(key, games[key]) }
+                newElement.remove()
+                if (key == "Klop" || key == "Po meri") { klop(newElement,key ) } else { 
+                  
+                  if (key == "Dodaj radlce"){
+                 
+                    radlciDodaj()
+                    document.querySelector(".cntScreen").remove()
+            document.querySelector(".crezultLine").remove()
+            newElement.remove()
+            count()
+                  }else {
+                  calculate(key, games[key]) 
+                  }
+                  
+                }
             })
             newElement.appendChild(btn)
         }
         document.body.appendChild(newElement)
 
     }
+    
+
+    function radlciDodaj() {
+  for (const key in listOfPlayers) {
+    
+listOfPlayers[key][0] += "*"
+    
+  }
+}
 
     function klop(newElement2, gamename) {
+      
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "scrScreen");
         document.body.appendChild(newElement)
@@ -100,8 +124,16 @@
             var plNombers = document.getElementsByClassName("klopPlayer");
             for (var i = 0; i < plNombers.length; i++) {
                 if(gamename == "Klop"){
-                listOfPlayers[plNombers[i].name].push(-Math.abs(parseInt(plNombers[i].value)))}else{
-                    listOfPlayers[plNombers[i].name].push(parseInt(plNombers[i].value))
+                
+                  if (plNombers[i].value > 0){
+                    radlciDodaj()
+                      
+               plusScore(plNombers[i].name, -Math.abs(parseInt(plNombers[i].value)))}else{
+                 plusScore(plNombers[i].name, 0)
+                }
+                }
+                else{
+                    plusScore(plNombers[i].name,parseInt(plNombers[i].value))
                 }
             }
             newElement.remove()
@@ -111,6 +143,7 @@
             count()
          }
         })
+        
     }
 
     function calculate(gameName, properties) {
@@ -131,7 +164,7 @@
             }
         })
         document.body.appendChild(newElement)
-
+if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
         if (teamWork) {
 
             btn.innerHTML = "Sam"
@@ -208,14 +241,12 @@
                 this.remove();
                 btn23.remove();
                 if (properties[1]) {
-                    listOfPlayers[slct.value].push(parseInt(properties[0]) + parseInt(razlika))
+                    aloneplusScore(slct.value,parseInt(properties[0]) + parseInt(razlika), true)
                 } else {
-                    listOfPlayers[slct.value].push(parseInt(properties[0]))
+                    aloneplusScore(slct.value,parseInt(properties[0]), true)
                 }
                 newElement.remove()
-                document.querySelector(".cntScreen").remove()
-                document.querySelector(".crezultLine").remove()
-                count()
+                
             }
         })
         btn23.addEventListener("click", function () {
@@ -225,15 +256,13 @@
                 this.remove();
                 btn23.remove();
                 if (properties[1]) {
-                    listOfPlayers[slct.value].push(-Math.abs((parseInt(properties[0]) + parseInt(razlika))))
+                    aloneplusScore(slct.value,-Math.abs((parseInt(properties[0]) + parseInt(razlika))), true)
                 } else {
-                    listOfPlayers[slct.value].push(-Math.abs(parseInt(properties[0])))
+                    aloneplusScore(slct.value,-Math.abs(parseInt(properties[0])), true)
                 }
 
                 newElement.remove()
-                document.querySelector(".cntScreen").remove()
-                document.querySelector(".crezultLine").remove()
-                count()
+               
             }
         })
 
@@ -265,10 +294,13 @@
         var btn23 = document.createElement("button")
         var slct = document.createElement("select")
         var slct2 = document.createElement("select")
+        slct2.innerHTML= "<option>Partner</option>"  
+slct.innerHTML= "<option>Glavni igralec</option>"  
         for (const user in listOfPlayers) {
             slct.innerHTML += "<option>" + user + "</option>"
             slct2.innerHTML += "<option>" + user + "</option>"
         }
+
         newElement.appendChild(slct)
         newElement.appendChild(slct2)
         let lnbrk2 = document.createElement("div")
@@ -283,47 +315,79 @@
 
 
         btn22.addEventListener("click", function () {
+        
+          
             if (difNu.value !== "" || properties[1] == false) {
+              if( slct.selectedIndex !== 0  && slct2.selectedIndex !== 0){
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
                 btn23.remove();
                 if (properties[1]) {
-                    listOfPlayers[slct.value].push(parseInt(properties[0]) + parseInt(razlika))
-                    listOfPlayers[slct2.value].push(parseInt(properties[0]) + parseInt(razlika))
+                    plusScore(slct.value,slct2.value  ,parseInt(properties[0] + parseInt(razlika)))
                 } else {
-                    listOfPlayers[slct.value].push(parseInt(properties[0]))
-                    listOfPlayers[slct2.value].push(parseInt(properties[0]))
+                    plusScore(slct.value,slct2.value  ,parseInt(properties[0]))
                 }
-                newElement.remove()
                 document.querySelector(".cntScreen").remove()
-                document.querySelector(".crezultLine").remove()
-                count()
-            }
+            document.querySelector(".crezultLine").remove()
+            
+            count()
+                newElement.remove()
+                
+            }} 
         })
         btn23.addEventListener("click", function () {
 
             if (difNu.value !== "" || properties[1] == false) {
+              if( slct.selectedIndex !== 0  && slct2.selectedIndex !== 0){
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
                 btn23.remove();
                 if (properties[1]) {
-                    listOfPlayers[slct.value].push(-Math.abs((parseInt(properties[0]) + parseInt(razlika))))
-                    listOfPlayers[slct2.value].push(-Math.abs((parseInt(properties[0]) + parseInt(razlika))))
+                    plusScore(slct.value,slct2.value  ,-Math.abs(parseInt(properties[0] + parseInt(razlika))))
                 } else {
-                    listOfPlayers[slct.value].push(-Math.abs(parseInt(properties[0])))
-                    listOfPlayers[slct2.value].push(-Math.abs(parseInt(properties[0])))
+                 plusScore(slct.value,slct2.value  ,-Math.abs(parseInt(properties[0])))
+                   
                 }
+document.querySelector(".cntScreen").remove()
+document.querySelector(".crezultLine").remove()
 
+count()
                 newElement.remove()
-                document.querySelector(".cntScreen").remove()
-                document.querySelector(".crezultLine").remove()
-                count()
-            }
+                
+            }}
         })
 
     }
+function plusScore(playedUser,user, score){
+  if(playedUser[0].length > 0){
+  listOfPlayers[user].push(score*2)
+listOfPlayers[playedUser].push(score*2)
+  if (score>0){
+    console.log('+_+_++€+€')
+  listOfPlayers[playedUser][0]=listOfPlayers[playedUser][0].replace('*', '')
+  }else{
+    listOfPlayers[user].push(score)
+    listOfPlayers[playedUser].push(score)
+  }
+  
+}
+}
+  function aloneplusScore(user, score){
+  if(user[0].length > 0){
+  listOfPlayers[user].push(score*2)
+  if (score>0){
+listOfPlayers[playedUser][0]=  listOfPlayers[user][0].replace('*', '')
+  }else{
+    listOfPlayers[user].push(score)
+  }
+  document.querySelector(".cntScreen").remove()
+            document.querySelector(".crezultLine").remove()
+            
+            count()
+}
+}
 
     function Game() {
 
@@ -345,7 +409,7 @@
         document.body.appendChild(newElement)
         for (var i = 0; i < localStorage.length; i++) {
             let user = Object.keys(localStorage)[i];
-            console.log(user);
+            
             slct.innerHTML += "<option>" + user + "</option>"
         }
         newElement.appendChild(slct)
@@ -353,20 +417,22 @@
             if (slct.value !== "Select") {
                 listOfPlayers = JSON.parse(localStorage[slct.value])
                 newElement.remove()
-                listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));; console.log("AHA")
+                listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
+                
                 count()
 
             }
         })
     }
     function undo() {
-        listOfPlayers = JSON.parse(JSON.stringify(listOfPlayersCopy));; console.log("AHA")
+        listOfPlayers = JSON.parse(JSON.stringify(listOfPlayersCopy));
         document.querySelector(".cntScreen").remove()
         count()
     }
     var listOfPlayers = {}
     var listOfPlayersCopy = {}
     function newGame() {
+    
 
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
@@ -408,21 +474,21 @@
                 listOfPlayers[input] = []
             }
             newElement.style.display = "none"
-            console.log(listOfPlayers);
+            
             localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
-            listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));; console.log("AHA")
+            listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
             count()
-            if (navigator.userAgent.includes("wv")) {
-                AndroidInterface.saveData(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
-            }
+
         })
 
 
     }
 
     function count() {
+      
+     
 
-       
+      
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
         document.getElementById("newgame").style.display = "none"
         document.getElementById("game").style.display = "none"
@@ -442,13 +508,18 @@
         }
         var rezultLine = document.createElement("div")
         for (const key in listOfPlayers) {
+          
             let name = key
+            if( listOfPlayers[key][1] +1 == NaN){
+      //     listOfPlayers[key].unshift('r')
+           console.log("ggg")
+            }
             let pnts = listOfPlayers[key]
             var pljr = document.createElement("div")
-            let i = 0
+            let i = 1
             let points = 0
+  pljr.innerHTML = '<p style="padding-bottom: 10px;box-shadow:  12px -9px 20px #000;z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background-color: var(--bgColor); padding-top: 20px;margin-top: -50px;">' + name +listOfPlayers[key][0].replace('undefined', '')+'</p>'
 
-            pljr.innerHTML = '<p style="padding-bottom: 10px;box-shadow:  12px -9px 20px #000;z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background-color: var(--bgColor); padding-top: 20px;margin-top: -50px;">' + name + '</p>'
             pljr.innerHTML += '<p style=  "" >&nbsp</p>'
             while (i < pnts.length) {
                 pljr.innerHTML += '<p style=  "" >' + pnts[i] + '</p>'
@@ -466,11 +537,13 @@
         rezultLine.setAttribute("class", "crezultLine");
         document.body.appendChild(rezultLine)
         document.body.appendChild(newElement)
-        if (navigator.userAgent.includes("wv")) {
-                AndroidInterface.saveData(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
-            }
+
 
     }
+
+  
+
+
 
 
 
@@ -599,6 +672,7 @@
     }
 
     .scrScreen {
+      animation: showScreen .4s forwards;
         color: var(--colorTxt);
         z-index: 500000;
         display: flex;
@@ -614,6 +688,7 @@
     }
 
     .cntScreen {
+      animation: showScreen .4s forwards;
         color: var(--colorTxt);
         display: flex;
         flex-direction: row;
@@ -625,7 +700,6 @@
         height: 100%;
 
     }
-
     .crezultLine {
         color: var(--colorTxt);
         box-shadow: 0px 10px 20px #000;
@@ -655,6 +729,11 @@
         margin: 0;
         background-attachment: fixed;
         background-color: var(--bgColor);
+    }
+    @keyframes showScreen{
+      0%{opacity:0;scale:.2;backdrop-filter: blur(0)}
+      80%{opacity:1; scale:1.05;}
+       100%{opacity:1; scale:1;backdrop-filter: blur(5px)}
     }
 </style>
 

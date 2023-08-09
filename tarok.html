@@ -164,7 +164,7 @@ listOfPlayers[key][0] += "*"
             }
         })
         document.body.appendChild(newElement)
-if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
+//if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
         if (teamWork) {
 
             btn.innerHTML = "Sam"
@@ -173,7 +173,7 @@ if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
             newElement.appendChild(btn2)
 
         } else {
-            alone(newElement, gameName, properties)
+            partner(newElement, gameName, properties, false)
         }
 
 
@@ -182,12 +182,12 @@ if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
             this.remove();
             btn2.remove();
 
-            alone(newElement, gameName, properties)
+            partner(newElement, gameName, properties, false)
         })
 
         btn2.addEventListener("click", function () {
             btn.remove(); btn2.remove();
-            partner(newElement, gameName, properties)
+            partner(newElement, gameName, properties, true)
 
 
         })
@@ -196,7 +196,9 @@ if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
 
     }
 
-    function alone(newElement, gameName, properties) {
+
+
+  /*  function alone(newElement, gameName, properties) {
         var difNu = document.createElement("input")
         if (properties[1]) {
 
@@ -242,9 +244,15 @@ if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
                 btn23.remove();
                 if (properties[1]) {
                     aloneplusScore(slct.value,parseInt(properties[0]) + parseInt(razlika), true)
+                  listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, parseInt(razlika)]
+
                 } else {
+                
                     aloneplusScore(slct.value,parseInt(properties[0]), true)
+                  listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, null]
+
                 }
+           
                 newElement.remove()
                 
             }
@@ -257,8 +265,13 @@ if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
                 btn23.remove();
                 if (properties[1]) {
                     aloneplusScore(slct.value,-Math.abs((parseInt(properties[0]) + parseInt(razlika))), true)
+                  listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, parseInt(razlika)]
+
+
                 } else {
                     aloneplusScore(slct.value,-Math.abs(parseInt(properties[0])), true)
+                  listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, null]
+
                 }
 
                 newElement.remove()
@@ -268,8 +281,9 @@ if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
 
 
     }
-    function partner(newElement, gameName, properties) {
-
+    */
+    function partner(newElement, gameName, properties, teamWork) {
+        var razlika =0
         var difNu = document.createElement("input")
         if (properties[1]) {
 
@@ -297,59 +311,139 @@ if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
         slct2.innerHTML= "<option>Partner</option>"  
 slct.innerHTML= "<option>Glavni igralec</option>"  
         for (const user in listOfPlayers) {
+            if(key == "!gamesData!"){
+                continue
+            }
             slct.innerHTML += "<option>" + user + "</option>"
             slct2.innerHTML += "<option>" + user + "</option>"
         }
 
         newElement.appendChild(slct)
-        newElement.appendChild(slct2)
+        if(teamWork){
+            newElement.appendChild(slct2)
+        } else{
+            slct2.value = 2
+        }
+     
         let lnbrk2 = document.createElement("div")
         lnbrk2.classList.add("break")
         newElement.appendChild(lnbrk2)
         newElement.appendChild(document.createElement("br"))
         btn22.innerHTML = "Zmagal"
         btn23.innerHTML = "Izgubil"
-        newElement.appendChild(btn22)
+        
+        let lnbrk22 = document.createElement("div")
+        lnbrk22.classList.add("break")
+        newElement.appendChild(lnbrk22)
+        let bonusi = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
+
+"Trula": [10, 20, false],
+"Kralji": [10, 20, false],
+"Pagat ultimo": [25, 50, false],
+"Kralj ultimo": [10, 20, false]
+}
+var bonusTočke = 0
+if ( properties[1] ) {
+for (const key in bonusi) {
+            let btn = document.createElement("button")
+            btn.innerHTML = key
+            btn.style.transition=" all .2s";
+            btn.style.opacity = ".6"
+            btn.addEventListener("click", function () {
+              
+             if (bonusi[key][2]){
+                bonusTočke = bonusTočke-bonusi[key][0]
+                    btn.style.opacity = ".6"
+                    btn.style.background = 'none'
+                    btn.style.animation=" checkAnimHd .2s forwards";
+                    btn.style.paddingRight = '0px'
+                    bonusi[key][2] = !bonusi[key][2]
+             } else {
+                bonusTočke += bonusi[key][0]
+                btn.style.opacity = "1"
+                btn.style.animation=" checkAnim .2s forwards";
+                                btn.style.paddingRight = '20px'
+                bonusi[key][2] = !bonusi[key][2]
+             }
+             console.log(bonusTočke);
+            })
+        newElement.appendChild(btn)
+        }
+    }
+    let lnbrk23 = document.createElement("div")
+        lnbrk23.classList.add("break")
+        newElement.appendChild(lnbrk23)
+    newElement.appendChild(btn22)
         newElement.appendChild(btn23)
         document.body.appendChild(newElement)
 
 
         btn22.addEventListener("click", function () {
-        
-          
-            if (difNu.value !== "" || properties[18] == false) {
-              if( slct.selectedIndex !== 0  && slct2.selectedIndex !== 0){
-                let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
-                razlika = nearestMultipleOf5;
-                this.remove();
-                btn23.remove();
-                if (properties[1]) {
-                    plusScore(slct.value,slct2.value  ,parseInt(properties[0] + parseInt(razlika)))
-                } else {
-                    plusScore(slct.value,slct2.value  ,parseInt(properties[0]))
-                }
-                document.querySelector(".cntScreen").remove()
-            document.querySelector(".crezultLine").remove()
-            
-            count()
-                newElement.remove()
-                
-            }} 
-        })
+
+if (difNu.value !== "" || properties[1] == false) {
+    
+  if( (slct.selectedIndex !== 0  && slct2.selectedIndex !== 0) || (teamWork &&slct.selectedIndex !== 0)){
+    let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+    razlika = nearestMultipleOf5;
+    this.remove();
+    btn23.remove();
+    if (properties[1]) {
+        if(teamWork){
+        plusScore(slct.value,slct2.value  ,parseInt(properties[0] + parseInt(razlika)+ bonusTočke))
+      listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, slct2.value, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, parseInt(razlika)]
+        } else{
+            aloneplusScore(slct.value,parseInt(parseInt(properties[0]) + parseInt(razlika)+ bonusTočke), true)
+      listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, parseInt(razlika)]
+
+        }
+    } else {
+        if(teamWork){
+     plusScore(slct.value,slct2.value  ,parseInt(properties[0])+ bonusTočke)
+   listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, slct2.value, parseInt(properties[0]), listOfPlayers[slct.value][0].length > 0,null ]
+        }else{
+            aloneplusScore(slct.value,parseInt(properties[0])+ bonusTočke, true)
+      listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, null, parseInt(properties[0]), listOfPlayers[slct.value][0].length > 0, null]
+
+        }
+    }
+
+document.querySelector(".cntScreen").remove()
+document.querySelector(".crezultLine").remove()
+
+count()
+    newElement.remove()
+    
+}}
+})
         btn23.addEventListener("click", function () {
 
             if (difNu.value !== "" || properties[1] == false) {
+                
               if( slct.selectedIndex !== 0  && slct2.selectedIndex !== 0){
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
                 razlika = nearestMultipleOf5;
                 this.remove();
                 btn23.remove();
                 if (properties[1]) {
-                    plusScore(slct.value,slct2.value  ,-Math.abs(parseInt(properties[0] + parseInt(razlika))))
+                    if(teamWork){
+                    plusScore(slct.value,slct2.value  ,-Math.abs(parseInt(properties[0] + parseInt(razlika)+ bonusTočke)))
+                  listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, slct2.value, -Math.abs(parseInt(properties[0]) + parseInt(razlika)), listOfPlayers[slct.value][0].length > 0, parseInt(razlika)]
+                    } else{
+                        aloneplusScore(slct.value,-Math.abs((parseInt(properties[0]) + parseInt(razlika)+ bonusTočke)), true)
+                  listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, null, -Math.abs(parseInt(properties[0]) + parseInt(razlika)), listOfPlayers[slct.value][0].length > 0, parseInt(razlika)]
+
+                    }
                 } else {
-                 plusScore(slct.value,slct2.value  ,-Math.abs(parseInt(properties[0])))
-                   
+                    if(teamWork){
+                 plusScore(slct.value,slct2.value  ,-Math.abs(parseInt(properties[0]+ bonusTočke)))
+               listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, slct2.value, -Math.abs(parseInt(properties[0])) , listOfPlayers[slct.value][0].length > 0,null ]
+                    }else{
+                        aloneplusScore(slct.value,-Math.abs(parseInt(properties[0] + bonusTočke)), true)
+                  listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [gameName, slct.value, null, -Math.abs(parseInt(properties[0])) , listOfPlayers[slct.value][0].length > 0, null]
+
+                    }
                 }
+
 document.querySelector(".cntScreen").remove()
 document.querySelector(".crezultLine").remove()
 
@@ -361,33 +455,53 @@ count()
 
     }
 function plusScore(playedUser,user, score){
-  if(playedUser[0].length > 0){
+  if(listOfPlayers[playedUser][0].length > 0){
   listOfPlayers[user].push(score*2)
 listOfPlayers[playedUser].push(score*2)
-  if (score>0 && listOfPlayers[playedUser][0].length > 1){
-    console.log('+_+_++€+€')
+  if (score>0 && listOfPlayers[playedUser][0].length > 0){
   listOfPlayers[playedUser][0]=listOfPlayers[playedUser][0].replace('*', '')
-  }else{
+  }}
+  else{
     listOfPlayers[user].push(score)
     listOfPlayers[playedUser].push(score)
   }
+  for(const player in listOfPlayers){
+    if(player == "!gamesData!"){
+                continue
+            }
+    console.log(player);
+    console.log(listOfPlayers[user]);
+    if(listOfPlayers[player] !== listOfPlayers[playedUser] && listOfPlayers[player]  !== listOfPlayers[user]){
+        listOfPlayers[player].push('&nbsp')
+    }
+  }
   
 }
-}
+
   function aloneplusScore(user, score){
-  if(user[0].length > 0){
+    
+  if(listOfPlayers[user][0].length > 0){
   listOfPlayers[user].push(score*2)
-  if (score>0 && listOfPlayers[user][0].length > 1){
+  if (score>0 && listOfPlayers[user][0].length > 0){
 listOfPlayers[user][0]=  listOfPlayers[user][0].replace('*', '')
-  }else{
+  }}else{
     listOfPlayers[user].push(score)
+  }
+  for(const player in listOfPlayers){
+    if(player == "!gamesData!"){
+                continue
+            }
+    console.log(player, listOfPlayers[user]);
+    if(listOfPlayers[player] !== listOfPlayers[user]){
+        listOfPlayers[player].push('&nbsp')
+    }
   }
   document.querySelector(".cntScreen").remove()
             document.querySelector(".crezultLine").remove()
             
             count()
 }
-}
+
 
     function Game() {
 
@@ -409,16 +523,21 @@ listOfPlayers[user][0]=  listOfPlayers[user][0].replace('*', '')
         document.body.appendChild(newElement)
         for (var i = 0; i < localStorage.length; i++) {
             let user = Object.keys(localStorage)[i];
-            
+            if(user !== "!gameData!"){
             slct.innerHTML += "<option>" + user + "</option>"
+            }
         }
+       
+      
         newElement.appendChild(slct)
         slct.addEventListener("change", function () {
             if (slct.value !== "Select") {
                 listOfPlayers = JSON.parse(localStorage[slct.value])
                 newElement.remove()
                 listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
-                
+                if( listOfPlayers["!gamesData!"] == null){
+                    listOfPlayers["!gamesData!"] = {}
+        }
                 count()
 
             }
@@ -469,9 +588,11 @@ listOfPlayers[user][0]=  listOfPlayers[user][0].replace('*', '')
             onePl2.focus()
         })
         endPl.addEventListener("click", function () {
+            listOfPlayers["!gamesData!"] = {}
             for (var i = 0; i < document.getElementsByTagName('input').length; i++) {
                 let input = document.getElementsByTagName('input')[i].value
-                listOfPlayers[input] = []
+                listOfPlayers[input] = ['']
+
             }
             newElement.style.display = "none"
             
@@ -487,14 +608,14 @@ listOfPlayers[user][0]=  listOfPlayers[user][0].replace('*', '')
     function count() {
       
      
-
+       
       
-        localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers)).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
+        localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
         document.getElementById("newgame").style.display = "none"
         document.getElementById("game").style.display = "none"
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "cntScreen");
-        newElement.addEventListener("click", function () { addScore() })
+      
         if (JSON.stringify(listOfPlayers) !== JSON.stringify(listOfPlayersCopy)) {
             var btn22 = document.createElement("button")
             btn22.innerHTML = "Nazaj"
@@ -507,34 +628,47 @@ listOfPlayers[user][0]=  listOfPlayers[user][0].replace('*', '')
             btn22.remove()
         }
         var rezultLine = document.createElement("div")
-        for (const key in listOfPlayers) {
-          
-            let name = key
-            if( listOfPlayers[key][1] +1 == NaN){
-         listOfPlayers[key].unshift(' ')
-           console.log("ggg")
-            }
-            let pnts = listOfPlayers[key]
-            var pljr = document.createElement("div")
-            let i = 1
-            let points = 0
-  pljr.innerHTML = '<p style="padding-bottom: 10px;box-shadow:  12px -9px 20px #000;z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background-color: var(--bgColor); padding-top: 20px;margin-top: -50px;">' + name +listOfPlayers[key][0]+'</p>'
-pljr.innerHTML= String(pljr.innerHTML).replace('undefined', '')      ;   
-    pljr.innerHTML += '<p style=  "" >&nbsp</p>'
-            while (i < pnts.length) {
-                pljr.innerHTML += '<p style=  "" >' + pnts[i] + '</p>'
-                points += pnts[i]
-                i++
-            }
-
-            pljr.innerHTML += '<p style=  "" >&nbsp</p>'
-
-            pljr.setAttribute("class", "chl");
-            pljr.style.display = "inline-block;"
-            rezultLine.innerHTML += '<p  style="flex:1;border-right: 1px solid; " >' + points + '</p>'
-            newElement.appendChild(pljr)
+      for (const key in listOfPlayers) {
+        let stGame = 0
+        let name = key
+        if (key == "!gamesData!") {
+          continue
         }
+        if (listOfPlayers[key][1] + 1 == NaN) {
+          listOfPlayers[key].unshift(' ')
+          console.log("ggg")
+        }
+        let pnts = listOfPlayers[key]
+        var pljr = document.createElement("div")
+        let i = 1
+        let points = 0
+        pljr.innerHTML = '<p style = "padding-bottom: 10px;box-shadow:  12px -9px 20px #000;z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background-color: var(--bgColor); padding-top: 20px;margin-top: -50px;" > ' + name + listOfPlayers[key][0] + ' </p>'
+        pljr.innerHTML = String(pljr.innerHTML).replace('undefined', '');
+        pljr.innerHTML += ' <p style = "" > & nbsp </p>'
+        while (i < pnts.length) {
+          
+          var kkk = document.createElement("p")
+           kkk.innerHTML =pnts[i]
+           kkk.addEventListener('click', function(){
+            console.log("ccc");
+            gameData(listOfPlayers["!gamesData!"][stGame])
+           })
+           stGame++
+          
+          pljr.appendChild(kkk)
+          if (pnts[i] !== '&nbsp') {
+            points += pnts[i]
+          }
+          i++
+        }
+        pljr.innerHTML += ' <p style = "" >&nbsp</p>'
+        pljr.setAttribute("class", "chl");
+        pljr.style.display = "inline-block;"
+        rezultLine.innerHTML += ' <p style = "flex:1;border-right: 1px solid; " > ' + points + ' </p>'
+        newElement.appendChild(pljr)
+      }
         rezultLine.setAttribute("class", "crezultLine");
+      rezultLine.addEventListener("click", function () { addScore() })
         document.body.appendChild(rezultLine)
         document.body.appendChild(newElement)
 
@@ -545,8 +679,9 @@ pljr.innerHTML= String(pljr.innerHTML).replace('undefined', '')      ;
 
 
 
-
-
+function gameData(info){
+    console.log(info);
+}
 
 </script>
 
@@ -731,10 +866,27 @@ pljr.innerHTML= String(pljr.innerHTML).replace('undefined', '')      ;
         background-color: var(--bgColor);
         
     }
+    p{ transition: all .2s;}
     @keyframes showScreen{
       0%{opacity:0;scale:.2;backdrop-filter: blur(0)}
       80%{opacity:1; scale:1.05;}
        100%{opacity:1; scale:1;backdrop-filter: blur(5px)}
+    }
+    .chl > p:hover {
+        border-radius: 30px;
+        margin: 3px;       cursor: pointer;
+        background-color: rgba(0, 0, 0, .2);
+
+}
+@keyframes checkAnim{
+      0%{background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 0% no-repeat;}
+      100%{background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 20% no-repeat;}
+     
+    }
+    @keyframes checkAnimHd{
+      0%{background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 20% no-repeat;}
+      100%{background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 0% no-repeat;}
+     
     }
 </style>
 

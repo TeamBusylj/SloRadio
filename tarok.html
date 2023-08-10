@@ -15,9 +15,10 @@
 
 <script>
 
-    function adaptColor(bg, txt) {
+    function adaptColor(bg, txt, btn) {
         document.body.style.setProperty('--bgColor', bg);
         document.body.style.setProperty('--colorTxt', txt)
+        document.body.style.setProperty('--colorBtn', btn)
         console.log("Colors" + bg + ", " + txt);
     }
     function addScore() {
@@ -886,7 +887,7 @@ td.gameDataTd {
         flex-basis: 100px;
         border-radius: 30px;
         border-width: 0;
-        background-color: var(--bgColor);
+        background-color: var(--colorBtn);
         box-shadow: 5px 5px #888888;
         margin: 10px;
         height: 40px;
@@ -971,6 +972,7 @@ td.gameDataTd {
     body {
         --bgColor: #DCB585;
         --colorTxt: rgb(0, 0, 0);
+        --colorBtn: #b59670;
         color: var(--colorTxt);
         margin: 0;
         background-attachment: fixed;

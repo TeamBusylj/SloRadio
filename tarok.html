@@ -103,11 +103,11 @@
             }
         })
         for (const user in listOfPlayers) {
-            if (listOfPlayers[player] !== listOfPlayers[user]) {
-                if (player == "!gamesData!") {
+      
+                if (user == "!gamesData!") {
           continue
         }
-    }
+    
             let klopPlayer = document.createElement("input")
             klopPlayer.classList.add("klopPlayer")
             klopPlayer.type = "number"
@@ -118,7 +118,7 @@
 
 
 
-        }
+    }
         var btn = document.createElement("button")
         btn.innerHTML = "Končano"
         let lnbrk = document.createElement("div")
@@ -131,18 +131,15 @@
                 for (var i = 0; i < plNombers.length; i++) {
                     if (gamename == "Klop") {
 
-                        if (plNombers[i].value > 0) {
-
-
-                            aloneplusScore(plNombers[i].name, -Math.abs(parseInt(plNombers[i].value)))
-                        } else {
-                            aloneplusScore(plNombers[i].name, 0)
-                        }
+                        aloneplusScore(plNombers[i].name, -Math.abs(parseInt(plNombers[i].value)))
+                      
                     }
                     else {
                         aloneplusScore(plNombers[i].name, parseInt(plNombers[i].value))
                     }
                 }
+                listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Klop","Vsi", null, null , null, null, null, null]
+
                 newElement.remove()
                 newElement2.remove()
                 document.querySelector(".cntScreen").remove()
@@ -482,17 +479,7 @@
             listOfPlayers[user].push(score)
             listOfPlayers[playedUser].push(score)
         }
-        for (const player in listOfPlayers) {
-
-            console.log(player);
-            console.log(listOfPlayers[user]);
-            if (listOfPlayers[player] !== listOfPlayers[playedUser] && listOfPlayers[player] !== listOfPlayers[user]) {
-                if (player == "!gamesData!") {
-          continue
-        }
-                listOfPlayers[player].push('&nbsp')
-            }
-        }
+       
 
     }
 
@@ -506,20 +493,8 @@
         } else {
             listOfPlayers[user].push(score)
         }
-        for (const player in listOfPlayers) {
-
-            console.log(player, listOfPlayers[user]);
-            if (listOfPlayers[player] !== listOfPlayers[user]) {
-                if (player == "!gamesData!") {
-          continue
-        }
-                listOfPlayers[player].push('&nbsp')
-            }
-        }
-        document.querySelector(".cntScreen").remove()
-        document.querySelector(".crezultLine").remove()
-
-        count()
+   
+      
     }
 
 
@@ -626,12 +601,37 @@
 
 
     }
+    function padArraysToLongest(obj) {
+  // Find the length of the longest array
+  let maxLength = 0;
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const currentArray = obj[key];
+      const currentLength = currentArray.length;
+      if (currentLength > maxLength) {
+        maxLength = currentLength;
+      }
+    }
+  }
+
+  // Pad arrays to the length of the longest array
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      const currentArray = obj[key];
+      while (currentArray.length < maxLength) {
+        currentArray.push("&nbsp");
+      }
+    }
+  }
+}
+
 
     function count() {
 
 
-
-
+console.log(listOfPlayers);
+        padArraysToLongest(listOfPlayers);
+        console.log(listOfPlayers);
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")['!gamesData'], JSON.stringify(listOfPlayers['!gamesData']))
 
@@ -747,8 +747,8 @@ console.log(infom);
         table.appendChild(line2)
         for (let i = 0; i < podatki.length; i++) {
             const element1 = podatki[i];
-            if(i==2 && info[2] == null){ continue}
-            if(i==5 && info[5] == null){ continue}
+            if( info[i] == null){ continue}
+          
             let td1 =   document.createElement("td")
             td1.innerHTML = element1
             td1.classList.add("gameDataTd")

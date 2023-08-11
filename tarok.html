@@ -41,6 +41,7 @@
             "Tri": [10, true, "", true],
             "Dve": [20, true, "", true],
             "Ena": [30, true, "", true],
+            "Solo brez talona": [80, false, "", false],
             "Solo tri": [40, true, "", false],
             "Solo dve": [50, true, "", false],
             "Solo ena": [60, true, "", false],
@@ -49,7 +50,7 @@
             "Barvni Valat": [125, false, "", true],
             "Berač": [70, false, "", false],
             "Odprti Berač": [90, false, "", false],
-            "Solo brez talona": [80, false, "", false],
+          
             "Po meri": ["", false, "", true],
             "Dodaj radlce": ["", false, "", true]
         }
@@ -669,7 +670,7 @@ console.log(listOfPlayers);
             var pljr = document.createElement("div")
             let i = 1
             let points = 0
-            pljr.innerHTML = '<p style = "padding-bottom: 10px;box-shadow:  12px -9px 20px #000;z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background-color: var(--bgColor); padding-top: 20px;margin-top: -50px;" > ' + name + listOfPlayers[key][0] + ' </p>'
+            pljr.innerHTML = '<p style = "padding-bottom: 10px;border-radius:20px;z-index:5555;border-bottom: 1px solid; overflow: hidden;  position: sticky; top: 0px; background-color: var(--colorBtn); padding-top: 20px;margin-top: -50px;" > ' + name + listOfPlayers[key][0] + ' </p>'
             pljr.innerHTML = String(pljr.innerHTML).replace('undefined', '');
             pljr.innerHTML += '<p style = "" class="noText" >&nbsp</p><p style = "" class="noText" >&nbsp</p>'
             while (i < pnts.length) {
@@ -877,24 +878,27 @@ td.gameDataTd {
     }
 
     button:active {
-        box-shadow: 0px 0px #888888;
+       /* box-shadow: 0px 0px #888888;*/
     }
 
     button {
         color: var(--colorTxt);
-        transition: all .05s;
-        position: relative;
-        flex-basis: 100px;
-        border-radius: 30px;
-        border-width: 0;
-        background-color: var(--colorBtn);
-        box-shadow: 5px 5px #888888;
-        margin: 10px;
-        height: 40px;
+    transition: all .05s;
+    position: relative;
+    flex-basis: 100px;
+    border-radius: 30px;
+    text-align: center;
+    padding: 14px;
+    border-width: 0;
+    background-color: var(--colorBtn);
+    /* box-shadow: 5px 5px #888888; */
+    margin: 10px;
+
+
     }
 
     select:active {
-        box-shadow: 0px 0px #888888;
+        /*  box-shadow: 5px 5px #888888;*/
         border-width: 0;
     }
 
@@ -905,7 +909,7 @@ td.gameDataTd {
         border-width: 0;
         border-radius: 20px;
         padding: 7px;
-        box-shadow: 5px 5px #888888;
+        /*  box-shadow: 5px 5px #888888;*/
     }
 
     input {
@@ -914,7 +918,7 @@ td.gameDataTd {
         border-width: 0;
         border-radius: 20px;
         padding: 7px;
-        box-shadow: 5px 5px #888888;
+         /*  box-shadow: 5px 5px #888888;*/
     }
 
     .scrScreen {

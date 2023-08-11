@@ -364,7 +364,7 @@
                bnsi = bnsi.filter(item => item !== key)
                         bonusTočke = bonusTočke - bonusi[key][0]
                         btn.style.opacity = ".6"
-                        btn.style.background = 'none'
+                 
                         btn.style.animation = " checkAnimHd .2s forwards";
                         btn.style.paddingRight = '0px'
                         bonusi[key][2] = !bonusi[key][2]
@@ -776,7 +776,7 @@ console.log(infom);
 <style>
 td.gameDataTdBottom {
     text-align: center;
-    background-color: #6298f4;
+    background-color: var(--colorBtn);
     padding: 8px;
     margin: 3px;
     border-bottom-left-radius: 15px;
@@ -784,7 +784,7 @@ td.gameDataTdBottom {
 }
 td.gameDataTd {
     text-align: center;
-    background-color: #6298f4;
+    background-color: var(--colorBtn);
     padding: 8px;
     margin: 3px;
     border-top-left-radius: 15px;

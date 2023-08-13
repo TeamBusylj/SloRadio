@@ -500,8 +500,8 @@
 
 
     function Game() {
-
-        var newElement = document.createElement("div")
+ 
+var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
         var iks = document.createElement("img")
         iks.classList.add("iks")
@@ -509,6 +509,7 @@
         newElement.appendChild(iks)
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
+                document.getElementById("game").style.animation = "none"
                 newElement.remove()
             }
         })
@@ -667,22 +668,23 @@ console.log(listOfPlayers);
                 console.log("ggg")
             }
             let pnts = listOfPlayers[key]
-            var pljr = document.createElement("div")
+            var chl = document.createElement("div")
             let i = 1
             let points = 0
-            pljr.innerHTML = '<p style = "padding-bottom: 10px;border-radius:20px;z-index:5555; overflow: hidden;  position: sticky; top: 0px; background-color: var(--colorBtn); padding-top: 20px;margin-top: -50px;" > ' + name + listOfPlayers[key][0] + ' </p>'
-            pljr.innerHTML = String(pljr.innerHTML).replace('undefined', '');
-            pljr.innerHTML += '<p style = "" class="noText" >&nbsp</p><p style = "" class="noText" >&nbsp</p>'
+            var prnt = document.createElement("div")
+            prnt.innerHTML = '<p style = "padding-bottom: 10px;border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; z-index: 5555;z-index:5555; overflow: hidden;  position: sticky; top: 0px; background-color: var(--colorBtn); padding-top: 20px;margin-top: -50px;" > ' + name + listOfPlayers[key][0] + ' </p>'
+            chl.innerHTML = String(chl.innerHTML).replace('undefined', '');
+        chl.innerHTML += '<p style = "" class="noText" ></p>'
             while (i < pnts.length) {
 
                 var kkk = document.createElement("p")
                 kkk.innerHTML = pnts[i]
               
-                pljr.appendChild(kkk)
+                chl.appendChild(kkk)
                 console.log(stGame)
                 if(pnts[i] !== '&nbsp'){
                 kkk.setAttribute('onclick', 'gameData("' + stGame + '")')
-                kkk.style.marginTop = "-10px"
+               
                 kkk.classList.add("word_" + stGame)
             }else{
                     kkk.classList.add("noText")
@@ -700,11 +702,14 @@ console.log(listOfPlayers);
                 }
                 i++
             }
-            pljr.innerHTML += ' <p style = "" class="noText" >&nbsp</p>'
-            pljr.setAttribute("class", "chl");
-            pljr.style.display = "inline-block;"
-            rezultLine.innerHTML += ' <p style = "flex:1;border-right: 1px solid; " > ' + points + ' </p>'
-            newElement.appendChild(pljr)
+            chl.innerHTML += ' <p style = "" class="noText" ></p>'
+            chl.setAttribute("class", "chl");
+            chl.style.display = "inline-block;"
+            rezultLine.innerHTML += ' <p style = "flex: 1;background: var(--colorBtn); padding: 15px; border-top-left-radius: 30px; border-top-right-radius: 30px; margin-left:10px;margin-right:10px;" > ' + points + ' </p>'
+           
+            prnt.setAttribute("class", "prnt");
+            prnt.appendChild(chl)
+            newElement.appendChild(prnt)
         }
         rezultLine.setAttribute("class", "crezultLine");
         rezultLine.addEventListener("click", function () { addScore() })
@@ -831,14 +836,31 @@ td.gameDataTd {
     }
 
     .chl {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        border-radius: 30px;
+      background-color: var(--colorBtn);
         color: var(--colorTxt);
-        min-height: 100vh;
+        padding: 2px;
         height: auto;
         flex: 1;
         text-align: center;
         font-size: large;
-        border-right: 1px solid;
+      
     }
+
+    .prnt {
+       
+        padding: 10px;
+    color: var(--colorTxt);
+    min-height: 100vh;
+    height: auto;
+    flex: 1;
+    text-align: center;
+    border-radius: 30px;
+    font-size: large;
+    background: transparent;
+}
 
     .chl2 {
         flex: 1;
@@ -849,21 +871,8 @@ td.gameDataTd {
         border-right: 1px solid;
     }
 
-    .chl::after {
-        content: '';
-
-        height: 55vh;
-        position: fixed;
-        justify-content: center;
-        /* right: -12.1vw; */
-        display: none;
-        width: 1px;
-        overflow: hidden;
-        top: 25vh;
-        background-color: #000000;
-    }
-
     .whlScreen {
+        animation: showScreen .4s forwards;
         color: var(--colorTxt);
         z-index: 500000;
         display: flex;
@@ -953,19 +962,18 @@ td.gameDataTd {
 
     .crezultLine {
         color: var(--colorTxt);
-        box-shadow: 0px 10px 20px #000;
-        background-color: var(--bgColor);
-        z-index: 400;
-        overflow: hidden;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        bottom: 0;
-        position: fixed;
-        justify-content: center;
-        align-items: top;
-        text-align: center;
-        border-top: 1px solid;
+ 
+    z-index: 400;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-shadow: none;
+    bottom: -15px;
+    position: fixed;
+    justify-content: center;
+    align-items: top;
+    text-align: center;
     }
 
     .child {
@@ -1007,6 +1015,7 @@ td.gameDataTd {
             backdrop-filter: blur(5px)
         }
     }
+  
 
     .chl>p:hover {
         border-radius: 30px;
@@ -1027,6 +1036,7 @@ td.gameDataTd {
         }
 
     }
+
 
     @keyframes checkAnimHd {
         0% {

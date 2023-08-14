@@ -133,14 +133,18 @@
                     if (gamename == "Klop") {
 
                         aloneplusScore(plNombers[i].name, -Math.abs(parseInt(plNombers[i].value)))
-                        listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Klop","Vsi", null, null , null, null, null, null]
                     }
                     else {
                         aloneplusScore(plNombers[i].name, parseInt(plNombers[i].value))
-                        listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Po meri","Vsi", null, null , null, null, null, null]
                     }
                 }
-             
+                if (gamename == "Klop") {
+
+listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Klop","Vsi", null, null , null, null, null, null]
+}
+else {
+listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Po meri","Vsi", null, null , null, null, null, null]
+}
 
                 newElement.remove()
                 newElement2.remove()
@@ -403,19 +407,19 @@
                     if (properties[1]) {
                         if (teamWork) {
                             plusScore(slct.value, slct2.value, parseInt(properties[0] + parseInt(razlika) + bonusTočke))
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), parseInt(properties[0]) + parseInt(razlika) + bonusTočke, listOfPlayers[slct.value][0].length > 0, parseInt(razlika), false, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), parseInt(properties[0]) + parseInt(razlika) + bonusTočke, listOfPlayers[slct.value][0].length > 0, parseInt(razlika), true, bnsi, bonusTočke]
                         } else {
                             aloneplusScore(slct.value, parseInt(parseInt(properties[0]) + parseInt(razlika) + bonusTočke), true)
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika) + bonusTočke, listOfPlayers[slct.value][0].length > 0, parseInt(razlika), false, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika) + bonusTočke, listOfPlayers[slct.value][0].length > 0, parseInt(razlika), true, bnsi, bonusTočke]
 
                         }
                     } else {
                         if (teamWork) {
                             plusScore(slct.value, slct2.value, parseInt(properties[0]) + bonusTočke)
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), parseInt(properties[0]+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, false, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), parseInt(properties[0]+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, true, bnsi, bonusTočke]
                         } else {
                             aloneplusScore(slct.value, parseInt(properties[0]) + bonusTočke, true)
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, parseInt(properties[0]+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, false, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, parseInt(properties[0]+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, true, bnsi, bonusTočke]
 
                         }
                     }
@@ -441,19 +445,19 @@
                     if (properties[1]) {
                         if (teamWork) {
                             plusScore(slct.value, slct2.value, -Math.abs(parseInt(properties[0] + parseInt(razlika) + bonusTočke)))
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), -Math.abs(parseInt(properties[0]) + parseInt(razlika) + bonusTočke), listOfPlayers[slct.value][0].length > 0, parseInt(razlika), true, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), -Math.abs(parseInt(properties[0]) + parseInt(razlika) + bonusTočke), listOfPlayers[slct.value][0].length > 0, parseInt(razlika), false, bnsi, bonusTočke]
                         } else {
                             aloneplusScore(slct.value, -Math.abs((parseInt(properties[0]) + parseInt(razlika) + bonusTočke)), true)
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, -Math.abs(parseInt(properties[0]) + parseInt(razlika)+ bonusTočke), listOfPlayers[slct.value][0].length > 0, parseInt(razlika), true, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, -Math.abs(parseInt(properties[0]) + parseInt(razlika)+ bonusTočke), listOfPlayers[slct.value][0].length > 0, parseInt(razlika), false, bnsi, bonusTočke]
 
                         }
                     } else {
                         if (teamWork) {
                             plusScore(slct.value, slct2.value, -Math.abs(parseInt(properties[0] + bonusTočke)))
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), -Math.abs(parseInt(properties[0])+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, true, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), -Math.abs(parseInt(properties[0])+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, false, bnsi, bonusTočke]
                         } else {
                             aloneplusScore(slct.value, -Math.abs(parseInt(properties[0] + bonusTočke)), true)
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, -Math.abs(parseInt(properties[0])+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, true, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, -Math.abs(parseInt(properties[0])+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, false, bnsi, bonusTočke]
 
                         }
                     }
@@ -757,12 +761,15 @@ console.log(infom);
        
         for (let i = 0; i < podatki.length; i++) {
             const element1 = podatki[i];
+            let element = info[i];
             if(i==3){element=info[5]}
             if(i==7){element=info[3]}
+            if( element == null || element == "" || element == []){ continue;}
+          
             if(i==6){element=info[7].toString().replace(/,/g,", ")}
             if(i==5 && element){element="Ja"}else{ if (i==5){element="Ne"}}
             if(i==4 && element){element="Ja"}else{ if (i==4){element="Ne"}}
-            if( info[i] == null || info[i] == "" || info[i] == false || info[i] == []){ continue;}
+         
          
             let tdVelk =   document.createElement("div")
             let td1 =   document.createElement("div")
@@ -771,7 +778,7 @@ console.log(infom);
       
             tdVelk.appendChild(td1)
             tdVelk.classList.add("gameTdDiv")
-            let element = info[i];
+        
             
             let td =   document.createElement("div")
             td.innerHTML = element

@@ -756,7 +756,8 @@ console.log(infom);
        
         for (let i = 0; i < podatki.length; i++) {
             const element1 = podatki[i];
-            if( info[i] == null){ continue}
+            if( info[i] == null || info[i] == "" || info[i] == false || info[i] == []){ continue;}
+         
             let tdVelk =   document.createElement("div")
             let td1 =   document.createElement("div")
             td1.innerHTML = element1
@@ -765,11 +766,10 @@ console.log(infom);
             tdVelk.appendChild(td1)
             tdVelk.classList.add("gameTdDiv")
             let element = info[i];
-            if(i==2 && info[2] == null){ continue}
             if(i==3){element=info[5]}
             if(i==7){element=info[3]}
             if(i==6){element=info[7].toString().replace(/,/g,", ")}
-            if(i==5 && !element){element="Ja"}else{ if (i==5){element="Ne"}}
+            if(i==5 && element){element="Ja"}else{ if (i==5){element="Ne"}}
             if(i==4 && element){element="Ja"}else{ if (i==4){element="Ne"}}
             let td =   document.createElement("div")
             td.innerHTML = element

@@ -672,7 +672,7 @@ console.log(listOfPlayers);
             let i = 1
             let points = 0
             var prnt = document.createElement("div")
-            prnt.innerHTML = '<p style = "padding-bottom: 10px;border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; z-index: 5555;z-index:5555; overflow: hidden;  position: sticky; top: 0px; background-color: var(--colorBtn); padding-top: 20px;margin-top: -50px;" > ' + name + listOfPlayers[key][0] + ' </p>'
+            prnt.innerHTML = '<p class="namePlayers" > ' + name + listOfPlayers[key][0] + ' </p>'
             chl.innerHTML = String(chl.innerHTML).replace('undefined', '');
         chl.innerHTML += '<p style = "" class="noText" ></p>'
             while (i < pnts.length) {
@@ -744,21 +744,26 @@ console.log(infom);
 
 
 
-        var table = document.createElement("table")
+        var table = document.createElement("div")
         table.classList.add("gameData")
-        var podatki =["Igra","Glavni igralec","Partner","Razlika","Radlc","Uspeh",  "Bonusi","Točke"]
-      var line = document.createElement("tr")
+        
+        var podatki =["Igra","Igralec","Partner","Razlika","Radlc","Uspeh",  "Bonusi","Točke"]
+      var line = document.createElement("div")
+      line.style.display = "flex"
+      line.style.flexWrap = "wrap"
+      line.style.justifyContent = "center"
         table.appendChild(line)
-        var line2 = document.createElement("tr")
-        table.appendChild(line2)
+       
         for (let i = 0; i < podatki.length; i++) {
             const element1 = podatki[i];
             if( info[i] == null){ continue}
-          
-            let td1 =   document.createElement("td")
+            let tdVelk =   document.createElement("div")
+            let td1 =   document.createElement("div")
             td1.innerHTML = element1
             td1.classList.add("gameDataTd")
-            line.appendChild(td1)
+      
+            tdVelk.appendChild(td1)
+            tdVelk.classList.add("gameTdDiv")
             let element = info[i];
             if(i==2 && info[2] == null){ continue}
             if(i==3){element=info[5]}
@@ -766,10 +771,12 @@ console.log(infom);
             if(i==6){element=info[7].toString().replace(/,/g,", ")}
             if(i==5 && !element){element="Ja"}else{ if (i==5){element="Ne"}}
             if(i==4 && element){element="Ja"}else{ if (i==4){element="Ne"}}
-            let td =   document.createElement("td")
+            let td =   document.createElement("div")
             td.innerHTML = element
             td.classList.add("gameDataTdBottom")
-            line2.appendChild(td)
+           
+           tdVelk.appendChild(td)
+           line.appendChild(tdVelk)
         }
        
         newElement.appendChild(table)
@@ -780,7 +787,18 @@ console.log(infom);
 </script>
 
 <style>
-td.gameDataTdBottom {
+    .gameData{
+       
+        width: 90%;
+    }
+    .gameTdDiv{
+        min-width: 68px;
+    max-width: 12%;
+
+    flex:1 1 100%;
+    }
+.gameDataTdBottom {
+   
     text-align: center;
     background-color: var(--colorBtn);
     padding: 8px;
@@ -788,7 +806,8 @@ td.gameDataTdBottom {
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 }
-td.gameDataTd {
+.gameDataTd {
+   
     text-align: center;
     background-color: var(--colorBtn);
     padding: 8px;
@@ -815,6 +834,21 @@ td.gameDataTd {
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
+.namePlayers{
+    padding-bottom: 10px;border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; z-index: 5555;z-index:5555; overflow: hidden;  position: sticky; top: 0px; background-color: var(--colorBtn); padding-top: 20px;margin-top: -50px;
+    overflow: hidden;
+
+}
+
+
+
+
+
+
+
+
+  
+
 
     #game {
         position: absolute;

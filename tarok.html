@@ -133,13 +133,14 @@
                     if (gamename == "Klop") {
 
                         aloneplusScore(plNombers[i].name, -Math.abs(parseInt(plNombers[i].value)))
-                      
+                        listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Klop","Vsi", null, null , null, null, null, null]
                     }
                     else {
                         aloneplusScore(plNombers[i].name, parseInt(plNombers[i].value))
+                        listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Po meri","Vsi", null, null , null, null, null, null]
                     }
                 }
-                listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Klop","Vsi", null, null , null, null, null, null]
+             
 
                 newElement.remove()
                 newElement2.remove()

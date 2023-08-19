@@ -1,0 +1,60 @@
+    function addScore() {
+        listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
+       
+  root.render(element);
+        var newElement = document.createElement("div")
+        newElement.setAttribute("class", "scrScreen");
+        var iks = document.createElement("img")
+        iks.classList.add("iks")
+        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+        newElement.appendChild(iks)
+        iks.addEventListener("click", function (e) {
+            if (e.target == this) {
+                newElement.remove()
+            }
+        })
+
+        var games = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
+
+            "Tri": [10, true, "", true],
+            "Dve": [20, true, "", true],
+            "Ena": [30, true, "", true],
+            "Solo brez talona": [80, false, "", false],
+            "Solo tri": [40, true, "", false],
+            "Solo dve": [50, true, "", false],
+            "Solo ena": [60, true, "", false],
+            "Klop": ["", false, "", true],
+            "Valat": [250, false, "", true],
+            "Barvni Valat": [125, false, "", true],
+            "Berač": [70, false, "", false],
+            "Odprti Berač": [90, false, "", false],
+
+            "Po meri": ["", false, "", true],
+            "Dodaj radlce": ["", false, "", true]
+        }
+        for (const key in games) {
+            let btn = document.createElement("button")
+            btn.innerHTML = key
+            btn.addEventListener("click", function () {
+                newElement.remove()
+                if (key == "Klop" || key == "Po meri") { klop(newElement, key) } else {
+
+                    if (key == "Dodaj radlce") {
+
+                        radlciDodaj()
+                        document.querySelector(".cntScreen").remove()
+                        document.querySelector(".crezultLine").remove()
+                        newElement.remove()
+                        count()
+                    } else {
+                        calculate(key, games[key])
+                    }
+
+                }
+            })
+            newElement.appendChild(btn)
+        }
+        
+        document.body.appendChild(newElement)
+
+    }

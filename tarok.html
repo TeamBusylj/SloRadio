@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Števec taroka</title>
+   
 </head>
 
 <body>
 
     <button id="newgame" onclick="newGame()">Nova igra</button>
     <button id="game" onclick="Game()">Obstajajoča igra</button>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 </body>
 
 <script>
@@ -21,9 +24,12 @@
         document.body.style.setProperty('--colorBtn', btn)
         console.log("Colors" + bg + ", " + txt);
     }
-    function addScore() {
+    const root = ReactDOM.createRoot(
+  document.body
+);
+function addScore() {
         listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
-
+       
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "scrScreen");
         var iks = document.createElement("img")
@@ -35,7 +41,6 @@
                 newElement.remove()
             }
         })
-
         var games = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
 
             "Tri": [10, true, "", true],
@@ -50,7 +55,7 @@
             "Barvni Valat": [125, false, "", true],
             "Berač": [70, false, "", false],
             "Odprti Berač": [90, false, "", false],
-          
+
             "Po meri": ["", false, "", true],
             "Dodaj radlce": ["", false, "", true]
         }
@@ -76,10 +81,10 @@
             })
             newElement.appendChild(btn)
         }
+        
         document.body.appendChild(newElement)
 
     }
-
 
     function radlciDodaj() {
         for (const key in listOfPlayers) {
@@ -104,11 +109,11 @@
             }
         })
         for (const user in listOfPlayers) {
-      
-                if (user == "!gamesData!") {
-          continue
-        }
-    
+
+            if (user == "!gamesData!") {
+                continue
+            }
+
             let klopPlayer = document.createElement("input")
             klopPlayer.classList.add("klopPlayer")
             klopPlayer.type = "number"
@@ -119,12 +124,11 @@
 
 
 
-    }
+        }
         var btn = document.createElement("button")
         btn.innerHTML = "Končano"
-        let lnbrk = document.createElement("div")
-        lnbrk.classList.add("break")
-        newElement.appendChild(lnbrk)
+      
+        newElement.innerHTML += "<div class='break'></div>"
         newElement.appendChild(btn)
         btn.addEventListener("click", function () {
             if (Array.from(document.querySelectorAll('.klopPlayer')).every(input => input.type === 'submit' || input.value.trim() !== '')) {
@@ -140,12 +144,12 @@
                 }
                 if (gamename == "Klop") {
 
-listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Klop","Vsi", null, null , null, null, null, null]
-}
-else {
-listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Po meri","Vsi", null, null , null, null, null, null]
-}
-
+                    listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Klop", "Vsi", null, null, null, null, null, null]
+                }
+                else {
+                    listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Po meri", "Vsi", null, null, null, null, null, null]
+                }
+                
                 newElement.remove()
                 newElement2.remove()
                 document.querySelector(".cntScreen").remove()
@@ -311,9 +315,7 @@ listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 
             })
         }
 
-        let lnbrk = document.createElement("div")
-        lnbrk.classList.add("break")
-        newElement.appendChild(lnbrk)
+        newElement.innerHTML += "<div class='break'></div>"
         var btn22 = document.createElement("button")
         var btn23 = document.createElement("button")
         var slct = document.createElement("select")
@@ -321,14 +323,14 @@ listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 
         slct2.innerHTML = "<option>Partner</option>"
         slct.innerHTML = "<option>Glavni igralec</option>"
         for (const user in listOfPlayers) {
-           
-                if (user == "!gamesData!") {
-          continue
-        }
+
+            if (user == "!gamesData!") {
+                continue
+            }
             slct.innerHTML += "<option>" + user + "</option>"
             slct2.innerHTML += "<option>" + user + "</option>"
         }
-    
+
 
         newElement.appendChild(slct)
         if (teamWork) {
@@ -337,16 +339,12 @@ listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 
             slct2.value = 2
         }
 
-        let lnbrk2 = document.createElement("div")
-        lnbrk2.classList.add("break")
-        newElement.appendChild(lnbrk2)
-        newElement.appendChild(document.createElement("br"))
+        newElement.innerHTML += "<div class='break'></div><br>"
+
         btn22.innerHTML = "Zmagal"
         btn23.innerHTML = "Izgubil"
 
-        let lnbrk22 = document.createElement("div")
-        lnbrk22.classList.add("break")
-        newElement.appendChild(lnbrk22)
+        newElement.innerHTML += "<div class='break'></div>"
         var bonusi = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
 
             "Trula": [10, 20, false],
@@ -357,9 +355,9 @@ listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 
         var bonusTočke = 0
         var bnsi = []
         if (properties[1]) {
-            
+
             for (const key in bonusi) {
-               
+
                 let btn = document.createElement("button")
                 btn.innerHTML = key
                 btn.style.transition = " all .2s";
@@ -367,11 +365,11 @@ listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 
                 btn.addEventListener("click", function () {
 
                     if (bonusi[key][2]) {
-               bnsi = bnsi.filter(item => item !== key)
+                        bnsi = bnsi.filter(item => item !== key)
                         bonusTočke = bonusTočke - bonusi[key][0]
                         btn.style.opacity = ".6"
-                 
-                        btn.style.animation = " checkAnimHd .2s forwards";
+
+                        btn.style.animation = " checkAnim .2s forwards reverse";
                         btn.style.paddingRight = '0px'
                         bonusi[key][2] = !bonusi[key][2]
                     } else {
@@ -416,19 +414,23 @@ listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 
                     } else {
                         if (teamWork) {
                             plusScore(slct.value, slct2.value, parseInt(properties[0]) + bonusTočke)
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), parseInt(properties[0]+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, true, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), parseInt(properties[0] + bonusTočke), listOfPlayers[slct.value][0].length > 0, null, true, bnsi, bonusTočke]
                         } else {
                             aloneplusScore(slct.value, parseInt(properties[0]) + bonusTočke, true)
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, parseInt(properties[0]+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, true, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, parseInt(properties[0] + bonusTočke), listOfPlayers[slct.value][0].length > 0, null, true, bnsi, bonusTočke]
 
                         }
                     }
 
                     document.querySelector(".cntScreen").remove()
                     document.querySelector(".crezultLine").remove()
-
+                    newElement.style.animation = " showScreen .2s forwards reverse";
+                    setTimeout(() => {
+                        newElement.remove()
                     count()
-                    newElement.remove()
+                    }, 200);
+                    
+               
 
                 }
             }
@@ -448,16 +450,16 @@ listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 
                             listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), -Math.abs(parseInt(properties[0]) + parseInt(razlika) + bonusTočke), listOfPlayers[slct.value][0].length > 0, parseInt(razlika), false, bnsi, bonusTočke]
                         } else {
                             aloneplusScore(slct.value, -Math.abs((parseInt(properties[0]) + parseInt(razlika) + bonusTočke)), true)
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, -Math.abs(parseInt(properties[0]) + parseInt(razlika)+ bonusTočke), listOfPlayers[slct.value][0].length > 0, parseInt(razlika), false, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, -Math.abs(parseInt(properties[0]) + parseInt(razlika) + bonusTočke), listOfPlayers[slct.value][0].length > 0, parseInt(razlika), false, bnsi, bonusTočke]
 
                         }
                     } else {
                         if (teamWork) {
                             plusScore(slct.value, slct2.value, -Math.abs(parseInt(properties[0] + bonusTočke)))
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), -Math.abs(parseInt(properties[0])+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, false, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), -Math.abs(parseInt(properties[0]) + bonusTočke), listOfPlayers[slct.value][0].length > 0, null, false, bnsi, bonusTočke]
                         } else {
                             aloneplusScore(slct.value, -Math.abs(parseInt(properties[0] + bonusTočke)), true)
-                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, -Math.abs(parseInt(properties[0])+ bonusTočke), listOfPlayers[slct.value][0].length > 0, null, false, bnsi, bonusTočke]
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, -Math.abs(parseInt(properties[0]) + bonusTočke), listOfPlayers[slct.value][0].length > 0, null, false, bnsi, bonusTočke]
 
                         }
                     }
@@ -485,13 +487,13 @@ listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 
             listOfPlayers[user].push(score)
             listOfPlayers[playedUser].push(score)
         }
-       
+
 
     }
 
     function aloneplusScore(user, score) {
 
-        if (listOfPlayers[user][0]  !== '') {
+        if (listOfPlayers[user][0] !== '') {
             listOfPlayers[user].push(score * 2)
             if (score > 0 && listOfPlayers[user][0].length > 0) {
                 listOfPlayers[user][0] = listOfPlayers[user][0].replace('*', '')
@@ -499,14 +501,14 @@ listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 
         } else {
             listOfPlayers[user].push(score)
         }
-   
-      
+
+
     }
 
 
     function Game() {
- 
-var newElement = document.createElement("div")
+
+        var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
         var iks = document.createElement("img")
         iks.classList.add("iks")
@@ -590,8 +592,8 @@ var newElement = document.createElement("div")
             onePl2.focus()
         })
         endPl.addEventListener("click", function () {
-        listOfPlayers['!gamesData!'] = {}
-              
+            listOfPlayers['!gamesData!'] = {}
+
 
             for (var i = 0; i < document.getElementsByTagName('input').length; i++) {
                 let input = document.getElementsByTagName('input')[i].value
@@ -609,34 +611,34 @@ var newElement = document.createElement("div")
 
     }
     function padArraysToLongest(obj) {
-  // Find the length of the longest array
-  let maxLength = 0;
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      const currentArray = obj[key];
-      const currentLength = currentArray.length;
-      if (currentLength > maxLength) {
-        maxLength = currentLength;
-      }
-    }
-  }
+        // Find the length of the longest array
+        let maxLength = 0;
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const currentArray = obj[key];
+                const currentLength = currentArray.length;
+                if (currentLength > maxLength) {
+                    maxLength = currentLength;
+                }
+            }
+        }
 
-  // Pad arrays to the length of the longest array
-  for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      const currentArray = obj[key];
-      while (currentArray.length < maxLength) {
-        currentArray.push("&nbsp");
-      }
+        // Pad arrays to the length of the longest array
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const currentArray = obj[key];
+                while (currentArray.length < maxLength) {
+                    currentArray.push("&nbsp");
+                }
+            }
+        }
     }
-  }
-}
 
 
     function count() {
 
 
-console.log(listOfPlayers);
+        console.log(listOfPlayers);
         padArraysToLongest(listOfPlayers);
         console.log(listOfPlayers);
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
@@ -660,14 +662,14 @@ console.log(listOfPlayers);
         }
         var rezultLine = document.createElement("div")
         for (const key in listOfPlayers) {
-          
-                if (key == "!gamesData!") {
-          continue
-        }
+
+            if (key == "!gamesData!") {
+                continue
+            }
             let stGame = 1
             console.log(stGame)
             let name = key
-           
+
             if (listOfPlayers[key][1] + 1 == NaN) {
                 listOfPlayers[key].unshift(' ')
                 console.log("ggg")
@@ -679,19 +681,19 @@ console.log(listOfPlayers);
             var prnt = document.createElement("div")
             prnt.innerHTML = '<p class="namePlayers" > ' + name + listOfPlayers[key][0] + ' </p>'
             chl.innerHTML = String(chl.innerHTML).replace('undefined', '');
-        chl.innerHTML += '<p style = "" class="noText" ></p>'
+            chl.innerHTML += '<p style = "" class="noText" ></p>'
             while (i < pnts.length) {
 
                 var kkk = document.createElement("p")
                 kkk.innerHTML = pnts[i]
-              
+
                 chl.appendChild(kkk)
                 console.log(stGame)
-                if(pnts[i] !== '&nbsp'){
-                kkk.setAttribute('onclick', 'gameData("' + stGame + '")')
-               
-                kkk.classList.add("word_" + stGame)
-            }else{
+                if (pnts[i] !== '&nbsp') {
+                    kkk.setAttribute('onclick', 'gameData("' + stGame + '")')
+
+                    kkk.classList.add("word_" + stGame)
+                } else {
                     kkk.classList.add("noText")
                 }
                 kkk.addEventListener("click", function () {
@@ -711,7 +713,7 @@ console.log(listOfPlayers);
             chl.setAttribute("class", "chl");
             chl.style.display = "inline-block;"
             rezultLine.innerHTML += ' <p style = "flex: 1;background: var(--colorBtn); padding: 15px; border-top-left-radius: 30px; border-top-right-radius: 30px; margin-left:10px;margin-right:10px;" > ' + points + ' </p>'
-           
+
             prnt.setAttribute("class", "prnt");
             prnt.appendChild(chl)
             newElement.appendChild(prnt)
@@ -721,7 +723,7 @@ console.log(listOfPlayers);
         document.body.appendChild(rezultLine)
         document.body.appendChild(newElement)
 
-        Android.showButton()
+       
     }
 
 
@@ -729,9 +731,9 @@ console.log(listOfPlayers);
 
 
     function gameData(infom) { // gamename, prvi igralc, drug igralc, tocke, ima radlc, razlika, dobil zgubil, bonusi, bonusi točke
-console.log(infom);
+        console.log(infom);
         var info = listOfPlayers["!gamesData!"][infom]
-        
+
         console.log(info)
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
@@ -751,85 +753,89 @@ console.log(infom);
 
         var table = document.createElement("div")
         table.classList.add("gameData")
-        
-        var podatki =["Igra","Igralec","Partner","Razlika","Radlc","Uspeh",  "Bonusi","Točke"]
-      var line = document.createElement("div")
-      line.style.display = "flex"
-      line.style.flexWrap = "wrap"
-      line.style.justifyContent = "center"
+
+        var podatki = ["Igra", "Igralec", "Partner", "Razlika", "Radlc", "Uspeh", "Bonusi", "Točke"]
+        var line = document.createElement("div")
+        line.style.display = "flex"
+        line.style.flexWrap = "wrap"
+        line.style.justifyContent = "center"
         table.appendChild(line)
-       
+
         for (let i = 0; i < podatki.length; i++) {
             const element1 = podatki[i];
             let element = info[i];
-            if(i==3){element=info[5]}
-            if(i==7){element=info[3]}
-            if( element == null || element == "" || element == []){ continue;}
-          
-            if(i==6){element=info[7].toString().replace(/,/g,", ")}
-            if(i==5 && element){element="Ja"}else{ if (i==5){element="Ne"}}
-            if(i==4 && element){element="Ja"}else{ if (i==4){element="Ne"}}
-         
-         
-            let tdVelk =   document.createElement("div")
-            let td1 =   document.createElement("div")
+            if (i == 3) { element = info[5] }
+            if (i == 7) { element = info[3] }
+            if (element == null || element == "" || element == []) { continue; }
+
+            if (i == 6) { element = info[7].toString().replace(/,/g, ", ") }
+            if (i == 5 && element) { element = "Ja" } else { if (i == 5) { element = "Ne" } }
+            if (i == 4 && element) { element = "Ja" } else { if (i == 4) { element = "Ne" } }
+
+
+            let tdVelk = document.createElement("div")
+            let td1 = document.createElement("div")
             td1.innerHTML = element1
             td1.classList.add("gameDataTd")
-      
+
             tdVelk.appendChild(td1)
             tdVelk.classList.add("gameTdDiv")
-        
-            
-            let td =   document.createElement("div")
+
+
+            let td = document.createElement("div")
             td.innerHTML = element
             td.classList.add("gameDataTdBottom")
-           
-           tdVelk.appendChild(td)
-           line.appendChild(tdVelk)
+
+            tdVelk.appendChild(td)
+            line.appendChild(tdVelk)
         }
-       
+
         newElement.appendChild(table)
-     
+
         document.body.appendChild(newElement)
     }
 
 </script>
 
 <style>
-    .gameData{
-       
+    .gameData {
+
         width: 90%;
     }
-    .gameTdDiv{
+
+    .gameTdDiv {
         min-width: 68px;
-    max-width: 12%;
+        max-width: 12%;
 
-    flex:1 1 100%;
+        flex: 1 1 100%;
     }
-.gameDataTdBottom {
-   
-    text-align: center;
-    background-color: var(--colorBtn);
-    padding: 8px;
-    margin: 3px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
-.gameDataTd {
-   
-    text-align: center;
-    background-color: var(--colorBtn);
-    padding: 8px;
-    margin: 3px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
 
-    .noText:hover{
+    .gameDataTdBottom {
+
+        text-align: center;
+        background-color: var(--colorBtn);
+        padding: 8px;
+        margin: 3px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    .gameDataTd {
+
+        text-align: center;
+        background-color: var(--colorBtn);
+        padding: 8px;
+        margin: 3px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .noText:hover {
         margin: 0;
         cursor: default !important;
         background-color: rgba(0, 0, 0, 0) !important;
     }
+
     .iks {
         position: fixed;
         right: 10px;
@@ -843,11 +849,22 @@ console.log(infom);
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
-.namePlayers{
-    padding-bottom: 10px;border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; z-index: 5555;z-index:5555; overflow: hidden;  position: sticky; top: 0px; background-color: var(--colorBtn); padding-top: 20px;margin-top: -50px;
-    overflow: hidden;
 
-}
+    .namePlayers {
+        padding-bottom: 10px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        z-index: 5555;
+        z-index: 5555;
+        overflow: hidden;
+        position: sticky;
+        top: 0px;
+        background-color: var(--colorBtn);
+        padding-top: 20px;
+        margin-top: -50px;
+        overflow: hidden;
+
+    }
 
 
 
@@ -856,7 +873,7 @@ console.log(infom);
 
 
 
-  
+
 
 
     #game {
@@ -882,28 +899,28 @@ console.log(infom);
         margin-top: 50px;
         margin-bottom: 50px;
         border-radius: 30px;
-      background-color: var(--colorBtn);
+        background-color: var(--colorBtn);
         color: var(--colorTxt);
         padding: 2px;
         height: auto;
         flex: 1;
         text-align: center;
         font-size: large;
-      
+
     }
 
     .prnt {
-       
+
         padding: 10px;
-    color: var(--colorTxt);
-    min-height: 100vh;
-    height: auto;
-    flex: 1;
-    text-align: center;
-    border-radius: 30px;
-    font-size: large;
-    background: transparent;
-}
+        color: var(--colorTxt);
+        min-height: 100vh;
+        height: auto;
+        flex: 1;
+        text-align: center;
+        border-radius: 30px;
+        font-size: large;
+        background: transparent;
+    }
 
     .chl2 {
         flex: 1;
@@ -930,21 +947,21 @@ console.log(infom);
     }
 
     button:active {
-       /* box-shadow: 0px 0px #888888;*/
+        /* box-shadow: 0px 0px #888888;*/
     }
 
     button {
         color: var(--colorTxt);
-    transition: all .05s;
-    position: relative;
-    flex-basis: 100px;
-    border-radius: 30px;
-    text-align: center;
-    padding: 14px;
-    border-width: 0;
-    background-color: var(--colorBtn);
-    /* box-shadow: 5px 5px #888888; */
-    margin: 10px;
+        transition: all .05s;
+        position: relative;
+        flex-basis: 100px;
+        border-radius: 30px;
+        text-align: center;
+        padding: 14px;
+        border-width: 0;
+        background-color: var(--colorBtn);
+        /* box-shadow: 5px 5px #888888; */
+        margin: 10px;
 
 
     }
@@ -970,7 +987,7 @@ console.log(infom);
         border-width: 0;
         border-radius: 20px;
         padding: 7px;
-         /*  box-shadow: 5px 5px #888888;*/
+        /*  box-shadow: 5px 5px #888888;*/
     }
 
     .scrScreen {
@@ -990,6 +1007,7 @@ console.log(infom);
     }
 
     .cntScreen {
+        backdrop-filter: blur(0) brightness(1)!important;
         animation: showScreen .4s forwards;
         color: var(--colorTxt);
         display: flex;
@@ -1005,18 +1023,18 @@ console.log(infom);
 
     .crezultLine {
         color: var(--colorTxt);
- 
-    z-index: 400;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    box-shadow: none;
-    bottom: -15px;
-    position: fixed;
-    justify-content: center;
-    align-items: top;
-    text-align: center;
+
+        z-index: 400;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        box-shadow: none;
+        bottom: -15px;
+        position: fixed;
+        justify-content: center;
+        align-items: top;
+        text-align: center;
     }
 
     .child {
@@ -1037,14 +1055,14 @@ console.log(infom);
 
     p {
         transition: all .2s;
-       
+
     }
 
     @keyframes showScreen {
         0% {
             opacity: 0;
             scale: .2;
-            backdrop-filter: blur(0)
+            backdrop-filter: blur(0) brightness(1)
         }
 
         80% {
@@ -1055,10 +1073,10 @@ console.log(infom);
         100% {
             opacity: 1;
             scale: 1;
-            backdrop-filter: blur(5px)
+            backdrop-filter: blur(25px) brightness(.8)
         }
     }
-  
+
 
     .chl>p:hover {
         border-radius: 30px;
@@ -1071,26 +1089,16 @@ console.log(infom);
 
     @keyframes checkAnim {
         0% {
-            background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 0% no-repeat;
+            background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 0% no-repeat, var(--colorBtn);
         }
 
         100% {
-            background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 20% no-repeat;
+            background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 20% no-repeat, var(--colorBtn);
         }
 
     }
 
 
-    @keyframes checkAnimHd {
-        0% {
-            background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 20% no-repeat;
-        }
-
-        100% {
-            background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 0% no-repeat;
-        }
-
-    }
 </style>
 
 </html>

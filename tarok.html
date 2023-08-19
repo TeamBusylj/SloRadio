@@ -29,7 +29,11 @@
 );
 function addScore() {
         listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
-       
+        try{
+    Android.hideButton()
+} catch(error){
+console.log(error);
+}
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "scrScreen");
         var iks = document.createElement("img")
@@ -636,8 +640,11 @@ function addScore() {
 
 
     function count() {
-
-
+        try{
+    Android.showButton()
+} catch(error){
+console.log(error);
+}
         console.log(listOfPlayers);
         padArraysToLongest(listOfPlayers);
         console.log(listOfPlayers);

@@ -518,6 +518,7 @@ console.log(error);
         newElement.setAttribute("class", "whlScreen");
         var iks = document.createElement("img")
         iks.classList.add("iks")
+        document.body.appendChild(newElement)
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
         newElement.appendChild(iks)
         iks.addEventListener("click", function (e) {

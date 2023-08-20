@@ -12,8 +12,7 @@
 
     <button id="newgame" onclick="newGame()">Nova igra</button>
     <button id="game" onclick="Game()">Obstajajoča igra</button>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
 </body>
 
 <script>
@@ -494,6 +493,77 @@ console.log(error);
         })
 
     }
+
+
+    function download() {
+    var text = JSON.stringify(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
+    var result = "";
+    for (var i = 0; i < text.length; i++) {
+        var code = text.codePointAt(i)
+        result += code + ","
+    }
+    var txt = result.slice(0, result.length - 1);
+    var txtPos = txt.split(",")
+    console.log(txtPos);
+    for (let i = 0; i < txtPos.length; i++) {
+        txtPos[i] = (txtPos[i] * 5 + 1026)
+        txtPos[i] = String(txtPos[i]).split("").reverse().join(""), 10;
+        console.log();
+        if (i !== 0) txtPos[i] = txtPos[i].toString() + "-"
+    }
+    txtPos = txtPos.reverse()
+    console.log(txtPos.toString().replace(/,/g,""));
+    var result = txtPos.toString().replace(/,/g,"")
+    var newElement = document.createElement("div")
+        newElement.setAttribute("class", "whlScreen");
+        var iks = document.createElement("img")
+        iks.classList.add("iks")
+        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+        newElement.appendChild(iks)
+        iks.addEventListener("click", function (e) {
+            if (e.target == this) {
+                document.getElementById("game").style.animation = "none"
+                newElement.remove()
+      
+            }
+        })
+        var shareButton = document.createElement("button")
+        shareButton.innerHTML = "Deli"
+        var copyButton = document.createElement("button")
+        copyButton.innerHTML = "Kopiraj"
+        newElement.appendChild(copyButton)
+        newElement.appendChild(shareButton)
+        shareButton.addEventListener("click", function(){
+            navigator.share({
+      title: 'Tarok igra',
+      text: 'Deli to tarok igro z drugimi!',
+      files: result
+    })
+        })
+
+
+function upload() {
+    var input = document.getElementById("input2")
+    var text = input.value
+    var txtPos = text.split("-")
+    txtPos = txtPos.reverse()
+    for (let i = 0; i < txtPos.length; i++) {
+        console.log(txtPos[i]);
+        txtPos[i] = String(txtPos[i]).split("").reverse().join(""), 10;
+        console.log(txtPos[i].toString());
+        txtPos[i] = (txtPos[i] - 1026) / 5
+        if (txtPos[i] < 65536 && txtPos[i] > 0) {} else {
+            txtPos = ["Not the correct code, encript you message here."]
+            break
+        }
+        txtPos[i] = String.fromCharCode(txtPos[i])
+    }
+    //  txtPos.splice(0, 1)
+    console.log(txtPos.toString());
+}
+
+
+
     function plusScore(playedUser, user, score) {
         if (listOfPlayers[playedUser][0] !== '') {
             listOfPlayers[user].push(score * 2)
@@ -824,6 +894,15 @@ console.log(error);
         document.body.appendChild(newElement)
     }
 
+   document.body.addEventListener('click', (event) => {
+  const isButton = event.target.nodeName === 'BUTTON';
+  if (isButton) {
+ event.target.classList.add("rippleEffect")
+  }
+
+  console.log("vfvffd", isButton);
+})
+
 </script>
 
 <style>
@@ -993,6 +1072,33 @@ console.log(error);
         margin: 10px;
 
 
+    }
+
+    .rippleEffect::after{
+        width: 1px;
+        height: 1px;
+        border-radius: 100px;
+        backdrop-filter: brightness(.7);
+        animation: ripple .2s forwards ;
+    }
+
+    @keyframes ripple{
+        0% {
+            opacity: 1;
+            scale: 1;
+         
+        }
+
+        50% {
+            opacity: 1;
+          
+        }
+
+        100% {
+            opacity: 0;
+            scale: 100;
+          
+        }
     }
 
     select:active {

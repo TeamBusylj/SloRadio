@@ -548,7 +548,12 @@ console.log(error);
         })
        copyButton.addEventListener("click", function(){
         try{
-            navigator.clipboard.writeText(result)
+            var copyText = document.createElement("input")
+            copyText.value =result
+copyText.select();
+copyText.setSelectionRange(0, 99999); // For mobile devices
+
+navigator.clipboard.writeText(copyText.value);
         }catch(error){
 console.log(error);
         }
@@ -572,7 +577,8 @@ function upload() {
         txtPos[i] = String.fromCharCode(txtPos[i])
     }
     //  txtPos.splice(0, 1)
-    console.log(txtPos.toString());
+  listOfPlayers = JSON.parse(txtPos.toString())
+  console.log(listOfPlayers);
 }
 
 

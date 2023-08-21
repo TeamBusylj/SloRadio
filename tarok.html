@@ -23,9 +23,7 @@
         document.body.style.setProperty('--colorBtn', btn)
         console.log("Colors" + bg + ", " + txt);
     }
-    const root = ReactDOM.createRoot(
-  document.body
-);
+  
 function addScore() {
         listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
         try{
@@ -333,7 +331,9 @@ console.log(error);
             })
         }
 
-        newElement.innerHTML += "<div class='break'></div>"
+        let lnbrk = document.createElement("div")
+        lnbrk.classList.add("break")
+        newElement.appendChild(lnbrk)
         var btn22 = document.createElement("button")
         var btn23 = document.createElement("button")
         var slct = document.createElement("select")
@@ -357,12 +357,16 @@ console.log(error);
             slct2.value = 2
         }
 
-        newElement.innerHTML += "<div class='break'></div><br>"
+        let lnbrk2 = document.createElement("div")
+        lnbrk2.classList.add("break")
+        newElement.appendChild(lnbrk2)
 
         btn22.innerHTML = "Zmagal"
         btn23.innerHTML = "Izgubil"
 
-        newElement.innerHTML += "<div class='break'></div>"
+        let lnbrk22 = document.createElement("div")
+        lnbrk22.classList.add("break")
+        newElement.appendChild(lnbrk22)
         var bonusi = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
 
             "Trula": [10, 20, false],
@@ -442,11 +446,11 @@ console.log(error);
 
                     document.querySelector(".cntScreen").remove()
                     document.querySelector(".crezultLine").remove()
-                    newElement.style.animation = " showScreen .2s forwards reverse";
-                    setTimeout(() => {
+            
+               
                         newElement.remove()
                     count()
-                    }, 200);
+                  
                     
                
 
@@ -895,14 +899,7 @@ console.log(error);
         document.body.appendChild(newElement)
     }
 
-   document.body.addEventListener('click', (event) => {
-  const isButton = event.target.nodeName === 'BUTTON';
-  if (isButton) {
- event.target.classList.add("rippleEffect")
-  }
-
-  console.log("vfvffd", isButton);
-})
+ 
 
 </script>
 

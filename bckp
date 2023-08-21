@@ -1,7 +1,36 @@
-    function addScore() {
+<!DOCTYPE html>
+<html lang="sl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Števec taroka</title>
+   
+</head>
+
+<body>
+
+    <button id="newgame" onclick="newGame()">Nova igra</button>
+    <button id="game" onclick="Game()">Obstajajoča igra</button>
+
+</body>
+
+<script>
+
+    function adaptColor(bg, txt, btn) {
+        document.body.style.setProperty('--bgColor', bg);
+        document.body.style.setProperty('--colorTxt', txt)
+        document.body.style.setProperty('--colorBtn', btn)
+        console.log("Colors" + bg + ", " + txt);
+    }
+  
+function addScore() {
         listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
-       
-  root.render(element);
+        try{
+    Android.hideButton()
+} catch(error){
+console.log(error);
+}
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "scrScreen");
         var iks = document.createElement("img")
@@ -11,9 +40,13 @@
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
                 newElement.remove()
+                try{
+    Android.showButton()
+} catch(error){
+console.log(error);
+}
             }
         })
-
         var games = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
 
             "Tri": [10, true, "", true],
@@ -58,3 +91,1141 @@
         document.body.appendChild(newElement)
 
     }
+
+    function radlciDodaj() {
+        for (const key in listOfPlayers) {
+
+            listOfPlayers[key][0] += "*"
+
+        }
+    }
+
+    function klop(newElement2, gamename) {
+
+        var newElement = document.createElement("div")
+        newElement.setAttribute("class", "scrScreen");
+        document.body.appendChild(newElement)
+        var iks = document.createElement("img")
+        iks.classList.add("iks")
+        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+        newElement.appendChild(iks)
+        iks.addEventListener("click", function (e) {
+            if (e.target == this) {
+                newElement.remove()
+                try{
+    Android.showButton()
+} catch(error){
+console.log(error);
+}
+            }
+        })
+        for (const user in listOfPlayers) {
+
+            if (user == "!gamesData!") {
+                continue
+            }
+
+            let klopPlayer = document.createElement("input")
+            klopPlayer.classList.add("klopPlayer")
+            klopPlayer.type = "number"
+            klopPlayer.min = 0
+            klopPlayer.name = user
+            klopPlayer.placeholder = "Točke osebe " + user + "..."
+            newElement.appendChild(klopPlayer)
+
+
+
+        }
+        var btn = document.createElement("button")
+        btn.innerHTML = "Končano"
+      
+        newElement.innerHTML += "<div class='break'></div>"
+        newElement.appendChild(btn)
+        btn.addEventListener("click", function () {
+            if (Array.from(document.querySelectorAll('.klopPlayer')).every(input => input.type === 'submit' || input.value.trim() !== '')) {
+                var plNombers = document.getElementsByClassName("klopPlayer");
+                for (var i = 0; i < plNombers.length; i++) {
+                    if (gamename == "Klop") {
+
+                        aloneplusScore(plNombers[i].name, -Math.abs(parseInt(plNombers[i].value)))
+                    }
+                    else {
+                        aloneplusScore(plNombers[i].name, parseInt(plNombers[i].value))
+                    }
+                }
+                if (gamename == "Klop") {
+
+                    listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Klop", "Vsi", null, null, null, null, null, null]
+                }
+                else {
+                    listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Po meri", "Vsi", null, null, null, null, null, null]
+                }
+                
+                newElement.remove()
+                newElement2.remove()
+                document.querySelector(".cntScreen").remove()
+                document.querySelector(".crezultLine").remove()
+                count()
+            }
+        })
+
+    }
+
+    function calculate(gameName, properties) {
+        var btn = document.createElement("button")
+        var btn2 = document.createElement("button")
+        var points = properties[0]
+        var razlikaTF = properties[1]
+        var teamWork = properties[3]
+        var newElement = document.createElement("div")
+        newElement.setAttribute("class", "scrScreen");
+        var iks = document.createElement("img")
+        iks.classList.add("iks")
+        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+        newElement.appendChild(iks)
+        iks.addEventListener("click", function (e) {
+            if (e.target == this) {
+                newElement.remove()
+                try{
+    Android.showButton()
+} catch(error){
+console.log(error);
+}
+            }
+        })
+        document.body.appendChild(newElement)
+        //if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
+        if (teamWork) {
+
+            btn.innerHTML = "Sam"
+            btn2.innerHTML = "S partnerjem"
+            newElement.appendChild(btn)
+            newElement.appendChild(btn2)
+
+        } else {
+            partner(newElement, gameName, properties, false)
+        }
+
+
+        btn.addEventListener("click", function () {
+
+            this.remove();
+            btn2.remove();
+
+            partner(newElement, gameName, properties, false)
+        })
+
+        btn2.addEventListener("click", function () {
+            btn.remove(); btn2.remove();
+            partner(newElement, gameName, properties, true)
+
+
+        })
+
+
+
+    }
+
+
+
+    /*  function alone(newElement, gameName, properties) {
+          var difNu = document.createElement("input")
+          if (properties[1]) {
+  
+              difNu.type = "number"
+              difNu.min = 0
+              difNu.placeholder = "Razlika..."
+              difNu.max = 34
+              newElement.appendChild(difNu)
+              difNu.focus()
+              var razlika
+              difNu.addEventListener("change", function () {
+                  razlika = difNu.value
+                  let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                  razlika = nearestMultipleOf5;
+              })
+          }
+          let lnbrk = document.createElement("div")
+          lnbrk.classList.add("break")
+          newElement.appendChild(lnbrk)
+          var btn22 = document.createElement("button")
+          var btn23 = document.createElement("button")
+          var slct = document.createElement("select")
+          for (const user in listOfPlayers) {
+              slct.innerHTML += "<option>" + user + "</option>"
+          }
+  
+          newElement.appendChild(slct)
+          let lnbrk2 = document.createElement("div")
+          lnbrk2.classList.add("break")
+          newElement.appendChild(lnbrk2)
+          newElement.appendChild(document.createElement("br"))
+          btn22.innerHTML = "Zmagal"
+          btn23.innerHTML = "Izgubil"
+          newElement.appendChild(btn22)
+          newElement.appendChild(btn23)
+          document.body.appendChild(newElement)
+  
+          btn22.addEventListener("click", function () {
+              if (difNu.value !== "" || properties[1] == false) {
+                  let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                  razlika = nearestMultipleOf5;
+                  this.remove();
+                  btn23.remove();
+                  if (properties[1]) {
+                      aloneplusScore(slct.value,parseInt(properties[0]) + parseInt(razlika), true)
+                    listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, parseInt(razlika)]
+  
+                  } else {
+                  
+                      aloneplusScore(slct.value,parseInt(properties[0]), true)
+                    listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, null]
+  
+                  }
+             
+                  newElement.remove()
+                  
+              }
+          })
+          btn23.addEventListener("click", function () {
+              if (difNu.value !== "" || properties[1] == false) {
+                  let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                  razlika = nearestMultipleOf5;
+                  this.remove();
+                  btn23.remove();
+                  if (properties[1]) {
+                      aloneplusScore(slct.value,-Math.abs((parseInt(properties[0]) + parseInt(razlika))), true)
+                    listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, parseInt(razlika)]
+  
+  
+                  } else {
+                      aloneplusScore(slct.value,-Math.abs(parseInt(properties[0])), true)
+                    listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, null]
+  
+                  }
+  
+                  newElement.remove()
+                 
+              }
+          })
+  
+  
+      }
+      */
+    function partner(newElement, gameName, properties, teamWork) {
+        var razlika = 0
+        var difNu = document.createElement("input")
+        if (properties[1]) {
+
+            difNu.type = "number"
+            difNu.min = 0
+            difNu.placeholder = "Razlika..."
+            difNu.max = 34
+            newElement.appendChild(difNu)
+            difNu.focus()
+            var razlika
+            difNu.addEventListener("change", function () {
+                razlika = difNu.value
+                let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                difNu.value = nearestMultipleOf5;
+            })
+        }
+
+        newElement.innerHTML += "<div class='break'></div>"
+        var btn22 = document.createElement("button")
+        var btn23 = document.createElement("button")
+        var slct = document.createElement("select")
+        var slct2 = document.createElement("select")
+        slct2.innerHTML = "<option>Partner</option>"
+        slct.innerHTML = "<option>Glavni igralec</option>"
+        for (const user in listOfPlayers) {
+
+            if (user == "!gamesData!") {
+                continue
+            }
+            slct.innerHTML += "<option>" + user + "</option>"
+            slct2.innerHTML += "<option>" + user + "</option>"
+        }
+
+
+        newElement.appendChild(slct)
+        if (teamWork) {
+            newElement.appendChild(slct2)
+        } else {
+            slct2.value = 2
+        }
+
+        newElement.innerHTML += "<div class='break'></div><br>"
+
+        btn22.innerHTML = "Zmagal"
+        btn23.innerHTML = "Izgubil"
+
+        newElement.innerHTML += "<div class='break'></div>"
+        var bonusi = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
+
+            "Trula": [10, 20, false],
+            "Kralji": [10, 20, false],
+            "Pagat ultimo": [25, 50, false],
+            "Kralj ultimo": [10, 20, false]
+        }
+        var bonusTočke = 0
+        var bnsi = []
+        if (properties[1]) {
+
+            for (const key in bonusi) {
+
+                let btn = document.createElement("button")
+                btn.innerHTML = key
+                btn.style.transition = " all .2s";
+                btn.style.opacity = ".6"
+                btn.addEventListener("click", function () {
+
+                    if (bonusi[key][2]) {
+                        bnsi = bnsi.filter(item => item !== key)
+                        bonusTočke = bonusTočke - bonusi[key][0]
+                        btn.style.opacity = ".6"
+
+                        btn.style.animation = " checkAnim .2s forwards reverse";
+                        btn.style.paddingRight = '0px'
+                        bonusi[key][2] = !bonusi[key][2]
+                    } else {
+                        bnsi.push(key)
+                        bonusTočke += bonusi[key][0]
+                        btn.style.opacity = "1"
+                        btn.style.animation = " checkAnim .2s forwards";
+                        btn.style.paddingRight = '20px'
+                        bonusi[key][2] = !bonusi[key][2]
+                    }
+                    console.log(bnsi);
+                })
+                newElement.appendChild(btn)
+            }
+        }
+        let lnbrk23 = document.createElement("div")
+        lnbrk23.classList.add("break")
+        newElement.appendChild(lnbrk23)
+        newElement.appendChild(btn22)
+        newElement.appendChild(btn23)
+        document.body.appendChild(newElement)
+
+
+        btn22.addEventListener("click", function () {
+
+            if (difNu.value !== "" || properties[1] == false) {
+
+                if ((slct.selectedIndex !== 0 && slct2.selectedIndex !== 0) || (teamWork && slct.selectedIndex !== 0)) {
+                    let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                    razlika = nearestMultipleOf5;
+                    this.remove();
+                    btn23.remove();
+                    if (properties[1]) {
+                        if (teamWork) {
+                            plusScore(slct.value, slct2.value, parseInt(properties[0] + parseInt(razlika) + bonusTočke))
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), parseInt(properties[0]) + parseInt(razlika) + bonusTočke, listOfPlayers[slct.value][0].length > 0, parseInt(razlika), true, bnsi, bonusTočke]
+                        } else {
+                            aloneplusScore(slct.value, parseInt(parseInt(properties[0]) + parseInt(razlika) + bonusTočke), true)
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika) + bonusTočke, listOfPlayers[slct.value][0].length > 0, parseInt(razlika), true, bnsi, bonusTočke]
+
+                        }
+                    } else {
+                        if (teamWork) {
+                            plusScore(slct.value, slct2.value, parseInt(properties[0]) + bonusTočke)
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), parseInt(properties[0] + bonusTočke), listOfPlayers[slct.value][0].length > 0, null, true, bnsi, bonusTočke]
+                        } else {
+                            aloneplusScore(slct.value, parseInt(properties[0]) + bonusTočke, true)
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, parseInt(properties[0] + bonusTočke), listOfPlayers[slct.value][0].length > 0, null, true, bnsi, bonusTočke]
+
+                        }
+                    }
+
+                    document.querySelector(".cntScreen").remove()
+                    document.querySelector(".crezultLine").remove()
+                    newElement.style.animation = " showScreen .2s forwards reverse";
+                    setTimeout(() => {
+                        newElement.remove()
+                    count()
+                    }, 200);
+                    
+               
+
+                }
+            }
+        })
+        btn23.addEventListener("click", function () {
+
+            if (difNu.value !== "" || properties[1] == false) {
+
+                if (slct.selectedIndex !== 0 && slct2.selectedIndex !== 0) {
+                    let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
+                    razlika = nearestMultipleOf5;
+                    this.remove();
+                    btn23.remove();
+                    if (properties[1]) {
+                        if (teamWork) {
+                            plusScore(slct.value, slct2.value, -Math.abs(parseInt(properties[0] + parseInt(razlika) + bonusTočke)))
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), -Math.abs(parseInt(properties[0]) + parseInt(razlika) + bonusTočke), listOfPlayers[slct.value][0].length > 0, parseInt(razlika), false, bnsi, bonusTočke]
+                        } else {
+                            aloneplusScore(slct.value, -Math.abs((parseInt(properties[0]) + parseInt(razlika) + bonusTočke)), true)
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, -Math.abs(parseInt(properties[0]) + parseInt(razlika) + bonusTočke), listOfPlayers[slct.value][0].length > 0, parseInt(razlika), false, bnsi, bonusTočke]
+
+                        }
+                    } else {
+                        if (teamWork) {
+                            plusScore(slct.value, slct2.value, -Math.abs(parseInt(properties[0] + bonusTočke)))
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), String(slct2.value), -Math.abs(parseInt(properties[0]) + bonusTočke), listOfPlayers[slct.value][0].length > 0, null, false, bnsi, bonusTočke]
+                        } else {
+                            aloneplusScore(slct.value, -Math.abs(parseInt(properties[0] + bonusTočke)), true)
+                            listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), String(slct.value), null, -Math.abs(parseInt(properties[0]) + bonusTočke), listOfPlayers[slct.value][0].length > 0, null, false, bnsi, bonusTočke]
+
+                        }
+                    }
+
+                    document.querySelector(".cntScreen").remove()
+                    document.querySelector(".crezultLine").remove()
+
+                    count()
+                    newElement.remove()
+
+                }
+            }
+        })
+
+    }
+
+
+    function download() {
+    var text = JSON.stringify(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
+    var result = "";
+    for (var i = 0; i < text.length; i++) {
+        var code = text.codePointAt(i)
+        result += code + ","
+    }
+    var txt = result.slice(0, result.length - 1);
+    var txtPos = txt.split(",")
+    console.log(txtPos);
+    for (let i = 0; i < txtPos.length; i++) {
+        txtPos[i] = (txtPos[i] * 5 + 1026)
+        txtPos[i] = String(txtPos[i]).split("").reverse().join(""), 10;
+        console.log();
+        if (i !== 0) txtPos[i] = txtPos[i].toString() + "-"
+    }
+    txtPos = txtPos.reverse()
+    console.log(txtPos.toString().replace(/,/g,""));
+    var result = txtPos.toString().replace(/,/g,"")
+    var newElement = document.createElement("div")
+        newElement.setAttribute("class", "whlScreen");
+        var iks = document.createElement("img")
+        iks.classList.add("iks")
+        document.body.appendChild(newElement)
+        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+        newElement.appendChild(iks)
+        iks.addEventListener("click", function (e) {
+            if (e.target == this) {
+                document.getElementById("game").style.animation = "none"
+                newElement.remove()
+      
+            }
+        })
+        var shareButton = document.createElement("button")
+        shareButton.innerHTML = "Deli"
+        var copyButton = document.createElement("button")
+        copyButton.innerHTML = "Kopiraj"
+        newElement.appendChild(copyButton)
+        newElement.appendChild(shareButton)
+        shareButton.addEventListener("click", function(){
+            navigator.share({
+      title: 'Tarok igra',
+      text: 'Deli to tarok igro z drugimi!',
+      files: result
+    })
+        })
+    }
+
+function upload() {
+    var input = document.getElementById("input2")
+    var text = input.value
+    var txtPos = text.split("-")
+    txtPos = txtPos.reverse()
+    for (let i = 0; i < txtPos.length; i++) {
+        console.log(txtPos[i]);
+        txtPos[i] = String(txtPos[i]).split("").reverse().join(""), 10;
+        console.log(txtPos[i].toString());
+        txtPos[i] = (txtPos[i] - 1026) / 5
+        if (txtPos[i] < 65536 && txtPos[i] > 0) {} else {
+            txtPos = ["Not the correct code, encript you message here."]
+            break
+        }
+        txtPos[i] = String.fromCharCode(txtPos[i])
+    }
+    //  txtPos.splice(0, 1)
+    console.log(txtPos.toString());
+}
+
+
+
+    function plusScore(playedUser, user, score) {
+        if (listOfPlayers[playedUser][0] !== '') {
+            listOfPlayers[user].push(score * 2)
+            listOfPlayers[playedUser].push(score * 2)
+            if (score > 0 && listOfPlayers[playedUser][0].length > 0) {
+                listOfPlayers[playedUser][0] = listOfPlayers[playedUser][0].replace('*', '')
+            }
+        }
+        else {
+            listOfPlayers[user].push(score)
+            listOfPlayers[playedUser].push(score)
+        }
+
+
+    }
+
+    function aloneplusScore(user, score) {
+
+        if (listOfPlayers[user][0] !== '') {
+            listOfPlayers[user].push(score * 2)
+            if (score > 0 && listOfPlayers[user][0].length > 0) {
+                listOfPlayers[user][0] = listOfPlayers[user][0].replace('*', '')
+            }
+        } else {
+            listOfPlayers[user].push(score)
+        }
+
+
+    }
+
+
+    function Game() {
+
+        var newElement = document.createElement("div")
+        newElement.setAttribute("class", "whlScreen");
+        var iks = document.createElement("img")
+        iks.classList.add("iks")
+        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+        newElement.appendChild(iks)
+        iks.addEventListener("click", function (e) {
+            if (e.target == this) {
+                document.getElementById("game").style.animation = "none"
+                newElement.remove()
+      
+            }
+        })
+
+        var slct = document.createElement("select")
+        slct.innerHTML += "<option>Select</option>"
+
+        document.body.appendChild(newElement)
+        for (var i = 0; i < localStorage.length; i++) {
+            let user = Object.keys(localStorage)[i];
+            if (user !== "!gamesData!") {
+                slct.innerHTML += "<option>" + user + "</option>"
+            }
+        }
+
+
+        newElement.appendChild(slct)
+        slct.addEventListener("change", function () {
+            if (slct.value !== "Select") {
+                listOfPlayers = JSON.parse(localStorage[slct.value])
+                newElement.remove()
+                listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
+                if (listOfPlayers["!gamesData!"] == null) {
+                    listOfPlayers["!gamesData!"] = {}
+                }
+                count()
+
+            }
+        })
+    }
+    function undo() {
+        listOfPlayers = JSON.parse(JSON.stringify(listOfPlayersCopy));
+        document.querySelector(".cntScreen").remove()
+        count()
+    }
+    var listOfPlayers = {}
+    var listOfPlayersCopy = {}
+    function newGame() {
+
+
+        var newElement = document.createElement("div")
+        newElement.setAttribute("class", "whlScreen");
+        var iks = document.createElement("img")
+        iks.classList.add("iks")
+        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+        iks.addEventListener("click", function (e) {
+            if (e.target == this) {
+                newElement.remove()
+     
+            }
+        })
+        newElement.appendChild(iks)
+        var onePl = document.createElement("input")
+        var newPl = document.createElement("button")
+        var endPl = document.createElement("button")
+        newPl.setAttribute("id", "addPlayer");
+        newPl.innerHTML = "Add player"
+        newPl.setAttribute("class", "child");
+        onePl.setAttribute("class", "child");
+        onePl.placeholder = "Ime..."
+        endPl.setAttribute("class", "child");
+        endPl.innerHTML = "Confirm"
+        newElement.appendChild(onePl)
+        onePl.focus()
+        newElement.appendChild(newPl)
+        newElement.appendChild(endPl)
+        document.body.appendChild(newElement)
+        newPl.addEventListener("click", function () {
+            let onePl2 = document.createElement("input")
+            onePl2.setAttribute("class", "child");
+            onePl2.placeholder = "Ime..."
+            newElement.appendChild(onePl2)
+            newElement.insertBefore(onePl2, newPl);
+            onePl2.focus()
+        })
+        endPl.addEventListener("click", function () {
+            listOfPlayers['!gamesData!'] = {}
+
+
+            for (var i = 0; i < document.getElementsByTagName('input').length; i++) {
+                let input = document.getElementsByTagName('input')[i].value
+                listOfPlayers[input] = ['']
+
+            }
+            newElement.style.display = "none"
+
+            localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
+            listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
+            count()
+
+        })
+
+
+    }
+    function padArraysToLongest(obj) {
+        // Find the length of the longest array
+        let maxLength = 0;
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const currentArray = obj[key];
+                const currentLength = currentArray.length;
+                if (currentLength > maxLength) {
+                    maxLength = currentLength;
+                }
+            }
+        }
+
+        // Pad arrays to the length of the longest array
+        for (const key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                const currentArray = obj[key];
+                while (currentArray.length < maxLength) {
+                    currentArray.push("&nbsp");
+                }
+            }
+        }
+    }
+
+
+    function count() {
+        try{
+    Android.showButton()
+} catch(error){
+console.log(error);
+}
+        console.log(listOfPlayers);
+        padArraysToLongest(listOfPlayers);
+        console.log(listOfPlayers);
+        localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
+        localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")['!gamesData'], JSON.stringify(listOfPlayers['!gamesData']))
+
+        document.getElementById("newgame").style.display = "none"
+        document.getElementById("game").style.display = "none"
+        var newElement = document.createElement("div")
+        newElement.setAttribute("class", "cntScreen");
+
+        if (JSON.stringify(listOfPlayers) !== JSON.stringify(listOfPlayersCopy)) {
+            var btn22 = document.createElement("button")
+            btn22.innerHTML = "Nazaj"
+            btn22.classList.add("undo")
+
+            document.body.appendChild(btn22)
+            btn22.addEventListener("click", function () {
+                undo()
+            })
+            btn22.remove()
+        }
+        var rezultLine = document.createElement("div")
+        for (const key in listOfPlayers) {
+
+            if (key == "!gamesData!") {
+                continue
+            }
+            let stGame = 1
+            console.log(stGame)
+            let name = key
+
+            if (listOfPlayers[key][1] + 1 == NaN) {
+                listOfPlayers[key].unshift(' ')
+                console.log("ggg")
+            }
+            let pnts = listOfPlayers[key]
+            var chl = document.createElement("div")
+            let i = 1
+            let points = 0
+            var prnt = document.createElement("div")
+            prnt.innerHTML = '<p class="namePlayers" > ' + name + listOfPlayers[key][0] + ' </p>'
+            chl.innerHTML = String(chl.innerHTML).replace('undefined', '');
+            chl.innerHTML += '<p style = "" class="noText" ></p>'
+            while (i < pnts.length) {
+
+                var kkk = document.createElement("p")
+                kkk.innerHTML = pnts[i]
+
+                chl.appendChild(kkk)
+                console.log(stGame)
+                if (pnts[i] !== '&nbsp') {
+                    kkk.setAttribute('onclick', 'gameData("' + stGame + '")')
+
+                    kkk.classList.add("word_" + stGame)
+                } else {
+                    kkk.classList.add("noText")
+                }
+                kkk.addEventListener("click", function () {
+
+                    console.log("ccc");
+                    gameData(listOfPlayers["!gamesData!"][stGame])
+                })
+                stGame++
+
+
+                if (pnts[i] !== '&nbsp') {
+                    points += pnts[i]
+                }
+                i++
+            }
+            chl.innerHTML += ' <p style = "" class="noText" ></p>'
+            chl.setAttribute("class", "chl");
+            chl.style.display = "inline-block;"
+            rezultLine.innerHTML += ' <p style = "flex: 1;background: var(--colorBtn); padding: 15px; border-top-left-radius: 30px; border-top-right-radius: 30px; margin-left:10px;margin-right:10px;" > ' + points + ' </p>'
+
+            prnt.setAttribute("class", "prnt");
+            prnt.appendChild(chl)
+            newElement.appendChild(prnt)
+        }
+        rezultLine.setAttribute("class", "crezultLine");
+        rezultLine.addEventListener("click", function () { addScore() })
+        document.body.appendChild(rezultLine)
+        document.body.appendChild(newElement)
+
+       
+    }
+
+
+
+
+
+    function gameData(infom) { // gamename, prvi igralc, drug igralc, tocke, ima radlc, razlika, dobil zgubil, bonusi, bonusi točke
+        console.log(infom);
+        var info = listOfPlayers["!gamesData!"][infom]
+
+        console.log(info)
+        var newElement = document.createElement("div")
+        newElement.setAttribute("class", "whlScreen");
+        var iks = document.createElement("img")
+        iks.classList.add("iks")
+        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+        newElement.appendChild(iks)
+        iks.addEventListener("click", function (e) {
+            if (e.target == this) {
+                newElement.remove()
+                try{
+    Android.showButton()
+} catch(error){
+console.log(error);
+}
+            }
+        })
+
+
+
+
+
+        var table = document.createElement("div")
+        table.classList.add("gameData")
+
+        var podatki = ["Igra", "Igralec", "Partner", "Razlika", "Radlc", "Uspeh", "Bonusi", "Točke"]
+        var line = document.createElement("div")
+        line.style.display = "flex"
+        line.style.flexWrap = "wrap"
+        line.style.justifyContent = "center"
+        table.appendChild(line)
+
+        for (let i = 0; i < podatki.length; i++) {
+            const element1 = podatki[i];
+            let element = info[i];
+            if (i == 3) { element = info[5] }
+            if (i == 7) { element = info[3] }
+            if (element == null || element == "" || element == []) { continue; }
+
+            if (i == 6) { element = info[7].toString().replace(/,/g, ", ") }
+            if (i == 5 && element) { element = "Ja" } else { if (i == 5) { element = "Ne" } }
+            if (i == 4 && element) { element = "Ja" } else { if (i == 4) { element = "Ne" } }
+
+
+            let tdVelk = document.createElement("div")
+            let td1 = document.createElement("div")
+            td1.innerHTML = element1
+            td1.classList.add("gameDataTd")
+
+            tdVelk.appendChild(td1)
+            tdVelk.classList.add("gameTdDiv")
+
+
+            let td = document.createElement("div")
+            td.innerHTML = element
+            td.classList.add("gameDataTdBottom")
+
+            tdVelk.appendChild(td)
+            line.appendChild(tdVelk)
+        }
+
+        newElement.appendChild(table)
+
+        document.body.appendChild(newElement)
+    }
+
+ 
+
+</script>
+
+<style>
+    .gameData {
+
+        width: 90%;
+    }
+
+    .gameTdDiv {
+        min-width: 68px;
+        max-width: 12%;
+
+        flex: 1 1 100%;
+    }
+
+    .gameDataTdBottom {
+
+        text-align: center;
+        background-color: var(--colorBtn);
+        padding: 8px;
+        margin: 3px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+    }
+
+    .gameDataTd {
+
+        text-align: center;
+        background-color: var(--colorBtn);
+        padding: 8px;
+        margin: 3px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .noText:hover {
+        margin: 0;
+        cursor: default !important;
+        background-color: rgba(0, 0, 0, 0) !important;
+    }
+
+    .iks {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+    }
+
+    #newgame {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .namePlayers {
+        padding-bottom: 10px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        z-index: 5555;
+        z-index: 5555;
+        overflow: hidden;
+        position: sticky;
+        top: 0px;
+        background-color: var(--colorBtn);
+        padding-top: 20px;
+        margin-top: -50px;
+        overflow: hidden;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    #game {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .undo {
+        position: fixed;
+        right: 10px;
+        bottom: 50px;
+    }
+
+    .break {
+        flex-basis: 100%;
+        height: 0;
+    }
+
+    .chl {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        border-radius: 30px;
+        background-color: var(--colorBtn);
+        color: var(--colorTxt);
+        padding: 2px;
+        height: auto;
+        flex: 1;
+        text-align: center;
+        font-size: large;
+
+    }
+
+    .prnt {
+
+        padding: 10px;
+        color: var(--colorTxt);
+        min-height: 100vh;
+        height: auto;
+        flex: 1;
+        text-align: center;
+        border-radius: 30px;
+        font-size: large;
+        background: transparent;
+    }
+
+    .chl2 {
+        flex: 1;
+        text-align: center;
+        font-size: large;
+        position: absolute;
+        bottom: 0;
+        border-right: 1px solid;
+    }
+
+    .whlScreen {
+        animation: showScreen .4s forwards;
+        color: var(--colorTxt);
+        z-index: 500000;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        top: 0;
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        backdrop-filter: blur(5px);
+    }
+
+    button:active {
+        /* box-shadow: 0px 0px #888888;*/
+    }
+
+    button {
+        color: var(--colorTxt);
+        transition: all .05s;
+        position: relative;
+        flex-basis: 100px;
+        border-radius: 30px;
+        text-align: center;
+        padding: 14px;
+        border-width: 0;
+        background-color: var(--colorBtn);
+        /* box-shadow: 5px 5px #888888; */
+        margin: 10px;
+
+
+    }
+
+    .rippleEffect::after{
+        width: 1px;
+        height: 1px;
+        border-radius: 100px;
+        backdrop-filter: brightness(.7);
+        animation: ripple .2s forwards ;
+    }
+
+    @keyframes ripple{
+        0% {
+            opacity: 1;
+            scale: 1;
+         
+        }
+
+        50% {
+            opacity: 1;
+          
+        }
+
+        100% {
+            opacity: 0;
+            scale: 100;
+          
+        }
+    }
+
+    select:active {
+        /*  box-shadow: 5px 5px #888888;*/
+        border-width: 0;
+    }
+
+    select {
+        transition: all .05s;
+        margin: 30px;
+        width: 40vw;
+        border-width: 0;
+        border-radius: 20px;
+        padding: 7px;
+        /*  box-shadow: 5px 5px #888888;*/
+    }
+
+    input {
+        margin: 30px;
+        width: 40vw;
+        border-width: 0;
+        border-radius: 20px;
+        padding: 7px;
+        /*  box-shadow: 5px 5px #888888;*/
+    }
+
+    .scrScreen {
+        animation: showScreen .4s forwards;
+        color: var(--colorTxt);
+        z-index: 500000;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 100%;
+        top: 0;
+        position: fixed;
+        justify-content: center;
+        align-content: center;
+        height: 100%;
+        backdrop-filter: blur(5px);
+    }
+
+    .cntScreen {
+        backdrop-filter: blur(0) brightness(1)!important;
+        animation: showScreen .4s forwards;
+        color: var(--colorTxt);
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        top: 0;
+
+        justify-content: center;
+        align-items: top;
+        height: 100%;
+
+    }
+
+    .crezultLine {
+        color: var(--colorTxt);
+
+        z-index: 400;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        box-shadow: none;
+        bottom: -15px;
+        position: fixed;
+        justify-content: center;
+        align-items: top;
+        text-align: center;
+    }
+
+    .child {
+        width: 30vw;
+        margin: 10px;
+    }
+
+    body {
+        --bgColor: #DCB585;
+        --colorTxt: rgb(0, 0, 0);
+        --colorBtn: #b59670;
+        color: var(--colorTxt);
+        margin: 0;
+        background-attachment: fixed;
+        background-color: var(--bgColor);
+
+    }
+
+    p {
+        transition: all .2s;
+
+    }
+
+    @keyframes showScreen {
+        0% {
+            opacity: 0;
+            scale: .2;
+            backdrop-filter: blur(0) brightness(1)
+        }
+
+        80% {
+            opacity: 1;
+            scale: 1.05;
+        }
+
+        100% {
+            opacity: 1;
+            scale: 1;
+            backdrop-filter: blur(25px) brightness(.8)
+        }
+    }
+
+
+    .chl>p:hover {
+        border-radius: 30px;
+        margin-left: 3px;
+        margin-right: 3px;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, .2);
+
+    }
+
+    @keyframes checkAnim {
+        0% {
+            background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 0% no-repeat, var(--colorBtn);
+        }
+
+        100% {
+            background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 20% no-repeat, var(--colorBtn);
+        }
+
+    }
+
+
+</style>
+
+</html>

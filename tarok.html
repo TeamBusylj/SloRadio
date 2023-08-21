@@ -541,9 +541,16 @@ console.log(error);
         shareButton.addEventListener("click", function(){
             navigator.share({
       title: 'Tarok igra',
-      text: 'Deli to tarok igro z drugimi!',
+
       text: result
     })
+        })
+       copyButton.addEventListener("click", function(){
+        try{
+            navigator.clipboard.writeText(result)
+        }catch(error){
+console.log(error);
+        }
         })
     }
 

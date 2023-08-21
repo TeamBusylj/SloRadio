@@ -500,7 +500,8 @@ console.log(error);
 
 
     function download() {
-    var text = JSON.stringify(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
+    var text = JSON.stringify(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "))+"--"+ JSON.stringify(listOfPlayers)
+ console.log(text);
     var result = "";
     for (var i = 0; i < text.length; i++) {
         var code = text.codePointAt(i)
@@ -561,8 +562,31 @@ console.log(error);
     }
 
 function upload() {
-    var input = document.getElementById("input2")
-    var text = input.value
+    
+
+    var newElement = document.createElement("div")
+        newElement.setAttribute("class", "whlScreen");
+        var iks = document.createElement("img")
+        iks.classList.add("iks")
+        document.body.appendChild(newElement)
+        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+        newElement.appendChild(iks)
+        iks.addEventListener("click", function (e) {
+            if (e.target == this) {
+                document.getElementById("game").style.animation = "none"
+                newElement.remove()
+      
+            }
+        })
+        var shareButton = document.createElement("input")
+        shareButton.placeholder = "Koda"
+        shareButton.type = "text"
+        newElement.appendChild(shareButton)
+        var shareButton = document.createElement("button")
+        shareButton.innerHTML = "Končano"
+        newElement.appendChild(shareButton)
+     shareButton.addEventListener("click", function(){
+    var text = shareButton.value
     var txtPos = text.split("-")
     txtPos = txtPos.reverse()
     for (let i = 0; i < txtPos.length; i++) {
@@ -577,8 +601,12 @@ function upload() {
         txtPos[i] = String.fromCharCode(txtPos[i])
     }
     //  txtPos.splice(0, 1)
-  listOfPlayers = JSON.parse(txtPos.toString())
-  console.log(listOfPlayers);
+    txtPos = txtPos.toString().replace(/,/g, "")
+    console.log(txtPos);
+    localStorage.setItem(JSON.stringify(Object.keys(txtPos).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
+        localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")['!gamesData'], JSON.stringify(listOfPlayers['!gamesData']))
+// location.reload()
+})
 }
 
 

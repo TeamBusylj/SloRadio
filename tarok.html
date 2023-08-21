@@ -537,13 +537,14 @@ console.log(error);
         var copyButton = document.createElement("button")
         copyButton.innerHTML = "Kopiraj"
         newElement.appendChild(copyButton)
+        if(navigator.userAgent.includes("wv"))
         newElement.appendChild(shareButton)
         shareButton.addEventListener("click", function(){
-            navigator.share({
-      title: 'Tarok igra',
-
-      text: result
-    })
+            try{
+          Android.share(result)
+        }catch(error){
+console.log(error);
+        }
         })
        copyButton.addEventListener("click", function(){
         try{

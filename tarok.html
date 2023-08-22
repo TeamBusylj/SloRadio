@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Števec taroka</title>
    
 </head>
@@ -17,11 +17,12 @@
 
 <script>
 
-    function adaptColor(bg, txt, btn) {
+    function adaptColor(bg, txt, btn, dialog) {
         document.body.style.setProperty('--bgColor', bg);
         document.body.style.setProperty('--colorTxt', txt)
         document.body.style.setProperty('--colorBtn', btn)
-        console.log("Colors" + bg + ", " + txt);
+        document.body.style.setProperty('--colorDialog', dialog)
+      
     }
   
 function addScore() {
@@ -95,8 +96,11 @@ console.log(error);
     function radlciDodaj() {
           if(navigator.userAgent.includes("wv")){
               try{
+
+                
                 let names = JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")
-    Android.showRadlci(names)
+    console.log(names);
+                Android.showRadlci(names)
 } catch(error){
 console.log(error);
 }
@@ -106,12 +110,27 @@ console.log(error);
 listOfPlayers[key][0] += "*"
 
 }
+document.querySelector(".cntScreen").remove()
+                        document.querySelector(".crezultLine").remove()
+                       
+                        count()
           }
        
     }
 
-    function androidRaadlci(list){
+    function androidRadlci(list){
+        let listRadlc = list
 
+        for (const key in listOfPlayers) {
+if(listRadlc.includes(key)){
+    console.log(key + " includes");
+listOfPlayers[key][0] += "*"
+}
+}
+document.querySelector(".cntScreen").remove()
+                        document.querySelector(".crezultLine").remove()
+                     
+                        count()
     }
 
     function klop(newElement2, gamename) {
@@ -156,21 +175,26 @@ console.log(error);
         newElement.innerHTML += "<div class='break'></div>"
         newElement.appendChild(btn)
         btn.addEventListener("click", function () {
-            if (Array.from(document.querySelectorAll('.klopPlayer')).every(input => input.type === 'submit' || input.value.trim() !== '')) {
+           
                 var plNombers = document.getElementsByClassName("klopPlayer");
                 for (var i = 0; i < plNombers.length; i++) {
                     if (gamename == "Klop") {
-
+                        if (Array.from(document.querySelectorAll('.klopPlayer')).every(input => input.type === 'submit' || input.value.trim() !== '')) {
                         aloneplusScore(plNombers[i].name, -Math.abs(parseInt(plNombers[i].value)))
+                        }
                     }
                     else {
-                        aloneplusScore(plNombers[i].name, parseInt(plNombers[i].value))
+                        if(plNombers[i].value !==""){
+                            listOfPlayers[plNombers[i].name].push(parseInt(plNombers[i].value))
+                        }
+                        
                     }
                 }
                 if (gamename == "Klop") {
-
+                    if (Array.from(document.querySelectorAll('.klopPlayer')).every(input => input.type === 'submit' || input.value.trim() !== '')) {
                     listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Klop", "Vsi", null, null, null, null, null, null]
-                }
+                
+                    }}
                 else {
                     listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Po meri", "Vsi", null, null, null, null, null, null]
                 }
@@ -180,10 +204,8 @@ console.log(error);
                 document.querySelector(".cntScreen").remove()
                 document.querySelector(".crezultLine").remove()
                 count()
-            }
-        })
-
-    }
+            })
+        }
 
     function calculate(gameName, properties) {
         var btn = document.createElement("button")
@@ -523,11 +545,11 @@ console.log(error);
     }
     var txt = result.slice(0, result.length - 1);
     var txtPos = txt.split(",")
-    console.log(txtPos);
+
     for (let i = 0; i < txtPos.length; i++) {
         txtPos[i] = (txtPos[i] * 5 + 1026)
         txtPos[i] = String(txtPos[i]).split("").reverse().join(""), 10;
-        console.log();
+      
         if (i !== 0) txtPos[i] = txtPos[i].toString() + "-"
     }
     txtPos = txtPos.reverse()
@@ -822,7 +844,7 @@ console.log(error);
                 continue
             }
             let stGame = 1
-            console.log(stGame)
+          
             let name = key
 
             if (listOfPlayers[key][1] + 1 == NaN) {
@@ -843,7 +865,7 @@ console.log(error);
                 kkk.innerHTML = pnts[i]
 
                 chl.appendChild(kkk)
-                console.log(stGame)
+           
                 if (pnts[i] !== '&nbsp') {
                     kkk.setAttribute('onclick', 'gameData("' + stGame + '")')
 
@@ -960,6 +982,11 @@ console.log(error);
 </script>
 
 <style>
+    html{
+     -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+    }
     .gameData {
 
         width: 90%;
@@ -1181,18 +1208,22 @@ console.log(error);
 
     .scrScreen {
         animation: showScreen .4s forwards;
-        color: var(--colorTxt);
-        z-index: 500000;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 100%;
-        top: 0;
-        position: fixed;
-        justify-content: center;
-        align-content: center;
-        height: 100%;
-        backdrop-filter: blur(5px);
+    color: var(--colorTxt);
+    z-index: 500000;
+    display: flex;
+    flex-direction: row;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    flex-wrap: wrap;
+    width: 100%;
+    border-radius: 40px;
+    position: fixed;
+    justify-content: center;
+    align-content: center;
+    width: 80%;
+    height: 70%;
+ border-radius: 40px;  background:var(--colorDialog) 30%
     }
 
     .cntScreen {
@@ -1233,6 +1264,7 @@ console.log(error);
 
     body {
         --bgColor: #DCB585;
+        --colorDialog:#826c51;
         --colorTxt: rgb(0, 0, 0);
         --colorBtn: #b59670;
         color: var(--colorTxt);
@@ -1250,19 +1282,14 @@ console.log(error);
     @keyframes showScreen {
         0% {
             opacity: 0;
-            scale: .2;
-            backdrop-filter: blur(0) brightness(1)
-        }
-
-        80% {
-            opacity: 1;
-            scale: 1.05;
+            scale: .8;
+           
         }
 
         100% {
             opacity: 1;
             scale: 1;
-            backdrop-filter: blur(25px) brightness(.8)
+           
         }
     }
 

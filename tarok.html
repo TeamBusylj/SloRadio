@@ -95,7 +95,8 @@ console.log(error);
     function radlciDodaj() {
           if(navigator.userAgent.includes("wv")){
               try{
-    Android.showRadlci(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "))
+                let names = JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")
+    Android.showRadlci(names)
 } catch(error){
 console.log(error);
 }

@@ -93,11 +93,24 @@ console.log(error);
     }
 
     function radlciDodaj() {
-        for (const key in listOfPlayers) {
+          if(navigator.userAgent.includes("wv")){
+              try{
+    Android.showRadlci()
+} catch(error){
+console.log(error);
+}
+          }else{
+            for (const key in listOfPlayers) {
 
-            listOfPlayers[key][0] += "*"
+listOfPlayers[key][0] += "*"
 
-        }
+}
+          }
+       
+    }
+
+    function androidRaadlci(list){
+
     }
 
     function klop(newElement2, gamename) {

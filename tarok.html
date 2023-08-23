@@ -10,7 +10,7 @@
 
 <body>
 
-    <button id="newgame" onclick="newGame()">Nova igra</button>
+    <button id="newgame" onclick="//newGame()">Nova igra</button>
     <button id="game" onclick="Game()">Obstajajoča igra</button>
 
 </body>
@@ -33,14 +33,14 @@ function addScore() {
 console.log(error);
 }
         var newElement = document.createElement("div")
-        newElement.setAttribute("class", "scrScreen");
+        newElement.setAttribute("class", "whlScreen");
         var iks = document.createElement("img")
         iks.classList.add("iks")
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
         newElement.appendChild(iks)
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
-                newElement.remove()
+                 hideElement(newElement)
                 try{
     Android.showButton()
 } catch(error){
@@ -70,7 +70,7 @@ console.log(error);
             let btn = document.createElement("button")
             btn.innerHTML = key
             btn.addEventListener("click", function () {
-                newElement.remove()
+                newElement.innerHTML = ""
                 if (key == "Klop" || key == "Po meri") { klop(newElement, key) } else {
 
                     if (key == "Dodaj radlce") {
@@ -78,10 +78,10 @@ console.log(error);
                         radlciDodaj()
                         document.querySelector(".cntScreen").remove()
                         document.querySelector(".crezultLine").remove()
-                        newElement.remove()
+                         hideElement(newElement)
                         count()
                     } else {
-                        calculate(key, games[key])
+                        calculate(key, games[key], newElement)
                     }
 
                 }
@@ -136,7 +136,7 @@ document.querySelector(".cntScreen").remove()
     function klop(newElement2, gamename) {
 
         var newElement = document.createElement("div")
-        newElement.setAttribute("class", "scrScreen");
+        newElement.setAttribute("class", "whlScreen");
         document.body.appendChild(newElement)
         var iks = document.createElement("img")
         iks.classList.add("iks")
@@ -144,7 +144,7 @@ document.querySelector(".cntScreen").remove()
         newElement.appendChild(iks)
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
-                newElement.remove()
+                 hideElement(newElement)
                 try{
     Android.showButton()
 } catch(error){
@@ -199,7 +199,7 @@ console.log(error);
                     listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Po meri", "Vsi", null, null, null, null, null, null]
                 }
                 
-                newElement.remove()
+                 hideElement(newElement)
                 newElement2.remove()
                 document.querySelector(".cntScreen").remove()
                 document.querySelector(".crezultLine").remove()
@@ -207,21 +207,21 @@ console.log(error);
             })
         }
 
-    function calculate(gameName, properties) {
+    function calculate(gameName, properties,newElement) {
         var btn = document.createElement("button")
         var btn2 = document.createElement("button")
         var points = properties[0]
         var razlikaTF = properties[1]
         var teamWork = properties[3]
-        var newElement = document.createElement("div")
-        newElement.setAttribute("class", "scrScreen");
+       
+        newElement.setAttribute("class", "whlScreen");
         var iks = document.createElement("img")
         iks.classList.add("iks")
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
         newElement.appendChild(iks)
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
-                newElement.remove()
+                 hideElement(newElement)
                 try{
     Android.showButton()
 } catch(error){
@@ -229,7 +229,7 @@ console.log(error);
 }
             }
         })
-        document.body.appendChild(newElement)
+       
         //if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
         if (teamWork) {
 
@@ -319,7 +319,7 @@ console.log(error);
   
                   }
              
-                  newElement.remove()
+                   hideElement(newElement)
                   
               }
           })
@@ -340,7 +340,7 @@ console.log(error);
   
                   }
   
-                  newElement.remove()
+                   hideElement(newElement)
                  
               }
           })
@@ -448,7 +448,7 @@ console.log(error);
         newElement.appendChild(lnbrk23)
         newElement.appendChild(btn22)
         newElement.appendChild(btn23)
-        document.body.appendChild(newElement)
+        //document.body.appendChild(newElement)
 
 
         btn22.addEventListener("click", function () {
@@ -484,7 +484,7 @@ console.log(error);
                     document.querySelector(".crezultLine").remove()
             
                
-                        newElement.remove()
+                         hideElement(newElement)
                     count()
                   
                     
@@ -526,7 +526,7 @@ console.log(error);
                     document.querySelector(".crezultLine").remove()
 
                     count()
-                    newElement.remove()
+                     hideElement(newElement)
 
                 }
             }
@@ -565,7 +565,7 @@ console.log(error);
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
                 document.getElementById("game").style.animation = "none"
-                newElement.remove()
+                 hideElement(newElement)
       
             }
         })
@@ -610,7 +610,7 @@ function upload() {
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
                 document.getElementById("game").style.animation = "none"
-                newElement.remove()
+                 hideElement(newElement)
       
             }
         })
@@ -677,7 +677,12 @@ function upload() {
 
     }
 
-
+function hideElement(newElement){
+    newElement.style.animation = "hideScreen .2s forwards";
+    setTimeout(() => {
+        newElement.remove()
+    }, 200);
+}
     function Game() {
 
         var newElement = document.createElement("div")
@@ -689,7 +694,9 @@ function upload() {
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
                 document.getElementById("game").style.animation = "none"
-                newElement.remove()
+              
+           hideElement(newElement)
+                // hideElement(newElement)
       
             }
         })
@@ -710,7 +717,7 @@ function upload() {
         slct.addEventListener("change", function () {
             if (slct.value !== "Select") {
                 listOfPlayers = JSON.parse(localStorage[slct.value])
-                newElement.remove()
+                 hideElement(newElement)
                 listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
                 if (listOfPlayers["!gamesData!"] == null) {
                     listOfPlayers["!gamesData!"] = {}
@@ -737,7 +744,7 @@ function upload() {
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
-                newElement.remove()
+                 hideElement(newElement)
      
             }
         })
@@ -920,7 +927,7 @@ console.log(error);
         newElement.appendChild(iks)
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
-                newElement.remove()
+                 hideElement(newElement)
                 try{
     Android.showButton()
 } catch(error){
@@ -979,9 +986,91 @@ console.log(error);
 
  
 
+    function createRipple(event) {
+        if(event.target.tagName == "BUTTON" ){
+console.log( event.target ,event.currentTarget);
+    
+  const button = event.target;
+
+  const circle = document.createElement("span");
+  const diameter = Math.max(button.clientWidth, button.clientHeight);
+  const radius = diameter / 2;
+
+  circle.style.width = circle.style.height = `${radius}px`;
+  circle.style.left = `${event.clientX - button.offsetLeft + 30}px`;
+  circle.style.top = `${event.clientY - button.offsetTop}px`;
+  circle.classList.add("ripple");
+
+let mouse = false
+let animation = false
+  circle.addEventListener("mouseup", function(){
+mouse = true
+if(animation){
+    circle.style. transform= "scale(4)"
+       circle.classList.add("fadeOutIt")
+       setTimeout(() => {
+        circle.remove()
+       }, 200);
+       }
+   
+  })
+
+  circle.addEventListener("animationend", function () {
+    console.log(mouse);
+    animation = true
+       if(mouse){
+        circle.style. transform= "scale(4)"
+       circle.classList.add("fadeOutIt")
+       setTimeout(() => {
+        circle.remove()
+       }, 200);
+       }
+         
+        });
+
+
+  button.appendChild(circle);
+}    }
+
+
+  document.body.addEventListener("mousedown", createRipple);
+
+
+
 </script>
 
 <style>
+
+
+span.ripple {
+  position: absolute;
+  border-radius: 50%;
+transition: all 2s;
+  transform: scale(0)  ;
+
+  animation: ripple 200ms linear forwards;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+.fadeOutIt{
+    animation: fadeOut .2s linear forwards !important;
+}
+@keyframes fadeOut {
+    from{
+        opacity: .4;
+    }
+  to {
+  
+   opacity: 0;
+  }
+}
+@keyframes ripple {
+  to {
+    transform: scale(4);
+   opacity: .4;
+  }
+}
+
+
     html{
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
@@ -1124,7 +1213,7 @@ console.log(error);
     }
 
     .whlScreen {
-        animation: showScreen .4s forwards;
+        animation: showScreen .3s forwards;
     color: var(--colorTxt);
     z-index: 500000;
     display: flex;
@@ -1150,6 +1239,7 @@ console.log(error);
     button {
         color: var(--colorTxt);
         transition: all .05s;
+        overflow: hidden;
         position: relative;
         flex-basis: 100px;
         border-radius: 30px;
@@ -1159,7 +1249,7 @@ console.log(error);
         background-color: var(--colorBtn);
         /* box-shadow: 5px 5px #888888; */
         margin: 10px;
-
+        animation: showScreen .2s forwards;
 
     }
 
@@ -1171,24 +1261,7 @@ console.log(error);
         animation: ripple .2s forwards ;
     }
 
-    @keyframes ripple{
-        0% {
-            opacity: 1;
-            scale: 1;
-         
-        }
-
-        50% {
-            opacity: 1;
-          
-        }
-
-        100% {
-            opacity: 0;
-            scale: 100;
-          
-        }
-    }
+    
 
     select:active {
         /*  box-shadow: 5px 5px #888888;*/
@@ -1202,7 +1275,8 @@ console.log(error);
         border-width: 0;
         border-radius: 20px;
         padding: 7px;
-        /*  box-shadow: 5px 5px #888888;*/
+        animation: showScreen .2s forwards;
+
     }
 
     input {
@@ -1211,28 +1285,11 @@ console.log(error);
         border-width: 0;
         border-radius: 20px;
         padding: 7px;
-        /*  box-shadow: 5px 5px #888888;*/
+        animation: showScreen .2s forwards;
+
     }
 
-    .scrScreen {
-        animation: showScreen .4s forwards;
-    color: var(--colorTxt);
-    z-index: 500000;
-    display: flex;
-    flex-direction: row;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    flex-wrap: wrap;
-    width: 100%;
-    border-radius: 40px;
-    position: fixed;
-    justify-content: center;
-    align-content: center;
-    width: 80%;
-    height: 70%;
- border-radius: 40px;  background:var(--colorDialog) 30%
-    }
+    
 
     .cntScreen {
         backdrop-filter: blur(0) brightness(1)!important;
@@ -1294,17 +1351,30 @@ console.log(error);
     @keyframes showScreen {
         0% {
             opacity: 0;
-            scale: .8;
-           
+            scale: .9;
+           backdrop-filter: brightness(1);
         }
 
         100% {
             opacity: 1;
             scale: 1;
-           
+            backdrop-filter: brightness(.8);
         }
     }
+    @keyframes hideScreen {
+        
 
+        0% {
+            opacity: 1;
+            scale: 1;
+            backdrop-filter: brightness(.8);
+        }
+        100% {
+            opacity: 0;
+            scale: .9;
+           backdrop-filter: brightness(1);
+        }
+    }
 
     .chl>p:hover {
         border-radius: 30px;
@@ -1327,6 +1397,9 @@ console.log(error);
     }
 
 
+
+
+   
 </style>
 
 </html>

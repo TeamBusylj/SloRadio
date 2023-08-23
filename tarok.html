@@ -1122,17 +1122,22 @@ console.log(error);
 
     .whlScreen {
         animation: showScreen .4s forwards;
-        color: var(--colorTxt);
-        z-index: 500000;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        top: 0;
-        position: absolute;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        backdrop-filter: blur(5px);
+    color: var(--colorTxt);
+    z-index: 500000;
+    display: flex;
+    flex-direction: row;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    flex-wrap: wrap;
+    width: 100%;
+    border-radius: 40px;
+    position: fixed;
+    justify-content: center;
+    align-content: center;
+    width: 80%;
+    height: 70%;
+ border-radius: 40px;  background:var(--colorDialog) 30%
     }
 
     button:active {
@@ -1258,6 +1263,9 @@ console.log(error);
     }
 
     .child {
+        width: 30vw;
+    flex: 1 1 100%;
+    margin: 10px;
         width: 30vw;
         margin: 10px;
     }

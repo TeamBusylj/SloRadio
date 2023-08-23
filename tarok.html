@@ -17,12 +17,12 @@
 
 <script>
 
-    function adaptColor(bg, txt, btn, dialog) {
+    function adaptColor(bg, txt, btn, dialog, txtDialog) {
         document.body.style.setProperty('--bgColor', bg);
         document.body.style.setProperty('--colorTxt', txt)
         document.body.style.setProperty('--colorBtn', btn)
         document.body.style.setProperty('--colorDialog', dialog)
-      
+        document.body.style.setProperty('--colorTxtDialog', txtDialog)
     }
   
 function addScore() {
@@ -889,7 +889,7 @@ console.log(error);
             chl.innerHTML += ' <p style = "" class="noText" ></p>'
             chl.setAttribute("class", "chl");
             chl.style.display = "inline-block;"
-            rezultLine.innerHTML += ' <p style = "flex: 1;background: var(--colorBtn); padding: 15px; border-top-left-radius: 30px; border-top-right-radius: 30px; margin-left:10px;margin-right:10px;" > ' + points + ' </p>'
+            rezultLine.innerHTML += ' <p style = "flex: 1;        color: var(--colorTxtDialog);    background-color:var(--colorDialog); padding: 15px; border-top-left-radius: 30px; border-top-right-radius: 30px; margin-left:10px;margin-right:10px;" > ' + points + ' </p>'
 
             prnt.setAttribute("class", "prnt");
             prnt.appendChild(chl)
@@ -1048,7 +1048,8 @@ console.log(error);
         overflow: hidden;
         position: sticky;
         top: 0px;
-        background-color: var(--colorBtn);
+        background-color:var(--colorDialog);
+    
         padding-top: 20px;
         margin-top: -50px;
         overflow: hidden;
@@ -1088,8 +1089,8 @@ console.log(error);
         margin-top: 50px;
         margin-bottom: 50px;
         border-radius: 30px;
-        background-color: var(--colorBtn);
-        color: var(--colorTxt);
+        background-color:var(--colorDialog);
+        color: var(--colorTxtDialog);
         padding: 2px;
         height: auto;
         flex: 1;
@@ -1099,9 +1100,9 @@ console.log(error);
     }
 
     .prnt {
-
-        padding: 10px;
-        color: var(--colorTxt);
+       color: var(--colorTxtDialog);
+               padding: 10px;
+     
         min-height: 100vh;
         height: auto;
         flex: 1;
@@ -1110,6 +1111,8 @@ console.log(error);
         font-size: large;
         background: transparent;
     }
+
+  
 
     .chl2 {
         flex: 1;
@@ -1273,6 +1276,7 @@ console.log(error);
     body {
         --bgColor: #DCB585;
         --colorDialog:#826c51;
+        --colorTxtDialog:#000000;
         --colorTxt: rgb(0, 0, 0);
         --colorBtn: #b59670;
         color: var(--colorTxt);

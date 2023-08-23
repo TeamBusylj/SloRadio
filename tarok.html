@@ -1014,7 +1014,17 @@ if(animation){
        }
    
   })
-
+  circle.addEventListener("touchend", function(){
+mouse = true
+if(animation){
+    circle.style. transform= "scale(4)"
+       circle.classList.add("fadeOutIt")
+       setTimeout(() => {
+        circle.remove()
+       }, 200);
+       }
+   
+  })
   circle.addEventListener("animationend", function () {
     console.log(mouse);
     animation = true

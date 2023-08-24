@@ -997,13 +997,14 @@ console.log( event.target ,event.currentTarget);
   const radius = diameter / 2;
 
   circle.style.width = circle.style.height = `${radius}px`;
-  circle.style.left = `${event.clientX - button.offsetLeft + 30}px`;
-  circle.style.top = `${event.clientY - button.offsetTop}px`;
+  circle.style.left = `${event.pageX - button.offsetLeft + 30}px`;
+  circle.style.top = `${event.pageY - button.offsetTop}px`;
   circle.classList.add("ripple");
-
+console.log(event);
 let mouse = false
 let animation = false
-  circle.addEventListener("mouseup", function(){
+
+   document.body.addEventListener("touchend", function(){
 mouse = true
 if(animation){
     circle.style. transform= "scale(4)"
@@ -1013,18 +1014,8 @@ if(animation){
        }, 200);
        }
    
-  })
-  circle.addEventListener("touchend", function(){
-mouse = true
-if(animation){
-    circle.style. transform= "scale(4)"
-       circle.classList.add("fadeOutIt")
-       setTimeout(() => {
-        circle.remove()
-       }, 200);
-       }
-   
-  })
+  })  
+
   circle.addEventListener("animationend", function () {
     console.log(mouse);
     animation = true
@@ -1043,7 +1034,10 @@ if(animation){
 }    }
 
 
-  document.body.addEventListener("mousedown", createRipple);
+
+    document.body.addEventListener("touchstart", createRipple);
+
+
 
 
 

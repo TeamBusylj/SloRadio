@@ -32,12 +32,15 @@ function addScore() {
 } catch(error){
 console.log(error);
 }
-        var newElement = document.createElement("div")
-        newElement.setAttribute("class", "whlScreen");
-        var iks = document.createElement("img")
-        iks.classList.add("iks")
+        var newElement =   addElement("div", null, "whlScreen")
+
+     
+       
+
+        dodajOpis(newElement, "Tukaj lahko izberete katera igra je bila igrana.")
+        var iks =  addElement("img", newElement, "iks")
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
-        newElement.appendChild(iks)
+   
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
                  hideElement(newElement)
@@ -135,13 +138,13 @@ document.querySelector(".cntScreen").remove()
 
     function klop(newElement2, gamename) {
 
-        var newElement = document.createElement("div")
-        newElement.setAttribute("class", "whlScreen");
-        document.body.appendChild(newElement)
-        var iks = document.createElement("img")
-        iks.classList.add("iks")
+        var newElement =    addElement("div", document.body, "whlScreen")
+    
+        dodajOpis(newElement, "Tukaj vpišite koliko točk je dobil posamezen igralec. Pišite brez predznaka minus.")
+      
+        var iks =  addElement("img", newElement, "iks")
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
-        newElement.appendChild(iks)
+      
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
                  hideElement(newElement)
@@ -158,22 +161,23 @@ console.log(error);
                 continue
             }
 
-            let klopPlayer = document.createElement("input")
-            klopPlayer.classList.add("klopPlayer")
+            let klopPlayer =  addElement("input",  newElement, "klopPlayer")
+
+       
             klopPlayer.type = "number"
             klopPlayer.min = 0
             klopPlayer.name = user
             klopPlayer.placeholder = "Točke osebe " + user + "..."
-            newElement.appendChild(klopPlayer)
+           
 
 
 
         }
-        var btn = document.createElement("button")
+        var btn = addElement("button",  newElement, null)
         btn.innerHTML = "Končano"
       
         newElement.innerHTML += "<div class='break'></div>"
-        newElement.appendChild(btn)
+    
         btn.addEventListener("click", function () {
            
                 var plNombers = document.getElementsByClassName("klopPlayer");
@@ -208,17 +212,16 @@ console.log(error);
         }
 
     function calculate(gameName, properties,newElement) {
-        var btn = document.createElement("button")
-        var btn2 = document.createElement("button")
+        var btn =  addElement("button",  null, null)
+        var btn2 =  addElement("button",  null, null)
         var points = properties[0]
         var razlikaTF = properties[1]
         var teamWork = properties[3]
-       
+        dodajOpis(newElement, "Tukaj izberite ali sta bila v igri 2 igralca ali eden.")
         newElement.setAttribute("class", "whlScreen");
-        var iks = document.createElement("img")
-        iks.classList.add("iks")
+        var iks =  addElement("img", newElement, "iks")
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
-        newElement.appendChild(iks)
+      
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
                  hideElement(newElement)
@@ -264,91 +267,8 @@ console.log(error);
 
 
 
-    /*  function alone(newElement, gameName, properties) {
-          var difNu = document.createElement("input")
-          if (properties[1]) {
-  
-              difNu.type = "number"
-              difNu.min = 0
-              difNu.placeholder = "Razlika..."
-              difNu.max = 34
-              newElement.appendChild(difNu)
-              difNu.focus()
-              var razlika
-              difNu.addEventListener("change", function () {
-                  razlika = difNu.value
-                  let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
-                  razlika = nearestMultipleOf5;
-              })
-          }
-          let lnbrk = document.createElement("div")
-          lnbrk.classList.add("break")
-          newElement.appendChild(lnbrk)
-          var btn22 = document.createElement("button")
-          var btn23 = document.createElement("button")
-          var slct = document.createElement("select")
-          for (const user in listOfPlayers) {
-              slct.innerHTML += "<option>" + user + "</option>"
-          }
-  
-          newElement.appendChild(slct)
-          let lnbrk2 = document.createElement("div")
-          lnbrk2.classList.add("break")
-          newElement.appendChild(lnbrk2)
-          newElement.appendChild(document.createElement("br"))
-          btn22.innerHTML = "Zmagal"
-          btn23.innerHTML = "Izgubil"
-          newElement.appendChild(btn22)
-          newElement.appendChild(btn23)
-          document.body.appendChild(newElement)
-  
-          btn22.addEventListener("click", function () {
-              if (difNu.value !== "" || properties[1] == false) {
-                  let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
-                  razlika = nearestMultipleOf5;
-                  this.remove();
-                  btn23.remove();
-                  if (properties[1]) {
-                      aloneplusScore(slct.value,parseInt(properties[0]) + parseInt(razlika), true)
-                    listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, parseInt(razlika)]
-  
-                  } else {
-                  
-                      aloneplusScore(slct.value,parseInt(properties[0]), true)
-                    listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, null]
-  
-                  }
-             
-                   hideElement(newElement)
-                  
-              }
-          })
-          btn23.addEventListener("click", function () {
-              if (difNu.value !== "" || properties[1] == false) {
-                  let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
-                  razlika = nearestMultipleOf5;
-                  this.remove();
-                  btn23.remove();
-                  if (properties[1]) {
-                      aloneplusScore(slct.value,-Math.abs((parseInt(properties[0]) + parseInt(razlika))), true)
-                    listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, parseInt(razlika)]
-  
-  
-                  } else {
-                      aloneplusScore(slct.value,-Math.abs(parseInt(properties[0])), true)
-                    listOfPlayers["!gamesData!"][Object.keys( listOfPlayers["!gamesData!"]).length +1]= [String(gameName), String(slct.value), null, parseInt(properties[0]) + parseInt(razlika), listOfPlayers[slct.value][0].length > 0, null]
-  
-                  }
-  
-                   hideElement(newElement)
-                 
-              }
-          })
-  
-  
-      }
-      */
     function partner(newElement, gameName, properties, teamWork) {
+             dodajOpis(newElement, "Tukaj uredite podatke o igri. Ko končate pritisnite 'Zmaga' ali 'Izguba'")
         var razlika = 0
         var difNu = document.createElement("input")
         if (properties[1]) {
@@ -370,10 +290,11 @@ console.log(error);
         let lnbrk = document.createElement("div")
         lnbrk.classList.add("break")
         newElement.appendChild(lnbrk)
-        var btn22 = document.createElement("button")
-        var btn23 = document.createElement("button")
-        var slct = document.createElement("select")
-        var slct2 = document.createElement("select")
+      
+        var btn22 =  addElement("button", null, null)
+        var btn23 =  addElement("button", null, null)
+        var slct =  addElement("select",  newElement, null)
+        var slct2 =  addElement("select",  null, null)
         slct2.innerHTML = "<option>Partner</option>"
         slct.innerHTML = "<option>Glavni igralec</option>"
         for (const user in listOfPlayers) {
@@ -386,23 +307,18 @@ console.log(error);
         }
 
 
-        newElement.appendChild(slct)
+       
         if (teamWork) {
             newElement.appendChild(slct2)
         } else {
             slct2.value = 2
         }
 
-        let lnbrk2 = document.createElement("div")
-        lnbrk2.classList.add("break")
-        newElement.appendChild(lnbrk2)
+        addElement("div",  newElement, "break")
 
         btn22.innerHTML = "Zmagal"
         btn23.innerHTML = "Izgubil"
-
-        let lnbrk22 = document.createElement("div")
-        lnbrk22.classList.add("break")
-        newElement.appendChild(lnbrk22)
+        addElement("div",  newElement, "break")
         var bonusi = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
 
             "Trula": [10, 20, false],
@@ -443,9 +359,7 @@ console.log(error);
                 newElement.appendChild(btn)
             }
         }
-        let lnbrk23 = document.createElement("div")
-        lnbrk23.classList.add("break")
-        newElement.appendChild(lnbrk23)
+        addElement("div",  newElement, "break")
         newElement.appendChild(btn22)
         newElement.appendChild(btn23)
         //document.body.appendChild(newElement)
@@ -555,13 +469,10 @@ console.log(error);
     txtPos = txtPos.reverse()
     console.log(txtPos.toString().replace(/,/g,""));
     var result = txtPos.toString().replace(/,/g,"")
-    var newElement = document.createElement("div")
-        newElement.setAttribute("class", "whlScreen");
-        var iks = document.createElement("img")
-        iks.classList.add("iks")
-        document.body.appendChild(newElement)
+    var newElement =     addElement("div",  document.body, "whlScreen")
+    
+    var iks =  addElement("img", newElement, "iks")
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
-        newElement.appendChild(iks)
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
                 document.getElementById("game").style.animation = "none"
@@ -687,6 +598,7 @@ function hideElement(newElement){
 
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
+        dodajOpis(newElement, "Izberite igro.")
         var iks = document.createElement("img")
         iks.classList.add("iks")
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
@@ -739,8 +651,7 @@ function hideElement(newElement){
 
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
-        var iks = document.createElement("img")
-        iks.classList.add("iks")
+        var iks =  addElement("img", newElement, "iks")
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
         iks.addEventListener("click", function (e) {
             if (e.target == this) {
@@ -748,27 +659,26 @@ function hideElement(newElement){
      
             }
         })
-        newElement.appendChild(iks)
+     
         var onePl = document.createElement("input")
         var newPl = document.createElement("button")
         var endPl = document.createElement("button")
         newPl.setAttribute("id", "addPlayer");
-        newPl.innerHTML = "Add player"
+        newPl.innerHTML = "Dodaj igralca"
         newPl.setAttribute("class", "child");
         onePl.setAttribute("class", "child");
         onePl.placeholder = "Ime..."
         endPl.setAttribute("class", "child");
-        endPl.innerHTML = "Confirm"
+        endPl.innerHTML = "Končano"
         newElement.appendChild(onePl)
         onePl.focus()
         newElement.appendChild(newPl)
         newElement.appendChild(endPl)
         document.body.appendChild(newElement)
         newPl.addEventListener("click", function () {
-            let onePl2 = document.createElement("input")
-            onePl2.setAttribute("class", "child");
+          let onePl2= addElement("input",  newElement, "child")
             onePl2.placeholder = "Ime..."
-            newElement.appendChild(onePl2)
+          
             newElement.insertBefore(onePl2, newPl);
             onePl2.focus()
         })
@@ -830,20 +740,8 @@ console.log(error);
 
         document.getElementById("newgame").style.display = "none"
         document.getElementById("game").style.display = "none"
-        var newElement = document.createElement("div")
-        newElement.setAttribute("class", "cntScreen");
+        var newElement =    addElement("div",  document.body, "cntScreen")
 
-        if (JSON.stringify(listOfPlayers) !== JSON.stringify(listOfPlayersCopy)) {
-            var btn22 = document.createElement("button")
-            btn22.innerHTML = "Nazaj"
-            btn22.classList.add("undo")
-
-            document.body.appendChild(btn22)
-            btn22.addEventListener("click", function () {
-                undo()
-            })
-            btn22.remove()
-        }
         var rezultLine = document.createElement("div")
         for (const key in listOfPlayers) {
 
@@ -912,19 +810,34 @@ console.log(error);
     }
 
 
+function dodajOpis(newElement, text){
+    try{  newElement.getElementsByClassName("opis")[0].remove()}catch{}
+    var opisek =     addElement("p",  newElement, "opis")
+opisek.innerHTML = text
 
 
+let lnbrk =     addElement("div",  newElement, "break")
+         
+}
+function addElement( tag, parent, className){
+var element = document.createElement(tag)
+if(className !== null){
+    element.classList.add(className)
+}
+if(parent !== null){
+parent.appendChild(element)
+}
+return element
+}
 
     function gameData(infom, number) { // gamename, prvi igralc, drug igralc, tocke, ima radlc, razlika, dobil zgubil, bonusi, bonusi točke
     
         var info = listOfPlayers["!gamesData!"][infom]
         console.log(infom);
         console.log(info)
-        var newElement = document.createElement("div")
-        newElement.setAttribute("class", "whlScreen");
+        var newElement =     addElement("div",  document.body, "whlScreen")
       
-
-
+        dodajOpis(newElement, "Tukaj lahko vidite podatke o igri in jih spremenite.")
 
         var changeValue = document.createElement("input")
 
@@ -934,13 +847,9 @@ console.log(error);
       
             newElement.appendChild(changeValue)
          
-            var razlika
-           changeValue.addEventListener("change", function () {
-                razlika =changeValue.value
-            })
 
-        var table = document.createElement("div")
-        table.classList.add("gameData")
+         
+        var table =    addElement("table",  null, "gameData")
 
         var podatki = ["Igra", "Igralec", "Partner", "Razlika", "Radlc", "Uspeh", "Bonusi", "Točke"]
         var line = document.createElement("div")
@@ -961,40 +870,45 @@ console.log(error);
             if (i == 4 && element) { element = "Ja" } else { if (i == 4) { element = "Ne" } }
 
 
-            let tdVelk = document.createElement("div")
-            let td1 = document.createElement("div")
+            let tdVelk =     addElement("div",   line,"gameTdDiv")
+            let td1 =     addElement("div",   tdVelk, "gameDataTd")
             td1.innerHTML = element1
-            td1.classList.add("gameDataTd")
+         
 
-            tdVelk.appendChild(td1)
-            tdVelk.classList.add("gameTdDiv")
+   
+      
 
 
-            let td = document.createElement("div")
+            let td =     addElement("div",  tdVelk, "gameDataTdBottom")
             td.innerHTML = element
-            td.classList.add("gameDataTdBottom")
-
-            tdVelk.appendChild(td)
-            line.appendChild(tdVelk)
+           
+        
         }
 
         newElement.appendChild(table)
+        addElement("div",  newElement, "break")
         var iks = document.createElement("button")
  
  iks.innerHTML = "Končano"     
     newElement.appendChild(iks)
          iks.addEventListener("click", function (e) {
              if (e.target == this) {
-               console.log( listOfPlayers[info[1]][infom]);
+
+               listOfPlayers[info[1]][infom]= changeValue.value
+               listOfPlayers["!gamesData!"][infom][3] = changeValue.value
                if(info[2] !== null){
-               console.log( listOfPlayers[info[2]][infom]);
+             listOfPlayers[info[2]][infom]= changeValue.value
                }
                   hideElement(newElement)
+                  document.querySelector(".cntScreen").remove()
+                    document.querySelector(".crezultLine").remove()
+                  count()
                  try{
      Android.showButton()
  } catch(error){
  console.log(error);
  }
+
              }
          })
         document.body.appendChild(newElement)
@@ -1067,7 +981,13 @@ if(animation){
 
 <style>
 
-
+.opis {
+    font-size: large;
+    color: var(--colorTxtDialog);
+    width: 80%;
+    text-align: center;
+}
+}
 span.ripple {
   position: absolute;
   border-radius: 50%;
@@ -1254,7 +1174,8 @@ transition: all 2s;
     justify-content: center;
     align-content: center;
     width: 80%;
-    height: 70%;
+    height: auto;
+    padding: 5px;
  border-radius: 40px;  background:var(--colorDialog) 30%
     }
 

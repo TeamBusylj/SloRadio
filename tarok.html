@@ -650,7 +650,7 @@ function upload() {
     function plusScore(playedUser, user, score) {
         if (listOfPlayers[playedUser][0] !== '') {
             listOfPlayers[user].push(score * 2)
-            listOfPlayers[playedUser].push(score * 2)
+            listOfPlayers[playedUser].push(parseInt(score * 2)+"*")
             if (score > 0 && listOfPlayers[playedUser][0].length > 0) {
                 listOfPlayers[playedUser][0] = listOfPlayers[playedUser][0].replace('*', '')
             }
@@ -666,7 +666,7 @@ function upload() {
     function aloneplusScore(user, score) {
 
         if (listOfPlayers[user][0] !== '') {
-            listOfPlayers[user].push(score * 2)
+            listOfPlayers[user].push(parseInt(score * 2)+"*")
             if (score > 0 && listOfPlayers[user][0].length > 0) {
                 listOfPlayers[user][0] = listOfPlayers[user][0].replace('*', '')
             }
@@ -883,13 +883,14 @@ console.log(error);
                 kkk.addEventListener("click", function () {
 
                     console.log("ccc");
-                    gameData(listOfPlayers["!gamesData!"][stGame])
+                    gameData(listOfPlayers["!gamesData!"][stGame], stGame)
                 })
                 stGame++
 
 
                 if (pnts[i] !== '&nbsp') {
-                    points += pnts[i]
+                    console.log(pnts[i]);
+                    points += parseInt(pnts[i].toString().replace(/\*/g, ""))
                 }
                 i++
             }
@@ -914,31 +915,29 @@ console.log(error);
 
 
 
-    function gameData(infom) { // gamename, prvi igralc, drug igralc, tocke, ima radlc, razlika, dobil zgubil, bonusi, bonusi točke
-        console.log(infom);
+    function gameData(infom, number) { // gamename, prvi igralc, drug igralc, tocke, ima radlc, razlika, dobil zgubil, bonusi, bonusi točke
+    
         var info = listOfPlayers["!gamesData!"][infom]
-
+        console.log(infom);
         console.log(info)
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
-        var iks = document.createElement("img")
-        iks.classList.add("iks")
-        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
-        newElement.appendChild(iks)
-        iks.addEventListener("click", function (e) {
-            if (e.target == this) {
-                 hideElement(newElement)
-                try{
-    Android.showButton()
-} catch(error){
-console.log(error);
-}
-            }
-        })
+      
 
 
 
+        var changeValue = document.createElement("input")
 
+       changeValue.type = "number"
+       changeValue.value = info[3]
+           changeValue.placeholder = "Točke..."
+      
+            newElement.appendChild(changeValue)
+         
+            var razlika
+           changeValue.addEventListener("change", function () {
+                razlika =changeValue.value
+            })
 
         var table = document.createElement("div")
         table.classList.add("gameData")
@@ -980,11 +979,34 @@ console.log(error);
         }
 
         newElement.appendChild(table)
-
+        var iks = document.createElement("button")
+ 
+ iks.innerHTML = "Končano"     
+    newElement.appendChild(iks)
+         iks.addEventListener("click", function (e) {
+             if (e.target == this) {
+               console.log( listOfPlayers[info[1]][infom]);
+               if(info[2] !== null){
+               console.log( listOfPlayers[info[2]][infom]);
+               }
+                  hideElement(newElement)
+                 try{
+     Android.showButton()
+ } catch(error){
+ console.log(error);
+ }
+             }
+         })
         document.body.appendChild(newElement)
     }
 
  
+function deleteGame(){
+
+    localStorage.removeItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "));
+location.reload()
+}
+
 
     function createRipple(event) {
         if(event.target.tagName == "BUTTON" ){

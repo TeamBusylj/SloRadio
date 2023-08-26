@@ -854,7 +854,7 @@ console.log(error);
                 kkk.innerHTML = pnts[i]
 
                 chl.appendChild(kkk)
-           
+                kkk.style.marginTop ="-15px"
                 if (pnts[i] !== '&nbsp') {
                     kkk.setAttribute('onclick', 'gameData("' + stGame + '")')
 
@@ -862,6 +862,7 @@ console.log(error);
                 } else {
                     kkk.classList.add("noText")
                 }
+             
                 kkk.addEventListener("click", function () {
 
                     console.log("ccc");
@@ -1018,10 +1019,10 @@ console.log( event.target ,event.currentTarget);
   const radius = diameter / 2;
 
   circle.style.width = circle.style.height = `${radius}px`;
-  circle.style.left = `${event.pageX - button.offsetLeft + 30}px`;
-  circle.style.top = `${event.pageY - button.offsetTop}px`;
+  circle.style.left = `${event.touches[0].clientX - button.offsetLeft+40}px`;
+  circle.style.top = `${event.touches[0].clientY - button.offsetTop + 10}px`;
   circle.classList.add("ripple");
-console.log(event);
+console.log(event.touches[0]);
 let mouse = false
 let animation = false
 
@@ -1077,10 +1078,10 @@ input[type="checkbox"] {
     text-align: center;}
 
 span.ripple {
-  position: absolute;
+  position:fixed;
   border-radius: 50%;
 transition: all 2s;
-  transform: scale(0)  ;
+  transform: scale(0) translate(-50%, -50%) ;
 
   animation: ripple 200ms linear forwards;
   background-color: rgba(255, 255, 255, 0.7);
@@ -1106,7 +1107,7 @@ transition: all 2s;
 
 
     html{
-        font-size: larger;
+        font-size: 1.2em;
      -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */

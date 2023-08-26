@@ -34,7 +34,7 @@ console.log(error);
 }
         var newElement =   addElement("div", null, "whlScreen")
 
-     
+        document.querySelector(".cntScreen").style.filter = "brightness(.7)"
        
 
         dodajOpis(newElement, "Tukaj lahko izberete katera igra je bila igrana.")
@@ -322,10 +322,10 @@ console.log(error);
         addElement("div",  newElement, "break")
         var bonusi = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
 
-            "Trula": [10, 20, false],
-            "Kralji": [10, 20, false],
-            "Pagat ultimo": [25, 50, false],
-            "Kralj ultimo": [10, 20, false]
+            "Trula": [10, 20, null, false, false],
+            "Kralji": [10, 20, null, false, false],
+            "Pagat ultimo": [25, 50, null, false, false],
+            "Kralj ultimo": [10, 20, null, false, false]
         }
         var bonusTočke = 0
         var bnsi = []
@@ -338,24 +338,65 @@ console.log(error);
                 btn.style.transition = " all .2s";
                 btn.style.opacity = ".6"
                 btn.addEventListener("click", function () {
+                        var bonusDialog =     addElement("div",  newElement, "whlScreen")
+                        var iks =  addElement("img", bonusDialog, "iks")
+        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+      
+        iks.addEventListener("click", function (e) {
+            if (e.target == this) {
+               bonusDialog.style.animation = "hideScreen .2s forwards";
+   
+  
+    setTimeout(() => {
+        bonusDialog.remove()
+    }, 200);
+                 newElement.style.filter = "brightness(1)"
+            }
+        })
+                        bonusDialog.style.filter = "brightness(1.3)"
+                      newElement.style.filter = "brightness(.7)"
+                      var napovedanboolean = true
+                      var dobil = true
+                      let napovedano =  addElement("button",  bonusDialog, null)
+                   napovedano.innerHTML = "Napovedano"
+                    let ninapoved =  addElement("button",  bonusDialog, null)
+                    ninapoved.addEventListener("click", function(){napovedanboolean = false;napovedano.click()})
+                   ninapoved.innerHTML = "Ne napovedano"
 
-                    if (bonusi[key][2]) {
-                        bnsi = bnsi.filter(item => item !== key)
-                        bonusTočke = bonusTočke - bonusi[key][0]
-                        btn.style.opacity = ".6"
+                    napovedano.addEventListener("click", function(){
+                       
+                      
+                            bonusDialog.innerHTML = ""
+                            let izgubil =  addElement("button",  bonusDialog, null)
+                    izgubil.innerHTML = "Izgubljeno"
+                    izgubil.addEventListener("click", function(){dobil = false; zmagal.click()})
+                    let zmagal =  addElement("button",  bonusDialog, null)
+                   zmagal.innerHTML = "Dobljeno"
+                   zmagal.addEventListener("click", function(){
+                  
+                        if(dobil){
+                        bonusi[key][2] = true
+                      } else{
+                        bonusi[key][2] =  false
+                      }
+                    
+                    
+                      if(napovedanboolean){
+                        bonusi[key][3] = true
+                      } else{
+                        bonusi[key][3] =    false
+                      }
 
-                        btn.style.animation = " checkAnim .2s forwards reverse";
-                        btn.style.paddingRight = '0px'
-                        bonusi[key][2] = !bonusi[key][2]
-                    } else {
-                        bnsi.push(key)
-                        bonusTočke += bonusi[key][0]
-                        btn.style.opacity = "1"
-                        btn.style.animation = " checkAnim .2s forwards";
-                        btn.style.paddingRight = '20px'
-                        bonusi[key][2] = !bonusi[key][2]
-                    }
-                    console.log(bnsi);
+                         console.log(bonusi);
+                    newElement.style.filter = "brightness(1)"
+                    hideElement(bonusDialog)
+                    })
+                  
+                  
+                    })
+                 
+
+               
                 })
                 newElement.appendChild(btn)
             }
@@ -367,7 +408,25 @@ console.log(error);
 
 
         btn22.addEventListener("click", function () {
+            for (const key in bonusi) {
+                if(bonusi[key][2] !== null){
+                    if(bonusi[key][2]){
+                        if(bonusi[key][3]){
+                            bonusTočke += bonusi[key][1]
+                        } else{
+                    bonusTočke += bonusi[key][0]
+                        }
+                } else{
+                    if(bonusi[key][3]){
+                            bonusTočke -= bonusi[key][1]
+                        } else{
+                    bonusTočke -= bonusi[key][0]
+                        }
+                }
 
+                }
+            }
+            console.log(bonusTočke);
             if (difNu.value !== "" || properties[1] == false) {
 
                 if ((slct.selectedIndex !== 0 && slct2.selectedIndex !== 0) || (teamWork && slct.selectedIndex !== 0)) {
@@ -409,7 +468,25 @@ console.log(error);
             }
         })
         btn23.addEventListener("click", function () {
+            for (const key in bonusi) {
+                if(bonusi[key][2] !== null){
+                    if(bonusi[key][2]){
+                        if(bonusi[key][3]){
+                            bonusTočke += bonusi[key][1]
+                        } else{
+                    bonusTočke += bonusi[key][0]
+                        }
+                } else{
+                    if(bonusi[key][3]){
+                            bonusTočke -= bonusi[key][1]
+                        } else{
+                    bonusTočke -= bonusi[key][0]
+                        }
+                }
 
+                }
+            }
+            console.log(bonusTočke);
             if (difNu.value !== "" || properties[1] == false) {
 
                 if (slct.selectedIndex !== 0 && slct2.selectedIndex !== 0) {
@@ -471,7 +548,7 @@ console.log(error);
     console.log(txtPos.toString().replace(/,/g,""));
     var result = txtPos.toString().replace(/,/g,"")
     var newElement =     addElement("div",  document.body, "whlScreen")
-    
+    document.querySelector(".cntScreen").style.filter = "brightness(.7)"
     var iks =  addElement("img", newElement, "iks")
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
         iks.addEventListener("click", function (e) {
@@ -513,6 +590,7 @@ function upload() {
     
 
     var newElement = document.createElement("div")
+    document.querySelector(".cntScreen").style.filter = "brightness(.7)"
         newElement.setAttribute("class", "whlScreen");
         var iks = document.createElement("img")
         iks.classList.add("iks")
@@ -600,6 +678,7 @@ function hideElement(newElement){
     function Game() {
 
         var newElement = document.createElement("div")
+      
         newElement.setAttribute("class", "whlScreen");
         dodajOpis(newElement, "Izberite igro.")
         var iks = document.createElement("img")
@@ -653,6 +732,7 @@ function hideElement(newElement){
 
 
         var newElement = document.createElement("div")
+      
         newElement.setAttribute("class", "whlScreen");
         var iks =  addElement("img", newElement, "iks")
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
@@ -735,9 +815,9 @@ function hideElement(newElement){
 } catch(error){
 console.log(error);
 }
-        console.log(listOfPlayers);
+     
         padArraysToLongest(listOfPlayers);
-        console.log(listOfPlayers);
+    
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")['!gamesData'], JSON.stringify(listOfPlayers['!gamesData']))
 
@@ -790,7 +870,7 @@ console.log(error);
 
 
                 if (pnts[i] !== '&nbsp') {
-                    console.log(pnts[i]);
+       
                     points += parseInt(pnts[i].toString().replace(/\*/g, ""))
                 }
                 i++
@@ -839,6 +919,7 @@ return element
         console.log(infom);
         console.log(info)
         var newElement =     addElement("div",  document.body, "whlScreen")
+        document.querySelector(".cntScreen").style.filter = "brightness(.7)"
       
         dodajOpis(newElement, "Tukaj lahko vidite podatke o igri in jih spremenite.")
 
@@ -983,7 +1064,11 @@ if(animation){
 </script>
 
 <style>
-
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 5px;
+}
 .opis {
     font-size: large;
     color: var(--colorTxtDialog);
@@ -1173,6 +1258,7 @@ transition: all 2s;
     flex-wrap: wrap;
     width: 100%;
     border-radius: 40px;
+    transition: all .2s;
     position: fixed;
     justify-content: center;
     align-content: center;
@@ -1242,14 +1328,14 @@ transition: all 2s;
     
 
     .cntScreen {
-        backdrop-filter: blur(0) brightness(1)!important;
+background-color: var(--bgColor);
         animation: showScreen .4s forwards;
         color: var(--colorTxt);
         display: flex;
         flex-direction: row;
         width: 100%;
         top: 0;
-
+transition: all .2s;
         justify-content: center;
         align-items: top;
         height: 100%;
@@ -1305,13 +1391,13 @@ transition: all 2s;
         0% {
             opacity: 0;
             scale: .9;
-           backdrop-filter: brightness(1);
+          
         }
 
         100% {
             opacity: 1;
             scale: 1;
-            backdrop-filter: brightness(.8);
+           
         }
     }
     @keyframes hideScreen {
@@ -1320,12 +1406,11 @@ transition: all 2s;
         0% {
             opacity: 1;
             scale: 1;
-            backdrop-filter: brightness(.8);
+         
         }
         100% {
             opacity: 0;
-            scale: .9;
-           backdrop-filter: brightness(1);
+            scale: .9; 
         }
     }
 

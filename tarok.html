@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Števec taroka</title>
-   
 </head>
 
 <body>
@@ -38,18 +37,17 @@ console.log(error);
        
 
         dodajOpis(newElement, "Tukaj lahko izberete katera igra je bila igrana.")
-        var iks =  addElement("img", newElement, "iks")
-        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
-   
+        var iks =  addElement("div", newElement, "iks")
+       iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
         iks.addEventListener("click", function (e) {
-            if (e.target == this) {
+          
                  hideElement(newElement)
                 try{
     Android.showButton()
 } catch(error){
 console.log(error);
 }
-            }
+            
         })
         var games = {  // "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]
 
@@ -143,18 +141,19 @@ document.querySelector(".cntScreen").remove()
     
         dodajOpis(newElement, "Tukaj vpišite koliko točk je dobil posamezen igralec. Pišite brez predznaka minus.")
       
-        var iks =  addElement("img", newElement, "iks")
-        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+          var iks =  addElement("svg", newElement, "iks")
+       iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
+       
       
         iks.addEventListener("click", function (e) {
-            if (e.target == this) {
+          
                  hideElement(newElement)
                 try{
     Android.showButton()
 } catch(error){
 console.log(error);
 }
-            }
+            
         })
         for (const user in listOfPlayers) {
 
@@ -220,18 +219,19 @@ console.log(error);
         var teamWork = properties[3]
         dodajOpis(newElement, "Tukaj izberite ali sta bila v igri 2 igralca ali eden.")
         newElement.setAttribute("class", "whlScreen");
-        var iks =  addElement("img", newElement, "iks")
-        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+          var iks =  addElement("svg", newElement, "iks")
+       iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
+       
       
         iks.addEventListener("click", function (e) {
-            if (e.target == this) {
+          
                  hideElement(newElement)
                 try{
     Android.showButton()
 } catch(error){
 console.log(error);
 }
-            }
+            
         })
        
         //if(gameName.includes('Valat') || gameName.includes('Berač') ) {radlciDodaj()}
@@ -339,11 +339,11 @@ console.log(error);
                 btn.style.opacity = ".6"
                 btn.addEventListener("click", function () {
                         var bonusDialog =     addElement("div",  newElement, "whlScreen")
-                        var iks =  addElement("img", bonusDialog, "iks")
-        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
-      
+                        var iks =  addElement("div", newElement, "iks")
+       iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
+       
         iks.addEventListener("click", function (e) {
-            if (e.target == this) {
+      
                bonusDialog.style.animation = "hideScreen .2s forwards";
    
   
@@ -351,7 +351,7 @@ console.log(error);
         bonusDialog.remove()
     }, 200);
                  newElement.style.filter = "brightness(1)"
-            }
+            
         })
                         bonusDialog.style.filter = "brightness(1.3)"
                       newElement.style.filter = "brightness(.7)"
@@ -549,14 +549,15 @@ console.log(error);
     var result = txtPos.toString().replace(/,/g,"")
     var newElement =     addElement("div",  document.body, "whlScreen")
     document.querySelector(".cntScreen").style.filter = "brightness(.7)"
-    var iks =  addElement("img", newElement, "iks")
-        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+      var iks =  addElement("svg", newElement, "iks")
+       iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
+       
         iks.addEventListener("click", function (e) {
-            if (e.target == this) {
+         
                 document.getElementById("game").style.animation = "none"
                  hideElement(newElement)
       
-            }
+            
         })
         var shareButton = document.createElement("button")
         shareButton.innerHTML = "Deli"
@@ -598,11 +599,11 @@ function upload() {
         iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
         newElement.appendChild(iks)
         iks.addEventListener("click", function (e) {
-            if (e.target == this) {
+        
                 document.getElementById("game").style.animation = "none"
                  hideElement(newElement)
       
-            }
+            
         })
         var shareButton = document.createElement("input")
         shareButton.placeholder = "Koda"
@@ -681,18 +682,17 @@ function hideElement(newElement){
       
         newElement.setAttribute("class", "whlScreen");
         dodajOpis(newElement, "Izberite igro.")
-        var iks = document.createElement("img")
-        iks.classList.add("iks")
-        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
-        newElement.appendChild(iks)
+        var iks =  addElement("svg", newElement, "iks")
+       iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
+       
         iks.addEventListener("click", function (e) {
-            if (e.target == this) {
+       
                 document.getElementById("game").style.animation = "none"
               
            hideElement(newElement)
                 // hideElement(newElement)
       
-            }
+            
         })
 
         var slct = document.createElement("select")
@@ -734,13 +734,14 @@ function hideElement(newElement){
         var newElement = document.createElement("div")
       
         newElement.setAttribute("class", "whlScreen");
-        var iks =  addElement("img", newElement, "iks")
-        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
+          var iks =  addElement("svg", newElement, "iks")
+       iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
+       
         iks.addEventListener("click", function (e) {
-            if (e.target == this) {
+   
                  hideElement(newElement)
      
-            }
+            
         })
      
         var onePl = document.createElement("input")
@@ -976,7 +977,7 @@ return element
  iks.innerHTML = "Končano"     
     newElement.appendChild(iks)
          iks.addEventListener("click", function (e) {
-             if (e.target == this) {
+          
 
                listOfPlayers[info[1]][infom]= changeValue.value
                listOfPlayers["!gamesData!"][infom][3] = changeValue.value
@@ -993,7 +994,7 @@ return element
  console.log(error);
  }
 
-             }
+             
          })
         document.body.appendChild(newElement)
     }
@@ -1149,6 +1150,7 @@ transition: all 2s;
     }
 
     .iks {
+        fill: var(--colorTxtDialog);
         position: fixed;
         right: 10px;
         top: 10px;
@@ -1423,16 +1425,7 @@ transition: all .2s;
 
     }
 
-    @keyframes checkAnim {
-        0% {
-            background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 0% no-repeat, var(--colorBtn);
-        }
-
-        100% {
-            background: url("https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/check_circle/materialsymbolsrounded/check_circle_fill1_48px.svg") 95% 50% / 20% no-repeat, var(--colorBtn);
-        }
-
-    }
+    
 
 
 

@@ -110,7 +110,7 @@
         var newElement = addElement("div", document.body, "whlScreen")
         document.querySelector(".cntScreen").style.filter = "brightness(.3)"; document.querySelector(".crezultLine").style.filter = "brightness(.3)"
         dodajOpis(newElement, "Tukaj vpišite koliko točk je dobil posamezen igralec. Pišite brez predznaka minus.")
-        var iks = addElement("svg", newElement, "iks")
+        var iks = addElement("div", newElement, "iks")
         iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
         iks.addEventListener("click", function (e) {
             hideElement(newElement)
@@ -171,7 +171,7 @@
         })
     }
     function calculate(gameName, properties, newElement) {
-        var iks = addElement("svg", newElement, "iks")
+        var iks = addElement("div", newElement, "iks")
         iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
         iks.addEventListener("click", function (e) {
             hideElement(newElement)
@@ -190,6 +190,8 @@
             var points = properties[0]
             var razlikaTF = properties[1]
             var teamWork = properties[3]
+            let lnbrk = addElement("div", newElement, "break")
+            lnbrk.style.height = "50px"
             dodajOpis(newElement, "Tukaj izberite ali sta bila v igri 2 igralca ali eden.")
             newElement.setAttribute("class", "whlScreen");
 
@@ -231,9 +233,7 @@
                 difNu.value = nearestMultipleOf5;
             })
         }
-        let lnbrk = document.createElement("div")
-        lnbrk.classList.add("break")
-        newElement.appendChild(lnbrk)
+
         var btn22 = addElement("button", null, null)
         var btn23 = addElement("button", null, null)
         var slct = addElement("select", newElement, null)
@@ -271,7 +271,7 @@
                 btn.style.transition = " all .2s";
                 btn.style.opacity = ".6"
                 btn.addEventListener("click", function () {
-                    var bonusDialog = addElement("div", newElement, "whlScreen")
+                    var bonusDialog = addElement("div", document.body, "whlScreen")
                     var iks = addElement("div", bonusDialog, "iks")
                     iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
                     iks.addEventListener("click", function (e) {
@@ -281,7 +281,9 @@
                         }, 200);
                         newElement.style.filter = "brightness(1)"
                     })
-                    bonusDialog.style.filter = "brightness(1.6)"
+                    let lnbrk = addElement("div", bonusDialog, "break")
+                    lnbrk.style.height = "50px"
+                    bonusDialog.style.filter = "brightness(1)"
                     newElement.style.filter = "brightness(.4)"
                     var napovedanboolean = true
                     var dobil = true
@@ -441,7 +443,7 @@
         var result = txtPos.toString().replace(/,/g, "")
         var newElement = addElement("div", document.body, "whlScreen")
         document.querySelector(".cntScreen").style.filter = "brightness(.3)"; document.querySelector(".crezultLine").style.filter = "brightness(.3)"
-        var iks = addElement("svg", newElement, "iks")
+        var iks = addElement("div", newElement, "iks")
         iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
         iks.addEventListener("click", function (e) {
             document.getElementById("game").style.animation = "none"
@@ -550,7 +552,7 @@
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
         dodajOpis(newElement, "Izberite igro.")
-        var iks = addElement("svg", newElement, "iks")
+        var iks = addElement("div", newElement, "iks")
         iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
         iks.addEventListener("click", function (e) {
             document.getElementById("game").style.animation = "none"
@@ -589,11 +591,13 @@
     function newGame() {
         var newElement = document.createElement("div")
         newElement.setAttribute("class", "whlScreen");
-        var iks = addElement("svg", newElement, "iks")
+        var iks = addElement("div", newElement, "iks")
         iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
         iks.addEventListener("click", function (e) {
             hideElement(newElement)
         })
+        let lnbrk = addElement("div", newElement, "break")
+        lnbrk.style.height = "50px"
         var onePl = document.createElement("input")
         var newPl = document.createElement("button")
         var endPl = document.createElement("button")
@@ -799,6 +803,7 @@
         location.reload()
     }
     function createRipple(event) {
+
         if (event.target.tagName == "BUTTON") {
             console.log(event.target, event.currentTarget);
             const button = event.target;
@@ -806,8 +811,11 @@
             const diameter = Math.max(button.clientWidth, button.clientHeight);
             const radius = diameter / 2;
             circle.style.width = circle.style.height = `${radius}px`;
-            circle.style.left = `${event.touches[0].clientX - button.offsetLeft + 40}px`;
-            circle.style.top = `${event.touches[0].clientY - button.offsetTop + 10}px`;
+            const rect = button.getBoundingClientRect();
+
+            console.log(event.touches[0].clientX, "-----", event.touches[0].clientX);
+            circle.style.left = `${event.touches[0].clientX - rect.left - 10}px`;
+            circle.style.top = `${event.touches[0].clientY - rect.top - 10}px`;
             circle.classList.add("ripple");
             console.log(event.touches[0]);
             let mouse = false
@@ -815,28 +823,35 @@
             document.body.addEventListener("touchend", function () {
                 mouse = true
                 if (animation) {
-                    circle.style.transform = "scale(4)"
-                    circle.classList.add("fadeOutIt")
                     setTimeout(() => {
-                        circle.remove()
-                    }, 200);
+                        circle.style.transform = "scale(4)"
+                        circle.classList.add("fadeOutIt")
+                        setTimeout(() => {
+                            circle.remove()
+                        }, 200);
+                    }, 100);
+
                 }
             })
             circle.addEventListener("animationend", function () {
                 console.log(mouse);
                 animation = true
                 if (mouse) {
-                    circle.style.transform = "scale(4)"
-                    circle.classList.add("fadeOutIt")
                     setTimeout(() => {
-                        circle.remove()
-                    }, 200);
+                        circle.style.transform = "scale(4)"
+                        circle.classList.add("fadeOutIt")
+                        setTimeout(() => {
+                            circle.remove()
+                        }, 200);
+                    }, 100);
+
                 }
             });
             button.appendChild(circle);
         }
     }
     document.body.addEventListener("touchstart", createRipple);
+
 </script>
 <style>
     input[type="checkbox"] {

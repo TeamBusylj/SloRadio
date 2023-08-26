@@ -27,7 +27,7 @@
             console.log(error);
         }
         var newElement = addElement("div", null, "whlScreen")
-        document.querySelector(".cntScreen").style.filter = "brightness(.7)"
+        document.querySelector(".cntScreen").style.filter = "brightness(.3)"; document.querySelector(".crezultLine").style.filter = "brightness(.3)"
         dodajOpis(newElement, "Tukaj lahko izberete katera igra je bila igrana.")
         var iks = addElement("div", newElement, "iks")
         iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
@@ -108,7 +108,7 @@
     }
     function klop(newElement2, gamename) {
         var newElement = addElement("div", document.body, "whlScreen")
-        document.querySelector(".cntScreen").style.filter = "brightness(.7)"
+        document.querySelector(".cntScreen").style.filter = "brightness(.3)"; document.querySelector(".crezultLine").style.filter = "brightness(.3)"
         dodajOpis(newElement, "Tukaj vpišite koliko točk je dobil posamezen igralec. Pišite brez predznaka minus.")
         var iks = addElement("svg", newElement, "iks")
         iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
@@ -440,7 +440,7 @@
         console.log(txtPos.toString().replace(/,/g, ""));
         var result = txtPos.toString().replace(/,/g, "")
         var newElement = addElement("div", document.body, "whlScreen")
-        document.querySelector(".cntScreen").style.filter = "brightness(.7)"
+        document.querySelector(".cntScreen").style.filter = "brightness(.3)"; document.querySelector(".crezultLine").style.filter = "brightness(.3)"
         var iks = addElement("svg", newElement, "iks")
         iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
         iks.addEventListener("click", function (e) {
@@ -475,7 +475,7 @@
     }
     function upload() {
         var newElement = document.createElement("div")
-        document.querySelector(".cntScreen").style.filter = "brightness(.7)"
+        document.querySelector(".cntScreen").style.filter = "brightness(.3)"; document.querySelector(".crezultLine").style.filter = "brightness(.3)"
         newElement.setAttribute("class", "whlScreen");
         var iks = document.createElement("img")
         iks.classList.add("iks")
@@ -541,7 +541,7 @@
     }
     function hideElement(newElement) {
         newElement.style.animation = "hideScreen .2s forwards";
-        try { document.querySelector(".cntScreen").style.filter = "" } catch { }
+        try { document.querySelector(".cntScreen").style.filter = ""; document.querySelector(".crezultLine").style.filter = "" } catch { }
         setTimeout(() => {
             newElement.remove()
         }, 200);
@@ -735,7 +735,7 @@
         console.log(infom);
         console.log(info)
         var newElement = addElement("div", document.body, "whlScreen")
-        document.querySelector(".cntScreen").style.filter = "brightness(.7)"
+        document.querySelector(".cntScreen").style.filter = "brightness(.3)"; document.querySelector(".crezultLine").style.filter = "brightness(.3)"
         dodajOpis(newElement, "Tukaj lahko vidite podatke o igri in jih spremenite.")
         if (info[0] !== "Po meri" && info[0] !== "Klop") {
             var changeValue = document.createElement("input")
@@ -1089,6 +1089,7 @@
     }
 
     .crezultLine {
+        transition: all .2s;
         color: var(--colorTxt);
         z-index: 400;
         overflow: hidden;

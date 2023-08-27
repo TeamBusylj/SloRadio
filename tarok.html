@@ -515,7 +515,7 @@
             console.log(txtPos);
             localStorage.setItem(JSON.stringify(Object.keys(txtPos).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
             localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")['!gamesData'], JSON.stringify(listOfPlayers['!gamesData']))
-            // location.reload()
+            try { Android.saveStorage(JSON.stringify(localStorage)) } catch { }
         })
     }
     function plusScore(playedUser, user, score) {
@@ -662,6 +662,7 @@
         padArraysToLongest(listOfPlayers);
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")['!gamesData'], JSON.stringify(listOfPlayers['!gamesData']))
+        try { Android.saveStorage(JSON.stringify(localStorage)) } catch { }
         document.getElementById("newgame").style.display = "none"
         document.getElementById("game").style.display = "none"
         var newElement = addElement("div", document.body, "cntScreen")

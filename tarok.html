@@ -21,11 +21,7 @@
     }
     function addScore() {
         listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
-        try {
-            Android.hideButton()
-        } catch (error) {
-            console.log(error);
-        }
+
         var newElement = addElement("div", null, "whlScreen")
         document.querySelector(".cntScreen").style.filter = "brightness(.3)"; document.querySelector(".crezultLine").style.filter = "brightness(.3)"
         dodajOpis(newElement, "Tukaj lahko izberete katera igra je bila igrana.")

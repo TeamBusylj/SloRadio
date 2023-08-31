@@ -423,24 +423,14 @@
             }
         })
     }
+
+
+
+
     function download() {
-        var text = JSON.stringify(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")) + "--" + JSON.stringify(listOfPlayers)
+        var text = JSON.stringify(listOfPlayers)
         console.log(text);
-        var result = "";
-        for (var i = 0; i < text.length; i++) {
-            var code = text.codePointAt(i)
-            result += code + ","
-        }
-        var txt = result.slice(0, result.length - 1);
-        var txtPos = txt.split(",")
-        for (let i = 0; i < txtPos.length; i++) {
-            txtPos[i] = (txtPos[i] * 5 + 1026)
-            txtPos[i] = String(txtPos[i]).split("").reverse().join(""), 10;
-            if (i !== 0) txtPos[i] = txtPos[i].toString() + "-"
-        }
-        txtPos = txtPos.reverse()
-        console.log(txtPos.toString().replace(/,/g, ""));
-        var result = txtPos.toString().replace(/,/g, "")
+        var result = "https://teambusylj.github.io/SloRadio/tarok.html#" + encodeURIComponent(text)
         var newElement = addElement("div", document.body, "whlScreen")
         document.querySelector(".cntScreen").style.filter = "brightness(.3)"; document.querySelector(".crezultLine").style.filter = "brightness(.3)"
         var iks = addElement("div", newElement, "iks")
@@ -449,6 +439,7 @@
             document.getElementById("game").style.animation = "none"
             hideElement(newElement)
         })
+        console.log(result);
         var shareButton = document.createElement("button")
         shareButton.innerHTML = "Deli"
         var copyButton = document.createElement("button")
@@ -467,56 +458,49 @@
             try {
                 var copyText = document.createElement("input")
                 copyText.value = result
+
+                document.body.appendChild(copyText)
                 copyText.select();
                 copyText.setSelectionRange(0, 99999); // For mobile devices
+
                 navigator.clipboard.writeText(copyText.value);
             } catch (error) {
                 console.log(error);
             }
         })
     }
-    function upload() {
-        var newElement = document.createElement("div")
-        document.querySelector(".cntScreen").style.filter = "brightness(.3)"; document.querySelector(".crezultLine").style.filter = "brightness(.3)"
-        newElement.setAttribute("class", "whlScreen");
-        var iks = document.createElement("img")
-        iks.classList.add("iks")
-        document.body.appendChild(newElement)
-        iks.src = "https://raw.githubusercontent.com/google/material-design-icons/master/symbols/web/close/materialsymbolsrounded/close_grad200fill1_48px.svg"
-        newElement.appendChild(iks)
+    document.body.onload = function () { if (location.hash !== "") { upload(location.hash.slice(1)) }; };
+
+    function upload(encrypted) {
+        var text = JSON.parse(decodeURIComponent(encrypted))
+        var newElement = addElement("div", document.body, "whlScreen")
+        var iks = addElement("div", newElement, "iks")
+        iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>'
         iks.addEventListener("click", function (e) {
             document.getElementById("game").style.animation = "none"
             hideElement(newElement)
         })
-        var shareButton = document.createElement("input")
-        shareButton.placeholder = "Koda"
-        shareButton.type = "text"
-        newElement.appendChild(shareButton)
+        dodajOpis(newElement, "Ali želite uvoziti igro z igralci " + JSON.stringify(Object.keys(text).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ") + "?")
         var shareButton = document.createElement("button")
-        shareButton.innerHTML = "Končano"
+        shareButton.innerHTML = "Da"
+        var copyButton = document.createElement("button")
+        copyButton.innerHTML = "Ne"
+        newElement.appendChild(copyButton)
+
         newElement.appendChild(shareButton)
         shareButton.addEventListener("click", function () {
-            var text = shareButton.value
-            var txtPos = text.split("-")
-            txtPos = txtPos.reverse()
-            for (let i = 0; i < txtPos.length; i++) {
-                console.log(txtPos[i]);
-                txtPos[i] = String(txtPos[i]).split("").reverse().join(""), 10;
-                console.log(txtPos[i].toString());
-                txtPos[i] = (txtPos[i] - 1026) / 5
-                if (txtPos[i] < 65536 && txtPos[i] > 0) { } else {
-                    txtPos = ["Not the correct code, encript you message here."]
-                    break
-                }
-                txtPos[i] = String.fromCharCode(txtPos[i])
-            }
-            //  txtPos.splice(0, 1)
-            txtPos = txtPos.toString().replace(/,/g, "")
-            console.log(txtPos);
-            localStorage.setItem(JSON.stringify(Object.keys(txtPos).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers))
-            localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")['!gamesData'], JSON.stringify(listOfPlayers['!gamesData']))
+
+
+
+            localStorage.setItem(JSON.stringify(Object.keys(text).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(text))
+            localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter(key => key !== "!gamesData!")).replace(/"/g, '').replace("[", "").replace("]", "").replace(/,/g, ", ")['!gamesData'], JSON.stringify(text['!gamesData']))
             try { Android.saveStorage(JSON.stringify(localStorage)) } catch { }
+            hideElement(newElement)
         })
+        copyButton.addEventListener("click", function () {
+            hideElement(newElement)
+        })
+
     }
     function plusScore(playedUser, user, score) {
         if (listOfPlayers[playedUser][0] !== '') {

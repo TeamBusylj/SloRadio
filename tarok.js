@@ -821,5 +821,5 @@ function createRipple(event) {
     });
     button.appendChild(circle);
 }
-}
+
 document.body.addEventListener("touchstart", createRipple);

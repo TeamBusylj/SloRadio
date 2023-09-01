@@ -1,0 +1,320 @@
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin: 5px;
+}
+
+.opis {
+    font-size: large;
+    color: var(--colorTxtDialog);
+    width: 80%;
+    text-align: center;
+}
+
+span.ripple {
+    position: fixed;
+    border-radius: 50%;
+    transition: all 2s;
+    transform: scale(0) translate(-50%, -50%);
+    animation: ripple 200ms linear forwards;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.fadeOutIt {
+    animation: fadeOut .2s linear forwards !important;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: .4;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: .4;
+    }
+}
+
+html {
+    font-size: 1.2em;
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+.gameData {
+    width: 90%;
+}
+
+.gameTdDiv {
+    min-width: 68px;
+    max-width: 12%;
+    flex: 1 1 100%;
+}
+
+.gameDataTdBottom {
+    text-align: center;
+    background-color: var(--colorBtn);
+    padding: 8px;
+    margin: 3px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.gameDataTd {
+    text-align: center;
+    background-color: var(--colorBtn);
+    padding: 8px;
+    margin: 3px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.noText:hover {
+    margin: 0;
+    cursor: default !important;
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.iks {
+    fill: var(--colorTxtDialog);
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}
+
+#newgame {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.namePlayers {
+    padding-bottom: 10px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    z-index: 5555;
+    z-index: 5555;
+    overflow: hidden;
+    position: sticky;
+    top: 0px;
+    background-color: var(--colorDialog);
+    padding-top: 20px;
+    margin-top: -50px;
+    overflow: hidden;
+}
+
+#game {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.undo {
+    position: fixed;
+    right: 10px;
+    bottom: 50px;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.chl {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 30px;
+    background-color: var(--colorDialog);
+    color: var(--colorTxtDialog);
+    padding: 2px;
+    height: auto;
+    flex: 1;
+    text-align: center;
+}
+
+.prnt {
+    color: var(--colorTxtDialog);
+    padding: 10px;
+    min-height: 100vh;
+    height: auto;
+    flex: 1;
+    text-align: center;
+    border-radius: 30px;
+    background: transparent;
+}
+
+.chl2 {
+    flex: 1;
+    text-align: center;
+    font-size: large;
+    position: absolute;
+    bottom: 0;
+    border-right: 1px solid;
+}
+
+.whlScreen {
+    animation: showScreen .3s forwards;
+    color: var(--colorTxt);
+    z-index: 500000;
+    display: flex;
+    flex-direction: row;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    flex-wrap: wrap;
+    width: 100%;
+    border-radius: 40px;
+    transition: all .2s;
+    position: fixed;
+    justify-content: center;
+    align-content: center;
+    width: 80%;
+    height: auto;
+    padding: 5px;
+    border-radius: 40px;
+    background: var(--colorDialog) 30%
+}
+
+button {
+    color: var(--colorTxt);
+    transition: all .05s;
+    overflow: hidden;
+    position: relative;
+    flex-basis: 100px;
+    border-radius: 30px;
+    text-align: center;
+    padding: 14px;
+    border-width: 0;
+    background-color: var(--colorBtn);
+    /* box-shadow: 5px 5px #888888; */
+    margin: 10px;
+    animation: showScreen .2s forwards;
+}
+
+select:active {
+    /*  box-shadow: 5px 5px #888888;*/
+    border-width: 0;
+}
+
+select {
+    transition: all .05s;
+    margin: 30px;
+    width: 40vw;
+    border-width: 0;
+    border-radius: 20px;
+    padding: 7px;
+    animation: showScreen .2s forwards;
+}
+
+input {
+    margin: 30px;
+    width: 40vw;
+    border-width: 0;
+    border-radius: 20px;
+    padding: 7px;
+    animation: showScreen .2s forwards;
+}
+
+.cntScreen {
+    background-color: var(--bgColor);
+    animation: showScreen .4s forwards;
+    color: var(--colorTxt);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    top: 0;
+    transition: all .2s;
+    justify-content: center;
+    align-items: top;
+    height: 100%;
+}
+
+.brightnesslow {
+    filter: brightness(.6);
+}
+
+.crezultLine {
+    transition: all .2s;
+    color: var(--colorTxt);
+    z-index: 400;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    box-shadow: none;
+    bottom: -19px;
+    position: fixed;
+    justify-content: center;
+    align-items: top;
+    text-align: center;
+}
+
+.child {
+    width: 30vw;
+    flex: 1 1 100%;
+    margin: 10px;
+    width: 30vw;
+    margin: 10px;
+}
+
+body {
+    --bgColor: #DCB585;
+    --colorDialog: #826c51;
+    --colorTxtDialog: #000000;
+    --colorTxt: rgb(0, 0, 0);
+    --colorBtn: #b59670;
+    color: var(--colorTxt);
+    margin: 0;
+    background-attachment: fixed;
+    background-color: var(--bgColor);
+}
+
+p {
+    transition: all .2s;
+}
+
+@keyframes showScreen {
+    0% {
+        opacity: 0;
+        scale: .9;
+    }
+
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+@keyframes hideScreen {
+    0% {
+        opacity: 1;
+        scale: 1;
+    }
+
+    100% {
+        opacity: 0;
+        scale: .9;
+    }
+}
+
+.chl>p:hover {
+    border-radius: 30px;
+    margin-left: 3px;
+    margin-right: 3px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .2);
+}

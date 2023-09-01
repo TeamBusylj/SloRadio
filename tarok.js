@@ -781,44 +781,45 @@ function createRipple(event) {
         const circle = document.createElement("span");
         const diameter = Math.max(button.clientWidth, button.clientHeight);
         const radius = diameter / 2;
-        circle.style.width = circle.style.height = `${radius}px`;
+        circle.style.width = circle.style.height = radius + "px";
         const rect = button.getBoundingClientRect();
 
         console.log(event.touches[0].clientX, "-----", event.touches[0].clientX);
-        circle.style.left = `${event.touches[0].clientX - rect.left - 10}px`;
-        circle.style.top = `${event.touches[0].clientY - rect.top - 10}px`;
-        circle.classList.add("ripple");
-        console.log(event.touches[0]);
-        let mouse = false
-        let animation = false
-        document.body.addEventListener("touchend", function () {
-            mouse = true
-            if (animation) {
+        circle.style.left = event.touches[0].clientX - rect.left - 10 + "px";
+        circle.style.top = event.touches[0].clientY - rect.top - 10
+    } +"px";
+    circle.classList.add("ripple");
+    console.log(event.touches[0]);
+    let mouse = false
+    let animation = false
+    document.body.addEventListener("touchend", function () {
+        mouse = true
+        if (animation) {
+            setTimeout(() => {
+                circle.style.transform = "scale(4)"
+                circle.classList.add("fadeOutIt")
                 setTimeout(() => {
-                    circle.style.transform = "scale(4)"
-                    circle.classList.add("fadeOutIt")
-                    setTimeout(() => {
-                        circle.remove()
-                    }, 200);
-                }, 100);
+                    circle.remove()
+                }, 200);
+            }, 100);
 
-            }
-        })
-        circle.addEventListener("animationend", function () {
-            console.log(mouse);
-            animation = true
-            if (mouse) {
+        }
+    })
+    circle.addEventListener("animationend", function () {
+        console.log(mouse);
+        animation = true
+        if (mouse) {
+            setTimeout(() => {
+                circle.style.transform = "scale(4)"
+                circle.classList.add("fadeOutIt")
                 setTimeout(() => {
-                    circle.style.transform = "scale(4)"
-                    circle.classList.add("fadeOutIt")
-                    setTimeout(() => {
-                        circle.remove()
-                    }, 200);
-                }, 100);
+                    circle.remove()
+                }, 200);
+            }, 100);
 
-            }
-        });
-        button.appendChild(circle);
-    }
+        }
+    });
+    button.appendChild(circle);
+}
 }
 document.body.addEventListener("touchstart", createRipple);

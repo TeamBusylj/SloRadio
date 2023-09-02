@@ -709,7 +709,7 @@ function upload(encrypted) {
             JSON.stringify(text["!gamesData"]),
         );
         try {
-            Android.saveStorage(JSON.stringify(localStorage));
+            Android.saveStorage(JSON.stringify(localStorage).replace("\\\\", "\\\\\\\\"));
         } catch { }
         hideElement(newElement);
     });
@@ -896,7 +896,7 @@ function count() {
         JSON.stringify(listOfPlayers["!gamesData"]),
     );
     try {
-        Android.saveStorage(JSON.stringify(localStorage));
+        Android.saveStorage(JSON.stringify(localStorage).replace("\\\\", "\\\\\\\\"));
     } catch { }
     document.getElementById("newgame").style.display = "none";
     document.getElementById("game").style.display = "none";

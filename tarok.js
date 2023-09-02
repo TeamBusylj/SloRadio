@@ -652,70 +652,69 @@ function download() {
         }
     });
 }
-document.body.onload = function () {
-    if (location.hash !== "") {
-        upload(location.hash.slice(1));
-    }
-};
+
+
 
 function upload(encrypted) {
-    var text = JSON.parse(decodeURIComponent(encrypted));
-    var newElement = addElement("div", document.body, "whlScreen");
-    var iks = addElement("div", newElement, "iks");
-    iks.innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
-    iks.addEventListener("click", function (e) {
-        document.getElementById("game").style.animation = "none";
-        hideElement(newElement);
-    });
-    dodajOpis(
-        newElement,
-        "Ali želite uvoziti igro z igralci " +
-        JSON.stringify(
-            Object.keys(text).filter((key) => key !== "!gamesData!"),
-        )
-            .replace(/"/g, "")
-            .replace("[", "")
-            .replace("]", "")
-            .replace(/,/g, ", ") +
-        "?",
-    );
-    var shareButton = document.createElement("button");
-    shareButton.innerHTML = "Da";
-    var copyButton = document.createElement("button");
-    copyButton.innerHTML = "Ne";
-    newElement.appendChild(copyButton);
-
-    newElement.appendChild(shareButton);
-    shareButton.addEventListener("click", function () {
-        localStorage.setItem(
+    try {
+        var text = JSON.parse(decodeURIComponent(encrypted));
+        var newElement = addElement("div", document.body, "whlScreen");
+        var iks = addElement("div", newElement, "iks");
+        iks.innerHTML =
+            '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+        iks.addEventListener("click", function (e) {
+            document.getElementById("game").style.animation = "none";
+            hideElement(newElement);
+        });
+        dodajOpis(
+            newElement,
+            "Ali želite uvoziti igro z igralci " +
             JSON.stringify(
                 Object.keys(text).filter((key) => key !== "!gamesData!"),
             )
                 .replace(/"/g, "")
                 .replace("[", "")
                 .replace("]", "")
-                .replace(/,/g, ", "),
-            JSON.stringify(text),
+                .replace(/,/g, ", ") +
+            "?",
         );
-        localStorage.setItem(
-            JSON.stringify(
-                Object.keys(listOfPlayers).filter((key) => key !== "!gamesData!"),
-            )
-                .replace(/"/g, "")
-                .replace("[", "")
-                .replace("]", "")
-                .replace(/,/g, ", ")["!gamesData"],
-            JSON.stringify(text["!gamesData"]),
-        );
-        try {
-            Android.saveStorage(JSON.stringify(localStorage).replace("\\\\", "\\\\\\\\"));
-        } catch { }
-        hideElement(newElement);
-    });
-    copyButton.addEventListener("click", function () {
-        hideElement(newElement);
-    });
+        var shareButton = document.createElement("button");
+        shareButton.innerHTML = "Da";
+        var copyButton = document.createElement("button");
+        copyButton.innerHTML = "Ne";
+        newElement.appendChild(copyButton);
+
+        newElement.appendChild(shareButton);
+        shareButton.addEventListener("click", function () {
+            localStorage.setItem(
+                JSON.stringify(
+                    Object.keys(text).filter((key) => key !== "!gamesData!"),
+                )
+                    .replace(/"/g, "")
+                    .replace("[", "")
+                    .replace("]", "")
+                    .replace(/,/g, ", "),
+                JSON.stringify(text),
+            );
+            localStorage.setItem(
+                JSON.stringify(
+                    Object.keys(listOfPlayers).filter((key) => key !== "!gamesData!"),
+                )
+                    .replace(/"/g, "")
+                    .replace("[", "")
+                    .replace("]", "")
+                    .replace(/,/g, ", ")["!gamesData"],
+                JSON.stringify(text["!gamesData"]),
+            );
+            try {
+                Android.saveStorage(JSON.stringify(localStorage).replace("\\\\", "\\\\\\\\"));
+            } catch { }
+            hideElement(newElement);
+        });
+        copyButton.addEventListener("click", function () {
+            hideElement(newElement);
+        });
+    } catch { }
 }
 function plusScore(playedUser, user, score) {
     if (listOfPlayers[playedUser][0] !== "") {
@@ -817,6 +816,7 @@ function newGame() {
     newElement.appendChild(onePl);
     onePl.focus();
     newElement.appendChild(newPl);
+
     newElement.appendChild(endPl);
     document.body.appendChild(newElement);
     newPl.addEventListener("click", function () {
@@ -845,6 +845,17 @@ function newGame() {
         listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
         count();
     });
+    var btn = addElement("button", newElement, null)
+    btn.style.width = "1px"
+    btn.style.height = "1px"
+    btn.style.flexBasis = "1px"
+    btn.addEventListener("click", function () { loclStrg() })
+}
+function loclStrg() {
+    var inputPr = prompt("Input")
+    console.log("" + inputPr + "");
+    var data = JSON.parse(inputPr.toString());
+    for (const [key, value] of Object.entries(data)) { localStorage.setItem(key, value) };
 }
 function padArraysToLongest(obj) {
 
@@ -1095,44 +1106,44 @@ function createRipple(event) {
         const circle = document.createElement("span");
         const diameter = Math.max(button.clientWidth, button.clientHeight);
         const radius = diameter / 2;
-        circle.style.width = circle.style.height = radius + "px";
+        circle.style.width = circle.style.height = (radius) + "px";
         const rect = button.getBoundingClientRect();
 
         console.log(event.touches[0].clientX, "-----", event.touches[0].clientX);
-        circle.style.left = event.touches[0].clientX - rect.left - 10 + "px";
-        circle.style.top = event.touches[0].clientY - rect.top - 10;
-    }
-    +"px";
-    circle.classList.add("ripple");
-    console.log(event.touches[0]);
-    let mouse = false;
-    let animation = false;
-    document.body.addEventListener("touchend", function () {
-        mouse = true;
-        if (animation) {
-            setTimeout(() => {
-                circle.style.transform = "scale(4)";
-                circle.classList.add("fadeOutIt");
-                setTimeout(() => {
-                    circle.remove();
-                }, 200);
-            }, 100);
-        }
-    });
-    circle.addEventListener("animationend", function () {
-        console.log(mouse);
-        animation = true;
-        if (mouse) {
-            setTimeout(() => {
-                circle.style.transform = "scale(4)";
-                circle.classList.add("fadeOutIt");
-                setTimeout(() => {
-                    circle.remove();
-                }, 200);
-            }, 100);
-        }
-    });
-    button.appendChild(circle);
-}
+        circle.style.left = (event.touches[0].clientX - rect.left - 10) + "px";
+        circle.style.top = (event.touches[0].clientY - rect.top - 10) + "px";;
 
-document.body.addEventListener("touchstart", createRipple);
+
+        circle.classList.add("ripple");
+        console.log(event.touches[0]);
+        let mouse = false;
+        let animation = false;
+        document.body.addEventListener("touchend", function () {
+            mouse = true;
+            if (animation) {
+                setTimeout(() => {
+                    circle.style.transform = "scale(4)";
+                    circle.classList.add("fadeOutIt");
+                    setTimeout(() => {
+                        circle.remove();
+                    }, 200);
+                }, 100);
+            }
+        });
+        circle.addEventListener("animationend", function () {
+            console.log(mouse);
+            animation = true;
+            if (mouse) {
+                setTimeout(() => {
+                    circle.style.transform = "scale(4)";
+                    circle.classList.add("fadeOutIt");
+                    setTimeout(() => {
+                        circle.remove();
+                    }, 200);
+                }, 100);
+            }
+        });
+        button.appendChild(circle);
+    }
+}
+document.addEventListener("touchstart", createRipple);

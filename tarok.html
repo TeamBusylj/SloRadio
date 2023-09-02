@@ -2,6 +2,8 @@
 <html lang="sl">
 
 <head>
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data:; script-src 'self' data: 'unsafe-inline';">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Števec taroka</title>
@@ -14,6 +16,5 @@
     <button id="newgame" onclick="newGame()">Nova igra</button>
     <button id="game" onclick="Game()">Obstajajoča igra</button>
 </body>
-
 
 </html>

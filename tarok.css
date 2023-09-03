@@ -61,6 +61,12 @@ html {
     flex: 1 1 100%;
 }
 
+@keyframes hidScale {
+    to {
+        padding: 1px;
+    }
+}
+
 .gameDataTdBottom {
     text-align: center;
     background-color: var(--colorBtn);

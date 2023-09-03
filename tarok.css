@@ -66,7 +66,7 @@ html {
     background-color: var(--colorBtn);
     padding: 8px;
     margin: 3px;
-    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }
 
@@ -76,7 +76,7 @@ html {
     padding: 8px;
     margin: 3px;
     border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .noText:hover {

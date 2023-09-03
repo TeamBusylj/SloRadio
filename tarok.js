@@ -5,6 +5,23 @@ function adaptColor(bg, txt, btn, dialog, txtDialog) {
     document.body.style.setProperty("--colorDialog", dialog);
     document.body.style.setProperty("--colorTxtDialog", txtDialog);
 }
+var games = {
+    /* "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]*/
+    Tri: [10, true, "", true],
+    Dve: [20, true, "", true],
+    Ena: [30, true, "", true],
+    "Solo brez": [80, false, "", false],
+    "Solo tri": [40, true, "", false],
+    "Solo dve": [50, true, "", false],
+    "Solo ena": [60, true, "", false],
+    Klop: ["", false, "", true],
+    Valat: [250, false, "", true],
+    "Barvni Valat": [125, false, "", true],
+    Berač: [70, false, "", false],
+    "Odprti Berač": [90, false, "", false],
+    "Po meri": ["", false, "", true],
+    "Dodaj radlce": ["", false, "", true],
+};
 function addScore(firstPlayer) {
     listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
     try {
@@ -29,23 +46,7 @@ function addScore(firstPlayer) {
             console.log(error);
         }
     });
-    var games = {
-        /* "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]*/
-        Tri: [10, true, "", true],
-        Dve: [20, true, "", true],
-        Ena: [30, true, "", true],
-        "Solo brez": [80, false, "", false],
-        "Solo tri": [40, true, "", false],
-        "Solo dve": [50, true, "", false],
-        "Solo ena": [60, true, "", false],
-        Klop: ["", false, "", true],
-        Valat: [250, false, "", true],
-        "Barvni Valat": [125, false, "", true],
-        Berač: [70, false, "", false],
-        "Odprti Berač": [90, false, "", false],
-        "Po meri": ["", false, "", true],
-        "Dodaj radlce": ["", false, "", true],
-    };
+
     for (const key in games) {
         let btn = document.createElement("button");
         btn.innerHTML = key;
@@ -447,8 +448,8 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer) 
                         Object.keys(listOfPlayers["!gamesData!"]).length + 1
                     ] = [
                             String(gameName),
-                            String(firstPlayer),
-                            String(slct2),
+                            "",
+                            "",
                             -Math.abs(
                                 parseInt(properties[0]) +
                                 parseInt(razlika) +
@@ -480,7 +481,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer) 
                         Object.keys(listOfPlayers["!gamesData!"]).length + 1
                     ] = [
                             String(gameName),
-                            String(firstPlayer),
+                            "",
                             null,
                             -Math.abs(
                                 parseInt(properties[0]) +
@@ -510,8 +511,8 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer) 
                         Object.keys(listOfPlayers["!gamesData!"]).length + 1
                     ] = [
                             String(gameName),
-                            String(firstPlayer),
-                            String(slct2),
+                            "",
+                            "",
                             -Math.abs(parseInt(properties[0]) + bonusTocke),
                             listOfPlayers[firstPlayer][0].length > 0,
                             null,
@@ -534,7 +535,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer) 
                         Object.keys(listOfPlayers["!gamesData!"]).length + 1
                     ] = [
                             String(gameName),
-                            String(firstPlayer),
+                            "",
                             null,
                             -Math.abs(parseInt(properties[0]) + bonusTocke),
                             listOfPlayers[firstPlayer][0].length > 0,
@@ -572,8 +573,8 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer) 
                                 Object.keys(listOfPlayers["!gamesData!"]).length + 1
                             ] = [
                                     String(gameName),
-                                    String(firstPlayer),
-                                    String(slct2),
+                                    "",
+                                    "",
                                     parseInt(properties[0]) + parseInt(razlika) + bonusTocke,
                                     listOfPlayers[firstPlayer][0].length > 0,
                                     parseInt(razlika),
@@ -600,7 +601,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer) 
                                 Object.keys(listOfPlayers["!gamesData!"]).length + 1
                             ] = [
                                     String(gameName),
-                                    String(firstPlayer),
+                                    "",
                                     null,
                                     parseInt(properties[0]) + parseInt(razlika) + bonusTocke,
                                     listOfPlayers[firstPlayer][0].length > 0,
@@ -626,8 +627,8 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer) 
                                 Object.keys(listOfPlayers["!gamesData!"]).length + 1
                             ] = [
                                     String(gameName),
-                                    String(firstPlayer),
-                                    String(slct2),
+                                    "",
+                                    "",
                                     parseInt(properties[0] + bonusTocke),
                                     listOfPlayers[firstPlayer][0].length > 0,
                                     null,
@@ -650,7 +651,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer) 
                                 Object.keys(listOfPlayers["!gamesData!"]).length + 1
                             ] = [
                                     String(gameName),
-                                    String(firstPlayer),
+                                    "",
                                     null,
                                     parseInt(properties[0] + bonusTocke),
                                     listOfPlayers[firstPlayer][0].length > 0,
@@ -1015,7 +1016,7 @@ function count() {
             }
             kkk.addEventListener("click", function () {
 
-                gameData(listOfPlayers["!gamesData!"][stGame], stGame);
+                gameData(event.target.getAttribute("class").slice(5), stGame);
             });
             stGame++;
             if (pnts[i] !== "&nbsp") {
@@ -1066,8 +1067,8 @@ function addElement(tag, parent, className) {
 }
 function gameData(infom, number) {
     /* gamename, prvi igralc, drug igralc, tocke, ima radlc, razlika, dobil zgubil, bonusi, bonusi Tocke*/
-    var info = listOfPlayers["!gamesData!"][infom];
-
+    var info = listOfPlayers["!gamesData!"][parseInt(infom)];
+    console.log(info);
     var newElement = addElement("div", document.body, "whlScreen");
     document.querySelector(".cntScreen").style.filter = "brightness(.3)";
     document.querySelector(".crezultLine").style.filter = "brightness(.3)";
@@ -1087,50 +1088,45 @@ function gameData(infom, number) {
         "Igra",
         "Igralec",
         "Partner",
-        "Razlika",
+        "Tocke",
         "Radlc",
+        "Razlika",
         "Uspeh",
         "Bonusi",
-        "Tocke",
+        "Bonus Točke"
     ];
-    var line = document.createElement("div");
-    line.style.display = "flex";
-    line.style.flexWrap = "wrap";
-    line.style.justifyContent = "center";
-    table.appendChild(line);
+    var completePodatki = {}
     for (let i = 0; i < podatki.length; i++) {
-        const element1 = podatki[i];
-        let element = info[i];
-        if (i == 3) {
-            element = info[5];
-        }
-        if (i == 7) {
-            element = info[3];
-        }
-        if (element == null || element == "" || element == []) {
-            continue;
-        }
-        if (i == 6) {
-            element = info[7].toString().replace(/,/g, ", ");
-        }
-        if (i == 5 && element) {
-            element = "Ja";
+        var key = podatki[i];
+        let value = info[i];
+
+
+        if (i == 0) {
+
+            completePodatki[key] = [i, value, games[value][0]]
         } else {
-            if (i == 5) {
-                element = "Ne";
-            }
+            completePodatki[key] = [i, value]
         }
-        if (i == 4 && element) {
-            element = "Ja";
-        } else {
-            if (i == 4) {
-                element = "Ne";
-            }
+    }
+    console.log(completePodatki);
+    var vrstniRed = [0, 5, 8, 3]
+    for (const data in completePodatki) {
+        if (!vrstniRed.includes(completePodatki[data][0])) continue
+
+        var element1 = data;
+        let element = completePodatki[data][1];
+        if (info[6]) {
+            element = "-" + element
+            element1 = "-" + element1
         }
-        let tdVelk = addElement("div", line, "gameTdDiv");
-        let td1 = addElement("div", tdVelk, "gameDataTd");
+        if (data == "Igra") {
+            element1 = data + " " + completePodatki[data][1];
+            element = completePodatki[data][2];
+        }
+        let tdVelk = addElement("tr", table, "gameTdDiv");
+        let td1 = addElement("td", tdVelk, "gameDataTd");
         td1.innerHTML = element1;
-        let td = addElement("div", tdVelk, "gameDataTdBottom");
+        let td = addElement("td", tdVelk, "gameDataTdBottom");
         td.innerHTML = element;
     }
     newElement.appendChild(table);

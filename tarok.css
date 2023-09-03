@@ -221,7 +221,7 @@ select {
 }
 
 input {
-    margin: 30px;
+    margin: 10px;
     width: 40vw;
     border-width: 0;
     border-radius: 20px;
@@ -271,16 +271,32 @@ input {
     margin: 10px;
 }
 
-body {
-    --bgColor: #DCB585;
-    --colorDialog: #826c51;
-    --colorTxtDialog: #000000;
-    --colorTxt: rgb(0, 0, 0);
-    --colorBtn: #b59670;
-    color: var(--colorTxt);
-    margin: 0;
-    background-attachment: fixed;
-    background-color: var(--bgColor);
+@media (prefers-color-scheme: dark) {
+    body {
+        --bgColor: #1B1B1B;
+        --colorDialog: #3D4758;
+        --colorTxtDialog: #D8E3F8;
+        --colorTxt: #003060;
+        --colorBtn: #A4C9FF;
+        color: var(--colorTxt);
+        margin: 0;
+        background-attachment: fixed;
+        background-color: var(--bgColor);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        --bgColor: #FCFCFC;
+        --colorDialog: #D8E3F8;
+        --colorTxtDialog: #121C2B;
+        --colorTxt: #FFFFFF;
+        --colorBtn: #355F97;
+        color: var(--colorTxt);
+        margin: 0;
+        background-attachment: fixed;
+        background-color: var(--bgColor);
+    }
 }
 
 p {

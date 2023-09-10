@@ -2,7 +2,9 @@
 <html lang="sl">
 
 <head>
-
+  
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Števec taroka</title>
@@ -14,6 +16,19 @@
 <body onload="   if (location.hash !== '') {upload(location.hash.slice(1)); localStorage.removeItem(undefined)}">
     <button id="newgame" onclick="newGame()">Nova igra</button>
     <button id="game" onclick="Game()">Obstajajoča igra</button>
+    <div id="bottomBar" role="footer">
+        <div id="actionBar">
+            <button class="bottomBtn" id="bottomBtn" onclick="location.reload()">  <i class="material-icons">home</i> Domov</button>
+            <button class="bottomBtn" id="bottomBtn" onclick="undo()">  <i class="material-icons">undo</i> Nazaj</button>
+            <button class="bottomBtn" id="bottomBtn" onclick="download()">  <i class="material-icons">share</i> Deli</button>
+        </div>
+       
+    </div>
 </body>
+
+    
+
+
+
 
 </html>

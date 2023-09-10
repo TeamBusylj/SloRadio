@@ -1,24 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    fetch('https://data.radio.si/api/lastsongsxml/Radio1/json')
+            .then(response => response.text())
+            .then(data => {
+console.log(data)
 
 
-
-  for (const key in games) {
-    const btn = (
-        <button>{key}</button>
-    )
-    btn.addEventListener("click", function () {
-        newElement.remove()
-        if (key == "Klop" || key == "Po meri") { klop(newElement, key) } else {
-            if (key == "Dodaj radlce") {
-                radlciDodaj()
-                document.querySelector(".cntScreen").remove()
-                document.querySelector(".crezultLine").remove()
-                newElement.remove()
-                count()
-            } else {
-                calculate(key, games[key])
-            }
-
-        }
-    })
-    newElement.render(btn);
-}
+            })
+            .catch(error => {
+                console.error('Cannot get name', error);
+            });
+                   
+</script>
+</html>

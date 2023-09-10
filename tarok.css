@@ -4,6 +4,37 @@ input[type="checkbox"] {
     margin: 5px;
 }
 
+div#bottomBar {
+    z-index: 40;
+    position: fixed;
+    width: 100%;
+
+    bottom: 0;
+
+}
+#actionBar{
+ display: none;
+    transition: all .2s;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+pointer-events: auto;
+}
+i{margin: 5px;}
+@media (max-width:380px) { .bottomBtn {font-size: 0;}} 
+
+@media (min-width:380px) { .bottomBtn {font-size: 100%;} }
+.bottomBtn {
+  flex-basis: auto;
+       
+        height: 70%;
+     
+        display: flex;
+        align-items: center;
+       
+        text-align: center;
+    }
+
 .opis {
     font-size: large;
     color: var(--colorTxtDialog);
@@ -116,8 +147,9 @@ html {
     overflow: hidden;
     position: sticky;
     top: 0px;
+    word-wrap: break-word;
     background-color: var(--colorDialog);
-    padding-top: 20px;
+    padding-top: 5px;
     margin-top: -50px;
     overflow: hidden;
 }
@@ -268,7 +300,7 @@ input {
     width: 100%;
     box-shadow: none;
     bottom: -19px;
-    position: fixed;
+    position: relative;
     justify-content: center;
     align-items: top;
     text-align: center;

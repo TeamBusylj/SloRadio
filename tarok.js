@@ -32,8 +32,8 @@ function addScore(firstPlayer) {
         console.log(error);
     }
     var newElement = addElement("div", null, "whlScreen");
-    document.querySelector(".cntScreen").style.filter = "brightness(.3)";
-    document.querySelector(".crezultLine").style.filter = "brightness(.3)";
+    document.querySelector(".cntScreen").style.filter = "brightness(.3)"; 
+    document.querySelector(".crezultLine").style.filter = "brightness(.3)";  document.getElementById("actionBar").style.filter = "brightness(.3)"
     let lnbrk = addElement("div", newElement, "break");
     lnbrk.style.height = "30px";
     dodajOpis(newElement, "Tukaj izberite katero igro je oseba <b>" + firstPlayer + "</b> igrala.",);
@@ -51,6 +51,7 @@ function addScore(firstPlayer) {
     for (const key in games) {
         let btn = document.createElement("button");
         btn.innerHTML = key;
+        btn.classList.add("gameChose")
         btn.addEventListener("click", function () {
             newElement.innerHTML = "";
             if (key == "Klop" || key == "Po meri") {
@@ -71,9 +72,43 @@ function addScore(firstPlayer) {
         });
         newElement.appendChild(btn);
     }
-    document.body.appendChild(newElement);
-}
 
+    document.body.appendChild(newElement);
+    let names = document.querySelectorAll(".gameChose");
+    console.log(names)
+    let maxHeight = [...names].reduce((max, name) => Math.max(max, name.clientHeight), 0);
+    
+    names.forEach(name => {
+        name.style.height = maxHeight + "px";
+    });
+}
+var intervalTime = 0
+var inert =setTimeout(() => {
+    intervalTime = 1
+}, 1000);
+window.addEventListener('resize', function(event) {
+    var ineret = setInterval(() => {
+        if(intervalTime == 1){
+        let names = document.querySelectorAll(".namePlayers");
+        names.forEach(name => {name.style.height = "fit-content"
+      
+        });
+        let maxHeight = [...names].reduce((max, name) => Math.max(max, name.clientHeight), 0);
+        
+        names.forEach(name => {name.style.height = "0"
+ 
+            name.style.height = maxHeight + "px";
+        });
+        this.clearInterval()
+        inert =setTimeout(() => {
+            intervalTime = 1
+        }, 1000);
+        intervalTime = 0
+        }
+    }, 500);
+       
+ 
+}, true);
 function radlciDodaj(remove) {
     /*  if (navigator.userAgent.includes("wv")) {           try {               let names = JSON.stringify(                   Object.keys(listOfPlayers).filter((key) => key !== "!gamesData!"),               )                   .replace(/"/g, "")                   .replace("[", "")                   .replace("]", "")                   .replace(/,/g, ", ");               console.log(names);               Android.showRadlci(names);           } catch (error) {               console.log(error);           }       } else {*/
     for (const key in listOfPlayers) {
@@ -101,8 +136,8 @@ function androidRadlci(list) {
 
 function klop(newElement2, gamename) {
     var newElement = addElement("div", document.body, "whlScreen");
-    document.querySelector(".cntScreen").style.filter = "brightness(.3)";
-    document.querySelector(".crezultLine").style.filter = "brightness(.3)";
+    document.querySelector(".cntScreen").style.filter = "brightness(.3)"; 
+    document.querySelector(".crezultLine").style.filter = "brightness(.3)";  document.getElementById("actionBar").style.filter = "brightness(.3)"
     dodajOpis(newElement, "Tukaj vpišite koliko točk je dobil posamezen igralec. Pišite brez predznaka minus.",);
     var iks = addElement("div", newElement, "iks");
     iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
@@ -210,7 +245,7 @@ function calculate(gameName, properties, newElement, firstPlayer) {
             btn2.remove();
             partner(newElement, gameName, properties, true, firstPlayer);
         });
-    }
+    } 
 }
 
 function pauseExecution(buttonToCont) {
@@ -227,6 +262,9 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer) 
     if (teamWork) {
         for (const user in listOfPlayers) {
             if (user == "!gamesData!") {
+                continue;
+            }
+            if (user == firstPlayer) {
                 continue;
             }
             let player = addElement("button", newElement, null);
@@ -315,6 +353,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer) 
                         bonusDialog.remove();
                     }, 200);
                     newElement.style.filter = "brightness(1)";
+
                 });
                 let lnbrk = addElement("div", bonusDialog, "break");
                 lnbrk.style.height = "50px";
@@ -531,7 +570,7 @@ function download() {
     var result = "https://teambusylj.github.io/SloRadio/tarok.html#" + encodeURIComponent(text);
     var newElement = addElement("div", document.body, "whlScreen");
     document.querySelector(".cntScreen").style.filter = "brightness(.3)";
-    document.querySelector(".crezultLine").style.filter = "brightness(.3)";
+    document.querySelector(".crezultLine").style.filter = "brightness(.3)";  document.getElementById("actionBar").style.filter = "brightness(.3)"
     var iks = addElement("div", newElement, "iks");
     iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
     iks.addEventListener("click", function (e) {
@@ -628,10 +667,13 @@ function aloneplusScore(user, score) {
 }
 
 function hideElement(newElement) {
+
+    document.getElementById("actionBar").style.pointerEvents ="auto";
     newElement.style.animation = "hideScreen .2s forwards";
     try {
         document.querySelector(".cntScreen").style.filter = "";
         document.querySelector(".crezultLine").style.filter = "";
+        document.getElementById("actionBar").style.filter = "";
     }
     catch { }
     setTimeout(() => {
@@ -756,6 +798,7 @@ function padArraysToLongest(obj) {
 }
 
 function count() {
+    document.getElementById("actionBar").style.display = "flex"
     try {
         Android.showButton();
     }
@@ -787,7 +830,7 @@ function count() {
         let i = 1;
         let points = 0;
         var prnt = document.createElement("div");
-        prnt.innerHTML = '<p class="namePlayers" > ' + name + listOfPlayers[key][0] + " </p>";
+        prnt.innerHTML = '<p class="namePlayers" > '+ listOfPlayers[key][0]+"<br>" + name  + " </p>";
         chl.innerHTML = String(chl.innerHTML).replace("undefined", "");
         chl.innerHTML += '<p style = "" class="noText" ></p>';
         while (i < pnts.length) {
@@ -827,8 +870,14 @@ function count() {
         prnt.appendChild(chl);
         newElement.appendChild(prnt);
     }
+    let names = document.querySelectorAll(".namePlayers");
+let maxHeight = [...names].reduce((max, name) => Math.max(max, name.clientHeight), 0);
+
+names.forEach(name => {
+    name.style.height = maxHeight + "px";
+});
     rezultLine.setAttribute("class", "crezultLine");
-    document.body.appendChild(rezultLine);
+    document.getElementById("bottomBar").insertBefore(rezultLine, document.getElementById("actionBar"));
     document.body.appendChild(newElement);
 }
 
@@ -844,6 +893,9 @@ function dodajOpis(newElement, text) {
 }
 
 function addElement(tag, parent, className) {
+    if(className!==null&&className.toLowerCase().includes("screen")){
+        document.getElementById("actionBar").style.pointerEvents = "none";
+    }
     var element = document.createElement(tag);
     if (className !== null) {
         element.classList.add(className);
@@ -859,8 +911,8 @@ function gameData(infom, number) {
     var info = listOfPlayers["!gamesData!"][parseInt(infom)];
     console.log(info);
     var newElement = addElement("div", document.body, "whlScreen");
-    document.querySelector(".cntScreen").style.filter = "brightness(.3)";
-    document.querySelector(".crezultLine").style.filter = "brightness(.3)";
+    document.querySelector(".cntScreen").style.filter = "brightness(.3)";  document.getElementById("actionBar").style.filter = "brightness(.3)"
+    document.querySelector(".crezultLine").style.filter = "brightness(.3)";  document.getElementById("actionBar").style.filter = "brightness(.3)"
     dodajOpis(newElement, "Tukaj lahko vidite podatke o igri in jih spremenite.",);
     if (info[0] !== "Po meri" && info[0] !== "Klop") {
         var changeValue = document.createElement("input");

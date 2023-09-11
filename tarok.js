@@ -589,7 +589,10 @@ function download() {
     console.log(result);
     fetch("https://api.shrtco.de/v2/shorten?url="+result)
     .then(response => {
+        console.log(response)
         let jsonLink=response.json()
+        console.log(jsonLink)
+        console.log(jsonLink.full_short_link)
         result= jsonLink.full_short_link
     })
     .catch(error => {

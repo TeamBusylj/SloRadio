@@ -587,17 +587,22 @@ function download() {
         hideElement(newElement);
     });
     console.log(result);
-    fetch("https://api.shrtco.de/v2/shorten?url="+result)
-    .then(response => {
-        console.log(response)
-        let jsonLink=response.json()
-        console.log(jsonLink)
-        console.log(jsonLink.full_short_link)
-        result= jsonLink.full_short_link
-    })
-    .catch(error => {
-        console.log("No internet, can't shorten link.")
-    });
+    
+
+
+fetch("https://api.shrtco.de/v2/shorten?url=" + result).then(function(response) {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(function(data) {
+    
+  
+  result = data.result.full_short_link;
+  }).catch(error => {
+  console.log("No internet, can't shorten link or " + error + ".");
+});
     var shareButton = document.createElement("button");
     shareButton.innerHTML = "Deli";
     var copyButton = document.createElement("button");

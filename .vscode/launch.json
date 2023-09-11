@@ -9,6 +9,12 @@
             "request": "launch",
             "name": "Open index.html",
             "file": "c:\\Users\\timbi\\OneDrive\\Documents\\GitHub\\SloRadio\\index.html"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open index.html in chrome",
+            "file": "/home/tim/Documents/SloRadio/SloRadio/tarok.html"
         }
     ]
 }

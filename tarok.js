@@ -32,8 +32,7 @@ function addScore(firstPlayer) {
         console.log(error);
     }
     var newElement = addElement("div", null, "whlScreen");
-    document.querySelector(".cntScreen").style.filter = "brightness(.3)"; 
-    document.querySelector(".crezultLine").style.filter = "brightness(.3)";  document.getElementById("actionBar").style.filter = "brightness(.3)"
+    document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter="brightness(.3)"; 
     let lnbrk = addElement("div", newElement, "break");
     lnbrk.style.height = "30px";
     dodajOpis(newElement, "Tukaj izberite katero igro je oseba <b>" + firstPlayer + "</b> igrala.",);
@@ -136,8 +135,7 @@ function androidRadlci(list) {
 
 function klop(newElement2, gamename) {
     var newElement = addElement("div", document.body, "whlScreen");
-    document.querySelector(".cntScreen").style.filter = "brightness(.3)"; 
-    document.querySelector(".crezultLine").style.filter = "brightness(.3)";  document.getElementById("actionBar").style.filter = "brightness(.3)"
+    document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter="brightness(.3)"; 
     dodajOpis(newElement, "Tukaj vpišite koliko točk je dobil posamezen igralec. Pišite brez predznaka minus.",);
     var iks = addElement("div", newElement, "iks");
     iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
@@ -201,7 +199,7 @@ function klop(newElement2, gamename) {
     });
 }
 
-function calculate(gameName, properties, newElement, firstPlayer) {
+async function calculate(gameName, properties, newElement, firstPlayer) {
     var iks = addElement("div", newElement, "iks");
     iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
     iks.addEventListener("click", function (e) {
@@ -218,33 +216,55 @@ function calculate(gameName, properties, newElement, firstPlayer) {
     }
     else {
         var btn = addElement("button", null, null);
-        var btn2 = addElement("button", null, null);
-        var points = properties[0];
-        var razlikaTF = properties[1];
+     
         var teamWork = properties[3];
         let lnbrk = addElement("div", newElement, "break");
         lnbrk.style.height = "50px";
         dodajOpis(newElement, "Tukaj izberite ali je oseba <b>" + firstPlayer + "</b> igrala solo ali s partnerjem.",);
         newElement.setAttribute("class", "whlScreen");
-        if (teamWork) {
-            btn.innerHTML = "Solo";
-            btn2.innerHTML = "S partnerjem";
-            newElement.appendChild(btn);
-            newElement.appendChild(btn2);
-        }
-        else {
-            partner(newElement, gameName, properties, false, firstPlayer);
-        }
+        
+       
+        var dv = [];
         btn.addEventListener("click", function () {
             this.remove();
-            btn2.remove();
+            for (let i = 0; i < dv.length; i++) {
+                dv[i].remove()
+            }
             partner(newElement, gameName, properties, false, firstPlayer);
         });
-        btn2.addEventListener("click", function () {
-            btn.remove();
-            btn2.remove();
-            partner(newElement, gameName, properties, true, firstPlayer);
-        });
+       
+        if (teamWork) {
+            for (const user in listOfPlayers) {
+                if (user == "!gamesData!") {
+                    continue;
+                }
+                if (user == firstPlayer) {
+                    continue;
+                }
+                let player = addElement("button", newElement, null);
+                player.innerHTML = user
+                dv.push(player)
+                player.addEventListener("click", function () {
+         
+                    btn.remove();
+                    for (let i = 0; i < dv.length; i++) {
+                        dv[i].remove()
+                    }
+                    partner(newElement, gameName, properties, true, firstPlayer, user);
+                })
+            }
+           
+                btn.innerHTML = "Solo";
+                btn.style.flexBasis = "100%"
+                newElement.appendChild(btn);
+                
+            
+           
+        }else {
+            partner(newElement, gameName, properties, false, firstPlayer);
+        }
+          
+    
     } 
 }
 
@@ -255,37 +275,13 @@ function pauseExecution(buttonToCont) {
         });
     });
 }
-async function partner(newElement, gameName, properties, teamWork, firstPlayer) {
+async function partner(newElement, gameName, properties, teamWork, firstPlayer, secondPlayer) {
     var opisek = dodajOpis(newElement, "Tukaj izberite partnerja od igralca/-ke " + firstPlayer + ".");
     var slct2 = ""
-    var dv = [];
-    if (teamWork) {
-        for (const user in listOfPlayers) {
-            if (user == "!gamesData!") {
-                continue;
-            }
-            if (user == firstPlayer) {
-                continue;
-            }
-            let player = addElement("button", newElement, null);
-            player.innerHTML = user
-            dv.push(player)
-            player.addEventListener("click", function () {
-                slct2 = user
-            })
-        }
-        await new Promise((resolve) => {
-            let int = setInterval(() => {
-                if (slct2 !== "") {
-                    clearInterval(int)
-                    for (let i = 0; i < dv.length; i++) {
-                        dv[i].remove()
-                    }
-                    resolve();
-                }
-            }, 100);
-        });
-    }
+  if(teamWork && secondPlayer !== null){
+    slct2 = secondPlayer
+  }
+
     opisek.innerHTML = "Tukaj vpišite razliko. <br>Glavni igralec/-ka je <b>" + firstPlayer + "</b>."
     var razlika = 0;
     var difNu = document.createElement("input");
@@ -569,8 +565,7 @@ function download() {
     console.log(text);
     var result = "https://teambusylj.github.io/SloRadio/tarok.html#" + encodeURIComponent(text);
     var newElement = addElement("div", document.body, "whlScreen");
-    document.querySelector(".cntScreen").style.filter = "brightness(.3)";
-    document.querySelector(".crezultLine").style.filter = "brightness(.3)";  document.getElementById("actionBar").style.filter = "brightness(.3)"
+    document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter="brightness(.3)"; 
     var iks = addElement("div", newElement, "iks");
     iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
     iks.addEventListener("click", function (e) {
@@ -672,8 +667,8 @@ function hideElement(newElement) {
     newElement.style.animation = "hideScreen .2s forwards";
     try {
         document.querySelector(".cntScreen").style.filter = "";
-        document.querySelector(".crezultLine").style.filter = "";
-        document.getElementById("actionBar").style.filter = "";
+        document.getElementById("bottomBar").style.filter = "";
+      
     }
     catch { }
     setTimeout(() => {
@@ -709,6 +704,8 @@ function Game() {
             if (listOfPlayers["!gamesData!"] == null) {
                 listOfPlayers["!gamesData!"] = {};
             }
+            document.getElementById("newgame").style.display = "none";
+    document.getElementById("game").style.display = "none";
             count();
         }
     });
@@ -762,6 +759,8 @@ function newGame() {
         newElement.style.display = "none";
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter((key) => key !== "!gamesData!"),).replace(/"/g, "").replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers),);
         listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
+        document.getElementById("newgame").style.display = "none";
+    document.getElementById("game").style.display = "none";
         count();
     });
 
@@ -799,6 +798,7 @@ function padArraysToLongest(obj) {
 
 function count() {
     document.getElementById("actionBar").style.display = "flex"
+    document.getElementById("actionBar").style.pointerEvents = "all"
     try {
         Android.showButton();
     }
@@ -812,8 +812,8 @@ function count() {
         Android.saveStorage(JSON.stringify(localStorage).replace("\\\\", "\\\\\\\\"));
     }
     catch { }
-    document.getElementById("newgame").style.display = "none";
-    document.getElementById("game").style.display = "none";
+
+    localStorage.removeItem(undefined)
     var newElement = addElement("div", document.body, "cntScreen");
     var rezultLine = document.createElement("div");
     for (const key in listOfPlayers) {
@@ -830,12 +830,13 @@ function count() {
         let i = 1;
         let points = 0;
         var prnt = document.createElement("div");
-        prnt.innerHTML = '<p class="namePlayers" > '+ listOfPlayers[key][0]+"<br>" + name  + " </p>";
+        prnt.innerHTML = '<p class="namePlayers"> '+ listOfPlayers[key][0]+"<br>" + name  + " </p>";
         chl.innerHTML = String(chl.innerHTML).replace("undefined", "");
         chl.innerHTML += '<p style = "" class="noText" ></p>';
         while (i < pnts.length) {
             var kkk = document.createElement("p");
-            kkk.innerHTML = pnts[i];
+            kkk.innerHTML = pnts[i];document.getElementById("newgame").style.display = "none";
+            document.getElementById("game").style.display = "none";
             chl.appendChild(kkk);
             kkk.style.marginTop = "-15px";
             if (pnts[i] !== "&nbsp") {
@@ -911,8 +912,7 @@ function gameData(infom, number) {
     var info = listOfPlayers["!gamesData!"][parseInt(infom)];
     console.log(info);
     var newElement = addElement("div", document.body, "whlScreen");
-    document.querySelector(".cntScreen").style.filter = "brightness(.3)";  document.getElementById("actionBar").style.filter = "brightness(.3)"
-    document.querySelector(".crezultLine").style.filter = "brightness(.3)";  document.getElementById("actionBar").style.filter = "brightness(.3)"
+    document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter="brightness(.3)"; 
     dodajOpis(newElement, "Tukaj lahko vidite podatke o igri in jih spremenite.",);
     if (info[0] !== "Po meri" && info[0] !== "Klop") {
         var changeValue = document.createElement("input");
@@ -982,8 +982,30 @@ function gameData(infom, number) {
 }
 
 function deleteGame() {
-    localStorage.removeItem(JSON.stringify(Object.keys(listOfPlayers).filter((key) => key !== "!gamesData!"),).replace(/"/g, "").replace("[", "").replace("]", "").replace(/,/g, ", "),);
-    location.reload();
+    var newElement = addElement("div", document.body, "whlScreen");
+    var iks = addElement("div", newElement, "iks");
+    iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+    iks.addEventListener("click", function (e) {
+        document.getElementById("game").style.animation = "none";
+        hideElement(newElement);
+    });
+    document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter="brightness(.3)"; 
+    dodajOpis(newElement, "Ali želite izbrisati to igro?",);
+    var shareButton = document.createElement("button");
+    shareButton.innerHTML = "Da";
+    var copyButton = document.createElement("button");
+    copyButton.innerHTML = "Ne";
+    newElement.appendChild(copyButton);
+    newElement.appendChild(shareButton);
+    shareButton.addEventListener("click", function () {
+        localStorage.removeItem(JSON.stringify(Object.keys(listOfPlayers).filter((key) => key !== "!gamesData!"),).replace(/"/g, "").replace("[", "").replace("]", "").replace(/,/g, ", "),);
+        location.reload();
+        hideElement(newElement);
+    });
+    copyButton.addEventListener("click", function () {
+        hideElement(newElement);
+    });
+  
 }
 
 function createRipple(event) {

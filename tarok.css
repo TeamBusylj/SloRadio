@@ -8,7 +8,7 @@ div#bottomBar {
     z-index: 40;
     position: fixed;
     width: 100%;
-
+    transition: all .2s;
     bottom: 0;
 
 }

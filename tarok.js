@@ -592,10 +592,21 @@ function download() {
     var copyButton = document.createElement("button");
     copyButton.innerHTML = "Kopiraj";
     newElement.appendChild(copyButton);
-    if (navigator.userAgent.includes("wv")) newElement.appendChild(shareButton);
+     newElement.appendChild(shareButton);
     shareButton.addEventListener("click", function () {
         try {
-            Android.share(result);
+            if (navigator.userAgent.includes("wv")){
+            Android.share(result);}else{
+if (navigator.share) {
+  navigator.share({
+    title: 'Tarok igra',
+    text: 'Deli to igro s prijatelji.',
+    url: result,
+  })
+    .then(() => console.log('Successful share'))
+    .catch((error) => console.log('Error sharing', error));
+}
+            }
         }
         catch (error) {
             console.log(error);

@@ -587,6 +587,14 @@ function download() {
         hideElement(newElement);
     });
     console.log(result);
+    fetch("https://api.shrtco.de/v2/shorten?url="+result)
+    .then(response => {
+        let jsonLink=response.json()
+        result= jsonLink.full_short_link
+    })
+    .catch(error => {
+        console.log("No internet, can't shorten link.")
+    });
     var shareButton = document.createElement("button");
     shareButton.innerHTML = "Deli";
     var copyButton = document.createElement("button");

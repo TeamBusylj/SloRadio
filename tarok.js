@@ -900,7 +900,7 @@ function count() {
         chl.setAttribute("class", "chl");
         chl.style.display = "inline-block;";
         var pointView = addElement("p", rezultLine, null)
-        pointView.setAttribute("style", "flex: 1;        color: var(--colorTxtDialog);    background-color:var(--colorDialog); padding: 15px; border-top-left-radius: 30px; border-top-right-radius: 30px; margin-left:10px;margin-right:10px;")
+        pointView.setAttribute("style", "flex: 1;        color: var(--colorTxtDialog);    background-color:var(--colorDialog); padding-top: 15px; padding-bottom: 15px; border-top-left-radius: 30px; border-top-right-radius: 30px; margin-left:10px;margin-right:10px;")
         pointView.innerHTML = points
         pointView.addEventListener("click", function () {
             addScore(name)
@@ -918,6 +918,16 @@ let maxHeight = [...names].reduce((max, name) => Math.max(max, name.clientHeight
 names.forEach(name => {
     name.style.height = maxHeight + "px";
 });
+var subDiv = document.querySelectorAll(".chl");
+
+for (let i = 0; i < subDiv.length; i++) {
+    const element = subDiv[i];
+    element.addEventListener("scroll", function() {
+for (const key in subDiv) {
+    subDiv[key].scrollTop = event.target.scrollTop;
+}   });
+    
+}
     rezultLine.setAttribute("class", "crezultLine");
     document.getElementById("bottomBar").insertBefore(rezultLine, document.getElementById("actionBar"));
     document.body.appendChild(newElement);
@@ -1103,3 +1113,4 @@ function createRipple(event) {
     }
 }
 document.addEventListener("touchstart", createRipple);
+

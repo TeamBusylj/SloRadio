@@ -6,19 +6,137 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div>
+    <div class="scrollable-div">
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+       <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Consectetur adipiscing elit...</p>
+      
+      </div>
+    </div>
 </body>
-<script>
-    fetch('https://data.radio.si/api/lastsongsxml/Radio1/json')
-            .then(response => response.text())
-            .then(data => {
-console.log(data)
+<style>
 
+   /* Style for the scrollable div */
+.scrollable-div {
+  width: 300px; /* Adjust the width as needed */
+  height: 200px; /* Adjust the height as needed */
+  overflow: hidden;
+  color: wheat;
+  background-color: black;
+  border: 1px solid #ccc; /* Optional: Add border for styling */
+}
 
-            })
-            .catch(error => {
-                console.error('Cannot get name', error);
-            });
-                   
-</script>
+/* Style for the content inside the div */
+.scrollable-div p {
+  margin: 0; /* Remove default margin on <p> tags */
+  padding: 10px; /* Add padding for spacing */
+}
+
+/* Style for the scrollbar */
+.scrollable-div::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width as needed */
+}
+
+.scrollable-div::-webkit-scrollbar-thumb {
+  background-color: #888; /* Scrollbar thumb color */
+  border-radius: 4px; /* Rounded corners for the thumb */
+}
+                
+</style>
 </html>

@@ -14,6 +14,7 @@ div#bottomBar {
 }
 #actionBar{
  display: none;
+ background-color: var(--bgColor);
     transition: all .2s;
     align-items: center;
     justify-content: center;
@@ -21,9 +22,9 @@ div#bottomBar {
 pointer-events: auto;
 }
 i{margin: 5px;}
-@media (max-width:380px) { .bottomBtn {font-size: 0;}} 
+@media (max-width:400px) { .bottomBtn {font-size: 0;}} 
 
-@media (min-width:380px) { .bottomBtn {font-size: 100%;} }
+@media (min-width:400px) { .bottomBtn {font-size: .9rem;} }
 .bottomBtn {
   flex-basis: auto;
        
@@ -174,19 +175,28 @@ html {
 }
 
 .chl {
+    height: calc(100vh - 200px);
     margin-top: 60px;
     margin-bottom: 50px;
     border-radius: 30px;
     background-color: var(--colorDialog);
     color: var(--colorTxtDialog);
     padding: 2px;
-    height: auto;
+  overflow: scroll;
     flex: 1;
     text-align: center;
 }
-
+.chl::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .chl {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 .prnt {
-
+ 
     overflow-y: auto;
     color: var(--colorTxtDialog);
     padding: 0px 10px 10px 10px;
@@ -219,8 +229,8 @@ html {
     top: 50%;
     transform: translate(-50%, -50%);
     flex-wrap: wrap;
-    width: 100%;
-    border-radius: 40px;
+    max-height: 100%;
+
     transition: all .2s;
     position: fixed;
     justify-content: center;
@@ -284,6 +294,7 @@ input {
     justify-content: center;
     align-items: top;
     height: 100%;
+ 
 }
 
 .brightnesslow {
@@ -323,6 +334,7 @@ input {
         --colorBtn: #A4C9FF;
         color: var(--colorTxt);
         margin: 0;
+        overflow: hidden;
         background-attachment: fixed;
         background-color: var(--bgColor);
     }
@@ -330,6 +342,7 @@ input {
 
 @media (prefers-color-scheme: light) {
     body {
+        overflow: hidden;
         --bgColor: #FCFCFC;
         --colorDialog: #D8E3F8;
         --colorTxtDialog: #121C2B;

@@ -974,7 +974,7 @@ function gameData(infom, number) {
     }
     var table = addElement("table", null, "gameData");
     var podatki = ["Igra", "Igralec", "Partner", "Točke", "Radlc", "Razlika", "Uspeh", "Bonusi", "Bonus Točke"];
-
+    table.style.marginBottom=" 10px"
     for (let i = 0; i < podatki.length; i++) {
         var key = podatki[i];
         let value = info[i];
@@ -986,28 +986,42 @@ function gameData(infom, number) {
         }
     }
     console.log(completePodatki);
-    var vrstniRed = [0, 5, 8, 3]
-    for (let i = 0;i<4;i++) {
+    var vrstniRed = [0, 5, 8, 4, 3]
+
+    
+    for (let i = 0;i<5;i++) {
      
   let data = 0
   for(const key in completePodatki){
             if(completePodatki[key][0] == vrstniRed[i]) 
             data = key
-        }
+    }
         console.log(data)
         
  
         var element1 = data;
+
         let element = completePodatki[data][1];
-        if (!info[6] ) {
-          
-            element = "-" + element
-        }
+        if(completePodatki["Radlc"][1] && data == "Točke"){ element = element*2}
+       
+        if(data == "Radlc"){
+            if(completePodatki["Radlc"][1]){
+            console.log(vrstniRed)
+            element = completePodatki["Točke"][1];
+        }else{continue} }
         if (data == "Igra") {
             element1 = data + " " + completePodatki[data][1];
             element = completePodatki[data][2];
         }
+        if (!info[6] ) {
+          
+            element = "-" + element
+        }else {
+            element = "+" + element
+        }
         let tdVelk = addElement("tr", table, "gameTdDiv");
+        if(data == "Točke"){ tdVelk.style.transform=" translateY(10px)"; element.replace("+", "=")}
+       
         let td1 = addElement("td", tdVelk, "gameDataTd");
         td1.innerHTML = element1;
         let td = addElement("td", tdVelk, "gameDataTdBottom");

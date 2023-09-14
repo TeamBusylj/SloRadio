@@ -258,6 +258,17 @@ button {
     animation: showScreen .2s forwards;
 }
 
+.tockeLabel {
+    font-size: 90%;
+    position: relative;
+    left: 50%;
+    display: inline;
+    bottom: -15px;
+    z-index: 555555;
+    color: black;
+    opacity: .4;
+}
+
 select:active {
     /*  box-shadow: 5px 5px #888888;*/
     border-width: 0;
@@ -284,7 +295,7 @@ input {
 
 .cntScreen {
     background-color: var(--bgColor);
-    animation: showScreen .4s forwards;
+ 
     color: var(--colorTxt);
     display: flex;
     flex-direction: row;

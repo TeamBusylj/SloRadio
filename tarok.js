@@ -25,12 +25,6 @@ var games = {
 
 function addScore(firstPlayer) {
     listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
-    try {
-        Android.hideButton();
-    }
-    catch (error) {
-        console.log(error);
-    }
     var newElement = addElement("div", null, "whlScreen");
     document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter="brightness(.3)"; 
     let lnbrk = addElement("div", newElement, "break");
@@ -40,12 +34,7 @@ function addScore(firstPlayer) {
     iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
     iks.addEventListener("click", function (e) {
         hideElement(newElement);
-        try {
-            Android.showButton();
-        }
-        catch (error) {
-            console.log(error);
-        }
+       
     });
     for (const key in games) {
         let btn = document.createElement("button");
@@ -59,10 +48,10 @@ function addScore(firstPlayer) {
             else {
                 if (key == "Dodaj radlce") {
                     radlciDodaj(true);
-                    document.querySelector(".cntScreen").remove();
-                    document.querySelector(".crezultLine").remove();
+                    removeElement(document.querySelector(".cntScreen"), document.querySelector(".crezultLine"))
+
                     hideElement(newElement);
-                    count();
+                    count(false);
                 }
                 else {
                     calculate(key, games[key], newElement, firstPlayer);
@@ -109,7 +98,6 @@ window.addEventListener('resize', function(event) {
  
 }, true);
 function radlciDodaj(remove) {
-    /*  if (navigator.userAgent.includes("wv")) {           try {               let names = JSON.stringify(                   Object.keys(listOfPlayers).filter((key) => key !== "!gamesData!"),               )                   .replace(/"/g, "")                   .replace("[", "")                   .replace("]", "")                   .replace(/,/g, ", ");               console.log(names);               Android.showRadlci(names);           } catch (error) {               console.log(error);           }       } else {*/
     for (const key in listOfPlayers) {
         if (key == "!gamesData!") {
             continue;
@@ -117,9 +105,10 @@ function radlciDodaj(remove) {
         listOfPlayers[key][0] += "*";
     }
     if (remove) {
-        document.querySelector(".cntScreen").remove();
-        document.querySelector(".crezultLine").remove();
-        count();
+        removeElement(document.querySelector(".cntScreen"), document.querySelector(".crezultLine"))
+
+        document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter="brightness(1)"; 
+        count(false);
     }
 }
 
@@ -131,9 +120,9 @@ function androidRadlci(list) {
             listOfPlayers[key][0] += "*";
         }
     }
-    document.querySelector(".cntScreen").remove();
-    document.querySelector(".crezultLine").remove();
-    count();
+    removeElement(document.querySelector(".cntScreen"), document.querySelector(".crezultLine"))
+
+    count(false);
 }
 
 function klop(newElement2, gamename) {
@@ -144,12 +133,7 @@ function klop(newElement2, gamename) {
     iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
     iks.addEventListener("click", function (e) {
         hideElement(newElement);
-        try {
-            Android.showButton();
-        }
-        catch (error) {
-            console.log(error);
-        }
+       
     });
     for (const user in listOfPlayers) {
         if (user == "!gamesData!") {
@@ -193,11 +177,9 @@ function klop(newElement2, gamename) {
             listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = ["Po meri", "Vsi", null, null, null, null, null, null];
         }
         if (isfull) {
-            hideElement(newElement);
-            newElement2.remove();
-            document.querySelector(".cntScreen").remove();
-            document.querySelector(".crezultLine").remove();
-            count();
+        hideElement(newElement)
+            removeElement(document.querySelector(".cntScreen"), document.querySelector(".crezultLine"),   newElement2)
+            count(false);
         }
     });
 }
@@ -207,12 +189,7 @@ async function calculate(gameName, properties, newElement, firstPlayer) {
     iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
     iks.addEventListener("click", function (e) {
         hideElement(newElement);
-        try {
-            Android.showButton();
-        }
-        catch (error) {
-            console.log(error);
-        }
+       
     });
     if (Object.keys(listOfPlayers).length == 4) {
         partner(newElement, gameName, properties, false, firstPlayer);
@@ -271,13 +248,7 @@ async function calculate(gameName, properties, newElement, firstPlayer) {
     } 
 }
 
-function pauseExecution(buttonToCont) {
-    return new Promise((resolve) => {
-        buttonToCont.addEventListener('click', () => {
-            resolve();
-        });
-    });
-}
+
 async function partner(newElement, gameName, properties, teamWork, firstPlayer, secondPlayer) {
     var opisek = dodajOpis(newElement, "Tukaj izberite partnerja od igralca/-ke " + firstPlayer + ".");
     var slct2 = ""
@@ -319,6 +290,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer, 
     btn22.innerHTML = "Zmaga";
     btn23.innerHTML = "Poraz";
     addElement("div", newElement, "break");
+ 
     var bonusi = {
         /* "Ime igre": ["Koliko šteje igra","razlika","dobil true, ni dobil false", "s partnerjem, brez"]*/
         Trula: [10, 20, null, false, false],
@@ -328,7 +300,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer, 
     };
  
     var bonusTocke = 0;
-    var bnsi = [];
+    
     if (!teamWork) {
         slct2 = "partnerigralcakimuniimenic"
         opisek.innerHTML = "Tukaj izberite morebitne bonuse, vpišite razliko in pritisnite 'Zmaga' ali 'Poraz'. Igrala je oseba " + firstPlayer + "."
@@ -406,27 +378,33 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer, 
     razlika = Math.abs(razlika)
     console.log(bonusTocke);
     btn22.addEventListener("click", function () {
+        let bnsi = {} /*  "ime bonus": [tocke, napovedan, doblen]  */
         for (const key in bonusi) {
             if (bonusi[key][2] !== null) {
                 if (bonusi[key][2]) {
                     if (bonusi[key][3]) {
+                        bnsi[key] = [bonusi[key][1],true, true]
                         bonusTocke += bonusi[key][1];
                     }
                     else {
+                        bnsi[key] = [bonusi[key][0], false, true]
                         bonusTocke += bonusi[key][0];
                     }
                 }
                 else {
                     if (bonusi[key][3]) {
+                        bnsi[key] = [-Math.abs(bonusi[key][0]), true, false]
                         bonusTocke -= bonusi[key][1];
                     }
                     else {
+                        bnsi[key] = [-Math.abs(bonusi[key][0]), false, false]
                         bonusTocke -= bonusi[key][0];
                     }
                 }
             }
         }
         console.log(bonusTocke);
+        console.log(bnsi);
         if (difNu.value !== "" || properties[1] == false) {
             if (slct2 !== "" || teamWork) {
                 let nearestMultipleOf5 = Math.round(razlika / 5) * 5;
@@ -434,143 +412,88 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer, 
                 this.remove();
                 if (properties[1]) {
                     if (teamWork) {
-                       
-                        
                         listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), firstPlayer, slct2, parseInt(properties[0]) + parseInt(razlika) + bonusTocke, listOfPlayers[firstPlayer][0].length > 0, parseInt(razlika), true, bnsi, bonusTocke];
                         plusScore(firstPlayer, slct2, parseInt(properties[0] + parseInt(razlika) + bonusTocke),);
-                        document.querySelector(".cntScreen").remove();
-                        document.querySelector(".crezultLine").remove();
-                        hideElement(newElement);
-                        if (gameName.includes('Valat') || gameName.includes('Berač')) {
-                            radlciDodaj(false)
-                        }
-                        count();
                     }
                     else {
-                       
                         listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), firstPlayer, null, parseInt(properties[0]) + parseInt(razlika) + bonusTocke, listOfPlayers[firstPlayer][0].length > 0, parseInt(razlika), true, bnsi, bonusTocke];
                         aloneplusScore(firstPlayer, parseInt(parseInt(properties[0]) + parseInt(razlika) + bonusTocke,), true,);
-                        document.querySelector(".cntScreen").remove();
-                        document.querySelector(".crezultLine").remove();
-                        hideElement(newElement);
-                        if (gameName.includes('Valat') || gameName.includes('Berač')) {
-                            radlciDodaj(false)
-                        }
-                        count();
                     }
                 }
                 else {
                     if (teamWork) {
-                  
                         listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), firstPlayer, slct2, parseInt(properties[0] + bonusTocke), listOfPlayers[firstPlayer][0].length > 0, null, true, bnsi, bonusTocke];
                         plusScore(firstPlayer, slct2, parseInt(properties[0]) + bonusTocke,);
-                        document.querySelector(".cntScreen").remove();
-                        document.querySelector(".crezultLine").remove();
-                        hideElement(newElement);
-                        if (gameName.includes('Valat') || gameName.includes('Berač')) {
-                            radlciDodaj(false)
-                        }
-                        count();
                     }
                     else {
                         listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), firstPlayer, null, parseInt(properties[0] + bonusTocke), listOfPlayers[firstPlayer][0].length > 0, null, true, bnsi, bonusTocke];
                         aloneplusScore(firstPlayer, parseInt(properties[0]) + bonusTocke, true,);
-
-                        document.querySelector(".cntScreen").remove();
-                        document.querySelector(".crezultLine").remove();
-                        hideElement(newElement);
-                        if (gameName.includes('Valat') || gameName.includes('Berač')) {
-                            radlciDodaj(false)
-                        }
-                        count();
                     }
                 }
             }
-            document.querySelector(".cntScreen").remove();
-            document.querySelector(".crezultLine").remove();
+            removeElement(document.querySelector(".cntScreen"), document.querySelector(".crezultLine"))
+
             hideElement(newElement);
             if (gameName.includes('Valat') || gameName.includes('Berač')) {
                 radlciDodaj(false)
             }
-            count();
+            count(true);
         }
     });
     btn23.addEventListener("click", function () {
+        let bnsi = {} /*  "ime bonus": [tocke, napovedan, doblen]  */
         for (const key in bonusi) {
             if (bonusi[key][2] !== null) {
                 if (bonusi[key][2]) {
                     if (bonusi[key][3]) {
+                        bnsi[key] = [bonusi[key][1],true, true]
                         bonusTocke += bonusi[key][1];
                     }
                     else {
+                        bnsi[key] = [bonusi[key][0], false, true]
                         bonusTocke += bonusi[key][0];
                     }
                 }
                 else {
                     if (bonusi[key][3]) {
+                        bnsi[key] = [-Math.abs(bonusi[key][0]), true, false]
                         bonusTocke -= bonusi[key][1];
                     }
                     else {
+                        bnsi[key] = [-Math.abs(bonusi[key][0]), false, false]
                         bonusTocke -= bonusi[key][0];
                     }
                 }
             }
         }
         console.log(bonusTocke);
+        console.log(bnsi);
         if (properties[1]) {
             if (teamWork) {
-            
                 listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), firstPlayer, slct2, -Math.abs(parseInt(properties[0]) + parseInt(razlika) + bonusTocke,), listOfPlayers[firstPlayer][0].length > 0, parseInt(razlika), false, bnsi, bonusTocke];
                 plusScore(firstPlayer, slct2, -Math.abs(parseInt(properties[0] + parseInt(razlika) + bonusTocke,),),);
-                document.querySelector(".cntScreen").remove();
-                document.querySelector(".crezultLine").remove();
-                hideElement(newElement);
-                if (gameName.includes('Valat') || gameName.includes('Berač')) {
-                    radlciDodaj(false)
-                }
-                count();
             }
             else {
                 console.log("je ratal");
                      listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), firstPlayer, null, -Math.abs(parseInt(properties[0]) + parseInt(razlika) + bonusTocke,), listOfPlayers[firstPlayer][0].length > 0, parseInt(razlika), false, bnsi, bonusTocke];
-                
                      aloneplusScore(firstPlayer, -Math.abs(parseInt(properties[0]) + parseInt(razlika) + bonusTocke,), true,);
-           
-                     document.querySelector(".cntScreen").remove();
-                document.querySelector(".crezultLine").remove();
-                hideElement(newElement);
-                if (gameName.includes('Valat') || gameName.includes('Berač')) {
-                    radlciDodaj(false)
-                }
-                count();
             }
-        }
-        else {
+        }else {
             if (teamWork) {
                 listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), firstPlayer, slct2, -Math.abs(parseInt(properties[0]) + bonusTocke), listOfPlayers[firstPlayer][0].length > 0, null, false, bnsi, bonusTocke];
                 plusScore(firstPlayer, slct2, -Math.abs(parseInt(properties[0] + bonusTocke)),);
-
-                document.querySelector(".cntScreen").remove();
-                document.querySelector(".crezultLine").remove();
-                hideElement(newElement);
-                if (gameName.includes('Valat') || gameName.includes('Berač')) {
-                    radlciDodaj(false)
-                }
-                count();
             }
             else {
                 listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), firstPlayer, null, -Math.abs(parseInt(properties[0]) + bonusTocke), listOfPlayers[firstPlayer][0].length > 0, null, false, bnsi, bonusTocke];
                 aloneplusScore(firstPlayer, -Math.abs(parseInt(properties[0] + bonusTocke)), true,);
-
-                document.querySelector(".cntScreen").remove();
-                document.querySelector(".crezultLine").remove();
-                hideElement(newElement);
-                if (gameName.includes('Valat') || gameName.includes('Berač')) {
-                    radlciDodaj(false)
-                }
-                count();
             }
         }
+        removeElement(document.querySelector(".cntScreen"), document.querySelector(".crezultLine"))
+        hideElement(newElement);
+        if (gameName.includes('Valat') || gameName.includes('Berač')) {
+            radlciDodaj(false)
+        }
+        count(true);
     })
 }
 
@@ -747,15 +670,16 @@ function Game() {
             }
             document.getElementById("newgame").style.display = "none";
     document.getElementById("game").style.display = "none";
-            count();
+            count(true);
         }
     });
 }
 
 function undo() {
     listOfPlayers = JSON.parse(JSON.stringify(listOfPlayersCopy));
-    document.querySelector(".cntScreen").remove();
-    count();
+    removeElement(document.querySelector(".cntScreen"), document.querySelector(".crezultLine"))
+
+    count(false);
 }
 var listOfPlayers = {};
 var listOfPlayersCopy = {};
@@ -800,9 +724,8 @@ function newGame() {
         newElement.style.display = "none";
         localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter((key) => key !== "!gamesData!"),).replace(/"/g, "").replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers),);
         listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
-        document.getElementById("newgame").style.display = "none";
-    document.getElementById("game").style.display = "none";
-        count();
+        removeElement(  document.getElementById("newgame"), document.getElementById("game"))
+        count(true);
     });
 
 }
@@ -837,15 +760,10 @@ function padArraysToLongest(obj) {
     }
 }
 
-function count() {
+function count(animate) {
+    document.getElementById("actionBar").style.pointerEvents ="auto";
     document.getElementById("actionBar").style.display = "flex"
     document.getElementById("actionBar").style.pointerEvents = "all"
-    try {
-        Android.showButton();
-    }
-    catch (error) {
-        console.log(error);
-    }
     padArraysToLongest(listOfPlayers);
     localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter((key) => key !== "!gamesData!"),).replace(/"/g, "").replace("[", "").replace("]", "").replace(/,/g, ", "), JSON.stringify(listOfPlayers),);
     localStorage.setItem(JSON.stringify(Object.keys(listOfPlayers).filter((key) => key !== "!gamesData!"),).replace(/"/g, "").replace("[", "").replace("]", "").replace(/,/g, ", ")["!gamesData"], JSON.stringify(listOfPlayers["!gamesData"]),);
@@ -856,6 +774,8 @@ function count() {
 
     localStorage.removeItem(undefined)
     var newElement = addElement("div", document.body, "cntScreen");
+    if(animate){
+    newElement.style.animation = "showScreen .4s forwards"}
     var rezultLine = document.createElement("div");
     for (const key in listOfPlayers) {
         if (key == "!gamesData!") {
@@ -876,8 +796,7 @@ function count() {
         chl.innerHTML += '<p style = "" class="noText" ></p>';
         while (i < pnts.length) {
             var kkk = document.createElement("p");
-            kkk.innerHTML = pnts[i];document.getElementById("newgame").style.display = "none";
-            document.getElementById("game").style.display = "none";
+            kkk.innerHTML = pnts[i];
             chl.appendChild(kkk);
             kkk.style.marginTop = "-15px";
             if (pnts[i] !== "&nbsp") {
@@ -968,8 +887,11 @@ function gameData(infom, number) {
     if (info[0] !== "Po meri" && info[0] !== "Klop") {
         var changeValue = document.createElement("input");
         changeValue.type = "number";
-        changeValue.value = info[3];
+        
+        if(info[4]){changeValue.value = info[3]*2}else{changeValue.value = info[3];}
         changeValue.placeholder = "Točke...";
+        let tockeLabel =  addElement("label", newElement, "tockeLabel");
+        tockeLabel.innerHTML = "...Točke..."
         newElement.appendChild(changeValue);
     }
     var table = addElement("table", null, "gameData");
@@ -982,51 +904,84 @@ function gameData(infom, number) {
             completePodatki[key] = [i, value, games[value][0]]
         }
         else {
+           
             completePodatki[key] = [i, value]
+            
         }
     }
     console.log(completePodatki);
     var vrstniRed = [0, 5, 8, 4, 3]
 
+
+function createTableData(element, element1, data){
+    let tdVelk = addElement("tr", table, "gameTdDiv");
+    if(data == "Točke"){ tdVelk.style.transform=" translateY(10px)"; element = "= " + element.toString().replace("-","").replace("+","")}
+   
+    let td1 = addElement("td", tdVelk, "gameDataTd");
+    td1.innerHTML = element1;
+    let td = addElement("td", tdVelk, "gameDataTdBottom");
+    td.innerHTML = element;
+}
     
+
+
     for (let i = 0;i<5;i++) {
      
   let data = 0
   for(const key in completePodatki){
-            if(completePodatki[key][0] == vrstniRed[i]) 
+        if(completePodatki[key][0] == vrstniRed[i]) 
             data = key
     }
-        console.log(data)
-        
+      
  
-        var element1 = data;
+        let element1 = data;
 
         let element = completePodatki[data][1];
+
         if(completePodatki["Radlc"][1] && data == "Točke"){ element = element*2}
-       
+       if(element == null || element == 0){continue}
         if(data == "Radlc"){
             if(completePodatki["Radlc"][1]){
-            console.log(vrstniRed)
+         
             element = completePodatki["Točke"][1];
         }else{continue} }
         if (data == "Igra") {
-            element1 = data + " " + completePodatki[data][1];
+            element1 = data + " " + completePodatki[data][1].toLowerCase();
             element = completePodatki[data][2];
         }
-        if (!info[6] ) {
-          
-            element = "-" + element
-        }else {
-            element = "+" + element
-        }
-        let tdVelk = addElement("tr", table, "gameTdDiv");
-        if(data == "Točke"){ tdVelk.style.transform=" translateY(10px)"; element.replace("+", "=")}
+        
        
-        let td1 = addElement("td", tdVelk, "gameDataTd");
-        td1.innerHTML = element1;
-        let td = addElement("td", tdVelk, "gameDataTdBottom");
-        td.innerHTML = element;
+        if(data == "Bonus Točke"){
+          
+            let bonusObject = completePodatki["Bonusi"][1]
+            for(const key in completePodatki["Bonusi"][1]){
+                if(bonusObject[key][1]){
+                    console.log("bomus")
+                    createTableData(bonusObject[key][0],"Napovedano: <wbr>"+key,  data)
+                        continue;
+                } else{
+                    console.log("bomus")
+                    createTableData(bonusObject[key][0], key,  data)
+                        continue;
+                }
+               
+            }
+        } else{
+            if (!info[6] ) {
+                if(!element.toString().includes("-")){
+                  element = "-" + element}
+              }else {
+                  element = "+" + element
+              }
+        }
+if(data == "Bonus Točke" && Object.keys(completePodatki["Bonusi"][1]).length == 0){
+        createTableData(element, element1, data)
+         
+    } 
+    if(data !== "Bonus Točke") {
+        createTableData(element, element1, data)
     }
+}
     newElement.appendChild(table);
     addElement("div", newElement, "break");
     var iks = document.createElement("button");
@@ -1036,21 +991,18 @@ function gameData(infom, number) {
         if (info[0] !== "Po meri" && info[0] !== "Klop" && listOfPlayers[info[1]][infom] !== changeValue.value) {
             console.log(infom)
             listOfPlayers[info[1]][infom] = changeValue.value;
-            listOfPlayers["!gamesData!"][infom][3] = changeValue.value;
+            if(info[4]){  listOfPlayers["!gamesData!"][infom][3] = changeValue.value/2}else{  listOfPlayers["!gamesData!"][infom][3] = changeValue.value;}
+          
             if (info[2] !== null) {
                 listOfPlayers[info[2]][infom] = changeValue.value;
             }
-        }
-        hideElement(newElement);
-        document.querySelector(".cntScreen").remove();
-        document.querySelector(".crezultLine").remove();
-        count();
-        try {
-            Android.showButton();
-        }
-        catch (error) {
-            console.log(error);
-        }
+        
+       
+        removeElement(document.querySelector(".cntScreen"), document.querySelector(".crezultLine"))
+        
+        count(false);
+    }
+    hideElement(newElement);
     });
     document.body.appendChild(newElement);
 }
@@ -1127,4 +1079,11 @@ function createRipple(event) {
     }
 }
 document.addEventListener("touchstart", createRipple);
+
+function removeElement(){
+    for(const element of arguments){
+        console.log(element)
+        element.remove()
+    }
+}
 

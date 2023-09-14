@@ -390,10 +390,9 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer, 
                         bnsi[key] = [bonusi[key][0], false, true]
                         bonusTocke += bonusi[key][0];
                     }
-                }
-                else {
+                }else {
                     if (bonusi[key][3]) {
-                        bnsi[key] = [-Math.abs(bonusi[key][0]), true, false]
+                        bnsi[key] = [-Math.abs(bonusi[key][1]), true, false]
                         bonusTocke -= bonusi[key][1];
                     }
                     else {
@@ -596,8 +595,41 @@ function upload(encrypted) {
             hideElement(newElement);
         });
     }
-    catch { }
+    catch(error) { console.log(error)}
 }
+
+function uploadLink() {
+   
+     
+        var newElement = addElement("div", document.body, "whlScreen");
+        var iks = addElement("div", newElement, "iks");
+        iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+        iks.addEventListener("click", function (e) {
+            document.getElementById("game").style.animation = "none";
+            hideElement(newElement);
+        });
+        dodajOpis(newElement, "Prilepite povezavo igre, ki jo je nekdo delil z vami. ");
+        var linkInput = document.createElement("input");
+     
+            linkInput.type = "link";
+           
+          
+          
+            linkInput.placeholder = "Povezava...";
+            
+            newElement.appendChild(linkInput);
+            linkInput.focus();
+        var shareButton = document.createElement("button");
+        shareButton.innerHTML = "Končano";
+       newElement.appendChild(shareButton);
+        
+        shareButton.addEventListener("click", function () {
+            upload(linkInput.value.slice(49))
+            hideElement(newElement);
+        });
+    }
+
+
 
 function plusScore(playedUser, user, score) {
     if (listOfPlayers[playedUser][0] !== "") {

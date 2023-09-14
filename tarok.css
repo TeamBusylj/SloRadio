@@ -133,7 +133,14 @@ html {
 
 #newgame {
     position: absolute;
-    top: 40%;
+    top: 35%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#linkadd {
+    position: absolute;
+    top: 65%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -157,7 +164,7 @@ html {
 
 #game {
     position: absolute;
-    top: 60%;
+    top:50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -290,7 +297,13 @@ input {
     border-width: 0;
     border-radius: 20px;
     padding: 7px;
+    transition: all .1s;
+    outline: var(--colorBtn) solid 0px;
     animation: showScreen .2s forwards;
+}
+
+input:focus-visible{
+    outline: var(--colorBtn) solid 3px;
 }
 
 .cntScreen {

@@ -23,7 +23,11 @@ var games = {
     "Dodaj radlce": ["", false, "", true],
 };
 
-function addScore(firstPlayer) {
+async function addScore(firstPlayer) {
+    await resolveAfter(10);
+
+    await resolveAfter(parseInt(transitionDUr.toString().replace(".","").slice(0, 2)+"00")/4);
+    transitionDUr = 0
     listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
     var newElement = addElement("div", null, "whlScreen");
     document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter="brightness(.3)"; 
@@ -522,9 +526,11 @@ fetch("https://api.shrtco.de/v2/shorten?url=" + result).then(function(response) 
     
   
   result = data.result.full_short_link;
+  console.log(data.result.full_short_link)
   }).catch(error => {
   console.log("No internet, can't shorten link or " + error + ".");
 });
+
     var shareButton = document.createElement("button");
     shareButton.innerHTML = "Deli";
     var copyButton = document.createElement("button");
@@ -1065,48 +1071,68 @@ function deleteGame() {
     });
   
 }
-
-function createRipple(event) {
-
-    if (event.target.tagName == "BUTTON" || event.target.className == "prnt") {
+async function resolveAfter(s) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, s);
+    });
+  }
+  var transitionDUr = 0
+async function createRipple(event) {
+console.log( event.target.className)
+    if (event.target.tagName == "BUTTON" || event.target.className == "chl") {
 
         if (event.target.getAttribute("disabled") == null) {
             const button = event.target;
             const circle = document.createElement("span");
-            const diameter = Math.max(button.clientWidth, button.clientHeight);
+            const diameter = Math.max(button.offsetWidth, button.offsetHeight);
             const radius = diameter / 2;
-            circle.style.width = circle.style.height = (radius) + "px";
-            const rect = button.getBoundingClientRect();
-            circle.style.left = (event.touches[0].clientX - rect.left - 10) + "px";
-            circle.style.top = (event.touches[0].clientY - rect.top - 10) + "px";;
+            
             circle.classList.add("ripple");
+            const rect = button.getBoundingClientRect();
+            console.log(diameter)
+            
+            circle.style.left = (event.touches[0].clientX - rect.left ) + "px";
+            circle.style.top = (event.touches[0].clientY - rect.top ) + "px";
+              circle.style.width = circle.style.height = (20) + "px";
+              button.appendChild(circle);
+              circle.style.transition=" all " +(Math.round(diameter)/500) + "s"
+              transitionDUr = (Math.round(diameter)/500)
+              console.log(" all " +(Math.round(diameter)/500) + "s")
+            await resolveAfter(2);
+
+            circle.style.width = circle.style.height = (diameter*2) + "px";
+          
             let mouse = false;
             let animation = false;
             document.body.addEventListener("touchend", function () {
                 mouse = true;
+                console.log("transitionend")
                 if (animation) {
                     setTimeout(() => {
-                        circle.style.transform = "scale(4)";
+                   
                         circle.classList.add("fadeOutIt");
                         setTimeout(() => {
                             circle.remove();
                         }, 200);
-                    }, 100);
+                    }, 0);
                 }
             });
-            circle.addEventListener("animationend", function () {
+            circle.addEventListener("transitionend", function () {
                 animation = true;
                 if (mouse) {
+                    console.log("transitionend")
                     setTimeout(() => {
-                        circle.style.transform = "scale(4)";
-                        circle.classList.add("fadeOutIt");
+                
+                          circle.classList.add("fadeOutIt");
                         setTimeout(() => {
                             circle.remove();
                         }, 200);
-                    }, 100);
+                    }, 0);
                 }
             });
-            button.appendChild(circle);
+       
         }
     }
 }

@@ -44,13 +44,16 @@ i{margin: 5px;}
 }
 
 span.ripple {
-
+  width: 1px;
+  height: 1px;
+  opacity: .4;
+filter: brightness(2);
     position: absolute;
     border-radius: 50%;
-    transition: all 2s;
-    transform: scale(.5) translate(-50%, -50%);
-    animation: ripple 200ms linear forwards;
-    background-color: rgba(255, 255, 255, 0.7);
+    transition: all .3s;
+    transform: scale(1) translate(-50%, -50%);
+    /*animation: ripple 3000ms linear forwards;*/
+    background-color:inherit;
 }
 
 .fadeOutIt {
@@ -68,8 +71,16 @@ span.ripple {
 }
 
 @keyframes ripple {
-    to {
-        transform: scale(5);
+    0% {
+        transform: scale(0) translate(-50%, -50%);
+        opacity: 0;
+    }
+    20% {
+        transform: scale(.4) translate(-75%, -75%);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2) translate(-25%, -25%);
         opacity: .4;
     }
 }
@@ -191,6 +202,7 @@ html {
     padding: 2px;
   overflow: scroll;
     flex: 1;
+    position: relative;
     text-align: center;
 }
 .chl::-webkit-scrollbar {

@@ -5,7 +5,7 @@
     <title>Cross word Puzzel</title>
 </head>
 
-<body onload="randomWords();">
+<body onload="">
     <div id="leftBox">
         <table id="puzzel">
 
@@ -17,7 +17,7 @@
     </table>
     <p id="times"></p>
     <div id="hints"></div>
-    <button onclick="randomWords(); scrptRun = 0; noOfPre  = 0;">Create</button>
+    <button onclick="kkk(); scrptRun = 0; noOfPre  = 0;">Create</button>
     <button onclick="check()">Check</button>
     <button onclick="solve()">Solve</button>
     <!--<input type="number" style="width: auto !important;" id="chngGrid" placeholder="Grid size"></input>
@@ -113,6 +113,8 @@
     }
 
     function randomWords() {
+       
+        wordNumber = words.length
         document.getElementById("hints").innerHTML = ""
         scrptRun++
         items = []
@@ -164,7 +166,7 @@
                             // items[row][col] = placedWords.length;
                             for (let i = 0; i < word.length; i++) {
 
-                                if (i == 0) {  items[row][col + i] = word[i].toUpperCase() + "!" + a + "➡️"
+                                if (i == 0) {  items[row][col + i] = word[i].toUpperCase() + "!" + parseInt(a+1) + "➡️"
                             
                             } else {
                                     items[row][col + i] = word[i].toUpperCase();
@@ -189,7 +191,7 @@
                             for (let i = 0; i < word.length; i++) {
 
                                 if (i == 0) {
-                                    items[row][col + i] = word[i].toUpperCase() + "!" + a+ "⬇️"
+                                    items[row][col + i] = word[i].toUpperCase() + "!" + parseInt(a+1)+ "⬇️"
                                      continue;
                                     } else {
                                     items[row + i][col] = word[i].toUpperCase();
@@ -221,10 +223,11 @@
             hints.innerHTML += "<br><b>" + o + "</b>. " + placedWordsDesc[i]
 
         }
-        if (placedWords.length > wordNumber - 1) {
+        if (placedWords.length == wordNumber) {
             generateCrossword();
         } else {
-            randomWords()
+            console.log(placedWords.length , words.length)
+          randomWords()
         }
     }
 
@@ -335,6 +338,67 @@
         })
 
     }
+
+
+
+
+    async function kkk() {
+  let araa = [];
+
+  // Create an array of promises for the fetch operations
+  const fetchPromises = [];
+
+  for (let i = 0; i < 10; i++) {
+    let word = "";
+    let desc = "";
+    let text = "";
+
+    const url =
+      'https://api.codetabs.com/v1/proxy/?quest=http://besednjak.si/?q=node/' +
+      Math.floor(Math.random() * (514218 - 2) + 2);
+
+    const fetchPromise = fetch(url)
+      .then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const textData = await response.text();
+        text = textData;
+
+        const doc = new DOMParser().parseFromString(text, "text/xml");
+        word = doc.querySelector("#page-title").innerHTML;
+        try {
+          desc = doc.querySelectorAll(".even")[0].innerHTML;
+          if (desc.includes("<td")) {
+            desc = doc.querySelectorAll(".even")[0].getElementsByTagName("td")[1].innerHTML;
+          }
+        } catch (e) {
+          desc = doc.querySelectorAll(".odd")[0].innerHTML;
+          if (desc.includes("<td")) {
+            desc = doc.querySelectorAll(".odd")[0].getElementsByTagName("td")[1].innerHTML;
+          }
+        }
+        if(!desc.includes("<")) {
+            word = word.replace(/ /g,"|").toLowerCase()
+            araa.push( [desc, word] );
+        }
+        console.log(word, "\n", desc);
+        
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+
+    fetchPromises.push(fetchPromise);
+  }
+
+  // Wait for all fetch operations to complete
+  await Promise.all(fetchPromises);
+
+  words = araa
+  console.log("finished");
+  randomWords()
+}
 </script>
 
 <script>

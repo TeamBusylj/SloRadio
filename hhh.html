@@ -11,18 +11,40 @@
     <button id="cccc" onclick="kkk()">Ok</button>
 </body>
 <script>
-    var seznam = [['s', 'zdravnik'], ['Prestolnica stajerske', 'maribor'], ['Narejena iz sadja', 'marmelada'], ['Najbližja zvezda', 'sonce'], ['studiranje', 'razmisljanje'], ['Glavno mesto rusije', 'Moskva'], ['d', 'Racunalnik'], ['d', 'Vesolje'], ['d', 'Glad'], ['d', 'Dinar'], ['d', 'Aristokrat'], ['d', 'Ateist'], ['d', 'Utrinek'], ['Pretiti', 'Groziti'], ['Adam in...', 'Eva'], ['d', 'Udobni'], ['d', 'Mutant'], ['Nemška reka', 'Ren'], ['INTERNETNA TELEFONSKA, TELEVIZIJSKA ZVEZA', 'interkom'], , ['Duševna zaostalost', 'Idiotija']];
-    function kkk(){
-        seznam.push([document.getElementById("fff").value,document.getElementById("fffa").value])
+      let araa = {}
+     function kkk(){
+
  
-        console.log(seznam.toString());
-    } 
-    fetch('http://besednjak.si/?q=search')
-            .then(response =>  {
-console.log(response.text());
-            })
-            .then(data => {
-console.log(data);
-            })
+    for (let i = 0; i < 5; i++) {
+       
+        
+ 
+    let word = ""
+    let desc = ""
+    var text1 =""
+  let url = 'https://api.codetabs.com/v1/proxy/?quest=http://besednjak.si/?q=node/' +  Math.floor(Math.random() * (514218 - 2) + 2);
+    fetch(url).then((response) =>   console.log(res)).then((text) => {
+    
+    var doc = new DOMParser().parseFromString(text, "text/xml");
+    word = doc.querySelector("#page-title").innerHTML
+    try{desc = doc.querySelectorAll(".even")[0].innerHTML
+    if(desc.includes("<td")){
+        console.log("yes")
+        desc = doc.querySelectorAll(".even")[0].getElementsByTagName("td")[1].innerHTML
+    }
+}catch(e){
+    desc = doc.querySelectorAll(".odd")[0].innerHTML
+    if(desc.includes("<td")){
+        console.log("yes")
+        desc = doc.querySelectorAll(".odd")[0].getElementsByTagName("td")[1].innerHTML
+    }
+}
+    
+    console.log(word, "\n", desc)
+    araa[word] = desc
+    });
+}
+console.log(araa)
+}
 </script>
 </html>

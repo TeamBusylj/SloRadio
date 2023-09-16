@@ -86,6 +86,7 @@ filter: brightness(2);
 }
 
 html {
+overscroll-behavior:none;
     font-size: 1.2em;
     -webkit-user-select: none;
     /* Safari */
@@ -193,6 +194,7 @@ html {
 }
 
 .chl {
+    overscroll-behavior:none;
     height: calc(100vh - 200px);
     margin-top: 60px;
     margin-bottom: 50px;

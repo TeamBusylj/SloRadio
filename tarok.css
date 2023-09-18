@@ -37,7 +37,7 @@ i{margin: 5px;}
     }
 
 .opis {
-    font-size: large;
+    font-size: 1.2rem;
     color: var(--colorTxtDialog);
     width: 80%;
     text-align: center;
@@ -137,10 +137,17 @@ overscroll-behavior:none;
 }
 
 .iks {
+    color: var(--colorTxtDialog);
     fill: var(--colorTxtDialog);
     position: fixed;
     right: 10px;
     top: 10px;
+    height: calc(3vw + 3vh);
+    
+}
+
+.iksFont{
+    font-size:calc(3vw + 3vh) !important ;
 }
 
 #newgame {
@@ -194,7 +201,9 @@ overscroll-behavior:none;
 }
 
 .chl {
+
     overscroll-behavior:none;
+
     height: calc(100vh - 200px);
     margin-top: 60px;
     margin-bottom: 50px;
@@ -207,7 +216,7 @@ overscroll-behavior:none;
     position: relative;
     text-align: center;
 }
-.chl::-webkit-scrollbar {
+.chl::-webkit-scrollbar  {
     display: none;
   }
   
@@ -234,7 +243,7 @@ overscroll-behavior:none;
 .chl2 {
     flex: 1;
     text-align: center;
-    font-size: large;
+    font-size: 1.2rem;
     position: absolute;
     bottom: 0;
     border-right: 1px solid;
@@ -250,12 +259,11 @@ overscroll-behavior:none;
     top: 50%;
     transform: translate(-50%, -50%);
     flex-wrap: wrap;
-    max-height: 100%;
-
+    max-height: 90vh;
+    overflow-y: scroll;
     transition: all .2s;
     position: fixed;
     justify-content: center;
-    align-content: center;
     width: 80%;
     height: auto;
     padding: 5px;
@@ -276,7 +284,7 @@ button {
     background-color: var(--colorBtn);
     /* box-shadow: 5px 5px #888888; */
     margin: 10px;
-    animation: showScreen .2s forwards;
+    animation: showScreen .3s forwards;
 }
 
 .tockeLabel {
@@ -302,7 +310,7 @@ select {
     border-width: 0;
     border-radius: 20px;
     padding: 7px;
-    animation: showScreen .2s forwards;
+    animation: showScreen .3s forwards;
 }
 
 input {
@@ -313,7 +321,7 @@ input {
     padding: 7px;
     transition: all .1s;
     outline: var(--colorBtn) solid 0px;
-    animation: showScreen .2s forwards;
+    animation: showScreen .3s forwards;
 }
 
 input:focus-visible{

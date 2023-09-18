@@ -24,9 +24,9 @@ var games = {
 };
 
 async function addScore(firstPlayer) {
-    await resolveAfter(10);
+   /* await resolveAfter(10);
 
-    await resolveAfter(parseInt(transitionDUr.toString().replace(".","").slice(0, 2)+"00")/4);
+    await resolveAfter(parseInt(transitionDUr.toString().replace(".","").slice(0, 2)+"00")/8);*/
     transitionDUr = 0
     listOfPlayersCopy = JSON.parse(JSON.stringify(listOfPlayers));
     var newElement = addElement("div", null, "whlScreen");
@@ -35,7 +35,7 @@ async function addScore(firstPlayer) {
     lnbrk.style.height = "30px";
     dodajOpis(newElement, "Tukaj izberite katero igro je oseba <b>" + firstPlayer + "</b> igrala.",);
     var iks = addElement("div", newElement, "iks");
-    iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+    iks.innerHTML = showIks;
     iks.addEventListener("click", function (e) {
         hideElement(newElement);
        
@@ -128,13 +128,17 @@ function androidRadlci(list) {
 
     count(false);
 }
-
+var showIks ='<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+window.addEventListener("load", (event) => {
+   
+   if(navigator.onLine) showIks = '<i translate="no" class="material-icons iksFont">close</i>'
+  });
 function klop(newElement2, gamename) {
     var newElement = addElement("div", document.body, "whlScreen");
     document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter="brightness(.3)"; 
     dodajOpis(newElement, "Tukaj vpišite koliko točk je dobil posamezen igralec. Pišite brez predznaka minus.",);
     var iks = addElement("div", newElement, "iks");
-    iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+    iks.innerHTML = showIks;
     iks.addEventListener("click", function (e) {
         hideElement(newElement);
        
@@ -190,7 +194,7 @@ function klop(newElement2, gamename) {
 
 async function calculate(gameName, properties, newElement, firstPlayer) {
     var iks = addElement("div", newElement, "iks");
-    iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+    iks.innerHTML = showIks;
     iks.addEventListener("click", function (e) {
         hideElement(newElement);
        
@@ -321,7 +325,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer, 
             btn.addEventListener("click", function () {
                 var bonusDialog = addElement("div", document.body, "whlScreen");
                 var iks = addElement("div", bonusDialog, "iks");
-                iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+                iks.innerHTML = showIks;
                 iks.addEventListener("click", function (e) {
                     bonusDialog.style.animation = "hideScreen .2s forwards";
                     setTimeout(() => {
@@ -507,7 +511,7 @@ function download() {
     var newElement = addElement("div", document.body, "whlScreen");
     document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter="brightness(.3)"; 
     var iks = addElement("div", newElement, "iks");
-    iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+    iks.innerHTML = showIks;
     iks.addEventListener("click", function (e) {
         document.getElementById("game").style.animation = "none";
         hideElement(newElement);
@@ -576,7 +580,7 @@ function upload(encrypted) {
         var text = JSON.parse(decodeURIComponent(encrypted));
         var newElement = addElement("div", document.body, "whlScreen");
         var iks = addElement("div", newElement, "iks");
-        iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+        iks.innerHTML = showIks;
         iks.addEventListener("click", function (e) {
             document.getElementById("game").style.animation = "none";
             hideElement(newElement);
@@ -609,7 +613,7 @@ function uploadLink() {
      
         var newElement = addElement("div", document.body, "whlScreen");
         var iks = addElement("div", newElement, "iks");
-        iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+        iks.innerHTML = showIks;
         iks.addEventListener("click", function (e) {
             document.getElementById("game").style.animation = "none";
             hideElement(newElement);
@@ -683,7 +687,7 @@ function Game() {
     newElement.setAttribute("class", "whlScreen");
     dodajOpis(newElement, "Izberite igro.");
     var iks = addElement("div", newElement, "iks");
-    iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+    iks.innerHTML = showIks;
     iks.addEventListener("click", function (e) {
         document.getElementById("game").style.animation = "none";
         hideElement(newElement);
@@ -726,7 +730,7 @@ function newGame() {
     var newElement = document.createElement("div");
     newElement.setAttribute("class", "whlScreen");
     var iks = addElement("div", newElement, "iks");
-    iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+    iks.innerHTML = showIks;
     iks.addEventListener("click", function (e) {
         hideElement(newElement);
     });
@@ -1048,7 +1052,7 @@ if(data == "Bonus Točke" && Object.keys(completePodatki["Bonusi"][1]).length ==
 function deleteGame() {
     var newElement = addElement("div", document.body, "whlScreen");
     var iks = addElement("div", newElement, "iks");
-    iks.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48"><path d="M24.05 26.55 13.7 36.9q-.6.6-1.325.6t-1.275-.6q-.6-.55-.6-1.275 0-.725.6-1.275l10.4-10.4-10.45-10.4q-.55-.55-.55-1.275 0-.725.55-1.275.55-.55 1.275-.55.725 0 1.325.55L24 21.35 34.35 11q.55-.55 1.275-.55.725 0 1.325.55.55.6.55 1.35 0 .75-.55 1.3L26.6 24l10.35 10.4q.55.55.55 1.275 0 .725-.55 1.275-.55.55-1.275.55-.725 0-1.225-.55Z"/></svg>';
+    iks.innerHTML = showIks;
     iks.addEventListener("click", function (e) {
         document.getElementById("game").style.animation = "none";
         hideElement(newElement);
@@ -1095,13 +1099,14 @@ console.log( event.target.className)
             
             circle.style.left = (event.touches[0].clientX - rect.left ) + "px";
             circle.style.top = (event.touches[0].clientY - rect.top ) + "px";
-              circle.style.width = circle.style.height = (20) + "px";
+              circle.style.width = circle.style.height = (diameter/4) + "px";
+              circle.style.opacity = "0";
               button.appendChild(circle);
-              circle.style.transition=" all " +(Math.round(diameter)/500) + "s"
+              circle.style.transition=" all " +(Math.round(diameter)/700) + "s"
               transitionDUr = (Math.round(diameter)/500)
               console.log(" all " +(Math.round(diameter)/500) + "s")
             await resolveAfter(2);
-
+            circle.style.opacity = ".4";
             circle.style.width = circle.style.height = (diameter*2) + "px";
           
             let mouse = false;

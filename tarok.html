@@ -2,9 +2,9 @@
 <html lang="sl">
 
 <head>
-  
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Števec taroka</title>
@@ -19,16 +19,43 @@
     <button id="linkadd" onclick="uploadLink()">Povezava igre</button>
     <div id="bottomBar" role="footer">
         <div id="actionBar">
-            <button class="bottomBtn" id="bottomBtn" onclick="location.reload()">  <i translate="no" class="material-icons">home</i> Domov</button>
-            <button class="bottomBtn" id="bottomBtn" onclick="undo()">  <i translate="no" class="material-icons">undo</i> Nazaj</button>
-            <button class="bottomBtn" id="bottomBtn" onclick="download()">  <i translate="no" class="material-icons">share</i> Deli</button>
-            <button class="bottomBtn" id="bottomBtn" onclick="deleteGame()">  <i translate="no" class="material-icons">delete</i> Izbriši</button>
+            <button class="bottomBtn" id="bottomBtn" onclick="location.reload()"> <i translate="no"
+                    class="material-icons">home</i> Domov</button>
+            <button class="bottomBtn" id="bottomBtn" onclick="undo()"> <i translate="no" class="material-icons">undo</i>
+                Nazaj</button>
+            <button class="bottomBtn" id="bottomBtn" onclick="download()"> <i translate="no"
+                    class="material-icons">share</i> Deli</button>
+            <button class="bottomBtn" id="bottomBtn" onclick="deleteGame()"> <i translate="no"
+                    class="material-icons">delete</i> Izbriši</button>
         </div>
-       
+
     </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyBrxvJ-fs7wtfnsLzOy6WI_1J_CMHPXpoU",
+            authDomain: "tarock-counter.firebaseapp.com",
+            projectId: "tarock-counter",
+            storageBucket: "tarock-counter.appspot.com",
+            messagingSenderId: "1058014595030",
+            appId: "1:1058014595030:web:3f9c1a0095ef78276d4677",
+            measurementId: "G-K7NFBYQN0F"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
 </body>
 
-    
+
 
 
 

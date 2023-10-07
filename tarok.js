@@ -476,7 +476,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer, 
                     }
                 }
             }
-            if ( listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length ][3] > 0 && listOfPlayers[firstPlayer][0].length > 0) {
+            if (listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length][3] > 0 && listOfPlayers[firstPlayer][0].length > 0) {
                 listOfPlayers[firstPlayer][0] = listOfPlayers[firstPlayer][0].replace("*", "",);
             }
             document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter = "brightness(1)";
@@ -520,7 +520,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer, 
         if (properties[1]) {
             if (teamWork) {
                 listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length + 1] = [String(gameName), [firstPlayer, slct2], null, -Math.abs(parseInt(properties[0]) + parseInt(razlika)) + bonusTocke, listOfPlayers[firstPlayer][0].length > 0, parseInt(razlika), false, bnsi, bonusTocke];
-               
+
                 /*                plusScore(firstPlayer, slct2, -Math.abs(parseInt(properties[0] + parseInt(razlika))) + bonusTocke);*/
             }
             else {
@@ -538,7 +538,7 @@ async function partner(newElement, gameName, properties, teamWork, firstPlayer, 
                 /*                aloneplusScore(firstPlayer, -Math.abs(parseInt(properties[0] )+ bonusTocke), true);*/
             }
         }
-        if ( listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length ][3] > 0 && listOfPlayers[firstPlayer][0].length > 0) {
+        if (listOfPlayers["!gamesData!"][Object.keys(listOfPlayers["!gamesData!"]).length][3] > 0 && listOfPlayers[firstPlayer][0].length > 0) {
             listOfPlayers[firstPlayer][0] = listOfPlayers[firstPlayer][0].replace("*", "",);
         }
         document.querySelector(".cntScreen").style.filter = document.getElementById("bottomBar").style.filter = "brightness(1)";
@@ -567,20 +567,7 @@ function download() {
 
 
 
-    fetch("https://api.shrtco.de/v2/shorten?url=" + result).then(function (response) {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-        .then(function (data) {
 
-
-            result = data.result.full_short_link;
-            console.log(data.result.full_short_link)
-        }).catch(error => {
-            console.log("No internet, can't shorten link or " + error + ".");
-        });
 
     var shareButton = document.createElement("button");
     shareButton.innerHTML = "Deli";
@@ -927,8 +914,10 @@ function count(animate) {
             console.log(points)
 
             var kkk = document.createElement("p");
-            if (points[nameOne.indexOf(player)] !== "") { if (listOfPlayers["!gamesData!"][stGame][4]) {kkk.innerHTML = parseInt(points[nameOne.indexOf(player)]) * 2; }
-            else { kkk.innerHTML = parseInt(points[nameOne.indexOf(player)]) }}
+            if (points[nameOne.indexOf(player)] !== "") {
+                if (listOfPlayers["!gamesData!"][stGame][4]) { kkk.innerHTML = parseInt(points[nameOne.indexOf(player)]) * 2; }
+                else { kkk.innerHTML = parseInt(points[nameOne.indexOf(player)]) }
+            }
 
             console.log(".chlName_" + player)
             document.querySelector(".chlName_" + player).appendChild(kkk);

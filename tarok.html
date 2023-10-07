@@ -34,6 +34,8 @@
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+
+        import { getDatabase } from "https://tarock-counter-default-rtdb.europe-west1.firebasedatabase.app";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -46,12 +48,20 @@
             storageBucket: "tarock-counter.appspot.com",
             messagingSenderId: "1058014595030",
             appId: "1:1058014595030:web:3f9c1a0095ef78276d4677",
-            measurementId: "G-K7NFBYQN0F"
+            measurementId: "G-K7NFBYQN0F",
+            databaseURL: "https://tarock-counter-default-rtdb.europe-west1.firebasedatabase.app",
         };
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
+
+
+
+
+        // Initialize Realtime Database and get a reference to the service
+        const database = getDatabase(app);
+
     </script>
 </body>
 

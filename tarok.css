@@ -204,7 +204,7 @@ overscroll-behavior:none;
 
     overscroll-behavior:none;
 
-    height: calc(100vh - 200px);
+    height: calc(100svh - 200px);
     margin-top: 60px;
     margin-bottom: 50px;
     border-radius: 30px;

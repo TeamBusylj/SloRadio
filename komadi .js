@@ -41,8 +41,9 @@ let dataa;
 function handleFileInput() {
   document.getElementById('text').innerHTML = "Getting files"
   const files = fileInput.files;
-console.log(files.length);
+  console.log(files.length);
   for (let i = 0; i < files.length; i++) {
+    se
     const file = files[i];
     console.log(i);
     const reader = new FileReader();
@@ -168,7 +169,7 @@ function main(data, data2) {
 
       if (Array.isArray(data[i])) {
         if (i > 5) {
-    
+
           data[i].push('Kulisna glasba')
         }
         if (i == 4) {
@@ -225,10 +226,13 @@ function main(data, data2) {
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
   link.download = 'popis/' + title + ".xlsx";
-  link.click();
-  
-link.remove()
-  
+  setTimeout(() => {
+    link.click();
+
+    link.remove()
+  }, 100);
+
+
 }
 
 const avtorraay = {

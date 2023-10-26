@@ -51,7 +51,7 @@ function handleFileInput() {
     reader.onload = function (event) {
       const csvContents = event.target.result;
       const data = Papa.parse(csvContents, { header: false, encoding: 'UTF-8' }).data;
-      console.log(main(data));
+      console.log(main(data), i);
       // Perform any other actions with the parsed data
     };
 
@@ -64,7 +64,7 @@ function handleFileInput() {
 
 
 
-function main(data, data2) {
+function main(data, data2, i) {
 
 
 
@@ -230,7 +230,7 @@ function main(data, data2) {
     link.click();
 
     link.remove()
-  }, 100);
+  }, 100 + i);
 
 
 }

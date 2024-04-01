@@ -178,13 +178,14 @@ img.bigImage {
 }
 .listHolder {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  position: relative;
-  top: 30px;
-  gap: 15px;
-  grid-auto-rows: minmax(100px, auto);
-  width: 90vw;
-  margin: 0 auto 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(155px, 155px));
+    position: relative;
+    top: 30px;
+    justify-content: center;
+    gap: 15px;
+    grid-auto-rows: minmax(100px, auto);
+    width: 90vw;
+    margin: 0 auto 0 auto;
 }
 .bookImage {
   width: 100%;

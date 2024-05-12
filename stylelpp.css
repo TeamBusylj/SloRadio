@@ -1,0 +1,45 @@
+body{
+    background-color: var(--md-sys-color-surface);
+}
+.arrivalsContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-family: Roboto;
+    width: 100%;
+    height: 100%;
+    background: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    display: flex;
+    overflow: scroll;
+    flex-direction: column;
+    align-items: center;
+}
+.arrivalItem {
+    background: var(--md-sys-color-surface-container-high);
+    margin: 10px;
+    width: 70%;
+    border-radius: 25px;
+    padding: 19px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.arrivalData {
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.busNo {
+   font-weight: 900;
+    height: 60%;
+    border-radius: 200px;
+    aspect-ratio: 1 / 1;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    margin-right: 15px;
+}

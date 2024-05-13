@@ -93,7 +93,7 @@ function createStationItems(search, query) {
           let cornot = "";
           if (!centertation.includes(stationList[station].name)) {
             centertation.push(stationList[station].name);
-            cornot = '<span class="center">CENTER</span>';
+            cornot = '<span class="center">PROTI CENTRU</span>';
           }
 
           if (distance > 1) {
@@ -180,12 +180,13 @@ async function stationClick(station) {
   );
   const movies = await response.json();
   console.log(movies.data);
-  if (movies.data.arrivals.length > 0) {
+
     let arrivalsContainer = addElement(
       "div",
       document.body,
       "arrivalsContainer"
     );
+    if (movies.data.arrivals.length > 0) {
     for (const arrival of movies.data.arrivals) {
       if (document.getElementById("bus_" + arrival.route_name)) {
         document
@@ -208,7 +209,10 @@ async function stationClick(station) {
           " min</div>";
       }
     }
+  }else{
+    arrivalsContainer.innerHTML = "No buses arriving soon"
   }
+  
 }
 function addElement(tag, parent, className) {
   var element = document.createElement(tag);

@@ -28,17 +28,39 @@ md-circular-progress#loader {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 .search {
+    /* margin-top: 20px; */
     --_active-indicator-height: 0;
     --_hover-active-indicator-height: 0;
     --_focus-active-indicator-height: 0;
-    width: 97%;
+    width: 93%;
     --md-filled-text-field-container-shape: 150px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+  
+    
+    
+    /* position: relative; */
     display: block;
 
+}
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+.searchContain{
+    position: fixed;
+    top: 0px;
+    padding: 20px 0px;
+    background-color: var(--md-sys-color-surface);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  margin-bottom: 20px;
+   z-index: 33;
 }
 .search md-icon{margin-left: 10px;}
 .stationDistance {
@@ -50,6 +72,9 @@ md-circular-progress#loader {
 .stationName{
     font-weight: 400;
     font-size: 1.2rem;
+}
+md-list#listOfStations {
+    margin-top: 90px;
 }
 md-list-item.stationItem {
     background: var(--md-sys-color-surface-container);

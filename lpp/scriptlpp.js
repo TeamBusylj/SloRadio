@@ -1,10 +1,23 @@
+
+function debounce(func, delay) {
+  let timeoutId;
+  return function() {
+      const context = this;
+      const args = arguments;
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+          func.apply(context, args);
+      }, delay);
+  };
+}
+const delayedSearch = debounce(searchRefresh, 300);
 window.addEventListener("load", async function () {
   setInterval(async () => {}, 2000);
   const url = "https://mestnipromet.cyou/api/v1/resources/buses/info";
   const response = await fetch(url);
   const movies = await response.json();
   createBuses(movies.data);
- this.document.querySelector(".search").addEventListener("input",  searchRefresh)
+ this.document.querySelector(".search").addEventListener("input",  delayedSearch)
 });
 var arrivalsMain = {};
 var tripIds = [];
@@ -27,6 +40,22 @@ async function createBuses(data) {
   console.log("finish");
   createStationItems();
 }
+const latitude = position.coords.latitude;
+const longitude = position.coords.longitude;
+setInterval(() => {
+  navigator.geolocation.getCurrentPosition(function (position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+  }, error => {
+    list.style.display = "block"
+    loader.style.display = "none"
+    list.innerHTML = "<md-list-item>Geolocation is not supported by this browser.</md-list-item>";
+  }, {
+  timeout: 10000,
+  maximumAge: 60000,
+  enableHighAccuracy: true
+  });
+}, 60000);
 
 function createStationItems(search, query) {
   var loader = document.getElementById("loader");
@@ -36,9 +65,8 @@ function createStationItems(search, query) {
   loader.style.display = "block"
   var nearby = {};
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
+   
+     
       let centertation = [];
       for (const station in stationList) {
         let item2 = addElement("md-list-item", null, "stationItem");
@@ -114,15 +142,7 @@ function createStationItems(search, query) {
       }
       list.style.display = "block"
       loader.style.display = "none"
-    }, error => {
-      list.style.display = "block"
-      loader.style.display = "none"
-      list.innerHTML = "<md-list-item>Geolocation is not supported by this browser.</md-list-item>";
-  }, {
-    timeout: 10000,
-    maximumAge: 10000,
-    enableHighAccuracy: true
-  });
+    
 
   }
 }
@@ -130,6 +150,9 @@ function searchRefresh() {
   let query = document.querySelector(".search").value;
   createStationItems(true, query)
 }
+
+
+
 function haversineDistance(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the Earth in kilometers
   const dLat = ((lat2 - lat1) * Math.PI) / 180; // Convert degrees to radians

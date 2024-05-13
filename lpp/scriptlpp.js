@@ -23,7 +23,10 @@ window.addEventListener("load", async function () {
 let touchstartY = 0;
 document.addEventListener('touchstart', e => {
   loadingC.removeAttribute("indeterminate")
-  loadingC.shadowRoot.querySelector(".active-track").style.transition = "all 0s"
+  setTimeout(() => {
+    loadingC.shadowRoot.querySelector(".active-track").style.transition = "all 0s"
+  }, 1);
+
   loadingC.setAttribute("value", "0")
   touchstartY = e.touches[0].clientY;
 });
@@ -34,7 +37,7 @@ document.addEventListener('touchmove', e => {
   const touchY = e.touches[0].clientY;
  touchDiff = touchY - touchstartY;
   if (touchDiff > 0 && window.scrollY === 0) {
-    pullToRefresh.style.top = touchDiff/(touchY/200) + 'px' ;
+    pullToRefresh.style.top = touchDiff/(touchY/250) + 'px' ;
     loadingC.setAttribute("value", Math.min(touchDiff/150, 1).toString())
   }
 });
@@ -47,8 +50,8 @@ document.addEventListener('touchend', e => {
     pullToRefresh.style.top = "150px"
     setTimeout(() => {
       pullToRefresh.style.transition = "all 0s"
-      loadingC.removeAttribute("indeterminate")
-    }, 300);
+     
+    }, 400);
    console.log('refresh');
    if(isArrivalsOpen) refreshArrivals(); else   createBuses()
    }else{
@@ -56,8 +59,8 @@ document.addEventListener('touchend', e => {
     pullToRefresh.style.top = "0"
     setTimeout(() => {
       pullToRefresh.style.transition = "all 0s"
-      loadingC.removeAttribute("indeterminate")
-    }, 300);
+    
+    }, 400);
   }
 
 });

@@ -24,19 +24,19 @@ var tripIds = [];
 var stationList = {};
 var latitude 
 var longitude
-function getLocation() {
-  navigator.geolocation.getCurrentPosition(function (position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-  }, error => {
-    list.style.display = "block"
-    loader.style.display = "none"
-    list.innerHTML = "<md-list-item>Geolocation is not supported by this browser.</md-list-item>";
-  }, {
-  timeout: 10000,
-  maximumAge: 60000,
-  enableHighAccuracy: true
-  });
+async function getLocation() {
+  try {
+      const position = await new Promise((resolve, reject) => {
+          navigator.geolocation.getCurrentPosition(resolve, reject, {
+              timeout: 10000,
+              maximumAge: 60000,
+              enableHighAccuracy: true
+          });
+      });
+
+      latitude = position.coords.latitude;
+      longitude = position.coords.longitude;
+  } catch  {}
 }
 
 setInterval(getLocation, 60000);
@@ -56,7 +56,7 @@ async function createBuses(data) {
   stationList = movies.data;
 
   console.log("finish");
-  getLocation();
+  await getLocation();
   createStationItems();
 }
 

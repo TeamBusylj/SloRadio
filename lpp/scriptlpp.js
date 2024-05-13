@@ -78,7 +78,7 @@ function createStationItems() {
             buses.innerHTML +=
               "<div class=busNo style=background-color:#" +
               lineColors[bus.replace(/\D/g, "")] +
-              " id=bus_" +
+              " id=bus2_" +
               bus +
               ">" +
              bus +

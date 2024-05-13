@@ -249,7 +249,8 @@ async function stationClick(station, noAnimation) {
   
   var arrivalsContainer = makeScreen(stationList[station].name)
   let arrivalsScroll = addElement("div", arrivalsContainer, "arrivalsScroll");
-  if(noAnimation){arrivalsContainer.style.transition = "all 0s"; document.querySelectorAll(".arrivalsContainer")[0].remove()}
+  if(noAnimation){arrivalsContainer.style.transition = "all 0s"; 
+  setTimeout(()=>{document.querySelectorAll(".arrivalsContainer")[0].remove()}, 10)}
   isArrivalsOpen = station
   const response = await fetch(
     " https://cors.proxy.prometko.si/https://lpp.ojpp.derp.si/api/station/arrival?station-code=" +

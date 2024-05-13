@@ -21,6 +21,25 @@ body{
     flex-direction: row;
     margin-top: 7px;
 }
+md-circular-progress#loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.search {
+    --_active-indicator-height: 0;
+    --_hover-active-indicator-height: 0;
+    --_focus-active-indicator-height: 0;
+    width: 97%;
+    --md-filled-text-field-container-shape: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    display: block;
+
+}
+.search md-icon{margin-left: 10px;}
 .stationDistance {
    float: right;
    margin-right: 5px;
@@ -35,6 +54,17 @@ md-list-item.stationItem {
     background: var(--md-sys-color-surface-container);
     margin: 10px;
     border-radius: 20px;
+    animation: show .1s ease-in-out forwards;
+}
+@keyframes show {
+    0%{
+        scale: .95;
+        opacity: 0;
+    }
+    100%{
+        scale: 1;
+        opacity: 1;
+    }
 }
 .arrivalItem {
     background: var(--md-sys-color-surface-container-high);

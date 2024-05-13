@@ -22,6 +22,24 @@ window.addEventListener("load", async function () {
 var arrivalsMain = {};
 var tripIds = [];
 var stationList = {};
+var latitude 
+var longitude
+function getLocation() {
+  navigator.geolocation.getCurrentPosition(function (position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+  }, error => {
+    list.style.display = "block"
+    loader.style.display = "none"
+    list.innerHTML = "<md-list-item>Geolocation is not supported by this browser.</md-list-item>";
+  }, {
+  timeout: 10000,
+  maximumAge: 60000,
+  enableHighAccuracy: true
+  });
+}
+
+setInterval(getLocation, 60000);
 async function createBuses(data) {
   for (const bus in data) {
     if (data[bus].trip_id && !tripIds.includes(data[bus].trip_id)) {
@@ -38,24 +56,11 @@ async function createBuses(data) {
   stationList = movies.data;
 
   console.log("finish");
+  getLocation();
   createStationItems();
 }
-const latitude = position.coords.latitude;
-const longitude = position.coords.longitude;
-setInterval(() => {
-  navigator.geolocation.getCurrentPosition(function (position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-  }, error => {
-    list.style.display = "block"
-    loader.style.display = "none"
-    list.innerHTML = "<md-list-item>Geolocation is not supported by this browser.</md-list-item>";
-  }, {
-  timeout: 10000,
-  maximumAge: 60000,
-  enableHighAccuracy: true
-  });
-}, 60000);
+
+
 
 function createStationItems(search, query) {
   var loader = document.getElementById("loader");

@@ -56,7 +56,7 @@ md-circular-progress#loader {
 }
 html, body{
     width: 100%;
-    height: 100%;
+    height: 100svh;
     margin: 0;
 }
 .center {

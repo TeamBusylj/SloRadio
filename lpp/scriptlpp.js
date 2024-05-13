@@ -93,7 +93,7 @@ function createStationItems(search, query) {
           let cornot = "";
           if (!centertation.includes(stationList[station].name)) {
             centertation.push(stationList[station].name);
-            cornot = '<span class="center">PROTI CENTRU</span>';
+            cornot = '<span class="center">CENTER</span>';
           }
 
           if (distance > 1) {

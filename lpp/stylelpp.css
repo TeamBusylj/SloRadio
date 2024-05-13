@@ -1,5 +1,6 @@
 body{
     background-color: var(--md-sys-color-surface);
+    overflow-y: hidden
 }
 .arrivalsContainer {
     position: fixed;
@@ -90,6 +91,8 @@ html, body{
 }
 md-list#listOfStations {
     margin-top: 90px;
+    overflow-y: scroll;
+    height: 100%;
 }
 md-list-item.stationItem {
     background: var(--md-sys-color-surface-container);

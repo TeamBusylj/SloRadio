@@ -18,6 +18,49 @@ window.addEventListener("load", async function () {
   const movies = await response.json();
   createBuses(movies.data);
  this.document.querySelector(".search").addEventListener("input",  delayedSearch)
+ const pullToRefresh = document.querySelector('.pull-to-refresh');
+ 
+let touchstartY = 0;
+document.addEventListener('touchstart', e => {
+  loadingC.removeAttribute("indeterminate")
+  loadingC.shadowRoot.querySelector(".active-track").style.transition = "all 0s"
+  loadingC.setAttribute("value", "0")
+  touchstartY = e.touches[0].clientY;
+});
+var touchDiff = 0;
+var loadingC = this.document.querySelector('.pll-loader');
+
+document.addEventListener('touchmove', e => {
+  const touchY = e.touches[0].clientY;
+ touchDiff = touchY - touchstartY;
+  if (touchDiff > 0 && window.scrollY === 0) {
+    pullToRefresh.style.top = touchDiff/(touchY/200) + 'px' ;
+    loadingC.setAttribute("value", Math.min(touchDiff/150, 1).toString())
+  }
+});
+document.addEventListener('touchend', e => {
+  console.log(touchDiff);
+  loadingC.setAttribute("indeterminate", "")
+  if(touchDiff>150){
+
+    pullToRefresh.style.transition = "all .3s"
+    pullToRefresh.style.top = "150px"
+    setTimeout(() => {
+      pullToRefresh.style.transition = "all 0s"
+      loadingC.removeAttribute("indeterminate")
+    }, 300);
+   console.log('refresh');
+   if(isArrivalsOpen) refreshArrivals(); else   createBuses()
+   }else{
+    pullToRefresh.style.transition = "all .3s"
+    pullToRefresh.style.top = "0"
+    setTimeout(() => {
+      pullToRefresh.style.transition = "all 0s"
+      loadingC.removeAttribute("indeterminate")
+    }, 300);
+  }
+
+});
 });
 var arrivalsMain = {};
 var tripIds = [];
@@ -60,9 +103,15 @@ async function createBuses(data) {
   createStationItems();
 }
 
+var isArrivalsOpen = false;
 
-
-function createStationItems(search, query) {
+function createStationItems() {
+  var search = false
+  var query = ''
+  if(document.querySelector(".search").value !== ''){
+    search = true
+    query = document.querySelector(".search").value
+  }
   var loader = document.getElementById("loader");
   var list = document.getElementById("listOfStations");
   list.innerHTML = ''
@@ -146,6 +195,12 @@ function createStationItems(search, query) {
        
       }
       list.style.display = "block"
+      const pullToRefresh = document.querySelector('.pull-to-refresh');
+      pullToRefresh.classList.add('hideLoad')
+      setTimeout(() => {
+        pullToRefresh.style.top = '0px' ;
+        pullToRefresh.classList.remove('hideLoad')
+      }, 300);     
       loader.style.display = "none"
     
 
@@ -172,9 +227,15 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
   const distance = R * c; // Distance in kilometers
   return distance;
 }
-
-async function stationClick(station) {
+function refreshArrivals() {
+ 
+  stationClick(isArrivalsOpen, true)
+}
+async function stationClick(station, noAnimation) {
+  
   var arrivalsContainer = makeScreen(stationList[station].name)
+  if(noAnimation){arrivalsContainer.style.transition = "all 0s"; document.querySelectorAll(".arrivalsContainer")[0].remove()}
+  isArrivalsOpen = station
   const response = await fetch(
     " https://cors.proxy.prometko.si/https://lpp.ojpp.derp.si/api/station/arrival?station-code=" +
       stationList[station].ref_id
@@ -208,6 +269,12 @@ async function stationClick(station) {
           " min</span></div></div>";
       }
     }
+    const pullToRefresh = document.querySelector('.pull-to-refresh');
+      pullToRefresh.classList.add('hideLoad')
+      setTimeout(() => {
+        pullToRefresh.style.top = '0px' ;
+        pullToRefresh.classList.remove('hideLoad')
+      }, 300);     
   }else{
     arrivalsContainer.innerHTML += "No buses arriving soon"
   }
@@ -235,6 +302,7 @@ function makeScreen(titlex) {
   iks.innerHTML = "<md-icon>close</md-icon>";
   iks.addEventListener("click", function() {
     arrivalsContainer.style.transform = "translateY(100vh)";
+    isArrivalsOpen = false
     setTimeout(() => {
       arrivalsContainer.remove();
     }, 400);
@@ -287,3 +355,4 @@ const lineColors = {
   16: "582C81",
   23: "40AE49",
 };
+

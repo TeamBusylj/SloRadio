@@ -173,3 +173,36 @@ span.arrivalTime {
     padding: 5px;
     margin-right: 15px;
 }
+
+
+body {
+    overscroll-behavior-y: auto;
+  }
+  .pull-to-refresh md-circular-progress {
+    --_size: 35px;
+    --_active-indicator-width: 13;
+    background: var(--md-sys-color-surface-container);
+    border-radius: 1000px;
+    border: 3px var(--md-sys-color-surface-container) solid;
+}
+.hideLoad{
+    transition: all .3s;
+    scale: 0;
+    opacity: 0;
+    transform-origin: 50% -50%;
+}
+  .pull-to-refresh {
+    position: fixed;
+    top: -50px;
+    width: 100%;
+    height: 60px;
+    transform: translateY(-50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+  
+  }
+  .pull-to-refresh.visible {
+    top: 0;
+  }

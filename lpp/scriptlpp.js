@@ -21,25 +21,36 @@ window.addEventListener("load", async function () {
  const pullToRefresh = document.querySelector('.pull-to-refresh');
  
 let touchstartY = 0;
+let list = this.document.getElementById('listOfStations')
+
+var touchDiff = 0;
 document.addEventListener('touchstart', e => {
+  
   loadingC.removeAttribute("indeterminate")
   setTimeout(() => {
     loadingC.shadowRoot.querySelector(".active-track").style.transition = "all 0s"
   }, 1);
-
+touchDiff = 0
   loadingC.setAttribute("value", "0")
   touchstartY = e.touches[0].clientY;
 });
-var touchDiff = 0;
+
 var loadingC = this.document.querySelector('.pll-loader');
 
 document.addEventListener('touchmove', e => {
+ 
+  if((list.scrollTop < 1 && !isArrivalsOpen) ||(isArrivalsOpen &&  this.document.querySelector('.arrivalsScroll').scrollTop < 1)){
+
+
   const touchY = e.touches[0].clientY;
  touchDiff = touchY - touchstartY;
   if (touchDiff > 0 && window.scrollY === 0) {
     pullToRefresh.style.top = touchDiff/(touchY/250) + 'px' ;
     loadingC.setAttribute("value", Math.min(touchDiff/150, 1).toString())
   }
+}else{
+  touchDiff = 0
+}
 });
 document.addEventListener('touchend', e => {
   console.log(touchDiff);
@@ -237,6 +248,7 @@ function refreshArrivals() {
 async function stationClick(station, noAnimation) {
   
   var arrivalsContainer = makeScreen(stationList[station].name)
+  let arrivalsScroll = addElement("div", arrivalsContainer, "arrivalsScroll");
   if(noAnimation){arrivalsContainer.style.transition = "all 0s"; document.querySelectorAll(".arrivalsContainer")[0].remove()}
   isArrivalsOpen = station
   const response = await fetch(
@@ -257,7 +269,7 @@ async function stationClick(station, noAnimation) {
           arrival.eta_min +
           " min</span>"
       } else {
-        let arrivalItem = addElement("div", arrivalsContainer, "arrivalItem");
+        let arrivalItem = addElement("div", arrivalsScroll, "arrivalItem");
         arrivalItem.innerHTML =
           "<div class=busNo2 style=background-color:#" +
           lineColors[arrival.route_name.replace(/\D/g, "")] +

@@ -174,6 +174,7 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
 }
 
 async function stationClick(station) {
+  var arrivalsContainer = makeScreen(stationList[station].name)
   const response = await fetch(
     " https://cors.proxy.prometko.si/https://lpp.ojpp.derp.si/api/station/arrival?station-code=" +
       stationList[station].ref_id
@@ -181,36 +182,34 @@ async function stationClick(station) {
   const movies = await response.json();
   console.log(movies.data);
 
-    let arrivalsContainer = addElement(
-      "div",
-      document.body,
-      "arrivalsContainer"
-    );
+   
+
     if (movies.data.arrivals.length > 0) {
     for (const arrival of movies.data.arrivals) {
       if (document.getElementById("bus_" + arrival.route_name)) {
         document
-          .getElementById("bus_" + arrival.route_name)
-          .parentNode.parentNode.querySelector(".arrivalData").innerHTML +=
-          "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + arrival.eta_min + " min";
+          .getElementById("eta_" + arrival.route_name).innerHTML +=
+          "<span class=arrivalTime>" +
+          arrival.eta_min +
+          " min</span>"
       } else {
         let arrivalItem = addElement("div", arrivalsContainer, "arrivalItem");
         arrivalItem.innerHTML =
-          "<b><div class=busNo style=background-color:#" +
+          "<div class=busNo2 style=background-color:#" +
           lineColors[arrival.route_name.replace(/\D/g, "")] +
           " id=bus_" +
           arrival.route_name +
           ">" +
           arrival.route_name +
-          "</div></b><div class=arrivalData><b><span>" +
-          arrival.trip_name +
-          "</span></b>" +
+          "</div><div class=arrivalData><b><span>" +
+          arrival.trip_name.split(" - ").at(-1) +
+          "</span></b><div class=eta id=eta_"+arrival.route_name+"><span class=arrivalTime>" +
           arrival.eta_min +
-          " min</div>";
+          " min</span></div></div>";
       }
     }
   }else{
-    arrivalsContainer.innerHTML = "No buses arriving soon"
+    arrivalsContainer.innerHTML += "No buses arriving soon"
   }
   
 }
@@ -224,7 +223,29 @@ function addElement(tag, parent, className) {
   }
   return element;
 }
+function makeScreen(titlex) {
+  let arrivalsContainer = addElement(
+    "div",
+    document.body,
+    "arrivalsContainer"
+  );  
+  let title = addElement("h1", arrivalsContainer, "title");
+  title.innerHTML = titlex
+    let iks = addElement("md-icon-button", arrivalsContainer, "iks");
+  iks.innerHTML = "<md-icon>close</md-icon>";
+  iks.addEventListener("click", function() {
+    arrivalsContainer.style.transform = "translateY(100vh)";
+    setTimeout(() => {
+      arrivalsContainer.remove();
+    }, 400);
+   
+  })
+  setTimeout(() => {
+    arrivalsContainer.style.transform = "translateY(0vh)";
+  }, 10);
 
+  return arrivalsContainer;
+}
 const lineColors = {
   1: "C93336",
   2: "8C8841",

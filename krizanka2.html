@@ -15,10 +15,13 @@
     <button onclick="kkk(); scrptRun = 0; noOfPre  = 0;">Create</button>
     <button onclick="check()">Check</button>
     <button onclick="solve()">Solve</button>
-    <!--<input type="number" style="width: auto !important;" id="chngGrid" placeholder="Grid size"></input>
-    <input type="number" style="width: auto !important;" id="chngWord" placeholder="Word number"></input>-->
+    <label id="wordLabel" for="words">Word number: 20</label>
+    <input  type="range" id="words" name="words" min="5" max="50" value="20">
+    <label id="gridLabel" for="gridSize">Grid size: 25</label>
+    <input type="range" id="gridSize" name="gridSize" min="0" max="100" value="25">
   </body>
   <script>
+ 
     var gridSize =25;
     var wordNumber = 20;
     var words = [
@@ -57,12 +60,27 @@
     var scrptRun = 0;
     var noOfPre = 0;
     const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+   window.addEventListener("load", (event2) => {
+        var wordLabel = document.getElementById("wordLabel");
+        var gridLabel = document.getElementById("gridLabel");
+        var wordSlider = document.getElementById("words");
+        var gridSlider = document.getElementById("gridSize");
+        wordSlider.addEventListener("input", (event) => {
+            wordNumber = Number(wordSlider.value);
+            wordLabel.innerHTML = "Word number: " + wordNumber;
+        });
+        gridSlider.addEventListener("input", (event) => {
+            gridSize = Number(gridSlider.value);
+            gridLabel.innerHTML = "Grid size: " + gridSize;
+        });
+    })
     function checkWordPlacement(word, row, col, dir, cross) {
       var intersectingLetter = "";
 
       for (let i = 0; i < word.length; i++) {
         let newRow = dir == "row" ? row + i : row;
         let newCol = dir == "col" ? col + i : col;
+       
 try {
     if (
           items[Number(newRow)][Number(newCol)] !== word[i].toUpperCase() &&
@@ -162,6 +180,8 @@ try {
               
               let isCross = checkWordPlacement(word, row, col, "col", 1);
 
+    
+
               if (intersectingLetter) {
                 if (isCross.length > 0 || placedWords.length < 1) {
                   intersects[a].push(isCross.length);
@@ -176,11 +196,14 @@ try {
                   placedWords.push(word);
                   placedWordsDesc.push(words[a][0]); // Track the placed word
                   generateCrossword(items);
-                  await delay(50);
+                  await delay(10);
                   willno = false;
                   break;
+                
+                
                 }
               }
+           
             }
             if (row + word.length < gridSize-1 || a !== 0) {
               let intersectingLetter2 = checkWordPlacement(
@@ -194,6 +217,7 @@ try {
 
               if (intersectingLetter2) {
                 if (isCross2.length > 0 || placedWords.length < 1) {
+                  
                   intersects[a].push(isCross2.length);
                   words[a].push(isCross2);
                   for (let i = 0; i < word.length; i++) {
@@ -202,26 +226,23 @@ try {
                         word[i].toUpperCase() + "!" + parseInt(a + 1) + "⬇️";
                       continue;
                     } else {
-                        console.log(row ,col);
+                
                       items[row + i][col] = word[i].toUpperCase();
                     }
                   }
                   placedWords.push(word); // Track the placed word
                   placedWordsDesc.push(words[a][0]);
                   generateCrossword(items);
-                  await delay(50);
+                  await delay(10);
                   willno = false;
                   break;
+               
                 }
               }
+           
             }
 
-            if (rpt > 4000) {
-              break;
-              console.log("nope");
-            }
-
-            rpt++;
+    
           }
           if (!willno) break;
         }
@@ -235,6 +256,7 @@ try {
       if (placedWords.length == wordNumber) {
         generateCrossword();
       } else {
+        console.log("Failed");
         randomWords();
       }
     }
@@ -262,18 +284,26 @@ try {
         row.forEach(function (oneLetter, colIndex) {
           let td = document.createElement("td");
           let input;
-          if (oneLetter === "0" || items[rowIndex][colIndex] == " ") {
+          
+                    if (oneLetter === "0" || items[rowIndex][colIndex] == " ") {
             input = document.createElement("div");
+            input.setAttribute("type", "text")
             input.classList.add("blank");
           } else {
             input = document.createElement("input");
+            input.setAttribute("type", "text")
             input.maxLength = "1";
             if (oneLetter.includes("!")) {
               input.value = oneLetter.substring(
-                oneLetter.indexOf("!") + 1,
-                oneLetter.length
+                oneLetter.indexOf("!") + 2,
+                oneLetter.length-2
               );
-              input.style.borderWidth = "0";
+              if(oneLetter.includes("⬇️")){
+                input.classList.add("down");
+              }{
+                input.classList.add("left");
+              }
+             
               input.setAttribute("disabled", "");
             }
             input.addEventListener("input", function (e) {
@@ -457,7 +487,7 @@ try {
 
   <script></script>
   <style>
-    input {
+    input[type="text"] {
       transition: all 0.2s;
       border-radius: 7px;
       text-align: center;
@@ -482,5 +512,15 @@ try {
       width: 90px;
       height: 50px;
     }
+    input.left {
+        border: none;
+    background: #c6c6c6;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+}
+    input.down {
+       border: none;
+    background: #c6c6c6;
+    clip-path: polygon(0% 0%, 100% 0, 100% 75%, 50% 100%, 0 75%);
+}
   </style>
 </html>

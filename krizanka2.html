@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Cross word Puzzel</title>
-</head>
+  </head>
 
-<body onload="">
+  <body onload="">
     <div id="leftBox">
-        <table id="puzzel">
-
-        </table>
+      <table id="puzzel"></table>
     </div>
 
-    <table id="crossword">
-
-    </table>
+    <table id="crossword"></table>
     <p id="times"></p>
     <div id="hints"></div>
     <button onclick="kkk(); scrptRun = 0; noOfPre  = 0;">Create</button>
@@ -22,339 +17,397 @@
     <button onclick="solve()">Solve</button>
     <!--<input type="number" style="width: auto !important;" id="chngGrid" placeholder="Grid size"></input>
     <input type="number" style="width: auto !important;" id="chngWord" placeholder="Word number"></input>-->
-</body>
-<script>
-    var gridSize = 25;
-    var wordNumber = 10
+  </body>
+  <script>
+    var gridSize =25;
+    var wordNumber = 20;
     var words = [
-        ['Oseba, ki zdravi', 'zdravnik'],
-        ['Prestolnica štajerske', 'maribor'],
-        ['Namaz iz sadja', 'marmelada'],
-        ['Naša zvezda', 'sonce'],
-        ['studiranje', 'razmisljanje'],
-        ['Glavno mesto Rusije', 'Moskva'],
-        ['Naprava za obdelavo podatkov', 'Racunalnik'],
-        ['Prostor zunaj Zemlje', 'Vesolje'],
-        ['Lakota', 'Glad'],
-        ['Denarna enota v nekdanji SFRJ', 'Dinar'],
-        ['Pripadnik visokih družbenih slojev', 'Aristokrat'],
-        ['Nevernica', 'Ateistka'],
-        ['Kratkotrajen vtis', 'Utrinek'],
-        ['Pretiti', 'Groziti'],
-        ['Adam in...', 'Eva'],
-        ['Komfortni', 'Udobni'],
-        ['Genetska sprememba organizma', 'Mutant'],
-        ['Reka v Nemčiji', 'Ren'],
-        ['Komunikacijska naprava', 'interkom'],
-        ['Duševna zaostalost', 'Idiotija'],
-        ['Proces tvorbe kristalov', 'Kristalizacija'],
-        ['Polno veličine in ambicij', 'Velikopotezno'],
-        ['Birokratska organizacija', 'Birokracija'],
-        ['Zgodovinsko mesto v Mezopotamiji', 'Babilon'],
-        ['Osvobajanje čustvene napetosti', 'Katarsis'],
-        ['Izstopajoče in nenavadno', 'Ekstravagantno'],
-        ['Konec sveta ali katastrofa', 'Apokalipsa'],
-        ['Samodejno delovanje', 'Avtomatsko'],
-        ['Neuspeh in trpljenje', 'Klavrnost'],
-        ['Izjemni strah pred nečim', 'Fobija']
+      ["Oseba, ki zdravi", "zdravnik"],
+      ["Prestolnica štajerske", "maribor"],
+      ["Namaz iz sadja", "marmelada"],
+      ["Naša zvezda", "sonce"],
+      ["studiranje", "razmisljanje"],
+      ["Glavno mesto Rusije", "Moskva"],
+      ["Naprava za obdelavo podatkov", "Racunalnik"],
+      ["Prostor zunaj Zemlje", "Vesolje"],
+      ["Lakota", "Glad"],
+      ["Denarna enota v nekdanji SFRJ", "Dinar"],
+      ["Pripadnik visokih družbenih slojev", "Aristokrat"],
+      ["Nevernica", "Ateistka"],
+      ["Kratkotrajen vtis", "Utrinek"],
+      ["Pretiti", "Groziti"],
+      ["Adam in...", "Eva"],
+      ["Komfortni", "Udobni"],
+      ["Genetska sprememba organizma", "Mutant"],
+      ["Reka v Nemčiji", "Ren"],
+      ["Komunikacijska naprava", "interkom"],
+      ["Duševna zaostalost", "Idiotija"],
+      ["Proces tvorbe kristalov", "Kristalizacija"],
+      ["Polno veličine in ambicij", "Velikopotezno"],
+      ["Birokratska organizacija", "Birokracija"],
+      ["Zgodovinsko mesto v Mezopotamiji", "Babilon"],
+      ["Osvobajanje čustvene napetosti", "Katarsis"],
+      ["Izstopajoče in nenavadno", "Ekstravagantno"],
+      ["Konec sveta ali katastrofa", "Apokalipsa"],
+      ["Samodejno delovanje", "Avtomatsko"],
+      ["Neuspeh in trpljenje", "Klavrnost"],
+      ["Izjemni strah pred nečim", "Fobija"],
     ];
-    var items = []
-    var scrptRun = 0
-    var noOfPre = 0
-    /*
-    document.getElementById("chngGrid").addEventListener("input", function(e){
-     gridSize = e.srcElement.value
-    })
-    document.getElementById("chngWord").addEventListener("input", function(e){
-     wordNumber = e.srcElement.value
-    })
-    */
-    function checkWordPlacement(word, row, col, deltaRow, deltaCol, cross) {
-        // Check if the word can be placed at the specified position and direction
-        let intersectingLetter = '';
-        for (let i = 0; i < word.length; i++) {
-            let newRow = row + i * deltaRow;
-            let newCol = col + i * deltaCol;
+    var items = [];
+    var scrptRun = 0;
+    var noOfPre = 0;
+    const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+    function checkWordPlacement(word, row, col, dir, cross) {
+      var intersectingLetter = "";
 
-            if (
-                newRow < 0 || newRow >= gridSize || newCol < 0 || newCol >= gridSize ||
-                (items[newRow][newCol] !== '0' && items[newRow][newCol] !== word[i].toUpperCase())
-            ) {
-                if (cross == 0) {
-                    return false
-                }
-            } else if (items[newRow][newCol] === word[i].toUpperCase()) {
-                intersectingLetter += word[i].toUpperCase();
-            }
+      for (let i = 0; i < word.length; i++) {
+        let newRow = dir == "row" ? row + i : row;
+        let newCol = dir == "col" ? col + i : col;
+try {
+    if (
+          items[Number(newRow)][Number(newCol)] !== word[i].toUpperCase() &&
+          items[newRow][newCol] !== "0"
+        ) {
+          intersectingLetter += "-";
         }
-        if (cross == 0) {
-            return intersectingLetter || true;
+        if (items[newRow][newCol] == word[i].toUpperCase()) {
+          intersectingLetter += items[newRow][newCol];
+        }
+} catch (error) {
+    intersectingLetter == "--"
+}
+       
+      }
+
+      if (cross == 1) {
+        return intersectingLetter.replace(/-/g, "").replace(/ /g, "");
+      } else {
+        if (intersectingLetter.includes("-")) {
+          return false;
         } else {
-            return intersectingLetter;
+          return true;
         }
-
+      }
     }
     function shuffle(array) {
-        let currentIndex = array.length, randomIndex;
+      let currentIndex = array.length,
+        randomIndex;
 
-        // While there remain elements to shuffle.
-        while (currentIndex != 0) {
+      // While there remain elements to shuffle.
+      while (currentIndex != 0) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
 
-            // Pick a remaining element.
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex],
+          array[currentIndex],
+        ];
+      }
 
-            // And swap it with the current element.
-            [array[currentIndex], array[randomIndex]] = [
-                array[randomIndex], array[currentIndex]];
-        }
-
-        return array;
+      return array;
     }
+    var intersects = {};
+    async function randomWords() {
+      document.getElementById("times").innerHTML = scrptRun;
+      wordNumber = words.length;
+      document.getElementById("hints").innerHTML = "";
+      scrptRun++;
+      intersects = {};
+      items = [];
+      for (let i = 0; i < gridSize; i++) {
+        items.push(Array(gridSize).fill("0"));
+      }
+      if (scrptRun > 99) {
+        let table = document.getElementById("crossword");
+        table.innerHTML = "";
+        let scriptData = document.getElementById("times");
+        scriptData.innerHTML =
+          "<b>Uh, that didn't work...</b><br> you chosed too much words for too small grid. Either try again or change the numbers.<br> The script repeated <b>" +
+          scrptRun +
+          "</b> times, with total of <b>" +
+          noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ") +
+          "</b> word repositions.";
+        return;
+      }
+      const placedWords = []; // Track the words that have already been placed
+      const placedWordsDesc = [];
+      words = shuffle(words);
 
-    function randomWords() {
-       
-        wordNumber = words.length
-        document.getElementById("hints").innerHTML = ""
-        scrptRun++
-        items = []
-        for (let i = 0; i < gridSize; i++) {
-            items.push(Array(gridSize).fill('0'));
-        }
-        if (scrptRun > 99) {
-            let table = document.getElementById("crossword");
-            table.innerHTML = ""
-            let scriptData = document.getElementById("times");
-            scriptData.innerHTML = "<b>Uh, that didn't work...</b><br> you chosed too much words for too small grid. Either try again or change the numbers.<br> The script repeated <b>" + scrptRun + "</b> times, with total of <b>" + noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ") + "</b> word repositions."
-            return
-        }
-        const placedWords = []; // Track the words that have already been placed
-        const placedWordsDesc = [];
-        words = shuffle(words)
+      for (let a = 0; a < wordNumber; a++) {
+        intersects[a] = [];
 
-        for (let a = 0; a < wordNumber; a++) {
+        let word = "!"+words[a][1] +" "
 
+        let rpt = 0;
+        let usedSpotsrow = [];
+        let usedSpotscolumn = [];
 
-            let word = " " + words[a][1] + " "
-          
-            let isHorizontal = Math.random() >= 0.5; // Randomly choose horizontal or vertical placement
-            let row, col;
-            let intersectingLetter = '';
+        for (let row = 0; row < gridSize-1; row++) {
+          let willno = true;
+          for (let col = 0; col < gridSize-1; col++) {
+            noOfPre++;
 
-            let rpt = 0
-            let usedSpotsrow = []
-            let usedSpotscolumn = []
-            while (true) {
-                noOfPre++
-                row = Math.floor(Math.random() * gridSize);
-                while (usedSpotsrow.includes(row)) {
-                    row = Math.floor(Math.random() * gridSize);
-                }
-                col = Math.floor(Math.random() * gridSize);
-                while (usedSpotsrow.includes(col)) {
-                    col = Math.floor(Math.random() * gridSize);
-                }
+            if (a == 0) {row = 5;col = 5;}
 
-                if (isHorizontal && col + word.length <= gridSize - 1) {
-                    intersectingLetter = checkWordPlacement(word, row, col, 0, 1, 0);
-                    let isCross = checkWordPlacement(word, row, col, 0, 1, 1);
-                    isCross.replace(/ /g, "")
+            if (col + word.length < gridSize-1 && a !== 1) {
+              let intersectingLetter = checkWordPlacement(
+                word,
+                row,
+                col,
+                "col",
+                0
+              );
+              
+              let isCross = checkWordPlacement(word, row, col, "col", 1);
 
-                    if (intersectingLetter !== false) {
-                        if (isCross.length > 0 && isCross !== " " || placedWords.length < 1) {
-
-                            // items[row][col] = placedWords.length;
-                            for (let i = 0; i < word.length; i++) {
-
-                                if (i == 0) {  items[row][col + i] = word[i].toUpperCase() + "!" + parseInt(a+1) + "➡️"
-                            
-                            } else {
-                                    items[row][col + i] = word[i].toUpperCase();
-                                }
-                          
-                            }
-                            placedWords.push(word);
-                            placedWordsDesc.push(words[a][0]); // Track the placed word
-                            break;
-                        }
+              if (intersectingLetter) {
+                if (isCross.length > 0 || placedWords.length < 1) {
+                  intersects[a].push(isCross.length);
+                  for (let i = 0; i < word.length; i++) {
+                    if (i == 0) {
+                      items[row][col] =
+                        word[i].toUpperCase() + "!" + parseInt(a + 1) + "➡️";
+                    } else {
+                      items[row][col + i] = word[i].toUpperCase();
                     }
-                } else if (!isHorizontal && row + word.length <= gridSize - 1) {
-                    intersectingLetter = checkWordPlacement(word, row, col, 1, 0, 0);
-                    let isCross = checkWordPlacement(word, row, col, 1, 0, 1);
-                    isCross.replace(/ /g, "")
-                        ;
+                  }
+                  placedWords.push(word);
+                  placedWordsDesc.push(words[a][0]); // Track the placed word
+                  generateCrossword(items);
+                  await delay(50);
+                  willno = false;
+                  break;
+                }
+              }
+            }
+            if (row + word.length < gridSize-1 || a !== 0) {
+              let intersectingLetter2 = checkWordPlacement(
+                word,
+                row,
+                col,
+                "row",
+                0
+              );
+              let isCross2 = checkWordPlacement(word, row, col, "row", 1);
 
-                    if (intersectingLetter !== false || placedWords.length < 1) {
-                        if (isCross.length > 0 && isCross !== " " || placedWords.length < 1) {
-
-
-                            for (let i = 0; i < word.length; i++) {
-
-                                if (i == 0) {
-                                    items[row][col + i] = word[i].toUpperCase() + "!" + parseInt(a+1)+ "⬇️"
-                                     continue;
-                                    } else {
-                                    items[row + i][col] = word[i].toUpperCase();
-                                }
-                            }
-                            placedWords.push(word); // Track the placed word
-                            placedWordsDesc.push(words[a][0])
-                            break;
-                        }
+              if (intersectingLetter2) {
+                if (isCross2.length > 0 || placedWords.length < 1) {
+                  intersects[a].push(isCross2.length);
+                  words[a].push(isCross2);
+                  for (let i = 0; i < word.length; i++) {
+                    if (i == 0) {
+                      items[row][col] =
+                        word[i].toUpperCase() + "!" + parseInt(a + 1) + "⬇️";
+                      continue;
+                    } else {
+                        console.log(row ,col);
+                      items[row + i][col] = word[i].toUpperCase();
                     }
-
+                  }
+                  placedWords.push(word); // Track the placed word
+                  placedWordsDesc.push(words[a][0]);
+                  generateCrossword(items);
+                  await delay(50);
+                  willno = false;
+                  break;
                 }
-                if (rpt > 2000) {
-                    isHorizontal = !isHorizontal
-                }
-                if (rpt > 4000) {
-                    break
-                    console.log("nope");
-                }
-
-                rpt++
+              }
             }
 
-        };
+            if (rpt > 4000) {
+              break;
+              console.log("nope");
+            }
 
-        var hints = document.getElementById("hints");
-        for (let i = 0; i < placedWords.length; i++) {
-            o = i + 1
-            hints.innerHTML += "<br><b>" + o + "</b>. " + placedWordsDesc[i]
+            rpt++;
+          }
+          if (!willno) break;
+        }
+      }
 
-        }
-        if (placedWords.length == wordNumber) {
-            generateCrossword();
-        } else {
-            console.log(placedWords.length , words.length)
-          randomWords()
-        }
+      var hints = document.getElementById("hints");
+      for (let i = 0; i < placedWords.length; i++) {
+        o = i + 1;
+        hints.innerHTML += "<br><b>" + o + "</b>. " + placedWordsDesc[i];
+      }
+      if (placedWords.length == wordNumber) {
+        generateCrossword();
+      } else {
+        randomWords();
+      }
     }
 
-
-
-
     function generateCrossword() {
-        console.log('Done')
-        var table = document.getElementById("crossword");
-        var scriptData = document.getElementById("times");
-        scriptData.innerHTML = "The script repeated <b>" + scrptRun + "</b> times, with total of <b>" + noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ") + "</b> word repositions."
-        table.innerHTML = ""
-        items = items.map(subArray => {
-  if (subArray.every(value => value === "0")) {
-    return subArray.slice(1);
-  }
-  return subArray;
-});
-        items.forEach(function (row, rowIndex) {
-            let tr = document.createElement("tr");
-            table.appendChild(tr);
-            row.forEach(function (oneLetter, colIndex) {
-                let td = document.createElement("td");
-                let input;
-                if (oneLetter === '0' || items[rowIndex][colIndex] == " ") {
-                    input = document.createElement("div");
-                    input.classList.add("blank");
-                } else {
-                    input = document.createElement("input");
-                    input.maxLength = "1";
-                    if (oneLetter.includes("!")) {
-                        input.value = oneLetter.substring(oneLetter.indexOf("!")+1, oneLetter.length)
-                                input.style.borderWidth = "0"
-                                input.setAttribute("disabled","")
-                    }
-                    input.addEventListener("input", function (e) {
-                        if (input.value.length === 1) {
-                          
-                            let nextOneLeft =  "tr_" + rowIndex + "_" + (colIndex + 1)
-                         console.log(document.querySelector("." + "tr_" + rowIndex + "_" + (colIndex - 1)));
-                            if (document.querySelector("." + "tr_" + rowIndex + "_" + (colIndex - 1)).tagName !== 'DIV') {
-                                if(document.querySelector("." + "tr_" + rowIndex + "_" + (colIndex - 1)).value.includes("➡️")){
-                                console.log("1---"+document.querySelector("." + "tr_" + rowIndex + "_" + (colIndex - 1)).value);}
-                                document.querySelector("." + nextOneLeft).focus();
-                            } else if (document.querySelector("." + "tr_" + (rowIndex) + "_" + (colIndex - 1)).value !== ""&&document.querySelector("." + "tr_" + (rowIndex) + "_" + (colIndex - 1)).value !== undefined && document.querySelector("." + "tr_" + (rowIndex) + "_" + (colIndex + 1)).value == ""){
-                               console.log( document.querySelector("." + "tr_" + (rowIndex) + "_" + (colIndex - 1)).value)
-                                console.log("2");
-                               
-                                document.querySelector("." + nextOneLeft).focus();
-                            } else if (!isNaN(document.querySelector("." + "tr_" + (rowIndex + 1) + "_" + colIndex ).value) && document.querySelector("." + "tr_" + (rowIndex + 1) + "_" + colIndex ).value !== ""){
-                                document.querySelector("." + "tr_" + (rowIndex + 1) + "_" + colIndex ).focus();
-                            
-                              }  else{
-                                console.log("3");
-                                document.querySelector("." + "tr_" + (rowIndex + 1) + "_" + colIndex).focus();
-                            }
-        
-                           
-                        }
-                    });
-                }
-                input.classList.add("tr_" + rowIndex + "_" + colIndex);
+      console.log("Done");
+      var table = document.getElementById("crossword");
+      var scriptData = document.getElementById("times");
+      scriptData.innerHTML =
+        "The script repeated <b>" +
+        scrptRun +
+        "</b> times, with total of <b>" +
+        noOfPre.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ", ") +
+        "</b> word repositions.";
+      table.innerHTML = "";
+      items = items.map((subArray) => {
+        if (subArray.every((value) => value === "0")) {
+          return subArray.slice(1);
+        }
+        return subArray;
+      });
+      items.forEach(function (row, rowIndex) {
+        let tr = document.createElement("tr");
+        table.appendChild(tr);
+        row.forEach(function (oneLetter, colIndex) {
+          let td = document.createElement("td");
+          let input;
+          if (oneLetter === "0" || items[rowIndex][colIndex] == " ") {
+            input = document.createElement("div");
+            input.classList.add("blank");
+          } else {
+            input = document.createElement("input");
+            input.maxLength = "1";
+            if (oneLetter.includes("!")) {
+              input.value = oneLetter.substring(
+                oneLetter.indexOf("!") + 1,
+                oneLetter.length
+              );
+              input.style.borderWidth = "0";
+              input.setAttribute("disabled", "");
+            }
+            input.addEventListener("input", function (e) {
+              if (input.value.length === 1) {
+                let nextOneLeft = "tr_" + rowIndex + "_" + (colIndex + 1);
+                console.log(
+                  document.querySelector(
+                    "." + "tr_" + rowIndex + "_" + (colIndex - 1)
+                  )
+                );
+                if (
+                  document.querySelector(
+                    "." + "tr_" + rowIndex + "_" + (colIndex - 1)
+                  ).tagName !== "DIV"
+                ) {
+                  if (
+                    document
+                      .querySelector(
+                        "." + "tr_" + rowIndex + "_" + (colIndex - 1)
+                      )
+                      .value.includes("➡️")
+                  ) {
+                    console.log(
+                      "1---" +
+                        document.querySelector(
+                          "." + "tr_" + rowIndex + "_" + (colIndex - 1)
+                        ).value
+                    );
+                  }
+                  document.querySelector("." + nextOneLeft).focus();
+                } else if (
+                  document.querySelector(
+                    "." + "tr_" + rowIndex + "_" + (colIndex - 1)
+                  ).value !== "" &&
+                  document.querySelector(
+                    "." + "tr_" + rowIndex + "_" + (colIndex - 1)
+                  ).value !== undefined &&
+                  document.querySelector(
+                    "." + "tr_" + rowIndex + "_" + (colIndex + 1)
+                  ).value == ""
+                ) {
+                  console.log(
+                    document.querySelector(
+                      "." + "tr_" + rowIndex + "_" + (colIndex - 1)
+                    ).value
+                  );
+                  console.log("2");
 
-                td.appendChild(input);
-                tr.appendChild(td);
+                  document.querySelector("." + nextOneLeft).focus();
+                } else if (
+                  !isNaN(
+                    document.querySelector(
+                      "." + "tr_" + (rowIndex + 1) + "_" + colIndex
+                    ).value
+                  ) &&
+                  document.querySelector(
+                    "." + "tr_" + (rowIndex + 1) + "_" + colIndex
+                  ).value !== ""
+                ) {
+                  document
+                    .querySelector(
+                      "." + "tr_" + (rowIndex + 1) + "_" + colIndex
+                    )
+                    .focus();
+                } else {
+                  console.log("3");
+                  document
+                    .querySelector(
+                      "." + "tr_" + (rowIndex + 1) + "_" + colIndex
+                    )
+                    .focus();
+                }
+              }
             });
+          }
+          input.classList.add("tr_" + rowIndex + "_" + colIndex);
+
+          td.appendChild(input);
+          tr.appendChild(td);
         });
+      });
     }
 
     function check() {
-        items.forEach(function (row) {
-            var a = 0
-            row.forEach(function (oneLetter) {
-                let valuen = document.querySelector(".tr_" + items.indexOf(row) + "_" + a)
+      items.forEach(function (row) {
+        var a = 0;
+        row.forEach(function (oneLetter) {
+          let valuen = document.querySelector(
+            ".tr_" + items.indexOf(row) + "_" + a
+          );
 
-                if (valuen.tagName !== "DIV") {
-
-                    if (valuen.value.toUpperCase() == oneLetter.toUpperCase()) {
-                        valuen.style.backgroundColor = "green"
-                    } else {
-                        console.log(valuen.style.borderWidth !== 0);
-                            if( valuen.style.borderWidth !== "0px") {
-                        valuen.style.backgroundColor = "red"}
-                    }
-                }
-                a++
-            })
-
-        })
-
+          if (valuen.tagName !== "DIV") {
+            if (valuen.value.toUpperCase() == oneLetter.toUpperCase()) {
+              valuen.style.backgroundColor = "green";
+            } else {
+              console.log(valuen.style.borderWidth !== 0);
+              if (valuen.style.borderWidth !== "0px") {
+                valuen.style.backgroundColor = "red";
+              }
+            }
+          }
+          a++;
+        });
+      });
     }
     function solve() {
-        items.forEach(function (row) {
-            var a = 0
-            row.forEach(function (oneLetter) {
-                let valuen = document.querySelector(".tr_" + items.indexOf(row) + "_" + a)
+      items.forEach(function (row) {
+        var a = 0;
+        row.forEach(function (oneLetter) {
+          let valuen = document.querySelector(
+            ".tr_" + items.indexOf(row) + "_" + a
+          );
 
-                if (valuen.tagName !== "DIV") {
-
-
-
-                    valuen.value = oneLetter.toUpperCase()
-
-                }
-                a++
-            })
-
-        })
-
+          if (valuen.tagName !== "DIV") {
+            valuen.value = oneLetter.toUpperCase();
+          }
+          a++;
+        });
+      });
     }
 
-
-
-
     async function kkk() {
-  let araa = [];
+      let araa = [];
 
   // Create an array of promises for the fetch operations
   const fetchPromises = [];
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i <wordNumber; i++) {
     let word = "";
     let desc = "";
     let text = "";
 
     const url =
-      'https://api.codetabs.com/v1/proxy/?quest=http://besednjak.si/?q=node/' +
+      'https://api.codetabs.com/v1/proxy/?quest=http://94.140.92.163/?q=node/' +
       Math.floor(Math.random() * (514218 - 2) + 2);
 
     const fetchPromise = fetch(url)
@@ -393,44 +446,41 @@
   }
 
   // Wait for all fetch operations to complete
-  await Promise.all(fetchPromises);
+      await Promise.all(fetchPromises);
 
-  words = araa
-  console.log("finished");
-  randomWords()
-}
-</script>
+      words = araa;
+      console.log("finished");
 
-<script>
+      randomWords();
+    }
+  </script>
 
-</script>
-<style>
+  <script></script>
+  <style>
     input {
-        transition: all .2s;
-        border-radius: 7px;
-        text-align: center;
-        border: 1.5px solid;
-        width: 5vw;
-        height: 5vw;
-        font-size: 120%;
+      transition: all 0.2s;
+      border-radius: 7px;
+      text-align: center;
+      border: 1.5px solid;
+      width: 5vw;
+      height: 5vw;
+      font-size: 120%;
     }
 
     td {
-        width: 5vw;
-        height: 5vw;
+      width: 5vw;
+      height: 5vw;
     }
 
     .blank {
-
-        display: inline-block;
-        width: 5vw;
-        height: 5vw;
+      display: inline-block;
+      width: 5vw;
+      height: 5vw;
     }
 
     button {
-        width: 90px;
-        height: 50px;
+      width: 90px;
+      height: 50px;
     }
-</style>
-
+  </style>
 </html>

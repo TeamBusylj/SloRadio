@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Eurospin wordle</title>
+  </head>
+  <body>
+    <div class="header">
+      <a class="navbar-brand" href="https://www.eurospin.si">
+        <img src="assets\logo_es.svg" alt="Eurospin Slovenija" class="logo">
+      </a>
+      <h1>Eurospinove znamke</h1>
+    </div>
+<div class="main">
+    <div id="game-board"></div>
+
+    <div id="keyboard-cont">
+      <div class="keyboard-row">
+        <button class="keyboard-button">q</button>
+        <button class="keyboard-button">w</button>
+        <button class="keyboard-button">e</button>
+        <button class="keyboard-button">r</button>
+        <button class="keyboard-button">t</button>
+        <button class="keyboard-button">y</button>
+        <button class="keyboard-button">u</button>
+        <button class="keyboard-button">i</button>
+        <button class="keyboard-button">o</button>
+        <button class="keyboard-button">p</button>
+        <button class="keyboard-button">š</button>
+        <button class="keyboard-button">ž</button>
+      </div>
+      <div class="keyboard-row second-row">
+        <button class="keyboard-button">a</button>
+        <button class="keyboard-button">s</button>
+        <button class="keyboard-button">d</button>
+        <button class="keyboard-button">f</button>
+        <button class="keyboard-button">g</button>
+        <button class="keyboard-button">h</button>
+        <button class="keyboard-button">j</button>
+        <button class="keyboard-button">k</button>
+        <button class="keyboard-button">l</button>
+        <button class="keyboard-button">č</button>
+      </div>
+      <div class="keyboard-row third-row">
+        <button class="keyboard-button">z</button>
+        <button class="keyboard-button">x</button>
+        <button class="keyboard-button">c</button>
+        <button class="keyboard-button">v</button>
+        <button class="keyboard-button">b</button>
+        <button class="keyboard-button">n</button>
+        <button class="keyboard-button">m</button>
+        <button class="keyboard-button backspace">&larr;</button>
+      </div>
+      <div class="keyboard-row fourth-row">
+        <button class="keyboard-button space">&#x23B5;</button>
+        <button class="keyboard-button enter">&#8617;</button>
+      </div>
+    </div>
+</div>
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

@@ -70,7 +70,7 @@ function checkGuess () {
 
     if (guessString.length != rightGuessString.length) {
         console.log("Not enough letters!")
-       
+       row.style.height="110%"
         return
     }
     
@@ -203,26 +203,34 @@ document.addEventListener("keyup", (e) => {
         return
     }
 
-    let found = pressedKey.match(/[a-zčšž ⎵]/gi);
+    let found = pressedKey.match(/[a-zčšž ]/gi);
     if (!found || found.length > 1) {
         return
     } else {
-        insertLetter(pressedKey.replace("⎵", " "))
+        insertLetter(pressedKey)
     }
 })
 
 document.getElementById("keyboard-cont").addEventListener("click", (e) => {
-    const target = e.target
+    var target = e.target
+    console.log(target.tagName);
+    
+    if(target.tagName == "svg") target = target.parentNode; 
+    if(target.tagName == "path") target = target.parentNode.parentNode; 
     if (!target.classList.contains("keyboard-button")) {
         return
     }
     let key = target.textContent
 
-    if (key === "←") {
+
+    if (target.classList.contains("backspace")) {
         key = "Backspace"
     } 
-    if (key === "↩") {
+    if (target.classList.contains("enter")) {
         key = "Enter"
+    } 
+    if (target.classList.contains("space")) {
+        key = " "
     } 
 
     document.dispatchEvent(new KeyboardEvent("keyup", {'key': key}))

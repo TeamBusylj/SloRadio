@@ -7,8 +7,6 @@ let currentGuess = [];
 let nextLetter = 0;
 let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)]
 
-console.log(rightGuessString)
-
 function initBoard() {
     let board = document.getElementById("game-board");
 
@@ -27,6 +25,7 @@ function initBoard() {
     }
     setTimeout(() => {
         document.getElementsByClassName("letter-row")[0].style.height="110%"
+        document.getElementsByClassName("letter-row")[0].style.filter="drop-shadow(2px 2px 19px #3e6a89)"
 
     }, 300);
 }
@@ -61,6 +60,7 @@ function deleteLetter () {
 function checkGuess () {
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
     row.style.height="100%"
+    row.style.filter=""
     let guessString = ''
     let rightGuess = Array.from(rightGuessString)
 
@@ -71,6 +71,8 @@ function checkGuess () {
     if (guessString.length != rightGuessString.length) {
         console.log("Not enough letters!")
        row.style.height="110%"
+       row.style.filter="drop-shadow(2px 2px 19px #3e6a89)"
+
         return
     }
     
@@ -122,6 +124,8 @@ function checkGuess () {
             if (guessString !== rightGuessString && i === rightGuessString.length - 1) {
                 setTimeout(() => {
                     document.getElementsByClassName("letter-row")[6 - guessesRemaining].style.height="110%"
+                    document.getElementsByClassName("letter-row")[6 - guessesRemaining].style.filter="drop-shadow(2px 2px 19px #3e6a89)"
+
                 }, 1000);
             }
         }, delay)

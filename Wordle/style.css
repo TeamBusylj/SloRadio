@@ -262,7 +262,7 @@ img.logoBrand {
     transform: translateY(var(--offsetBottom));
 }
 .animateRow .letter-box {
-    transition: all 1s ease;
+    transition: all .5s ease;
    background: none !important;
    font-size: 4rem !important;
    color: transparent !important;

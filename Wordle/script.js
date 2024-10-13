@@ -141,8 +141,8 @@ function guessAnimation(row) {
  
   row.classList.add("animateRow")
   const rect = row.getBoundingClientRect();
-  const offsetFromBottom = window.innerHeight - rect.bottom - 100;
-  row.style.setProperty('--offsetBottom', `${Math.floor(offsetFromBottom)}px`);
+const offsetFromBottom = window.visualViewport.height - rect.bottom - 100;
+row.style.setProperty('--offsetBottom', `${Math.floor(offsetFromBottom)}px`);
   let rows = document.querySelectorAll(".letter-row:not(.animateRow)")
   rows =[...rows]
   rows.push(document.getElementById("keyboard-cont"))

@@ -7,65 +7,103 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no,maximum-scale=1.0"
     />
     <link rel="stylesheet" href="style.css" />
-    <meta name="theme-color" content="#003961">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <title>Eurospin wordle</title>
+    <meta name="theme-color" content="#003961" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Eurospinove znamke</title>
   </head>
   <body>
     <div class="header">
       <a class="navbar-brand" href="https://www.eurospin.si">
-        <img src="assets\logo_es.svg" alt="Eurospin Slovenija" class="logo">
+        <img src="assets\logo_es.svg" alt="Eurospin Slovenija" class="logo" />
       </a>
       <h1>Eurospinove znamke</h1>
     </div>
-<div class="main">
-    <div id="game-board"></div>
+    <div class="main">
+      <div id="game-board"></div>
 
-    <div id="keyboard-cont">
-      <div class="keyboard-row">
-        <button class="keyboard-button">q</button>
-        <button class="keyboard-button">w</button>
-        <button class="keyboard-button">e</button>
-        <button class="keyboard-button">r</button>
-        <button class="keyboard-button">t</button>
-        <button class="keyboard-button">y</button>
-        <button class="keyboard-button">u</button>
-        <button class="keyboard-button">i</button>
-        <button class="keyboard-button">o</button>
-        <button class="keyboard-button">p</button>
-        <button class="keyboard-button">š</button>
-        <button class="keyboard-button">ž</button>
-      </div>
-      <div class="keyboard-row second-row">
-        <button class="keyboard-button">a</button>
-        <button class="keyboard-button">s</button>
-        <button class="keyboard-button">d</button>
-        <button class="keyboard-button">f</button>
-        <button class="keyboard-button">g</button>
-        <button class="keyboard-button">h</button>
-        <button class="keyboard-button">j</button>
-        <button class="keyboard-button">k</button>
-        <button class="keyboard-button">l</button>
-        <button class="keyboard-button">č</button>
-      </div>
-      <div class="keyboard-row third-row">
-        <button class="keyboard-button">z</button>
-        <button class="keyboard-button">x</button>
-        <button class="keyboard-button">c</button>
-        <button class="keyboard-button">v</button>
-        <button class="keyboard-button">b</button>
-        <button class="keyboard-button">n</button>
-        <button class="keyboard-button">m</button>
-        <button class="keyboard-button backspace">&larr;</button>
-      </div>
-      <div class="keyboard-row fourth-row">
-        <button class="keyboard-button space">&#x23B5;</button>
-        <button class="keyboard-button enter">&#8617;</button>
+      <div id="keyboard-cont">
+        <div class="keyboard-row">
+          <button class="keyboard-button">q</button>
+          <button class="keyboard-button">w</button>
+          <button class="keyboard-button">e</button>
+          <button class="keyboard-button">r</button>
+          <button class="keyboard-button">t</button>
+          <button class="keyboard-button">z</button>
+          <button class="keyboard-button">u</button>
+          <button class="keyboard-button">i</button>
+          <button class="keyboard-button">o</button>
+          <button class="keyboard-button">p</button>
+          <button class="keyboard-button">š</button>
+          <button class="keyboard-button">ž</button>
+        </div>
+        <div class="keyboard-row second-row">
+          <button class="keyboard-button">a</button>
+          <button class="keyboard-button">s</button>
+          <button class="keyboard-button">d</button>
+          <button class="keyboard-button">f</button>
+          <button class="keyboard-button">g</button>
+          <button class="keyboard-button">h</button>
+          <button class="keyboard-button">j</button>
+          <button class="keyboard-button">k</button>
+          <button class="keyboard-button">l</button>
+          <button class="keyboard-button">č</button>
+        </div>
+        <div class="keyboard-row third-row">
+          <button class="keyboard-button" style="opacity: 0;"></button>
+          <button class="keyboard-button">y</button>
+          <button class="keyboard-button">x</button>
+          <button class="keyboard-button">c</button>
+          <button class="keyboard-button">v</button>
+          <button class="keyboard-button">b</button>
+          <button class="keyboard-button">n</button>
+          <button class="keyboard-button">m</button>
+          <button class="keyboard-button backspace">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+             
+              viewBox="0 -960 960 960"
+              
+              fill="#000000"
+            >
+              <path
+                d="m456-320 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 160q-19 0-36-8.5T296-192L80-480l216-288q11-15 28-23.5t36-8.5h440q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H360ZM180-480l180 240h440v-480H360L180-480Zm400 0Z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="keyboard-row fourth-row">
+          <button class="keyboard-button space">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+            
+              viewBox="0 -960 960 960"
+             
+              fill="#000000"
+            >
+              <path d="M160-360v-240h80v160h480v-160h80v240H160Z" />
+            </svg>
+          </button>
+          <button class="keyboard-button enter">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+             
+              viewBox="0 -960 960 960"
+          
+              fill="#000000"
+            >
+              <path
+                d="M400-120 160-360l241-241 56 57-144 144h367v-400h80v480H313l144 143-57 57Z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-</div>
     <script src="script.js" type="module"></script>
   </body>
 </html>

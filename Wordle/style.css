@@ -68,11 +68,7 @@
     width: 90%;
     
   }
-   .third-row {
-    
-    width: 80%;
-    
-  }
+  
   .fourth-row{
     margin: 0.3rem 0;
   }
@@ -82,9 +78,15 @@
   .space{
     flex: 5 !important;
   }
+  .backspace{
+    margin-left: 6px !important;
+    flex: 2 !important;
+  }
   .enter, .space, .backspace{
     line-height: 1;
-    font-size: 30px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
    .keyboard-button:active {
     scale: 0.95;
@@ -177,6 +179,9 @@
     display: flex;
     align-items: center;
     
+}
+svg {
+    height: 2rem;
 }
 h1 {
     font-size: clamp(20px, 4vw, 40px);
